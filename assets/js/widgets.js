@@ -11,12 +11,12 @@
     title: 'Cấu tạo số – các hàng',
     render(el, arg) {
       const max = Number(arg) || 9999, d = String(max).length;
-      const names = ['Đơn vị', 'Chục', 'Trăm', 'Nghìn', 'Chục nghìn'].slice(0, d).reverse();
-      const cols = ['#ff7a3d', '#4a7dff', '#2bb3a3', '#a259ff', '#e5484d'].slice(0, d).reverse();
-      let n = Math.min(max, d === 3 ? 572 : d === 4 ? 3421 : 53460);
+      const names = ['Đơn vị', 'Chục', 'Trăm', 'Nghìn', 'Chục nghìn', 'Trăm nghìn', 'Triệu', 'Chục triệu', 'Trăm triệu'].slice(0, d).reverse();
+      const cols = ['#ff7a3d', '#4a7dff', '#2bb3a3', '#a259ff', '#e5484d', '#1f7a6e', '#b7791f', '#3b6fe0', '#7c3aed'].slice(0, d).reverse();
+      let n = Math.min(max, ({ 2: 47, 3: 572, 4: 3421, 5: 53460, 6: 405718 })[d] || 25306415);
       el.innerHTML = `<div class="wbox"><div class="row"><input id="pvn" class="numin big" inputmode="numeric" value="${n}"> <span class="muted">Gõ một số (tối đa ${fmt(max)}) hoặc bấm nút</span></div>
         <div class="row btns" id="pvb"></div><div class="pv" id="pvg"></div><div class="say" id="pvs"></div></div>`;
-      const steps = [1, 10, 100, 1000, 10000].slice(0, d);
+      const steps = [1, 10, 100, 1000, 10000, 100000, 1000000].slice(0, Math.min(d, 7));
       el.querySelector('#pvb').innerHTML = steps.map((s) => `<button class="chip" data-s="${s}">+${fmt(s)}</button><button class="chip" data-s="-${s}">−${fmt(s)}</button>`).join('');
       const draw = () => {
         const s = String(n).padStart(d, '0');
@@ -208,6 +208,100 @@
     }
   };
   W._datTinhSteps = datTinhSteps;
+
+
+  W.congtru = {
+    title: 'Cộng, trừ bằng hình',
+    render(el, arg) {
+      const max = Number(arg) || 10;
+      el.innerHTML = `<div class="wbox"><div class="row"><button class="chip on" data-op="+">Phép cộng</button><button class="chip" data-op="-">Phép trừ</button></div>${slider('cta', 'Số thứ nhất', 0, max, Math.min(5, max))}${slider('ctb', 'Số thứ hai', 0, max, 3)}<div id="ctp" class="emo big2"></div><div class="say" id="cts"></div></div>`;
+      let op = '+';
+      const draw = () => {
+        let a = +el.querySelector('#cta').value, b = +el.querySelector('#ctb').value;
+        if (op === '+' && a + b > max) { b = max - a; el.querySelector('#ctb').value = b; }
+        if (op === '-' && b > a) { b = a; el.querySelector('#ctb').value = b; }
+        el.querySelector('#ctav').textContent = a; el.querySelector('#ctbv').textContent = b;
+        el.querySelector('#ctp').innerHTML = op === '+' ? '🍎'.repeat(a) + ' <b>+</b> ' + '🍏'.repeat(b) : '🍎'.repeat(a - b) + '<span style="opacity:.25">' + '🍎'.repeat(b) + '</span>';
+        el.querySelector('#cts').innerHTML = op === '+' ? `<b>${a} + ${b} = ${a + b}</b> — gộp hai nhóm lại.` : `<b>${a} − ${b} = ${a - b}</b> — bớt đi ${b} quả (quả mờ).`;
+      };
+      el.querySelectorAll('input').forEach((i) => i.addEventListener('input', draw));
+      el.querySelectorAll('[data-op]').forEach((b) => b.addEventListener('click', () => { op = b.dataset.op; el.querySelectorAll('[data-op]').forEach((x) => x.classList.toggle('on', x === b)); draw(); }));
+      draw();
+    }
+  };
+
+  W.goc = {
+    title: 'Góc và số đo góc',
+    render(el) {
+      el.innerHTML = `<div class="wbox">${slider('gcd', 'Số đo góc (°)', 0, 180, 60, 5)}<div class="row center" id="gcp"></div><div class="say" id="gcs"></div></div>`;
+      const draw = () => {
+        const d = +el.querySelector('#gcd').value; el.querySelector('#gcdv').textContent = d + '°';
+        const rad = d * Math.PI / 180, x = 130 + 100 * Math.cos(rad), y = 140 - 100 * Math.sin(rad);
+        let tk = ''; for (let a = 0; a <= 180; a += 10) { const rr = a * Math.PI / 180; tk += `<line x1="${130 + 108 * Math.cos(rr)}" y1="${140 - 108 * Math.sin(rr)}" x2="${130 + (a % 30 ? 113 : 118) * Math.cos(rr)}" y2="${140 - (a % 30 ? 113 : 118) * Math.sin(rr)}" stroke="#8a93a8"/>` + (a % 30 ? '' : `<text x="${130 + 126 * Math.cos(rr)}" y="${144 - 126 * Math.sin(rr)}" font-size="9" text-anchor="middle">${a}</text>`); }
+        const arc = d > 0 ? `<path d="M160 140 A30 30 0 0 0 ${130 + 30 * Math.cos(rad)} ${140 - 30 * Math.sin(rad)}" fill="rgba(217,102,31,.2)" stroke="#D9661F"/>` : '';
+        el.querySelector('#gcp').innerHTML = `<svg viewBox="0 0 260 160" width="300"><path d="M10 140 A120 120 0 0 1 250 140" fill="#f3f6fb" stroke="#c9d1e1"/>${tk}${arc}<line x1="130" y1="140" x2="240" y2="140" stroke="#1B2A4A" stroke-width="3"/><line x1="130" y1="140" x2="${x}" y2="${y}" stroke="#1B2A4A" stroke-width="3"/><circle cx="130" cy="140" r="4"/></svg>`;
+        const k = d === 0 ? 'góc không' : d < 90 ? 'góc nhọn' : d === 90 ? 'góc vuông' : d < 180 ? 'góc tù' : 'góc bẹt';
+        el.querySelector('#gcs').innerHTML = `Góc ${d}° là <b>${k}</b>. (Nhọn &lt; 90° = vuông &lt; tù &lt; 180° = bẹt)`;
+      };
+      el.querySelector('input').addEventListener('input', draw); draw();
+    }
+  };
+
+  // Hệ trục toạ độ dùng chung cho đồ thị
+  function axes(W0, H0, sc, ox, oy) {
+    let g = '';
+    for (let x = -10; x <= 10; x++) { const X = ox + x * sc; if (X < 0 || X > W0) continue; g += `<line x1="${X}" y1="0" x2="${X}" y2="${H0}" stroke="#eef1f6"/>` + (x && x % 2 === 0 ? `<text x="${X}" y="${oy + 12}" font-size="9" text-anchor="middle" fill="#55607A">${x}</text>` : ''); }
+    for (let y = -10; y <= 10; y++) { const Y = oy - y * sc; if (Y < 0 || Y > H0) continue; g += `<line x1="0" y1="${Y}" x2="${W0}" y2="${Y}" stroke="#eef1f6"/>` + (y && y % 2 === 0 ? `<text x="${ox - 6}" y="${Y + 3}" font-size="9" text-anchor="end" fill="#55607A">${y}</text>` : ''); }
+    return g + `<line x1="0" y1="${oy}" x2="${W0}" y2="${oy}" stroke="#1B2A4A"/><line x1="${ox}" y1="0" x2="${ox}" y2="${H0}" stroke="#1B2A4A"/><text x="${W0 - 8}" y="${oy - 4}" font-size="11">x</text><text x="${ox + 4}" y="10" font-size="11">y</text><text x="${ox - 8}" y="${oy + 12}" font-size="10">O</text>`;
+  }
+  function plot(f, W0, H0, sc, ox, oy, col) {
+    let d = ''; let pen = false;
+    for (let px = 0; px <= W0; px += 2) { const x = (px - ox) / sc, y = f(x), Y = oy - y * sc; if (!isFinite(Y) || Y < -500 || Y > H0 + 500) { pen = false; continue; } d += (pen ? 'L' : 'M') + px + ' ' + Y.toFixed(1) + ' '; pen = true; }
+    return `<path d="${d}" fill="none" stroke="${col}" stroke-width="2.5"/>`;
+  }
+  W.dothi = {
+    title: 'Đồ thị hàm số bậc nhất y = ax + b',
+    render(el) {
+      el.innerHTML = `<div class="wbox">${slider('dta2', 'a =', -4, 4, 2, 0.5)}${slider('dtb2', 'b =', -5, 5, 1, 1)}<div class="row center" id="dtp2"></div><div class="say" id="dts2"></div></div>`;
+      const draw = () => {
+        const a = +el.querySelector('#dta2').value, b = +el.querySelector('#dtb2').value; el.querySelector('#dta2v').textContent = PLT.U.fmt(a); el.querySelector('#dtb2v').textContent = b;
+        el.querySelector('#dtp2').innerHTML = `<svg viewBox="0 0 300 300" width="300">${axes(300, 300, 15, 150, 150)}${plot((x) => a * x + b, 300, 300, 15, 150, 150, '#D9661F')}<circle cx="150" cy="${150 - b * 15}" r="4" fill="#1F7A6E"/></svg>`;
+        el.querySelector('#dts2').innerHTML = `y = ${PLT.U.poly([a, b])}<br>Cắt trục tung tại (0; ${PLT.U.fmt(b)})${a ? `, cắt trục hoành tại (${PLT.U.fmt(Number((-b / a).toFixed(2)))}; 0)` : ''}. Hệ số góc a = ${PLT.U.fmt(a)}: ${a > 0 ? 'đồ thị đi lên (hàm đồng biến)' : a < 0 ? 'đồ thị đi xuống (hàm nghịch biến)' : 'đường thẳng song song trục hoành'}.`;
+      };
+      el.querySelectorAll('input').forEach((i) => i.addEventListener('input', draw)); draw();
+    }
+  };
+  W.parabol = {
+    title: 'Parabol y = ax² + bx + c',
+    render(el, arg) {
+      const full = arg !== 'ax2';
+      el.innerHTML = `<div class="wbox">${slider('pba', 'a =', -3, 3, 1, 0.5)}${full ? slider('pbb', 'b =', -6, 6, -2, 1) + slider('pbc', 'c =', -6, 6, -3, 1) : ''}<div class="row center" id="pbp"></div><div class="say" id="pbs"></div></div>`;
+      const draw = () => {
+        const a = +el.querySelector('#pba').value || 0.5, b = full ? +el.querySelector('#pbb').value : 0, c = full ? +el.querySelector('#pbc').value : 0;
+        el.querySelector('#pbav').textContent = PLT.U.fmt(a); if (full) { el.querySelector('#pbbv').textContent = b; el.querySelector('#pbcv').textContent = c; }
+        const xv = -b / (2 * a), yv = a * xv * xv + b * xv + c, D = b * b - 4 * a * c;
+        el.querySelector('#pbp').innerHTML = `<svg viewBox="0 0 300 300" width="300">${axes(300, 300, 15, 150, 150)}${plot((x) => a * x * x + b * x + c, 300, 300, 15, 150, 150, '#3B6FE0')}<circle cx="${150 + xv * 15}" cy="${150 - yv * 15}" r="4" fill="#D9661F"/></svg>`;
+        const f = (v) => PLT.U.fmt(Number(v.toFixed(2)));
+        el.querySelector('#pbs').innerHTML = `y = ${PLT.U.poly([a, b, c])}<br>Đỉnh I(${f(xv)}; ${f(yv)}), trục đối xứng x = ${f(xv)}. Bề lõm quay ${a > 0 ? 'lên trên (a > 0)' : 'xuống dưới (a < 0)'}.` + (full ? `<br>Δ = b² − 4ac = ${f(D)} → ${D > 0 ? 'cắt trục hoành tại 2 điểm' : D === 0 ? 'tiếp xúc trục hoành' : 'không cắt trục hoành'}.` : '');
+      };
+      el.querySelectorAll('input').forEach((i) => i.addEventListener('input', draw)); draw();
+    }
+  };
+  W.vonglg = {
+    title: 'Đường tròn lượng giác',
+    render(el) {
+      el.innerHTML = `<div class="wbox">${slider('vla', 'Góc α (°)', -360, 360, 30, 15)}<div class="row center" id="vlp"></div><div class="say" id="vls"></div></div>`;
+      const SP = { 0: ['0', '1', '0'], 30: ['1/2', '√3/2', '√3/3'], 45: ['√2/2', '√2/2', '1'], 60: ['√3/2', '1/2', '√3'], 90: ['1', '0', 'không xác định'] };
+      const draw = () => {
+        const d = +el.querySelector('#vla').value, rad = d * Math.PI / 180, cx = 150, cy = 150, R = 110, x = cx + R * Math.cos(rad), y = cy - R * Math.sin(rad);
+        el.querySelector('#vlav').textContent = d + '°';
+        el.querySelector('#vlp').innerHTML = `<svg viewBox="0 0 300 300" width="300"><circle cx="${cx}" cy="${cy}" r="${R}" fill="#FBE6D6" stroke="#1B2A4A"/><line x1="20" y1="${cy}" x2="280" y2="${cy}" stroke="#1B2A4A"/><line x1="${cx}" y1="20" x2="${cx}" y2="280" stroke="#1B2A4A"/><line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="#D9661F" stroke-width="3"/><line x1="${x}" y1="${y}" x2="${x}" y2="${cy}" stroke="#3B6FE0" stroke-dasharray="4 3"/><line x1="${x}" y1="${y}" x2="${cx}" y2="${y}" stroke="#1F7A6E" stroke-dasharray="4 3"/><circle cx="${x}" cy="${y}" r="5" fill="#D9661F"/><text x="${cx + 4}" y="${cy + 14}" font-size="11">O</text><text x="270" y="${cy - 6}" font-size="11">cos</text><text x="${cx + 6}" y="30" font-size="11">sin</text></svg>`;
+        const m = ((d % 360) + 360) % 360, sp = SP[m];
+        el.querySelector('#vls').innerHTML = `α = ${d}° = ${PLT.U.fmt(Number((rad).toFixed(4)))} rad<br><span style="color:#3B6FE0">cos α ≈ ${PLT.U.fmt(Number(Math.cos(rad).toFixed(4)))}</span> · <span style="color:#1F7A6E">sin α ≈ ${PLT.U.fmt(Number(Math.sin(rad).toFixed(4)))}</span>` + (sp ? `<br>Giá trị đặc biệt: sin = ${sp[0]}, cos = ${sp[1]}, tan = ${sp[2]}` : '');
+      };
+      el.querySelector('input').addEventListener('input', draw); draw();
+    }
+  };
 
   W.bocbi = {
     title: 'Bốc bi – khả năng xảy ra',

@@ -21,8 +21,22 @@
   const r = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
   const pick = (a) => a[Math.floor(Math.random() * a.length)];
   const shuffle = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
-  const fmt = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-  const parseNum = (s) => { const t = String(s == null ? '' : s).replace(/[\s  .,]/g, ''); return /^-?\d+$/.test(t) ? Number(t) : NaN; };
+  // Định dạng số kiểu Việt Nam: nhóm nghìn bằng dấu cách, thập phân bằng dấu phẩy, số âm dùng dấu −
+  const fmt = (n) => {
+    if (typeof n !== 'number') return String(n);
+    const v = Number(n.toFixed(9)); const neg = v < 0; const [ip, dp] = String(Math.abs(v)).split('.');
+    const g = ip.length >= 4 ? ip.replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0') : ip;
+    return (neg ? '−' : '') + g + (dp ? ',' + dp : '');
+  };
+  // Đọc câu trả lời số: chấp nhận 12 345 · 12.345 · 2,5 · -3 · −3 · 3/4 · -3/4
+  const parseNum = (s) => {
+    let t = String(s == null ? '' : s).trim().replace(/[\s\u00a0\u202f]/g, '').replace(/[−–]/g, '-');
+    if (/^-?\d+\/\d+$/.test(t)) { const [a, b] = t.split('/').map(Number); return b ? a / b : NaN; }
+    if (/^-?\d{1,3}(\.\d{3})+$/.test(t)) t = t.replace(/\./g, '');
+    t = t.replace(',', '.');
+    return /^-?\d+(\.\d+)?$/.test(t) ? Number(t) : NaN;
+  };
+  const same = (a, b) => typeof a === 'number' && typeof b === 'number' && Math.abs(a - b) < 1e-6;
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
@@ -43,9 +57,8 @@
   }
   function docSo(n) {
     if (n === 0) return 'không';
-    const th = Math.floor(n / 1000), rest = n % 1000, parts = [];
-    if (th > 0) parts.push(doc3(th, false) + ' nghìn');
-    if (rest > 0) parts.push(doc3(rest, th > 0));
+    const units = [['tỉ', 1e9], ['triệu', 1e6], ['nghìn', 1e3], ['', 1]]; const parts = []; let started = false;
+    for (const [name, v] of units) { const g = Math.floor(n / v) % 1000; if (g > 0) { parts.push(doc3(g, started) + (name ? ' ' + name : '')); started = true; } }
     return parts.join(' ');
   }
   function roman(n) {
@@ -145,5 +158,50 @@
     return `<svg class="pic" viewBox="0 0 320 72" width="100%" style="max-width:420px"><rect x="10" y="14" width="${mm * k}" height="14" rx="3" fill="#ffc93c" stroke="#b7791f"/><polygon points="${10 + mm * k},14 ${10 + mm * k + 12},21 ${10 + mm * k},28" fill="#f6ad55" stroke="#b7791f"/><rect x="2" y="36" width="316" height="34" fill="#f3f6fb" stroke="#8a93a8"/>${s}<text x="306" y="64" font-size="8">cm</text></svg>`;
   }
 
-  PLT.U = { r, pick, shuffle, fmt, parseNum, esc, cap, docSo, roman, frac, mc, fill, fill1, match, order, sort, essay, clockSVG, pieSVG, groupsHTML, gridSVG, numlineHTML, angleSVG, shapeSVG, tableHTML, thermoSVG, rulerSVG };
+  /* ---------- Hiển thị biểu thức toán ---------- */
+  const sup = (b, e) => `${b}<sup>${e}</sup>`;
+  const sqrtH = (x) => `<span class="sqrt">√<span>${x}</span></span>`;
+  const gcd = (a, b) => { a = Math.abs(a); b = Math.abs(b); while (b) [a, b] = [b, a % b]; return a || 1; };
+  // phân số rút gọn dạng HTML (trả về số nguyên nếu chia hết)
+  const fr = (a, b) => { if (b < 0) { a = -a; b = -b; } const g = gcd(a, b); a /= g; b /= g; return b === 1 ? fmt(a) : (a < 0 ? '−' : '') + frac(Math.abs(a), b); };
+  // đa thức theo hệ số giảm dần: poly([1,-3,2],'x') = x² − 3x + 2
+  function poly(cs, x) {
+    x = x || 'x'; const n = cs.length - 1; let out = '';
+    cs.forEach((c, i) => {
+      if (c === 0) return; const d = n - i, abs = Math.abs(c);
+      const coef = abs === 1 && d > 0 ? '' : fmt(abs); const v = d === 0 ? '' : d === 1 ? x : `${x}<sup>${d}</sup>`;
+      out += (out ? (c < 0 ? ' − ' : ' + ') : (c < 0 ? '−' : '')) + coef + v;
+    });
+    return out || '0';
+  }
+  const sgn = (v) => (v < 0 ? ' − ' + fmt(-v) : ' + ' + fmt(v));
+  const par = (v) => (v < 0 ? `(${fmt(v)})` : fmt(v));
+
+  /* ---------- Dựng môn học: lịch tuần / tháng / kỳ tự động ---------- */
+  PLT.buildCourse = function (def) {
+    const T = def.topics; let k = 0; const BAI = [];
+    T.forEach((t) => { t.gens = [...new Set(t.bai.flatMap((b) => (Array.isArray(b[2]) ? b[2] : [])))]; });
+    const hkGens = (hk) => [...new Set(T.filter((t) => t.hk === hk).flatMap((t) => t.gens))];
+    T.forEach((t) => t.bai.forEach((b) => {
+      let g = b[2]; if (g === null || g === undefined) g = t.gens; else if (g === 'HK1') g = hkGens(1); else if (g === 'HK2') g = hkGens(2);
+      if (!g.length) g = hkGens(t.hk);
+      BAI.push({ k: k++, so: b[0], ten: b[1], gens: g, topic: t.id, hk: t.hk });
+    }));
+    T.forEach((t) => { if (t.review || !t.gens.length) t.gens = hkGens(t.hk); });
+    const chunk = (list, weeks, w0) => Array.from({ length: weeks }, (_, i) => { const a = Math.min(Math.floor(i * list.length / weeks), list.length - 1); const z = Math.max(a + 1, Math.floor((i + 1) * list.length / weeks)); return { tuan: w0 + i, bai: list.slice(a, z) }; });
+    const h1 = BAI.filter((b) => b.hk === 1), h2 = BAI.filter((b) => b.hk === 2);
+    const WEEKS = chunk(h1, 18, 1).concat(chunk(h2, 17, 19));
+    const MONTHS = [[9, 1, 4], [10, 5, 8], [11, 9, 12], [12, 13, 16], [1, 17, 20], [2, 21, 24], [3, 25, 28], [4, 29, 32], [5, 33, 35]].map(([m, a, z]) => ({ thang: m, tuan: [a, z], bai: [...new Set(WEEKS.filter((w) => w.tuan >= a && w.tuan <= z).flatMap((w) => w.bai))] }));
+    const TERMS = [
+      { id: 'gk1', ten: 'Kiểm tra giữa học kì 1', bai: h1.slice(0, Math.ceil(h1.length / 2)), essay: 1 },
+      { id: 'ck1', ten: 'Kiểm tra cuối học kì 1', bai: h1, essay: 1 },
+      { id: 'gk2', ten: 'Kiểm tra giữa học kì 2', bai: h2.slice(0, Math.ceil(h2.length / 2)), essay: 2 },
+      { id: 'ck2', ten: 'Kiểm tra cuối năm', bai: h1.concat(h2), essay: 2 }
+    ];
+    const S = Object.assign({ icon: '🔢', mon: 'Toán', bo: 'Kết nối tri thức với cuộc sống', widgetsDefault: [] }, def, { bai: BAI, weeks: WEEKS, months: MONTHS, terms: TERMS });
+    PLT.registerSubject(S); return S;
+  };
+  PLT.baiLabel = (b) => (b.so ? 'Bài ' + b.so : b.ten);
+
+  PLT.U = { r, pick, shuffle, fmt, parseNum, same, sup, sqrtH, gcd, fr, poly, sgn, par, esc, cap, docSo, roman, frac, mc, fill, fill1, match, order, sort, essay, clockSVG, pieSVG, groupsHTML, gridSVG, numlineHTML, angleSVG, shapeSVG, tableHTML, thermoSVG, rulerSVG };
 })();

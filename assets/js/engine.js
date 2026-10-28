@@ -1,7 +1,7 @@
 /* Engine câu hỏi: hiển thị các dạng câu, chấm điểm, chế độ luyện tập, phòng thi có đồng hồ và AI chấm tự luận */
 (function () {
   'use strict';
-  const { fmt, parseNum, esc } = PLT.U;
+  const { fmt, parseNum, esc, same } = PLT.U;
   const LETTERS = ['A', 'B', 'C', 'D', 'E'];
   const LABEL = { mc: 'Chọn đáp án đúng', fill: 'Điền số thích hợp vào chỗ trống', match: 'Nối mỗi ô bên trái với ô phù hợp bên phải', order: 'Sắp xếp theo thứ tự', sort: 'Xếp mỗi ô vào nhóm đúng', essay: 'Tự luận – trình bày bài giải' };
 
@@ -17,9 +17,10 @@
     } else if (q.type === 'fill') {
       st.resp = st.resp || q.blanks.map(() => '');
       body = q.blanks.map((b, i) => {
-        let cls = ''; if (lock) cls = parseNum(st.resp[i]) === b.ans ? ' right' : ' wrong';
-        return `<label class="blank">${b.pre || ''} <input class="numin${cls}" inputmode="numeric" data-i="${i}" value="${esc(st.resp[i])}" ${lock ? 'disabled' : ''}> ${b.post || ''}${lock && cls === ' wrong' ? ` <span class="corr">→ ${fmt(b.ans)}</span>` : ''}</label>`;
+        let cls = ''; if (lock) cls = same(parseNum(st.resp[i]), b.ans) ? ' right' : ' wrong';
+        return `<label class="blank">${b.pre || ''} <input class="numin${cls}" inputmode="${Number.isInteger(b.ans) && b.ans >= 0 ? 'numeric' : 'text'}" data-i="${i}" value="${esc(st.resp[i])}" ${lock ? 'disabled' : ''}> ${b.post || ''}${lock && cls === ' wrong' ? ` <span class="corr">→ ${b.show || fmt(b.ans)}</span>` : ''}</label>`;
       }).join('');
+      if (!lock && q.blanks.some((b) => !Number.isInteger(b.ans) || b.ans < 0)) body += '<div class="muted small">Số thập phân dùng dấu phẩy (2,5); phân số viết a/b (3/4); số âm thêm dấu − (−3).</div>';
     } else if (q.type === 'match') {
       st.resp = st.resp || q.items.map(() => '');
       body = '<div class="match">' + q.items.map((it, i) => {
@@ -69,7 +70,7 @@
   function check(q, st) {
     const v = st.resp; if (v == null) return false;
     if (q.type === 'mc') return v === q.ai;
-    if (q.type === 'fill') return q.blanks.every((b, i) => parseNum(v[i]) === b.ans);
+    if (q.type === 'fill') return q.blanks.every((b, i) => same(parseNum(v[i]), b.ans));
     if (q.type === 'match') return q.items.every((it, i) => v[i] === it.r);
     if (q.type === 'order') return v.join('|') === q.items.join('|');
     if (q.type === 'sort') return q.items.every((it, i) => v[i] === it.cat);
@@ -157,7 +158,7 @@ ${list.map((x, i) => `CÂU ${i + 1} (tối đa ${x.q.max} điểm)\nĐề: ${str
       const total = Math.round((tn + ed) * 4) / 4;
       const rank = total >= 9 ? ['🏆', 'Hoàn thành tốt'] : total >= 5 ? ['👍', 'Hoàn thành'] : ['💪', 'Cần cố gắng thêm'];
       const nOk = qs.filter((q, i) => q.type !== 'essay' && sts[i].ok).length;
-      PLT.data.tests.unshift({ id: cfg.id, ten: cfg.title, mon: cfg.subject, diem: total, ngay: new Date().toISOString(), giay: used }); PLT.data.tests = PLT.data.tests.slice(0, 100); PLT.save();
+      PLT.data.tests.unshift({ id: cfg.id, ten: cfg.title, subject: cfg.subject, diem: total, ngay: new Date().toISOString(), giay: used }); PLT.data.tests = PLT.data.tests.slice(0, 100); PLT.save();
       box.innerHTML = `<div class="result"><div class="rhead"><div class="big">${rank[0]}</div><div><div class="rscore">${String(total).replace('.', ',')}<small>/10</small></div><div>${rank[1]} · Trắc nghiệm đúng ${nOk}/${nTN}${es.length ? ` · Tự luận ${String(ed).replace('.', ',')}/${essayPts} điểm` : ''} · Thời gian ${Math.floor(used / 60)} phút ${used % 60} giây</div></div></div>
         <div class="row center"><button class="btn" id="rag">Làm đề mới cùng dạng</button><button class="btn ghost" id="rbk">Về danh sách đề</button></div><h3>Xem lại bài làm</h3>${qs.map((q, i) => `<section class="eq ${q.type === 'essay' ? '' : sts[i].ok ? 'okq' : 'noq'}"><div class="qhead"><b>Câu ${i + 1}</b> ${q.type === 'essay' ? '' : sts[i].ok ? '<span class="ok">✔ Đúng</span>' : '<span class="bad">✘ Sai</span>'}</div><div class="qcard" data-r="${i}"></div></section>`).join('')}</div>`;
       qs.forEach((q, i) => render(q, box.querySelector(`[data-r="${i}"]`), sts[i], { review: true }));
