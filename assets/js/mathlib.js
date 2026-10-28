@@ -117,12 +117,15 @@
   }
 
   // Biểu đồ cột đơn giản
+  // Biểu đồ cột: vạch chia tròn (1, 2, 5 × 10ⁿ) và ghi số liệu trên đầu mỗi cột để đọc chính xác
   function barSVG(labels, vals, unit) {
-    const W = 60 * labels.length + 40, H = 170, mx = Math.max(...vals), top = Math.ceil(mx / 5) * 5 || 5;
-    let s = `<line x1="30" y1="10" x2="30" y2="140" stroke="#23314d"/><line x1="30" y1="140" x2="${W}" y2="140" stroke="#23314d"/>`;
-    for (let i = 0; i <= 5; i++) { const v = top * i / 5, y = 140 - 125 * i / 5; s += `<line x1="27" x2="${W}" y1="${y}" y2="${y}" stroke="#e3e7ef"/><text x="24" y="${y + 4}" font-size="9" text-anchor="end">${PLT.U.fmt(v)}</text>`; }
-    labels.forEach((l, i) => { const h = 125 * vals[i] / top, x = 42 + i * 60; s += `<rect x="${x}" y="${140 - h}" width="34" height="${h}" fill="${['#4a7dff', '#ff7a3d', '#2bb3a3', '#a259ff', '#e5484d', '#ffc93c'][i % 6]}"/><text x="${x + 17}" y="156" font-size="10" text-anchor="middle">${l}</text>`; });
-    return `<svg class="pic" viewBox="0 0 ${W + 10} ${H}" width="${Math.min(W + 10, 420)}">${s}${unit ? `<text x="34" y="9" font-size="9">${unit}</text>` : ''}</svg>`;
+    const W = 64 * labels.length + 50, H = 190, base = 155, plot = 125, mx = Math.max(...vals, 1);
+    const raw = mx / 5, p10 = Math.pow(10, Math.floor(Math.log10(raw))), step = [1, 2, 2.5, 5, 10].map((k) => k * p10).find((k) => k >= raw);
+    const top = Math.ceil(mx / step) * step, n = Math.round(top / step);
+    let s = `<line x1="40" y1="${base - plot - 8}" x2="40" y2="${base}" stroke="#23314d"/><line x1="40" y1="${base}" x2="${W}" y2="${base}" stroke="#23314d"/>`;
+    for (let i = 0; i <= n; i++) { const v = step * i, y = base - plot * i / n; s += `<line x1="37" x2="${W}" y1="${y}" y2="${y}" stroke="#e3e7ef"/><text x="34" y="${y + 3.5}" font-size="9" text-anchor="end" fill="#5a6478">${PLT.U.fmt(v)}</text>`; }
+    labels.forEach((l, i) => { const h = plot * vals[i] / top, x = 52 + i * 64; s += `<rect x="${x}" y="${base - h}" width="38" height="${h}" rx="2" fill="${['#4a7dff', '#ff7a3d', '#2bb3a3', '#a259ff', '#e5484d', '#ffc93c'][i % 6]}"/><text x="${x + 19}" y="${base - h - 4}" font-size="11" font-weight="700" text-anchor="middle" fill="#1d2a44">${PLT.U.fmt(vals[i])}</text><text x="${x + 19}" y="${base + 15}" font-size="10" text-anchor="middle">${l}</text>`; });
+    return `<svg class="pic" viewBox="0 0 ${W + 10} ${H}" width="${Math.min(W + 10, 440)}">${s}${unit ? `<text x="44" y="12" font-size="9" fill="#5a6478">(${unit})</text>` : ''}</svg>`;
   }
   // Điền phân số / số có đáp án hiển thị đẹp
   const fillV = (q, val, show, exp, post, pre) => fill(q, [{ pre: pre || 'Trả lời:', ans: val, show, post: post || '' }], exp);

@@ -45,7 +45,7 @@
   };
   // ---- Độ dài ----
   G.daingan = () => {
-    if (Math.random() < 0.5) { const a = r(3, 12), b = r(3, 12); if (a === b) return G.daingan(); const bar = (len, col, y) => `<rect x="10" y="${y}" width="${len * 20}" height="16" rx="8" fill="${col}"/>`; return mc(`Bút chì nào dài hơn?<svg class="pic" viewBox="0 0 270 70" width="270">${bar(a, '#4a7dff', 10)}${bar(b, '#e5484d', 40)}<text x="${a * 20 + 16}" y="23" font-size="12">xanh</text><text x="${b * 20 + 16}" y="53" font-size="12">đỏ</text></svg>`, a > b ? 'Bút xanh' : 'Bút đỏ', [a > b ? 'Bút đỏ' : 'Bút xanh'], 'Đặt hai vật thẳng hàng ở một đầu, đầu kia vật nào chìa ra xa hơn thì dài hơn.'); }
+    if (Math.random() < 0.5) { const a = r(3, 12), b = r(3, 12); if (a === b) return G.daingan(); const bar = (len, col, y) => `<rect x="10" y="${y}" width="${len * 20}" height="16" rx="8" fill="${col}"/>`; return mc(`Bút chì nào dài hơn?<svg class="pic" viewBox="0 0 300 70" width="300">${bar(a, '#4a7dff', 10)}${bar(b, '#e5484d', 40)}<text x="${a * 20 + 16}" y="23" font-size="12">xanh</text><text x="${b * 20 + 16}" y="53" font-size="12">đỏ</text></svg>`, a > b ? 'Bút xanh' : 'Bút đỏ', [a > b ? 'Bút đỏ' : 'Bút xanh'], 'Đặt hai vật thẳng hàng ở một đầu, đầu kia vật nào chìa ra xa hơn thì dài hơn.'); }
     const cm = r(2, 10); return fill1(`Bút chì dài bao nhiêu xăng-ti-mét?${rulerSVG(cm * 10)}`, cm, `Đặt đầu bút ở vạch 0, đầu kia chỉ vạch ${cm} → ${cm} cm.`, 'cm');
   };
   G.cm = () => { const a = r(10, 50), b = r(1, 40), t = Math.random() < 0.5; return t ? fill1(`${a} cm + ${b} cm = ?`, a + b, `${a} + ${b} = ${a + b}, nhớ viết đơn vị cm.`, 'cm') : fill1(`${a + b} cm − ${b} cm = ?`, a, `${a + b} − ${b} = ${a}.`, 'cm'); };

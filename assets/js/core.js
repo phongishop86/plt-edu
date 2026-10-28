@@ -149,13 +149,13 @@
   function thermoSVG(t) {
     const top = 10, bot = 150, y = bot - (t / 50) * (bot - top);
     let ticks = '';
-    for (let v = 0; v <= 50; v += 5) { const yy = bot - (v / 50) * (bot - top); ticks += `<line x1="38" x2="${v % 10 ? 44 : 48}" y1="${yy}" y2="${yy}" stroke="#23314d"/>` + (v % 10 ? '' : `<text x="52" y="${yy + 4}" font-size="10" fill="#23314d">${v}</text>`); }
+    for (let v = 0; v <= 50; v += 5) { const yy = bot - (v / 50) * (bot - top); ticks += `<line x1="38" x2="${v % 10 ? 45 : 49}" y1="${yy}" y2="${yy}" stroke="#23314d"/><text x="52" y="${yy + 3.5}" font-size="${v % 10 ? 8 : 10}" fill="${v % 10 ? '#6b7690' : '#23314d'}" font-weight="${v % 10 ? 400 : 700}">${v}</text>`; }
     return `<svg class="pic" viewBox="0 0 80 175" width="80" height="175"><rect x="24" y="5" width="14" height="150" rx="7" fill="#fff" stroke="#23314d"/><rect x="27" y="${y}" width="8" height="${bot - y + 8}" fill="#e5484d"/><circle cx="31" cy="160" r="11" fill="#e5484d" stroke="#23314d"/>${ticks}<text x="52" y="170" font-size="9" fill="#6b7690">°C</text></svg>`;
   }
   function rulerSVG(mm) {
     let s = ''; const k = 3; // 3px mỗi mm
     for (let i = 0; i <= 100; i++) s += `<line x1="${10 + i * k}" x2="${10 + i * k}" y1="40" y2="${i % 10 ? (i % 5 ? 46 : 49) : 54}" stroke="#23314d" stroke-width="${i % 10 ? 0.6 : 1.2}"/>` + (i % 10 ? '' : `<text x="${10 + i * k}" y="64" font-size="9" text-anchor="middle">${i / 10}</text>`);
-    return `<svg class="pic" viewBox="0 0 320 72" width="100%" style="max-width:420px"><rect x="10" y="14" width="${mm * k}" height="14" rx="3" fill="#ffc93c" stroke="#b7791f"/><polygon points="${10 + mm * k},14 ${10 + mm * k + 12},21 ${10 + mm * k},28" fill="#f6ad55" stroke="#b7791f"/><rect x="2" y="36" width="316" height="34" fill="#f3f6fb" stroke="#8a93a8"/>${s}<text x="306" y="64" font-size="8">cm</text></svg>`;
+    return `<svg class="pic" viewBox="0 0 336 72" width="100%" style="max-width:440px"><rect x="10" y="14" width="${Math.max(mm * k - 12, 4)}" height="14" rx="3" fill="#ffc93c" stroke="#b7791f"/><polygon points="${10 + Math.max(mm * k - 12, 4)},14 ${10 + mm * k},21 ${10 + Math.max(mm * k - 12, 4)},28" fill="#f6ad55" stroke="#b7791f"/><line x1="${10 + mm * k}" x2="${10 + mm * k}" y1="21" y2="40" stroke="#e5484d" stroke-dasharray="2 2"/><rect x="2" y="36" width="330" height="34" fill="#f3f6fb" stroke="#8a93a8"/>${s}<text x="320" y="64" font-size="8">cm</text></svg>`;
   }
 
   /* ---------- Hiển thị biểu thức toán ---------- */
