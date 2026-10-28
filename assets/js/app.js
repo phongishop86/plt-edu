@@ -10,7 +10,7 @@
   const CATALOG = {};
   for (let l = 1; l <= 12; l++) CATALOG['toan-' + l] = { lop: l, mon: 'Toán', file: `subjects/toan-${l}.js` };
   // Tiếng Việt: thêm lớp vào danh sách khi đã có file dữ liệu
-  [2].forEach((l) => { CATALOG['tieng-viet-' + l] = { lop: l, mon: 'Tiếng Việt', file: `subjects/tieng-viet-${l}.js` }; });
+  [1, 2, 3, 4, 5].forEach((l) => { CATALOG['tieng-viet-' + l] = { lop: l, mon: 'Tiếng Việt', file: `subjects/tieng-viet-${l}.js` }; });
   const cidOf = (l, m) => Object.keys(CATALOG).find((k) => CATALOG[k].lop === l && CATALOG[k].mon === m);
   // Môn theo bộ SGK Kết nối tri thức (năm học 2026–2027) – môn chưa có dữ liệu hiện "Sắp có"
   const PRIMARY12 = ['Toán', 'Tiếng Việt', 'Tiếng Anh', 'Đạo đức', 'Tự nhiên và Xã hội', 'Âm nhạc', 'Mĩ thuật', 'Giáo dục thể chất', 'Hoạt động trải nghiệm'];
@@ -61,7 +61,7 @@
         <p class="lead">Lý thuyết ngắn gọn, mô phỏng tương tác, câu hỏi ngẫu nhiên không giới hạn và đề kiểm tra theo tuần, tháng, học kỳ — có AI chấm tự luận.</p>
         <p class="pick-q">Em đang học…</p>
         <div class="pick">
-          <a href="#/lop/${l <= 5 ? l : 1}"><b>Tiểu học</b><span>Lớp 1 – 5 · Toán</span><i>→</i></a>
+          <a href="#/lop/${l <= 5 ? l : 1}"><b>Tiểu học</b><span>Lớp 1 – 5 · Toán, Tiếng Việt</span><i>→</i></a>
           <a href="#/lop/${l >= 6 && l <= 9 ? l : 6}"><b>Trung học cơ sở</b><span>Lớp 6 – 9 · Toán</span><i>→</i></a>
           <a href="#/lop/${l >= 10 ? l : 10}"><b>Trung học phổ thông</b><span>Lớp 10 – 12 · Toán</span><i>→</i></a>
           <a href="https://phongishop86.github.io/plt-aiedu/"><b>🤖 AI Edu</b><span>Học AI an toàn · trang con</span><i>→</i></a>

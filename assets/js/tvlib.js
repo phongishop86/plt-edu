@@ -21,7 +21,7 @@
   T.chinhta = (keys) => () => {
     const k = pick(keys), b = CT[k]; const t = r(0, 1);
     if (t === 0) { const [ok, bad] = pick(b); const others = shuffle(b.filter((x) => x[0] !== ok)).slice(0, 2).map((x) => x[1]); return mc(`Từ nào viết <b>đúng chính tả</b>?`, cap(ok), [bad, ...others].map(cap), `Viết đúng: "${ok}". Chú ý phân biệt ${k}.`); }
-    const items = shuffle(b).slice(0, 5).map(([ok, bad]) => (Math.random() < 0.5 ? { t: ok, cat: 'Viết đúng' } : { t: bad, cat: 'Viết sai' }));
+    const items = shuffle(b).slice(0, 5).map(([ok, bad], i) => ((i < 2 || (i === 4 && Math.random() < 0.5)) ? { t: ok, cat: 'Viết đúng' } : { t: bad, cat: 'Viết sai' }));
     return sort(`Xếp các từ vào nhóm đúng (phân biệt <b>${k}</b>):`, items, ['Viết đúng', 'Viết sai'], k === 'c/k' ? 'Viết k trước e, ê, i; viết c trước các âm còn lại.' : k === 'g/gh' ? 'Viết gh trước e, ê, i; viết g trước các âm còn lại.' : k === 'ng/ngh' ? 'Viết ngh trước e, ê, i; viết ng trước các âm còn lại.' : `Ghi nhớ cách viết các từ thường gặp có ${k}.`);
   };
 
