@@ -2,8 +2,8 @@
 
 Web tĩnh (HTML/CSS/JS thuần, không cần build), chạy được bằng GitHub Pages hoặc mở trực tiếp `index.html`.
 
-## Tính năng (bản nháp: Toán lớp 3 – bộ Kết nối tri thức)
-- **Học bài**: 16 chủ đề / 81 bài theo mục lục SGK; lý thuyết tóm tắt, mô phỏng tương tác (cấu tạo số, bảng nhân, đặt tính từng bước, biểu thức, đồng hồ, chu vi – diện tích, bốc bi…), bài tập có lời giải.
+## Tính năng (môn Toán lớp 1–12 – bộ Kết nối tri thức)
+- **Học bài**: Toán lớp 1–12 — 128 chủ đề/chương, 575 bài theo mục lục SGK; lý thuyết tóm tắt, mô phỏng tương tác (cấu tạo số, bảng nhân, đặt tính từng bước, biểu thức, đồng hồ, chu vi – diện tích, bốc bi…), bài tập có lời giải.
 - **Ôn tập nhanh**: câu hỏi sinh ngẫu nhiên không giới hạn theo chủ đề / học kì / cả năm.
 - **Kiểm tra**: đề theo tuần (35 tuần), tháng, giữa kỳ, cuối kỳ; đồng hồ đếm ngược, lưới câu hỏi, nộp bài, chấm điểm thang 10, xem lại bài.
   Dạng câu: trắc nghiệm, điền số, nối, sắp xếp, xếp nhóm đúng/sai, so sánh >, <, =, câu có hình.
@@ -18,12 +18,14 @@ assets/js/core.js       tiện ích, lưu trữ, đăng ký môn, hình vẽ SVG
 assets/js/widgets.js    mô phỏng tương tác
 assets/js/engine.js     hiển thị/chấm câu hỏi, luyện tập, phòng thi, AI chấm
 assets/js/app.js        điều hướng các trang
-subjects/toan-3.js      dữ liệu môn Toán 3 (chủ đề, bài, bộ sinh câu hỏi, đề tự luận, phân phối tuần/tháng/kỳ)
+subjects/toan-N.js      dữ liệu Toán lớp N (chủ đề, bài, bộ sinh câu hỏi, đề tự luận); lịch tuần/tháng/kỳ dựng tự động bởi PLT.buildCourse
+assets/js/mathlib.js    bộ sinh câu hỏi dùng chung (tiểu học), biểu đồ cột
+assets/js/eco.js        thanh "Hệ sinh thái PLT-Edu" dùng chung với AI Edu (trang con)
 ```
 
 ## Thêm môn / lớp mới
-1. Tạo `subjects/<mon>-<lop>.js`, gọi `PLT.registerSubject({ id, lop, mon, icon, bo, topics, bai, gens, essays, weeks, months, terms })` (xem `toan-3.js` làm mẫu).
-2. Thêm `<script src="subjects/<mon>-<lop>.js"></script>` trong `index.html` (trước `app.js`).
+1. Tạo `subjects/<mon>-<lop>.js`, gọi `PLT.buildCourse({ id, lop, mon, topics, gens, essays })` (xem `toan-3.js` làm mẫu).
+2. Khai báo file trong `CATALOG` ở `assets/js/app.js` (môn được nạp khi người học mở tới).
 
 ## Lưu ý
 - Khóa Gemini nhập trên trình duyệt chỉ phù hợp dùng cá nhân/thử nghiệm. Khi mở cho nhiều học sinh, nên chuyển sang gọi qua một máy chủ trung gian (Vercel/Cloudflare Worker) để giấu khóa.
