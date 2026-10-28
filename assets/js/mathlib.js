@@ -26,6 +26,7 @@
       }
       if (t === 2) { // đọc số
         const n = randDigits(d); const vs = distinct(6, () => { const a = String(n).split(''); const i = r(0, d - 1), j = r(0, d - 1);[a[i], a[j]] = [a[j], a[i]]; if (Math.random() < 0.5) a[r(1, d - 1)] = String(r(0, 9)); return Number(a.join('')); }).filter((x) => x !== n && x >= Math.pow(10, d - 1));
+        [n + 1, n + 10, n - 1, n + 5, n - 10].forEach((x) => { if (vs.length < 3 && x >= Math.pow(10, d - 1) && x < Math.pow(10, d) && !vs.includes(x) && x !== n) vs.push(x); });
         return mc(`Số <b>${fmt(n)}</b> đọc là:`, cap(docSo(n)), vs.slice(0, 3).map((x) => cap(docSo(x))), 'Đọc lần lượt từ hàng cao nhất đến hàng đơn vị. Chữ số 0 ở hàng trăm đọc là "không trăm", ở hàng chục đọc là "linh".');
       }
       if (t === 3) { // viết số từ cấu tạo
