@@ -180,6 +180,7 @@
   /* ---------- Dựng môn học: lịch tuần / tháng / kỳ tự động ---------- */
   PLT.buildCourse = function (def) {
     const T = def.topics; let k = 0; const BAI = [];
+    if (def.lop >= 6) T.forEach((t) => { t.nhan = t.nhan || 'Chương ' + roman(t.id); });
     T.forEach((t) => { t.gens = [...new Set(t.bai.flatMap((b) => (Array.isArray(b[2]) ? b[2] : [])))]; });
     const hkGens = (hk) => [...new Set(T.filter((t) => t.hk === hk).flatMap((t) => t.gens))];
     T.forEach((t) => t.bai.forEach((b) => {
