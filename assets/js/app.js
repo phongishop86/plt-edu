@@ -137,7 +137,7 @@
     let list = '';
     if (tab === 'tuan') list = S.weeks.map((w) => `<a class="tcard" href="#/thi/${sid}/w${w.tuan}"><b>Tuần ${w.tuan}</b><span class="muted small">${range(w.bai)}</span><span class="small">${w.bai.map((b) => b.ten).join(' · ')}</span><span class="meta">10 câu · 15 phút ${best(sid + ':w' + w.tuan)}</span></a>`).join('');
     if (tab === 'thang') list = S.months.map((m) => `<a class="tcard" href="#/thi/${sid}/m${m.thang}"><b>Tháng ${m.thang}</b><span class="muted small">Tuần ${m.tuan[0]}–${m.tuan[1]} · ${range(m.bai)}</span><span class="meta">16 câu + 1 tự luận · 30 phút ${best(sid + ':m' + m.thang)}</span></a>`).join('');
-    if (tab === 'ky') list = S.terms.map((t) => `<a class="tcard" href="#/thi/${sid}/${t.id}"><b>${t.ten}</b><span class="muted small">${range(t.bai)}</span><span class="meta">${S.lop >= 6 ? '16 câu + 2 tự luận · 60 phút' : '12 câu + 2 tự luận · 40 phút'} ${best(sid + ':' + t.id)}</span></a>`).join('');
+    if (tab === 'ky') list = S.terms.map((t) => `<a class="tcard" href="#/thi/${sid}/${t.id}"><b>${t.ten}</b><span class="muted small">${range(t.bai)}</span><span class="meta">${S.lop >= 6 ? '12 câu + 2 tự luận · 45 phút' : '12 câu + 2 tự luận · 40 phút'} ${best(sid + ':' + t.id)}</span></a>`).join('');
     app.innerHTML = crumb(S, `Kiểm tra · ${S.mon} ${S.lop}`) + `<h1>📝 Kiểm tra · ${S.mon} ${S.lop}</h1><p class="muted">Mỗi lần làm là một đề mới. Phân phối bài theo tuần/tháng là tham khảo, thầy cô/phụ huynh có thể điều chỉnh.</p>
       <div class="tabs"><a href="#/kiem-tra/${sid}/tuan" class="${tab === 'tuan' ? 'on' : ''}">Theo tuần</a><a href="#/kiem-tra/${sid}/thang" class="${tab === 'thang' ? 'on' : ''}">Theo tháng</a><a href="#/kiem-tra/${sid}/ky" class="${tab === 'ky' ? 'on' : ''}">Giữa kỳ – Cuối kỳ</a></div><div class="tgrid">${list}</div>`;
   }
@@ -145,7 +145,7 @@
     const sid = S.id; let cfg; const big = S.lop >= 6;
     if (code[0] === 'w') { const w = S.weeks.find((x) => x.tuan === +code.slice(1)); if (!w) return testList(S); cfg = { title: `Kiểm tra tuần ${w.tuan}`, gens: [...new Set(w.bai.flatMap((b) => b.gens))], n: 10, min: 15, essays: 0, hk: w.bai[0].hk };
     } else if (code[0] === 'm') { const m = S.months.find((x) => x.thang === +code.slice(1)); if (!m) return testList(S); cfg = { title: `Kiểm tra tháng ${m.thang}`, gens: [...new Set(m.bai.flatMap((b) => b.gens))], n: 16, min: 30, essays: 1, hk: m.bai[m.bai.length - 1].hk };
-    } else { const t = S.terms.find((x) => x.id === code); if (!t) return testList(S); cfg = { title: t.ten, gens: [...new Set(t.bai.flatMap((b) => b.gens))], n: big ? 16 : 12, min: big ? 60 : 40, essays: 2, hk: t.essay }; }
+    } else { const t = S.terms.find((x) => x.id === code); if (!t) return testList(S); cfg = { title: t.ten, gens: [...new Set(t.bai.flatMap((b) => b.gens))], n: 12, min: big ? 45 : 40, essays: 2, hk: t.essay }; }
     const pool = (S.essays && (S.essays[cfg.hk] || S.essays[1])) || [];
     const es = shuffle(pool).slice(0, cfg.essays).map((f) => f());
     const qs = build(S, cfg.gens, cfg.n).concat(es);
