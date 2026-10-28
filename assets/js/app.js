@@ -11,6 +11,10 @@
   for (let l = 1; l <= 12; l++) CATALOG['toan-' + l] = { lop: l, mon: 'Toán', file: `subjects/toan-${l}.js` };
   // Tiếng Việt: thêm lớp vào danh sách khi đã có file dữ liệu
   [1, 2, 3, 4, 5].forEach((l) => { CATALOG['tieng-viet-' + l] = { lop: l, mon: 'Tiếng Việt', file: `subjects/tieng-viet-${l}.js` }; });
+  // Các môn dạng ngân hàng kiến thức: tiền tố file → tên môn; AVAIL liệt kê file đã có
+  const SLUG = { 'tieng-anh': 'Tiếng Anh', 'dao-duc': 'Đạo đức', 'tnxh': 'Tự nhiên và Xã hội', 'khoa-hoc': 'Khoa học', 'lsdl': 'Lịch sử và Địa lí', 'tin-hoc': 'Tin học', 'cong-nghe': 'Công nghệ', 'am-nhac': 'Âm nhạc', 'mi-thuat': 'Mĩ thuật', 'gdtc': 'Giáo dục thể chất', 'hdtn': 'Hoạt động trải nghiệm', 'ngu-van': 'Ngữ văn', 'khtn': 'Khoa học tự nhiên', 'gdcd': 'Giáo dục công dân', 'vat-li': 'Vật lí', 'hoa-hoc': 'Hoá học', 'sinh-hoc': 'Sinh học', 'lich-su': 'Lịch sử', 'dia-li': 'Địa lí', 'gdktpl': 'Giáo dục kinh tế và pháp luật', 'gdqp': 'Giáo dục quốc phòng và an ninh' };
+  const AVAIL = (window.PLT_AVAIL || []);
+  AVAIL.forEach((id) => { const m = id.match(/^(.+)-(\d+)$/); if (!m || !SLUG[m[1]]) return; const l = +m[2]; let mon = SLUG[m[1]]; if (m[1] === 'hdtn' && l >= 6) mon = 'Hoạt động trải nghiệm, hướng nghiệp'; CATALOG[id] = { lop: l, mon, file: `subjects/${id}.js` }; });
   const cidOf = (l, m) => Object.keys(CATALOG).find((k) => CATALOG[k].lop === l && CATALOG[k].mon === m);
   // Môn theo bộ SGK Kết nối tri thức (năm học 2026–2027) – môn chưa có dữ liệu hiện "Sắp có"
   const PRIMARY12 = ['Toán', 'Tiếng Việt', 'Tiếng Anh', 'Đạo đức', 'Tự nhiên và Xã hội', 'Âm nhạc', 'Mĩ thuật', 'Giáo dục thể chất', 'Hoạt động trải nghiệm'];
@@ -36,12 +40,18 @@
   }
 
   // Lấy n câu hỏi xoay vòng qua các dạng
+  const keyOf = (q) => q.q + '|' + (q.choices ? q.choices[q.ai] : JSON.stringify(q.blanks || (q.items || []).map((x) => (typeof x === 'string' ? x : x.l || x.t)).sort()));
   function build(S, gens, n) {
     const out = [], seen = new Set(); let pool = []; let g = 0;
     while (out.length < n && g++ < n * 20) {
       if (!pool.length) pool = shuffle(gens);
-      const q = S.gens[pool.pop()](); const key = q.q + JSON.stringify(q.choices || q.blanks || q.items);
+      const q = S.gens[pool.pop()](); const key = keyOf(q);
       if (!seen.has(key)) { seen.add(key); out.push(q); }
+    }
+    if (out.length < n && !build.inner) { // ngân hàng của các bài này còn ít: bổ sung từ các bài khác cùng môn
+      build.inner = true; const more = Object.keys(S.gens).filter((k) => !gens.includes(k));
+      if (more.length) build(S, more, n * 3).forEach((q) => { const key = keyOf(q); if (out.length < n && !seen.has(key)) { seen.add(key); out.push(q); } });
+      build.inner = false;
     }
     return out;
   }

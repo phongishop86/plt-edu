@@ -3,8 +3,13 @@
   'use strict';
   const { fmt, parseNum, esc, same } = PLT.U;
   const LETTERS = ['A', 'B', 'C', 'D', 'E'];
+  // Ô trống có thể là số hoặc chữ (đáp án chữ: nhiều cách viết ngăn bởi "|")
+  const norm = (x) => String(x || '').toLowerCase().normalize('NFC').replace(/[.,;:!?"'“”]/g, ' ').replace(/\s+/g, ' ').trim();
+  const okBlank = (b, v) => (typeof b.ans === 'string' ? b.ans.split('|').some((a) => norm(a) === norm(v)) : same(parseNum(v), b.ans));
+  const showAns = (b) => b.show || (typeof b.ans === 'string' ? b.ans.split('|')[0] : fmt(b.ans));
   const LABEL = { mc: 'Chọn đáp án đúng', fill: 'Điền số thích hợp vào chỗ trống', match: 'Nối mỗi ô bên trái với ô phù hợp bên phải', order: 'Sắp xếp theo thứ tự', sort: 'Xếp mỗi ô vào nhóm đúng', essay: 'Tự luận – trình bày bài giải' };
 
+  const lbl = (q) => q.lbl || (q.type === 'fill' && q.blanks.some((b) => typeof b.ans === 'string') ? 'Điền từ thích hợp vào chỗ trống' : q.type === 'essay' && q.ph ? 'Tự luận – trả lời bằng đoạn văn ngắn' : LABEL[q.type]);
   /* ---------- Hiển thị một câu hỏi ---------- */
   function render(q, el, st, opt) {
     opt = opt || {}; const lock = !!opt.review; const ch = () => opt.onChange && opt.onChange();
@@ -17,10 +22,10 @@
     } else if (q.type === 'fill') {
       st.resp = st.resp || q.blanks.map(() => '');
       body = q.blanks.map((b, i) => {
-        let cls = ''; if (lock) cls = same(parseNum(st.resp[i]), b.ans) ? ' right' : ' wrong';
-        return `<label class="blank">${b.pre || ''} <input class="numin${cls}" inputmode="${Number.isInteger(b.ans) && b.ans >= 0 ? 'numeric' : 'text'}" data-i="${i}" value="${esc(st.resp[i])}" ${lock ? 'disabled' : ''}> ${b.post || ''}${lock && cls === ' wrong' ? ` <span class="corr">→ ${b.show || fmt(b.ans)}</span>` : ''}</label>`;
+        let cls = ''; if (lock) cls = okBlank(b, st.resp[i]) ? ' right' : ' wrong';
+        return `<label class="blank">${b.pre || ''} <input class="numin${cls}" inputmode="${Number.isInteger(b.ans) && b.ans >= 0 ? 'numeric' : 'text'}"${typeof b.ans === 'string' ? ' style="width:' + Math.max(7, Math.min(22, b.ans.split('|')[0].length + 3)) + 'ch"' : ''} data-i="${i}" value="${esc(st.resp[i])}" ${lock ? 'disabled' : ''}> ${b.post || ''}${lock && cls === ' wrong' ? ` <span class="corr">→ ${showAns(b)}</span>` : ''}</label>`;
       }).join('');
-      if (!lock && q.blanks.some((b) => !Number.isInteger(b.ans) || b.ans < 0)) body += '<div class="muted small">Số thập phân dùng dấu phẩy (2,5); phân số viết a/b (3/4); số âm thêm dấu − (−3).</div>';
+      if (!lock && q.blanks.some((b) => typeof b.ans === 'number' && (!Number.isInteger(b.ans) || b.ans < 0))) body += '<div class="muted small">Số thập phân dùng dấu phẩy (2,5); phân số viết a/b (3/4); số âm thêm dấu − (−3).</div>';
     } else if (q.type === 'match') {
       st.resp = st.resp || q.items.map(() => '');
       body = '<div class="match">' + q.items.map((it, i) => {
@@ -38,7 +43,7 @@
         return `<div class="srow${cls}"><span class="stxt">${it.t}</span>${q.cats.map((c) => `<button class="chip${st.resp[i] === c ? ' on' : ''}" data-s="${i}" data-c="${esc(c)}" ${lock ? 'disabled' : ''}>${c}</button>`).join('')}${lock && cls === ' wrong' ? `<span class="corr">→ ${it.cat}</span>` : ''}</div>`;
       }).join('') + '</div>';
     } else if (q.type === 'essay') {
-      body = `<textarea class="essay" rows="5" placeholder="Viết bài giải: lời giải, phép tính, đáp số…" ${lock ? 'disabled' : ''}>${esc(st.resp || '')}</textarea>`;
+      body = `<textarea class="essay" rows="5" placeholder="${q.ph || 'Viết bài giải: lời giải, phép tính, đáp số…'}" ${lock ? 'disabled' : ''}>${esc(st.resp || '')}</textarea>`;
       if (lock) body += `<div class="essayfb">${st.ai ? `<b>${st.ai.diem}/${q.max} điểm</b> ${st.ai.src === 'ai' ? '(AI chấm)' : '(chấm sơ bộ theo đáp số)'} — ${esc(st.ai.nhan_xet || '')}` : ''}<div class="muted small">Lời giải mẫu: ${q.dapan}</div></div>`;
     }
     el.innerHTML = `<div class="qtext">${q.q}</div><div class="qbody">${body}</div>` + (lock && q.exp ? `<div class="exp">💡 ${q.exp}</div>` : '');
@@ -70,7 +75,7 @@
   function check(q, st) {
     const v = st.resp; if (v == null) return false;
     if (q.type === 'mc') return v === q.ai;
-    if (q.type === 'fill') return q.blanks.every((b, i) => same(parseNum(v[i]), b.ans));
+    if (q.type === 'fill') return q.blanks.every((b, i) => okBlank(b, v[i]));
     if (q.type === 'match') return q.items.every((it, i) => v[i] === it.r);
     if (q.type === 'order') return v.join('|') === q.items.join('|');
     if (q.type === 'sort') return q.items.every((it, i) => v[i] === it.cat);
@@ -97,7 +102,7 @@
   async function aiGrade(list) { // list: [{q, resp}]
     const S = PLT.data.settings; if (!S.apiKey) return list.map((x) => heuristic(x.q, x.resp));
     const strip = (h) => String(h).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-    const prompt = `Bạn là giáo viên ở Việt Nam, chấm bài tự luận (bài toán hoặc bài viết tiếng Việt) của học sinh phổ thông. Chấm công bằng, khích lệ, phù hợp lứa tuổi.
+    const prompt = `Bạn là giáo viên ở Việt Nam, chấm bài tự luận của học sinh phổ thông (mọi môn: bài toán, bài viết Tiếng Việt/Ngữ văn, Tiếng Anh, câu hỏi Khoa học, Lịch sử, Địa lí, GDCD…). Với câu hỏi kiến thức, chấm theo các ý chính trong lời giải mẫu, chấp nhận cách diễn đạt khác nhưng đúng ý. Chấm công bằng, khích lệ, phù hợp lứa tuổi.
 Với mỗi câu: so sánh bài làm với lời giải mẫu; cho điểm theo bội số 0,25, không vượt điểm tối đa (đúng kết quả nhưng thiếu lời giải/đáp số thì trừ nhẹ). Viết nhận xét 1–2 câu ngắn, dễ hiểu với học sinh, chỉ rõ chỗ sai nếu có.
 Chỉ trả về JSON dạng: {"ket_qua":[{"cau":1,"diem":1.5,"nhan_xet":"..."}]}
 
@@ -128,7 +133,7 @@ ${list.map((x, i) => `CÂU ${i + 1} (tối đa ${x.q.max} điểm)\nĐề: ${str
         opt.onDone && opt.onDone(ok, qs.length); return;
       }
       const q = qs[i], st = sts[i];
-      box.innerHTML = `<div class="pbar"><span style="width:${(i / qs.length) * 100}%"></span></div><div class="qhead"><b>Câu ${i + 1}/${qs.length}</b> · ${LABEL[q.type]} <span class="score">✔ ${ok}</span></div><div class="qcard" id="pq"></div><div id="pfb"></div><div class="row"><button class="btn" id="pchk">Kiểm tra</button></div>`;
+      box.innerHTML = `<div class="pbar"><span style="width:${(i / qs.length) * 100}%"></span></div><div class="qhead"><b>Câu ${i + 1}/${qs.length}</b> · ${lbl(q)} <span class="score">✔ ${ok}</span></div><div class="qcard" id="pq"></div><div id="pfb"></div><div class="row"><button class="btn" id="pchk">Kiểm tra</button></div>`;
       const qel = box.querySelector('#pq'); render(q, qel, st, { onChange() { } });
       box.querySelector('#pchk').onclick = () => {
         if (!answered(q, st)) { box.querySelector('#pfb').innerHTML = '<div class="fb warn">Em hãy trả lời trước đã nhé!</div>'; return; }
@@ -146,7 +151,7 @@ ${list.map((x, i) => `CÂU ${i + 1} (tối đa ${x.q.max} điểm)\nĐề: ${str
     const qs = cfg.questions, sts = qs.map(() => ({})); let left = cfg.minutes * 60, timer = null, done = false;
     const essayPts = qs.filter((q) => q.type === 'essay').reduce((a, q) => a + q.max, 0), nTN = qs.filter((q) => q.type !== 'essay').length;
     const per = nTN ? (10 - essayPts) / nTN : 0;
-    box.innerHTML = `<div class="exam"><div class="eqs">${qs.map((q, i) => `<section class="eq" id="eq${i}"><div class="qhead"><b>Câu hỏi ${i + 1}</b> <span class="muted">· ${LABEL[q.type]} · ${q.type === 'essay' ? q.max : +per.toFixed(2)} điểm</span></div><div class="qcard" data-q="${i}"></div></section>`).join('')}</div>
+    box.innerHTML = `<div class="exam"><div class="eqs">${qs.map((q, i) => `<section class="eq" id="eq${i}"><div class="qhead"><b>Câu hỏi ${i + 1}</b> <span class="muted">· ${lbl(q)} · ${q.type === 'essay' ? q.max : +per.toFixed(2)} điểm</span></div><div class="qcard" data-q="${i}"></div></section>`).join('')}</div>
       <aside class="epanel"><div class="ehead">⏰ Còn lại</div><div class="clock" id="eclk"></div><div class="enav" id="enav">${qs.map((_, i) => `<button data-go="${i}">${i + 1}</button>`).join('')}</div><button class="btn red" id="esub">🎓 Nộp bài</button><div class="muted small" id="ecnt"></div></aside></div>`;
     const nav = () => { let n = 0; qs.forEach((q, i) => { const a = answered(q, sts[i]); if (a) n++; box.querySelector(`[data-go="${i}"]`).classList.toggle('ans', a); }); box.querySelector('#ecnt').textContent = `Đã làm ${n}/${qs.length} câu`; };
     qs.forEach((q, i) => render(q, box.querySelector(`[data-q="${i}"]`), sts[i], { onChange: nav }));
