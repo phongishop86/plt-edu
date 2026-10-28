@@ -79,16 +79,26 @@
 
   /* ---------- AI chấm tự luận (Gemini) + chấm sơ bộ ---------- */
   function heuristic(q, text) {
-    const nums = (String(text || '').replace(/(\d)[\s. ](?=\d{3}\b)/g, '$1').match(/\d+/g) || []).map(Number);
-    const hit = q.keys.filter((k) => nums.includes(k)).length;
+    const raw = String(text || '');
+    if (!q.keys || !q.keys.length) { // bài viết (Tiếng Việt…): chấm sơ bộ theo độ dài, số câu và ý chính
+      const cau = raw.split(/[.!?…]+/).filter((x) => x.trim().split(/\s+/).length >= 3).length;
+      const kw = q.kw || []; const low = raw.toLowerCase(); const hitk = kw.filter((k) => low.includes(k.toLowerCase())).length;
+      const need = q.minCau || 4; let frac = Math.min(1, cau / need) * 0.7 + (kw.length ? (hitk / kw.length) * 0.3 : 0.3);
+      if (raw.trim().length < 20) frac = 0;
+      const diem = Math.round(frac * q.max * 4) / 4;
+      return { diem, src: 'auto', nhan_xet: cau >= need ? 'Bài viết đủ ý cơ bản. Hãy chú ý dùng từ hay, viết hoa đầu câu và dấu câu đúng.' : `Bài viết mới có ${cau} câu, cần ít nhất ${need} câu. Em viết thêm cho đủ ý nhé.` };
+    }
+    const norm = raw.replace(/[−–]/g, '-').replace(/(\d)[\s .](?=\d{3}(\D|$))/g, '$1');
+    const nums = (norm.match(/-?\d+(?:,\d+)?/g) || []).map((x) => Number(x.replace(',', '.')));
+    const hit = q.keys.filter((k) => nums.some((v) => Math.abs(v - k) < 1e-6)).length;
     const diem = Math.round((hit / q.keys.length) * q.max * 4) / 4;
     return { diem, src: 'auto', nhan_xet: hit === q.keys.length ? 'Các kết quả chính đều đúng. Nhớ ghi đủ lời giải và đáp số nhé!' : hit ? `Đúng ${hit}/${q.keys.length} kết quả chính. Kiểm tra lại phép tính còn sai.` : 'Chưa tìm thấy kết quả đúng. Em xem lời giải mẫu và làm lại nhé.' };
   }
   async function aiGrade(list) { // list: [{q, resp}]
     const S = PLT.data.settings; if (!S.apiKey) return list.map((x) => heuristic(x.q, x.resp));
     const strip = (h) => String(h).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-    const prompt = `Bạn là giáo viên Toán lớp 3 ở Việt Nam, chấm bài tự luận của học sinh. Chấm công bằng, khích lệ.
-Với mỗi câu: so sánh bài làm với lời giải mẫu; cho điểm theo bội số 0,25, không vượt điểm tối đa (đúng kết quả nhưng thiếu lời giải/đáp số thì trừ nhẹ). Viết nhận xét 1–2 câu ngắn, dễ hiểu với học sinh lớp 3, chỉ rõ chỗ sai nếu có.
+    const prompt = `Bạn là giáo viên ở Việt Nam, chấm bài tự luận (bài toán hoặc bài viết tiếng Việt) của học sinh phổ thông. Chấm công bằng, khích lệ, phù hợp lứa tuổi.
+Với mỗi câu: so sánh bài làm với lời giải mẫu; cho điểm theo bội số 0,25, không vượt điểm tối đa (đúng kết quả nhưng thiếu lời giải/đáp số thì trừ nhẹ). Viết nhận xét 1–2 câu ngắn, dễ hiểu với học sinh, chỉ rõ chỗ sai nếu có.
 Chỉ trả về JSON dạng: {"ket_qua":[{"cau":1,"diem":1.5,"nhan_xet":"..."}]}
 
 ${list.map((x, i) => `CÂU ${i + 1} (tối đa ${x.q.max} điểm)\nĐề: ${strip(x.q.q)}\nLời giải mẫu: ${strip(x.q.dapan)}\nBài làm của học sinh: ${x.resp ? String(x.resp) : '(bỏ trống)'}`).join('\n\n')}`;

@@ -9,6 +9,9 @@
   /* ---------- Danh mục: môn đã có dữ liệu (nạp khi cần) ---------- */
   const CATALOG = {};
   for (let l = 1; l <= 12; l++) CATALOG['toan-' + l] = { lop: l, mon: 'Toán', file: `subjects/toan-${l}.js` };
+  // Tiếng Việt: thêm lớp vào danh sách khi đã có file dữ liệu
+  [2].forEach((l) => { CATALOG['tieng-viet-' + l] = { lop: l, mon: 'Tiếng Việt', file: `subjects/tieng-viet-${l}.js` }; });
+  const cidOf = (l, m) => Object.keys(CATALOG).find((k) => CATALOG[k].lop === l && CATALOG[k].mon === m);
   // Môn theo bộ SGK Kết nối tri thức (năm học 2026–2027) – môn chưa có dữ liệu hiện "Sắp có"
   const PRIMARY12 = ['Toán', 'Tiếng Việt', 'Tiếng Anh', 'Đạo đức', 'Tự nhiên và Xã hội', 'Âm nhạc', 'Mĩ thuật', 'Giáo dục thể chất', 'Hoạt động trải nghiệm'];
   const PRIMARY3 = ['Toán', 'Tiếng Việt', 'Tiếng Anh', 'Đạo đức', 'Tự nhiên và Xã hội', 'Tin học', 'Công nghệ', 'Âm nhạc', 'Mĩ thuật', 'Giáo dục thể chất', 'Hoạt động trải nghiệm'];
@@ -85,7 +88,7 @@
       <div class="tmenu">${[1, 2].map((hk) => `<div><div class="hk">Học kì ${hk}</div>${S.topics.filter((t) => t.hk === hk).map((t) => `<a class="tlink" href="#/hoc/${S.id}/${t.id}"><span>${t.id}</span><b>${t.ten}</b><em>${stars((PLT.data.prog[progKey(S, t.id)] || {}).best)} · ${t.bai.length} bài</em></a>`).join('')}</div>`).join('')}</div></div>` : '';
     app.innerHTML = `<div class="crumb"><a href="#/">Trang chủ</a> › Lớp ${l}</div><h1>Lớp ${l} <small class="muted">· ${CAP(l)}</small></h1>
       <div class="lopnav">${Array.from({ length: 12 }, (_, i) => i + 1).map((x) => `<a href="#/lop/${x}" class="${x === l ? 'on' : ''}">${x}</a>`).join('')}</div>
-      ${menu}<h2>Các môn học lớp ${l}</h2><div class="subjects">${BOOKS[l].map((m) => { const has = m === 'Toán' && S; return `<${has ? `a href="#/hoc/${S.id}"` : 'div'} class="subj${has ? '' : ' soon'}"><div class="si">${ICON[m] || '📘'}</div><b>${m} ${l}</b><span class="muted small">${has ? 'Đã có: học bài, ôn tập, kiểm tra' : 'Đang biên soạn – sắp có'}</span></${has ? 'a' : 'div'}>`; }).join('')}</div>`;
+      ${menu}<h2>Các môn học lớp ${l}</h2><div class="subjects">${BOOKS[l].map((m) => { const cid = cidOf(l, m), has = !!cid; return `<${has ? `a href="#/hoc/${cid}"` : 'div'} class="subj${has ? '' : ' soon'}"><div class="si">${ICON[m] || '📘'}</div><b>${m} ${l}</b><span class="muted small">${has ? 'Đã có: học bài, ôn tập, kiểm tra' : 'Đang biên soạn – sắp có'}</span></${has ? 'a' : 'div'}>`; }).join('')}</div>`;
   }
 
   /* ---------------- Học bài ---------------- */
