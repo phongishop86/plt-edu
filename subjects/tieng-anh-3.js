@@ -1,0 +1,32 @@
+/* Tiếng Anh 3 – Global Success (2 tập, 20 Unit). Unit, mẫu câu, từ vựng theo Book map SGK; câu hỏi do PLT-Edu soạn. */
+PLT.KB.eng({
+  id: 'tieng-anh-3', lop: 3,
+  units: [
+    { ten: 'Hello', v: 'hello=xin chào; hi=chào; goodbye=tạm biệt; bye=tạm biệt; fine=khoẻ; thank you=cảm ơn bạn', s: ['[Hello], I\'m Mai.', 'How are you?', 'Fine, [thank you].', '[Goodbye], Ben.'], q: ['? Đáp lại câu "How are you?" bằng: | Fine, thank you. | I\'m Mai. | Goodbye. | Yes, it is.'] },
+    { ten: 'Our names', v: 'name=tên; what=cái gì; your=của bạn; my=của tôi; old=tuổi; how old=bao nhiêu tuổi', s: ['What\'s your [name]?', 'My name\'s Linh.', 'How [old] are you?', 'I\'m eight years old.'], q: ['? Hỏi tên bạn, em nói: | What\'s your name? | How old are you? | How are you? | What\'s this?', '? Trả lời "How old are you?": | I\'m eight years old. | My name\'s Nam. | Fine, thanks. | It\'s a pen.'] },
+    { ten: 'Our friends', v: 'friend=bạn bè; teacher=giáo viên; this=đây, này; that=kia, đó; yes=vâng, có; no=không', s: ['This is my [friend] Mary.', 'Is that Mr Long?', 'Yes, it is.', 'No, it isn\'t.'], q: ['? "Đây là bạn tôi" trong tiếng Anh là: | This is my friend. | That is my teacher. | Is this your friend? | I\'m your friend.'] },
+    { ten: 'Our bodies', ph: 'ea', v: 'ear=tai; eye=mắt; face=khuôn mặt; hair=tóc; hand=bàn tay; mouth=miệng; nose=mũi', s: ['What\'s this?', 'It\'s a [nose].', 'Touch your [ear].', 'Open your [mouth].'] },
+    { ten: 'My hobbies', v: 'cooking=nấu ăn; dancing=nhảy múa; drawing=vẽ; painting=tô vẽ tranh; running=chạy; singing=hát; swimming=bơi; walking=đi bộ', s: ['What\'s your [hobby]?', 'It\'s [swimming].', 'I like [dancing].'], on: 'Review 1' },
+    { ten: 'Our school', v: 'art room=phòng mĩ thuật; classroom=lớp học; computer room=phòng máy tính; gym=phòng thể chất; library=thư viện; music room=phòng âm nhạc; playground=sân chơi; school=trường học', s: ['Is this our [library]?', 'Yes, it is.', 'Let\'s go to the [playground].', 'OK, let\'s go.'] },
+    { ten: 'Classroom instructions', v: 'close=đóng; open=mở; come in=đi vào; go out=đi ra ngoài; sit down=ngồi xuống; stand up=đứng lên; speak=nói', s: ['[Stand up], please!', '[Sit down], please!', 'May I go out?', 'Yes, you can.'], q: ['? Muốn xin phép ra ngoài, em nói: | May I go out? | Sit down, please! | Close your book. | Let\'s go.'] },
+    { ten: 'My school things', v: 'book=quyển sách; eraser=cục tẩy; notebook=quyển vở; pen=bút mực; pencil=bút chì; pencil case=hộp bút; ruler=thước kẻ; school bag=cặp sách', s: ['I have a [ruler].', 'Do you have a [pencil]?', 'Yes, I do.', 'No, I don\'t.'] },
+    { ten: 'Colours', v: 'black=màu đen; blue=màu xanh dương; brown=màu nâu; green=màu xanh lá; orange=màu cam; red=màu đỏ; white=màu trắng; yellow=màu vàng', s: ['What colour is it?', 'It\'s [green].', 'What colour are they?', 'They\'re [red].'] },
+    { ten: 'Break time activities', v: 'badminton=cầu lông; basketball=bóng rổ; chess=cờ vua; football=bóng đá; table tennis=bóng bàn; volleyball=bóng chuyền; chat=trò chuyện; word puzzles=trò giải ô chữ', s: ['What do you do at break time?', 'I play [football].', 'I play [chess] at break time.'], on: 'Review 2' },
+    { ten: 'My family', v: 'father=bố; mother=mẹ; brother=anh/em trai; sister=chị/em gái; grandfather=ông; grandmother=bà; eleven=mười một; twenty=hai mươi', s: ['Who\'s this?', 'It\'s my [father].', 'How old is he?', 'He\'s [eleven].'] },
+    { ten: 'Jobs', v: 'cook=đầu bếp; doctor=bác sĩ; driver=tài xế; farmer=nông dân; nurse=y tá; singer=ca sĩ; teacher=giáo viên; worker=công nhân', s: ['What\'s her job?', 'She\'s a [nurse].', 'Is he a [farmer]?', 'Yes, he is.'] },
+    { ten: 'My house', v: 'bathroom=phòng tắm; bedroom=phòng ngủ; kitchen=nhà bếp; living room=phòng khách; chair=cái ghế; lamp=cái đèn; table=cái bàn; house=ngôi nhà', s: ['Where\'s the [lamp]?', 'It\'s here.', 'It\'s there.'] },
+    { ten: 'My bedroom', v: 'bed=giường; door=cửa ra vào; window=cửa sổ; picture=bức tranh; big=to; small=nhỏ; new=mới; old=cũ', s: ['There\'s a [bed] in the room.', 'There are two [windows].', 'The door is [big].'] },
+    { ten: 'At the dining table', v: 'bread=bánh mì; chicken=thịt gà; egg=quả trứng; fish=cá; juice=nước ép; milk=sữa; rice=cơm; water=nước', s: ['What would you like to eat?', 'I\'d like some [bread], please.', 'Would you like some [milk]?', 'Yes, please.'], on: 'Review 3' },
+    { ten: 'My pets', v: 'bird=con chim; cat=con mèo; dog=con chó; fish=con cá; goldfish=cá vàng; parrot=con vẹt; rabbit=con thỏ', s: ['Do you have any [cats]?', 'Yes, I do.', 'How many [dogs] do you have?', 'I have two.'] },
+    { ten: 'Our toys', v: 'ball=quả bóng; car=ô tô; doll=búp bê; kite=con diều; plane=máy bay; robot=người máy; ship=con tàu; teddy bear=gấu bông', s: ['He has a [robot].', 'She has a [doll].', 'They have three [ships].'] },
+    { ten: 'Playing and doing', v: 'reading=đọc; writing=viết; drawing=vẽ; listening to music=nghe nhạc; playing the piano=chơi đàn piano; watching TV=xem ti vi; cooking=nấu ăn', s: ['What are you doing?', 'I\'m [reading].', 'I\'m [drawing] a picture.'] },
+    { ten: 'Outdoor activities', v: 'cycling=đạp xe; flying a kite=thả diều; painting=vẽ tranh; playing basketball=chơi bóng rổ; skating=trượt pa-tanh; skipping=nhảy dây; walking=đi bộ', s: ['What\'s he doing?', 'He\'s [cycling].', 'What\'s she doing?', 'She\'s [skipping].'] },
+    { ten: 'At the zoo', v: 'elephant=con voi; giraffe=hươu cao cổ; horse=con ngựa; monkey=con khỉ; peacock=con công; tiger=con hổ; climbing=leo trèo; swinging=đu', s: ['What can you see?', 'I can see a [monkey].', 'What\'s the elephant doing?', 'It\'s [swinging].'], on: 'Review 4' }
+  ],
+  essays: {
+    1: [['Viết 3–4 câu tiếng Anh giới thiệu bản thân (tên, tuổi, sở thích).', ['name', 'years old', 'like'], 'Hello. My name\'s … . I\'m eight years old. I like drawing. My friend is … .', 3],
+      ['Viết bằng tiếng Anh tên 5 đồ dùng học tập em có.', ['pen', 'pencil', 'ruler', 'book', 'eraser'], 'Ví dụ: pen, pencil, ruler, eraser, notebook, school bag, pencil case.', 1]],
+    2: [['Viết 3–4 câu tiếng Anh giới thiệu gia đình em (thành viên, tuổi, nghề nghiệp).', ['father', 'mother', 'job'], 'This is my family. This is my father. He\'s a doctor. This is my mother. She\'s a teacher. …', 3],
+      ['Viết bằng tiếng Anh tên 5 con vật em biết.', ['dog', 'cat', 'monkey', 'tiger', 'bird'], 'Ví dụ: dog, cat, bird, rabbit, monkey, tiger, elephant, giraffe.', 1]]
+  }
+});
