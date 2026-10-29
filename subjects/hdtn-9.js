@@ -6,47 +6,64 @@ PLT.KB.build({
       lt: ['Trường học văn minh, thân thiện: tôn trọng, hợp tác, không bạo lực; giữ gìn cảnh quan.', 'Giữ gìn tình bạn: chia sẻ, hỗ trợ, giải quyết mâu thuẫn tích cực.'],
       q: `? Biểu hiện của trường học thân thiện là: | Thầy trò tôn trọng, hợp tác, không bạo lực | Bắt nạt học sinh lớp dưới | Vứt rác bừa bãi | Ganh ghét nhau
 + Mỗi học sinh góp phần xây dựng trường học văn minh.
-- Trường học thân thiện chỉ là trách nhiệm của thầy cô.` },
+- Trường học thân thiện chỉ là trách nhiệm của thầy cô.
+? Học sinh lớp 9 nên làm gì để lưu giữ kỉ niệm tuổi học trò? | Tham gia hoạt động tập thể, làm kỉ yếu | Gây gổ | Phá hoại tài sản trường | Bỏ học
++ Tình bạn đẹp cần được giữ gìn cả sau khi ra trường.` },
     { hk: 1, ten: 'Khám phá bản thân', bai: ['Điểm mạnh, điểm hạn chế của bản thân', 'Tư duy tích cực'],
       lt: ['Nhận diện điểm mạnh, điểm hạn chế; xây dựng kế hoạch phát triển bản thân.', 'Tư duy tích cực: nhìn nhận vấn đề theo hướng xây dựng, học hỏi từ thất bại.'],
       q: `? Tư duy tích cực khi bị điểm kém là: | Tìm nguyên nhân và lập kế hoạch cải thiện | Bỏ cuộc | Đổ lỗi cho thầy cô | Tự ti mãi
 + Thất bại là cơ hội để học hỏi và tiến bộ.
-- Người có tư duy tích cực không bao giờ gặp khó khăn.` },
+- Người có tư duy tích cực không bao giờ gặp khó khăn.
+? Điểm mạnh của bản thân có thể giúp em: | Chọn môn học, hướng đi phù hợp | Tự cao | Coi thường người khác | Không có ích
++ Nhận ra điểm hạn chế là bước đầu để khắc phục.` },
     { hk: 1, ten: 'Trách nhiệm với bản thân', bai: ['Sống có trách nhiệm', 'Kĩ năng tự bảo vệ'],
       lt: ['Chịu trách nhiệm về lời nói, việc làm của mình; giữ lời hứa; hoàn thành nhiệm vụ.', 'Tự bảo vệ: trước xâm hại, lừa đảo, tệ nạn xã hội; nhận diện và từ chối.'],
       q: `? Biểu hiện của sống có trách nhiệm là: | Thực hiện đến cùng việc mình đã nhận | Đổ lỗi cho người khác | Hứa rồi bỏ đó | Trốn tránh nhiệm vụ
 + Từ chối dứt khoát trước lời rủ rê sử dụng chất gây nghiện là cách tự bảo vệ.
-- Sống có trách nhiệm chỉ là việc của người lớn.` },
+- Sống có trách nhiệm chỉ là việc của người lớn.
+? Biểu hiện của người có trách nhiệm là: | Hoàn thành công việc được giao, dám nhận lỗi | Đổ lỗi | Hứa suông | Trốn tránh
++ Quản lí thời gian tốt giúp ôn thi hiệu quả.` },
     { hk: 1, ten: 'Rèn luyện bản thân', bai: ['Quản lí cảm xúc và căng thẳng', 'Kĩ năng tài chính cá nhân'],
       lt: ['Nhận diện nguyên nhân căng thẳng (thi vào 10, áp lực học tập); biện pháp: lập kế hoạch, thư giãn, chia sẻ.', 'Tài chính cá nhân: ngân sách, tiết kiệm, tiêu dùng thông minh.'],
       q: `? Cách giảm căng thẳng trước kì thi vào lớp 10 là: | Lập kế hoạch ôn tập hợp lí, ngủ đủ, tập thể dục | Thức trắng đêm | Bỏ ăn | Uống nhiều nước tăng lực
 + Ngủ đủ giấc giúp ghi nhớ tốt hơn.
-- Học liên tục không nghỉ là cách ôn thi hiệu quả nhất.` },
+- Học liên tục không nghỉ là cách ôn thi hiệu quả nhất.
+? Kĩ năng tự học hiệu quả gồm: | Lập kế hoạch, ghi chép, tự kiểm tra | Học vẹt | Chỉ học khi có người nhắc | Học dồn sát ngày thi
++ Rèn luyện sức khoẻ giúp học tập tốt hơn.` },
     { hk: 2, ten: 'Em với gia đình', bai: ['Xây dựng gia đình hạnh phúc', 'Chia sẻ với gia đình về định hướng nghề nghiệp'],
       lt: ['Góp phần xây dựng gia đình hạnh phúc: yêu thương, chia sẻ, tôn trọng.', 'Trao đổi với gia đình về lựa chọn hướng học, nghề nghiệp.'],
       q: `? Khi lựa chọn hướng học sau THCS, em nên: | Trao đổi, lắng nghe ý kiến gia đình và thầy cô | Tự quyết định không hỏi ai | Theo bạn thân | Chọn ngẫu nhiên
 + Gia đình là chỗ dựa quan trọng khi định hướng nghề nghiệp.
-- Ý kiến cha mẹ không có giá trị khi chọn nghề.` },
+- Ý kiến cha mẹ không có giá trị khi chọn nghề.
+? Tham gia quản lí chi tiêu gia đình, em có thể: | Tiết kiệm, chi tiêu hợp lí | Đòi mua đồ đắt tiền | Lãng phí | Vay mượn bạn bè
++ Thể hiện sự quan tâm đến ông bà bằng hành động cụ thể.` },
     { hk: 2, ten: 'Em với cộng đồng', bai: ['Phát triển cộng đồng văn minh', 'Dự án vì cộng đồng'],
       lt: ['Tham gia xây dựng nếp sống văn minh, an toàn giao thông, bảo vệ môi trường ở địa phương.', 'Thực hiện dự án nhỏ vì cộng đồng: lập kế hoạch, phân công, triển khai, đánh giá.'],
       q: `? Bước đầu tiên của một dự án vì cộng đồng là: | Xác định vấn đề, nhu cầu của cộng đồng | Báo cáo kết quả | Xin tiền tài trợ | Đăng mạng xã hội
 + Dự án cộng đồng cần kế hoạch và phân công rõ ràng.
-> Xác định vấn đề > Lập kế hoạch > Phân công > Triển khai > Đánh giá, rút kinh nghiệm` },
+> Xác định vấn đề > Lập kế hoạch > Phân công > Triển khai > Đánh giá, rút kinh nghiệm
+? Hoạt động phù hợp để xây dựng cộng đồng văn minh là: | Tham gia dọn vệ sinh khu phố | Gây ồn ào ban đêm | Vứt rác | Phá hoại cây xanh
++ Lan toả hành động tốt trên mạng xã hội là việc làm tích cực.` },
     { hk: 2, ten: 'Em với thiên nhiên và môi trường', bai: ['Ứng phó với biến đổi khí hậu', 'Bảo tồn danh lam thắng cảnh'],
       lt: ['Biến đổi khí hậu: biểu hiện, nguyên nhân, hành động giảm nhẹ và thích ứng.', 'Bảo tồn danh lam thắng cảnh: không xả rác, không khắc vẽ, tuyên truyền.'],
       q: `? Hành động góp phần giảm phát thải khí nhà kính là: | Đi xe đạp, dùng phương tiện công cộng | Đốt rác | Chặt phá rừng | Lãng phí điện
 + Trồng cây xanh góp phần hấp thụ CO₂.
-- Biến đổi khí hậu không ảnh hưởng đến Việt Nam.` },
+- Biến đổi khí hậu không ảnh hưởng đến Việt Nam.
+? Ứng phó với thiên tai, em cần: | Theo dõi thông tin, chuẩn bị vật dụng cần thiết, sơ tán khi cần | Chủ quan | Ra sông xem lũ | Không chuẩn bị
++ Tiết kiệm năng lượng góp phần giảm biến đổi khí hậu.` },
     { hk: 2, ten: 'Khám phá thế giới nghề nghiệp', bai: ['Tìm hiểu nhóm nghề và yêu cầu', 'Trải nghiệm nghề nghiệp'],
       lt: ['Nhóm nghề: kĩ thuật – công nghệ, kinh tế – dịch vụ, y tế, giáo dục, nghệ thuật, nông – lâm – ngư nghiệp.', 'Yêu cầu của nghề: kiến thức, kĩ năng, phẩm chất, sức khoẻ; môi trường làm việc; triển vọng.'],
       q: `? Khi tìm hiểu một nghề, em cần biết: | Công việc, yêu cầu năng lực, môi trường, triển vọng | Chỉ mức lương | Chỉ tên nghề | Chỉ đồng phục
 + Trải nghiệm thực tế giúp hiểu rõ hơn về nghề nghiệp.
-- Mọi nghề đều có yêu cầu giống nhau.` },
+- Mọi nghề đều có yêu cầu giống nhau.
+? Sau THCS, học sinh có thể: | Học THPT, giáo dục nghề nghiệp hoặc giáo dục thường xuyên | Chỉ học đại học | Không được học tiếp | Chỉ đi làm
++ Trường cao đẳng, trung cấp nghề đào tạo kĩ năng nghề nghiệp.` },
     { hk: 2, ten: 'Hiểu bản thân – chọn đúng nghề', bai: ['Lựa chọn hướng học sau THCS', 'Lập kế hoạch học tập theo định hướng nghề'], on: 'Tổng kết năm học',
       lt: ['Phân luồng sau THCS: THPT, trung cấp/giáo dục nghề nghiệp, giáo dục thường xuyên.', 'Lập kế hoạch: mục tiêu, môn học cần chú trọng, kĩ năng cần rèn, mốc thời gian.'],
       q: `? Phân luồng sau THCS nhằm: | Giúp học sinh chọn hướng học phù hợp năng lực, nguyện vọng | Hạn chế học sinh học tiếp | Bắt buộc mọi người vào đại học | Không có mục đích
 + Học nghề sau THCS giúp sớm có kĩ năng làm việc.
-- Chỉ có một con đường duy nhất sau THCS là vào THPT.` }
+- Chỉ có một con đường duy nhất sau THCS là vào THPT.
++ Lựa chọn trường THPT, trường nghề cần dựa vào năng lực thực tế.` }
   ],
   essays: {
     1: [['Nêu điểm mạnh, điểm hạn chế của bản thân và kế hoạch phát huy, khắc phục.', ['điểm mạnh', 'hạn chế', 'kế hoạch'], 'Liệt kê 2–3 điểm mạnh, 2–3 điểm hạn chế; biện pháp phát huy, khắc phục cụ thể, thời gian thực hiện, cách tự đánh giá.'],

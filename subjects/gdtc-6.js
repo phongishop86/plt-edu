@@ -8,25 +8,35 @@ PLT.KB.build({
 ? Khẩu lệnh xuất phát thấp là: | Vào chỗ – Sẵn sàng – Chạy! | Một – hai – ba | Chuẩn bị – Bắt đầu | Nghiêm – Nghỉ
 ? Khi về đích, VĐV nên: | Dùng ngực hoặc vai chạm dây đích | Nhảy qua dây | Dừng lại trước vạch | Chạy chậm lại
 + Chạy cự li ngắn phát triển sức nhanh.
-> Xuất phát > Chạy lao > Chạy giữa quãng > Về đích` },
+> Xuất phát > Chạy lao > Chạy giữa quãng > Về đích
+? Chạy cự li ngắn ở lớp 6 thường là cự li: | 60 m | 1500 m | 5 km | 400 m vượt rào
+? Khẩu lệnh xuất phát gồm: | "Vào chỗ" – "Sẵn sàng" – "Chạy" (hoặc tiếng còi) | "Một – hai – ba" tuỳ ý | Không có lệnh | "Dừng lại"` },
     { hk: 1, ten: 'Nhảy xa', bai: ['Bài tập bổ trợ', 'Kĩ thuật chạy đà và giậm nhảy', 'Kĩ thuật bay trên không và tiếp đất'],
       lt: ['Nhảy xa kiểu "ngồi": chạy đà → giậm nhảy → bay trên không → tiếp đất.', 'Giậm nhảy bằng chân khoẻ trên ván giậm; tiếp đất bằng hai chân, chùng gối, đưa người về trước.'],
       q: `? Thành tích nhảy xa được đo từ: | Mép ván giậm nhảy đến dấu chạm cát gần nhất | Vạch xuất phát chạy đà | Giữa hố cát | Điểm cao nhất khi bay
 ? Khi tiếp đất trong nhảy xa, em nên: | Chùng gối, đưa người về trước | Ngã người ra sau | Thẳng chân | Chống tay ra sau
 + Giậm nhảy là giai đoạn quan trọng nhất trong nhảy xa.
-> Chạy đà > Giậm nhảy > Bay trên không > Tiếp đất` },
+> Chạy đà > Giậm nhảy > Bay trên không > Tiếp đất
+? Các giai đoạn nhảy xa gồm: | Chạy đà – giậm nhảy – bay trên không – tiếp đất | Chỉ tiếp đất | Đứng yên – nhảy | Bơi – chạy
++ Chạy đà nhanh, chính xác giúp tăng thành tích nhảy xa.` },
     { hk: 2, ten: 'Chạy cự li trung bình', bai: ['Kĩ thuật chạy trên đường thẳng', 'Kĩ thuật chạy trên đường vòng', 'Phân phối sức khi chạy'],
       lt: ['Chạy cự li trung bình: xuất phát cao; phân phối sức đều, thở sâu nhịp nhàng.', 'Chạy đường vòng: nghiêng người vào phía trong.'],
       q: `? Chạy cự li trung bình thường dùng kiểu xuất phát: | Xuất phát cao | Xuất phát thấp có bàn đạp | Nhảy lên | Ngồi xổm
 ? Khi chạy đường vòng, thân người nghiêng: | Vào phía trong vòng chạy | Ra phía ngoài | Ra sau | Không nghiêng
 + Phân phối sức hợp lí giúp hoàn thành cự li tốt hơn.
-- Chạy cự li trung bình nên dùng hết sức ngay từ đầu.` },
+- Chạy cự li trung bình nên dùng hết sức ngay từ đầu.
+? Chạy cự li trung bình đòi hỏi tố chất: | Sức bền | Sức nhanh tối đa | Mềm dẻo | Khéo léo tay
+? Khi chạy bền cần thở: | Sâu, đều, nhịp nhàng | Nín thở | Thở gấp nông | Chỉ bằng miệng thật mạnh
++ Chạy bền thường xuyên giúp tăng cường tim mạch.` },
     { hk: 2, ten: 'Thể thao tự chọn: Bóng đá, Bóng rổ, Đá cầu', bai: ['Kĩ thuật cơ bản', 'Phối hợp kĩ thuật', 'Luật thi đấu và trò chơi'],
       lt: ['Bóng đá: dẫn bóng, chuyền bóng má trong, đá bóng mu bàn chân; mỗi đội 11 người.', 'Bóng rổ: dẫn bóng, chuyền bắt bóng hai tay trước ngực, ném rổ một tay trên vai; mỗi đội 5 người.', 'Đá cầu: tâng cầu bằng đùi, má trong, mu bàn chân; phát cầu thấp chân chính diện.'],
       q: `? Mỗi đội bóng rổ có bao nhiêu cầu thủ trên sân? | 5 | 6 | 11 | 7
 ? Kĩ thuật chuyền bóng chính xác cự li ngắn trong bóng đá là: | Chuyền bằng má trong bàn chân | Sút bằng mũi giày | Đánh đầu | Dùng gót
 + Đá cầu là môn thể thao dân tộc của Việt Nam.
-- Bóng rổ cho phép ôm bóng chạy nhiều bước.` }
+- Bóng rổ cho phép ôm bóng chạy nhiều bước.
+? Đá cầu: cầu chạm vạch giới hạn sân được tính là: | Cầu trong sân | Cầu ngoài sân | Đá lại | Phạm lỗi
+? Ném rổ bằng một tay trên vai cần: | Phối hợp duỗi chân, tay và bật cổ tay | Chỉ dùng chân | Nhắm mắt | Ném ngang
++ Đá cầu phát triển sự khéo léo của chân.` }
   ],
   essays: {
     1: [['Trình bày các giai đoạn của kĩ thuật chạy cự li ngắn.', ['xuất phát', 'chạy lao', 'giữa quãng', 'về đích'], 'Xuất phát thấp (Vào chỗ – Sẵn sàng – Chạy) → chạy lao tăng tốc → chạy giữa quãng giữ tốc độ cao → về đích dùng ngực/vai chạm dây đích.'],

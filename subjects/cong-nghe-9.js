@@ -9,14 +9,19 @@ PLT.KB.build({
 ? Nghề nào thuộc lĩnh vực kĩ thuật, công nghệ? | Kĩ sư điện | Giáo viên văn | Ca sĩ | Hướng dẫn viên du lịch
 + Học trung cấp nghề cũng là con đường lập nghiệp tốt.
 - Giáo dục đại học thuộc giáo dục phổ thông.
-> Mầm non > Tiểu học > Trung học cơ sở > Trung học phổ thông > Đại học` },
+> Mầm non > Tiểu học > Trung học cơ sở > Trung học phổ thông > Đại học
+? Sau khi tốt nghiệp THCS, học sinh có thể vào: | Trường THPT hoặc cơ sở giáo dục nghề nghiệp | Chỉ đại học | Chỉ đi làm | Không có lựa chọn
+? Nghề trong lĩnh vực kĩ thuật, công nghệ là: | Kĩ thuật viên điện, cơ khí | Ca sĩ | Nhà văn | Hoạ sĩ
++ Giáo dục nghề nghiệp đào tạo trình độ sơ cấp, trung cấp, cao đẳng.` },
     { hk: 1, nhan: 'Định hướng nghề nghiệp', ten: 'Thị trường lao động và lựa chọn nghề', bai: ['Bài 3. Thị trường lao động kĩ thuật, công nghệ tại Việt Nam', 'Bài 4. Quy trình lựa chọn nghề nghiệp', 'Bài 5. Dự án: Tự đánh giá mức độ phù hợp của bản thân với một số ngành nghề'],
       lt: ['Thị trường lao động: nơi cung – cầu lao động gặp nhau; xu hướng nhu cầu cao về nhân lực kĩ thuật, công nghệ, có kĩ năng số.', 'Lựa chọn nghề dựa trên lí thuyết <b>cây nghề nghiệp</b>, mô hình <b>Holland</b>: sở thích, năng lực, tính cách, giá trị, nhu cầu xã hội, điều kiện gia đình.', 'Quy trình: tìm hiểu bản thân → tìm hiểu nghề → tìm hiểu thị trường lao động → ra quyết định → lập kế hoạch học tập.'],
       q: `? Khi chọn nghề, yếu tố quan trọng cần xem xét là: | Sở thích, năng lực bản thân và nhu cầu xã hội | Chỉ theo bạn bè | Chỉ chọn nghề lương cao | Chọn ngẫu nhiên
 ? Thị trường lao động là nơi: | Cung và cầu lao động gặp nhau | Chỉ có người tìm việc | Chỉ có doanh nghiệp | Bán hàng hoá thông thường
 + Nhu cầu nhân lực kĩ thuật, công nghệ ở Việt Nam ngày càng tăng.
 - Chọn nghề chỉ cần dựa vào mức lương.
-> Tìm hiểu bản thân > Tìm hiểu nghề nghiệp > Tìm hiểu thị trường lao động > Ra quyết định > Lập kế hoạch học tập` },
+> Tìm hiểu bản thân > Tìm hiểu nghề nghiệp > Tìm hiểu thị trường lao động > Ra quyết định > Lập kế hoạch học tập
+? Yếu tố ảnh hưởng đến lựa chọn nghề là: | Sở thích, năng lực, nhu cầu xã hội, hoàn cảnh gia đình | Màu áo | Thời tiết | Ngày sinh
++ Nhu cầu lao động có kĩ năng số ngày càng tăng.` },
     { hk: 2, nhan: 'Mô-đun', ten: 'Lắp đặt mạng điện trong nhà', bai: ['Thiết bị, vật liệu, dụng cụ lắp đặt mạng điện', 'Thiết kế mạch điện', 'Lắp đặt mạch điện chiếu sáng', 'Kiểm tra, an toàn mạng điện'],
       lt: ['Vật liệu: dây dẫn (lõi đồng/nhôm, vỏ cách điện), ống luồn dây; thiết bị: công tắc, ổ cắm, cầu chì, aptomat, công tơ điện.', 'Dụng cụ: kìm, tua vít, bút thử điện, đồng hồ vạn năng, khoan.', 'Sơ đồ nguyên lí (mối liên hệ điện) và sơ đồ lắp đặt (vị trí, cách lắp). Công tắc mắc nối tiếp với tải trên dây pha.', 'An toàn: cắt điện trước khi lắp; dùng dụng cụ cách điện; kiểm tra bằng đồng hồ vạn năng trước khi đóng điện.'],
       q: `? Công tắc điện được mắc như thế nào với bóng đèn? | Nối tiếp, trên dây pha | Song song với bóng đèn | Trên dây trung tính | Không cần mắc
@@ -26,7 +31,12 @@ PLT.KB.build({
 - Dây dẫn điện không cần vỏ cách điện.
 = Aptomat = Bảo vệ quá tải, ngắn mạch
 = Công tơ điện = Đo điện năng tiêu thụ
-= Bút thử điện = Kiểm tra có điện` },
+= Bút thử điện = Kiểm tra có điện
+? Thiết bị đóng cắt điện trong nhà là: | Công tắc, aptomat | Bóng đèn | Quạt | Tivi
+? Dây dẫn điện trong nhà cần có: | Vỏ cách điện tốt | Dây trần | Vỏ hỏng | Mối nối hở
+? Dụng cụ kiểm tra có điện hay không là: | Bút thử điện | Tua vít thường | Thước dây | Kìm cắt
++ Phải ngắt nguồn điện trước khi lắp đặt, sửa chữa.
+- Có thể lắp đặt điện khi chưa ngắt nguồn.` },
     { hk: 2, nhan: 'Mô-đun', ten: 'Trồng cây ăn quả và chế biến thực phẩm', bai: ['Trồng cây ăn quả: giống, nhân giống, kĩ thuật trồng', 'Chăm sóc, thu hoạch cây ăn quả', 'Chế biến thực phẩm: an toàn vệ sinh thực phẩm', 'Chế biến món ăn không dùng nhiệt và có dùng nhiệt'], on: 'Ôn tập cuối năm',
       lt: ['Cây ăn quả có giá trị dinh dưỡng, kinh tế; nhân giống: giâm cành, chiết cành, ghép, nuôi cấy mô.', 'Chăm sóc: làm cỏ, tưới nước, bón phân, tỉa cành, phòng trừ sâu bệnh; thu hoạch đúng độ chín.', 'An toàn vệ sinh thực phẩm: chọn thực phẩm tươi, rõ nguồn gốc; bảo quản đúng cách; ăn chín uống sôi.', 'Chế biến không dùng nhiệt (trộn, muối chua) và dùng nhiệt (luộc, hấp, rán, nướng, xào).'],
       q: `? Phương pháp nhân giống cây ăn quả giữ được đặc tính tốt của cây mẹ là: | Chiết cành, ghép | Gieo hạt | Không nhân giống | Trồng ngẫu nhiên
@@ -35,7 +45,10 @@ PLT.KB.build({
 + Rửa tay sạch trước khi chế biến thực phẩm.
 - Thực phẩm sống và chín nên để chung một thớt.
 # Chế biến dùng nhiệt: Luộc, Hấp, Rán, Nướng
-# Chế biến không dùng nhiệt: Trộn nộm, Muối dưa, Làm sinh tố` }
+# Chế biến không dùng nhiệt: Trộn nộm, Muối dưa, Làm sinh tố
+? Phương pháp nhân giống cây ăn quả phổ biến là: | Chiết, ghép, giâm cành | Gieo hạt muối | Tưới nước sôi | Phun thuốc liều cao
+? Chế biến thực phẩm an toàn cần: | Rửa sạch, nấu chín, bảo quản đúng cách | Dùng thực phẩm ôi thiu | Để sống lẫn chín | Không rửa tay
++ Bảo quản rau quả nơi thoáng mát giúp giữ tươi lâu.` }
   ],
   essays: {
     1: [['Trình bày quy trình lựa chọn nghề nghiệp của bản thân.', ['bản thân', 'nghề', 'thị trường', 'kế hoạch'], 'Tìm hiểu bản thân (sở thích, năng lực, tính cách); tìm hiểu nghề (yêu cầu, môi trường, thu nhập); tìm hiểu thị trường lao động; đối chiếu, ra quyết định; lập kế hoạch học tập, rèn luyện.'],

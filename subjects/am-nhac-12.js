@@ -7,23 +7,35 @@ PLT.KB.build({
       q: `? Tác giả bài Quốc ca Việt Nam "Tiến quân ca" là: | Văn Cao | Phạm Tuyên | Hoàng Việt | Trịnh Công Sơn
 ? "Như có Bác trong ngày đại thắng" là sáng tác của: | Phạm Tuyên | Văn Cao | Hoàng Vân | Đỗ Nhuận
 + Hoàng Việt là tác giả ca khúc "Tình ca".
-- "Mùa xuân đầu tiên" là ca khúc của Phạm Tuyên.` },
+- "Mùa xuân đầu tiên" là ca khúc của Phạm Tuyên.
+? "Trường ca Sông Lô" là tác phẩm của nhạc sĩ: | Văn Cao | Phạm Tuyên | Hoàng Việt | Đỗ Nhuận
+? Nhạc sĩ Trịnh Công Sơn nổi tiếng với các ca khúc: | Trữ tình, giàu chất triết lí | Nhạc thiếu nhi | Nhạc rock | Nhạc giao hưởng
++ Nhạc sĩ Hoàng Vân là tác giả "Hò kéo pháo".` },
     { hk: 1, ten: 'Di sản âm nhạc và bảo tồn', bai: ['Hát dân ca', 'Thường thức âm nhạc: Dân ca Quan họ, Ví – Giặm, Bài chòi', '*Ôn tập học kì I'],
       lt: ['Quan họ Bắc Ninh (2009), Ví – Giặm Nghệ Tĩnh (2014), Bài chòi Trung Bộ (2017) được UNESCO ghi danh.', 'Bảo tồn: học hát, biểu diễn, ghi âm, số hoá, đưa vào trường học.'],
       q: `? Dân ca Ví – Giặm là di sản của vùng: | Nghệ An, Hà Tĩnh | Bắc Ninh | Huế | Nam Bộ
 ? Nghệ thuật Bài chòi phổ biến ở: | Trung Bộ | Tây Bắc | Đồng bằng sông Hồng | Tây Nguyên
 + Quan họ Bắc Ninh được UNESCO ghi danh năm 2009.
-- Bài chòi là di sản của vùng Tây Bắc.` },
+- Bài chòi là di sản của vùng Tây Bắc.
+? Ca trù còn được gọi là: | Hát ả đào | Hát bội | Hát xẩm | Hát văn
+? Hát xẩm thường được biểu diễn bởi: | Nghệ nhân hát rong (thường là người khiếm thị trước đây) | Dàn nhạc giao hưởng | Ca sĩ nhạc pop | Đội kèn đồng
++ Bảo tồn di sản cần sự chung tay của thế hệ trẻ.` },
     { hk: 2, ten: 'Âm nhạc thế giới hiện đại', bai: ['Hát', 'Nghe nhạc', 'Thường thức âm nhạc: Âm nhạc thế kỉ XX – XXI', 'Nhạc cụ điện tử'],
       lt: ['Âm nhạc hiện đại: jazz, rock, pop, nhạc điện tử; công nghệ thu âm, sản xuất âm nhạc số.', 'Đàn phím điện tử (organ), guitar điện, bộ trống điện tử.'],
       q: `? Nhạc cụ nào là nhạc cụ điện tử? | Đàn phím điện tử (organ) | Đàn bầu | Đàn đáy | Sáo trúc
 + Công nghệ số giúp sản xuất và phát hành âm nhạc dễ dàng hơn.
-- Guitar điện không cần bộ khuếch đại để phát âm thanh lớn.` },
+- Guitar điện không cần bộ khuếch đại để phát âm thanh lớn.
+? Nhạc điện tử EDM thường dùng: | Máy tính, bàn trộn, phần mềm âm nhạc | Đàn đá | Trống đồng | Đàn đáy
+? Thể loại nhạc Rock thường dùng nhạc cụ chính: | Guitar điện, trống, bass | Đàn bầu | Đàn tranh | Sáo trúc
++ Công nghệ thu âm số giúp chỉnh sửa âm thanh dễ dàng.` },
     { hk: 2, ten: 'Âm nhạc và nghề nghiệp', bai: ['Hát', 'Tìm hiểu nghề nghiệp liên quan đến âm nhạc', 'Biểu diễn tổng kết', '*Ôn tập cuối năm'],
       lt: ['Nghề liên quan: ca sĩ, nhạc công, nhạc sĩ, chỉ huy dàn nhạc, kĩ sư âm thanh, giáo viên âm nhạc, sản xuất âm nhạc.', 'Trường đào tạo: Học viện Âm nhạc Quốc gia Việt Nam, Nhạc viện TP HCM, các trường văn hoá nghệ thuật.'],
       q: `? Người điều khiển dàn nhạc trong buổi biểu diễn là: | Nhạc trưởng (chỉ huy) | Ca sĩ | Kĩ thuật viên ánh sáng | Khán giả
 + Kĩ sư âm thanh là nghề liên quan đến âm nhạc.
-- Nghề âm nhạc chỉ gồm ca sĩ.` }
+- Nghề âm nhạc chỉ gồm ca sĩ.
+? Người sáng tác ca khúc gọi là: | Nhạc sĩ | Ca sĩ | Nhạc công | Đạo diễn
+? Người biểu diễn nhạc cụ trong ban nhạc gọi là: | Nhạc công | Nhạc sĩ sáng tác | Khán giả | Đạo diễn
++ Nghề giáo viên âm nhạc cần kĩ năng sư phạm và chuyên môn.` }
   ],
   essays: {
     1: [['Giới thiệu một di sản âm nhạc Việt Nam được UNESCO ghi danh.', ['UNESCO', 'vùng', 'đặc điểm'], 'Nêu tên di sản, vùng, năm ghi danh, đặc điểm biểu diễn, nhạc cụ, giá trị văn hoá, trách nhiệm gìn giữ.', 3],

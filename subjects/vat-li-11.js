@@ -15,6 +15,7 @@ PLT.KB.build({
 - Chu kì con lắc đơn tỉ lệ thuận với khối lượng vật.
 - Tại vị trí cân bằng, gia tốc của vật đạt cực đại.
 = T = 2π/ω = Chu kì
+= T = 2π√(l/g) = Chu kì con lắc đơn
 = ω = √(k/m) = Tần số góc con lắc lò xo
 = W = ½kA² = Cơ năng con lắc lò xo
 ? Chu kì dao động là: | Thời gian thực hiện một dao động toàn phần | Số dao động trong 1 giây | Biên độ dao động | Li độ cực đại

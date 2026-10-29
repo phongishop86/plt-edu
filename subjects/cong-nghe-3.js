@@ -21,7 +21,13 @@ PLT.KB.build({
 = Máy thu thanh = Nghe chương trình phát thanh
 = Máy thu hình = Xem chương trình truyền hình
 # Tự nhiên: Cây cối, Sông suối, Mặt Trời, Đồi núi
-# Sản phẩm công nghệ: Bóng đèn, Quạt điện, Ti vi, Xe đạp` },
+# Sản phẩm công nghệ: Bóng đèn, Quạt điện, Ti vi, Xe đạp
+? Đồ dùng điện trong gia đình là: | Quạt điện, đèn học | Bút chì | Cái chổi | Quyển vở
+? Khi sử dụng quạt điện, em cần: | Không thò tay vào cánh quạt | Chọc que vào lồng quạt | Để quạt gần nước | Kéo dây điện mạnh
+? Tivi là sản phẩm công nghệ dùng để: | Xem chương trình, nghe tin tức | Nấu cơm | Giặt quần áo | Làm mát
+? Đèn học có tác dụng: | Chiếu sáng khi học bài | Làm mát | Nấu ăn | Phát nhạc
++ Không dùng tay ướt chạm vào ổ điện.
+- Có thể dùng vật kim loại chọc vào ổ điện.` },
     { hk: 2, ten: 'Thủ công kĩ thuật', bai: ['Dụng cụ và vật liệu làm thủ công', 'Làm đồ dùng học tập', 'Làm biển báo giao thông', 'Làm đồ chơi'],
       lt: ['Vật liệu: giấy màu, bìa, que kem, len, vải vụn, vật liệu tái chế. Dụng cụ: kéo, thước, bút chì, hồ dán, băng dính.', 'Dùng kéo an toàn: cầm đúng cách, không chĩa mũi kéo vào người, cất kéo sau khi dùng.', 'Biển báo giao thông: biển cấm (tròn, viền đỏ), biển nguy hiểm (tam giác, viền đỏ, nền vàng), biển chỉ dẫn (vuông/chữ nhật, nền xanh).', 'Quy trình làm sản phẩm: chọn vật liệu, dụng cụ → đo, vẽ, cắt → lắp ghép, dán → trang trí, kiểm tra.'],
       q: `? Dụng cụ nào dùng để cắt giấy? | Kéo | Thước | Hồ dán | Bút chì
@@ -34,7 +40,12 @@ PLT.KB.build({
 - Biển chỉ dẫn có hình tam giác viền đỏ.
 > Chọn vật liệu, dụng cụ > Đo, vẽ, cắt các chi tiết > Lắp ghép, dán > Trang trí và kiểm tra sản phẩm
 # Vật liệu: Giấy màu, Bìa cứng, Que kem, Len
-# Dụng cụ: Kéo, Thước kẻ, Bút chì, Hồ dán` }
+# Dụng cụ: Kéo, Thước kẻ, Bút chì, Hồ dán
+? Dụng cụ dùng để cắt giấy là: | Kéo | Thước kẻ | Hồ dán | Bút màu
+? Khi dùng kéo, em cần: | Cầm đúng cách, không chĩa vào bạn | Vung kéo đùa nghịch | Cắt gần tay bạn | Để kéo trên ghế
+? Làm đồ dùng học tập bằng giấy bìa cần: | Thước, kéo, bút chì, hồ dán | Búa, đinh | Dao lớn | Máy khoan
++ Sau khi làm thủ công cần thu dọn gọn gàng.
+- Có thể để kéo bừa bãi trên bàn sau khi dùng.` }
   ],
   essays: {
     1: [['Phân biệt đối tượng tự nhiên và sản phẩm công nghệ. Mỗi loại cho 2 ví dụ.', ['tự nhiên', 'con người', 'công nghệ'], 'Đối tượng tự nhiên có sẵn trong tự nhiên (cây, núi, sông, Mặt Trời); sản phẩm công nghệ do con người làm ra (quạt điện, đèn học, ti vi, xe đạp).'],

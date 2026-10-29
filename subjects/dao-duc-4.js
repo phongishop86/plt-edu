@@ -9,13 +9,17 @@ PLT.KB.build({
 + Mọi người lao động chân chính đều đáng được tôn trọng.
 + Giữ gìn đồ dùng là quý trọng sức lao động.
 - Chỉ những người làm công việc lớn mới đáng biết ơn.
-- Chế giễu cô lao công là việc bình thường.` },
+- Chế giễu cô lao công là việc bình thường.
+? Biết ơn người lao động, em cần: | Trân trọng, giữ gìn sản phẩm lao động | Lãng phí đồ ăn | Vẽ bậy lên tường mới sơn | Chê bai người lao động
++ Chào hỏi lễ phép cô lao công là biết ơn người lao động.` },
     { hk: 1, ten: 'Cảm thông, giúp đỡ người gặp khó khăn', bai: ['Cảm thông, giúp đỡ người gặp khó khăn'],
       lt: ['Người gặp khó khăn: người khuyết tật, người già neo đơn, người bị thiên tai, bạn có hoàn cảnh khó khăn.', 'Cảm thông, giúp đỡ phù hợp khả năng: quyên góp, động viên, giúp việc vừa sức.'],
       q: `? Bạn cùng lớp có hoàn cảnh khó khăn, thiếu sách vở. Em nên: | Chia sẻ sách vở, rủ các bạn cùng giúp | Chê bạn | Không chơi với bạn | Kể chuyện của bạn khắp nơi
 ? Gặp người khiếm thị muốn qua đường, em nên: | Hỏi và dắt người đó qua đường an toàn | Lờ đi | Trêu chọc | Đẩy người đó
 + Giúp đỡ người khó khăn làm cuộc sống tốt đẹp hơn.
-- Chế giễu người khuyết tật là vô hại.` },
+- Chế giễu người khuyết tật là vô hại.
+? Khi thấy bạn bị ốm, em nên: | Hỏi thăm, chép bài giúp bạn | Trêu chọc | Không quan tâm | Kể xấu bạn
++ Cảm thông với người gặp khó khăn là biểu hiện của lòng nhân ái.` },
     { hk: 1, ten: 'Yêu lao động', bai: ['Yêu lao động'],
       lt: ['Lao động tạo ra của cải, giúp con người khoẻ mạnh, có ích.', 'Yêu lao động: tích cực tham gia việc nhà, việc trường vừa sức; không lười biếng.'],
       q: `? Biểu hiện của yêu lao động là: | Tích cực tham gia việc nhà, việc lớp | Trốn trực nhật | Nhờ bạn làm hộ | Chỉ thích chơi
@@ -28,7 +32,9 @@ PLT.KB.build({
       q: `? Em muốn dùng máy tính của anh, em nên: | Hỏi ý kiến anh trước | Tự ý mở dùng | Đổi mật khẩu của anh | Xoá tệp của anh
 ? Nhặt được điện thoại ở sân trường, em nên: | Nộp cho thầy cô để trả người mất | Giữ lại dùng | Bán đi | Vứt đi
 + Tôn trọng tài sản người khác là tôn trọng chính người đó.
-- Có thể đọc nhật kí của bạn khi bạn vắng mặt.` },
+- Có thể đọc nhật kí của bạn khi bạn vắng mặt.
+? Mượn đồ của bạn, em cần: | Giữ gìn và trả đúng hẹn | Làm hỏng không xin lỗi | Giữ luôn | Cho người khác mượn tiếp không hỏi
++ Không tự ý lấy đồ của người khác.` },
     { hk: 2, ten: 'Bảo vệ của công', bai: ['Bảo vệ của công'],
       lt: ['Của công: tài sản chung của xã hội — trường học, công viên, đường sá, cầu cống, di tích, bàn ghế lớp học.', 'Bảo vệ của công: giữ gìn, không phá hoại, nhắc nhở người khác, báo cơ quan chức năng khi thấy hành vi phá hoại.'],
       q: `? Đâu là của công? | Ghế đá công viên | Xe đạp của em | Quần áo của bạn | Sách của em
@@ -36,13 +42,16 @@ PLT.KB.build({
 + Bảo vệ của công là trách nhiệm của mọi công dân.
 - Của công không thuộc về ai nên không cần giữ gìn.
 # Bảo vệ của công: Giữ gìn bàn ghế, Không bẻ cây công viên, Nhắc bạn tắt đèn lớp
-# Làm hại của công: Khắc tên lên di tích, Đá hỏng thùng rác, Ném đá vào đèn đường` },
+# Làm hại của công: Khắc tên lên di tích, Đá hỏng thùng rác, Ném đá vào đèn đường
+? Của công là: | Tài sản chung như bàn ghế, cây xanh, đèn đường | Đồ dùng riêng của em | Đồ của bạn | Đồ trong nhà em
++ Báo cho người lớn khi thấy ai phá hoại của công.` },
     { hk: 2, ten: 'Thiết lập và duy trì quan hệ bạn bè', bai: ['Thiết lập quan hệ bạn bè', 'Duy trì quan hệ bạn bè'],
       lt: ['Thiết lập: chủ động làm quen, giới thiệu bản thân, tìm sở thích chung.', 'Duy trì: tôn trọng, quan tâm, giúp đỡ, chia sẻ, giữ lời hứa, giải quyết bất đồng bằng thiện chí.'],
       q: `? Để duy trì tình bạn, em nên: | Quan tâm, chia sẻ, tôn trọng bạn | Nói xấu bạn | Chỉ chơi khi bạn có quà | Giấu bạn mọi chuyện
 ? Bạn mới chuyển trường đến, em có thể: | Chủ động làm quen, giới thiệu về lớp | Tránh mặt | Trêu chọc bạn | Bắt bạn làm hộ bài
 + Tình bạn đẹp cần sự chân thành và tôn trọng.
-- Bạn tốt là bạn luôn cho mình chép bài.` },
+- Bạn tốt là bạn luôn cho mình chép bài.
++ Biết xin lỗi khi làm bạn buồn giúp tình bạn bền lâu.` },
     { hk: 2, ten: 'Quyền và bổn phận của trẻ em', bai: ['Quyền và bổn phận của trẻ em'],
       lt: ['<b>Quyền</b> của trẻ em: được sống, được chăm sóc sức khoẻ, được học tập, được vui chơi, được bảo vệ, được bày tỏ ý kiến…', '<b>Bổn phận</b>: kính trọng, lễ phép, giúp đỡ gia đình; chăm chỉ học tập; tuân thủ nội quy, pháp luật.', 'Luật Trẻ em năm 2016 quy định quyền và bổn phận của trẻ em.'],
       q: `? Đâu là một quyền của trẻ em? | Được học tập | Phải đi làm kiếm tiền | Không được vui chơi | Không được bày tỏ ý kiến
@@ -50,7 +59,10 @@ PLT.KB.build({
 + Trẻ em có quyền được bảo vệ khỏi bạo lực, xâm hại.
 - Trẻ em không có quyền được vui chơi, giải trí.
 # Quyền: Được học tập, Được vui chơi, Được chăm sóc sức khoẻ, Được bảo vệ
-# Bổn phận: Chăm học, Lễ phép với người lớn, Giúp đỡ gia đình, Tuân thủ nội quy` }
+# Bổn phận: Chăm học, Lễ phép với người lớn, Giúp đỡ gia đình, Tuân thủ nội quy
+? Trẻ em có quyền: | Được học tập, vui chơi, chăm sóc sức khoẻ | Bị bỏ rơi | Phải lao động nặng | Không được bảo vệ
+? Bổn phận của trẻ em là: | Kính trọng ông bà, cha mẹ, chăm học | Đòi hỏi mọi thứ | Bỏ học | Nói dối
++ Trẻ em có quyền được bảo vệ khỏi mọi hình thức bạo lực.` }
   ],
   essays: {
     1: [['Kể những việc em đã làm để thể hiện lòng biết ơn người lao động.', ['biết ơn', 'giữ gìn', 'lễ phép'], 'Chào hỏi lễ phép, cảm ơn; ăn hết suất, không lãng phí; giữ gìn sách vở, đồ dùng; không xả rác; giúp đỡ người lao động khi có thể.'],

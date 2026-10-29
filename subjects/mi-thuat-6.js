@@ -8,7 +8,10 @@ PLT.KB.build({
 ? Hang Đồng Nội có hình khắc mặt người thuộc tỉnh: | Hoà Bình | Quảng Bình | Hà Giang | Ninh Bình
 ? Chất liệu vẽ của người tiền sử thường là: | Than, đất son | Sơn dầu | Màu nước công nghiệp | Bút bi
 + Mĩ thuật tiền sử cho thấy đời sống của người nguyên thuỷ.
-- Người tiền sử vẽ bằng sơn acrylic.` },
+- Người tiền sử vẽ bằng sơn acrylic.
+? Hình vẽ trên vách hang động tiền sử thường là: | Con vật, cảnh săn bắn | Ô tô | Nhà cao tầng | Máy tính
+? Di chỉ có hình khắc mặt người trên vách đá ở Việt Nam là: | Hang Đồng Nội | Văn Miếu | Chùa Một Cột | Hoàng thành
++ Người tiền sử dùng màu từ đất, than, khoáng chất.` },
     { hk: 1, ten: 'Nghệ thuật trang trí và nhịp điệu', bai: ['Hoạ tiết trang trí', 'Thực hành trang trí đồ vật', 'Thảo luận và vận dụng'],
       lt: ['Nguyên lí tạo hình: <b>cân bằng, tương phản, lặp lại, nhịp điệu, nhấn mạnh, tỉ lệ, chuyển động</b>.', 'Hoạ tiết dân tộc (trống đồng, thổ cẩm) thường lặp lại có nhịp điệu.'],
       q: `? Sắp xếp hoạ tiết lặp lại đều đặn tạo ra: | Nhịp điệu | Tương phản | Điểm nhấn | Không gian
@@ -18,19 +21,28 @@ PLT.KB.build({
 = Cân bằng = Bố cục hài hoà hai bên
 = Tương phản = Đối lập đậm nhạt, màu sắc
 = Lặp lại = Nhắc lại hình, màu nhiều lần
-= Nhấn mạnh = Tạo trọng tâm nổi bật` },
+= Nhấn mạnh = Tạo trọng tâm nổi bật
+? Nhịp điệu trong trang trí được tạo bởi: | Sự lặp lại, xen kẽ của hoạ tiết | Một hình duy nhất | Màu đen | Khoảng trống
+? Trang trí đường diềm là: | Hoạ tiết sắp xếp lặp lại thành dải | Vẽ chân dung | Tạc tượng | Chụp ảnh
++ Hoạ tiết dân tộc có thể ứng dụng trang trí trang phục.` },
     { hk: 2, ten: 'Tranh và tượng', bai: ['Tranh in', 'Tượng và phù điêu', 'Thực hành và thảo luận'],
       lt: ['Tranh in: khắc khuôn (gỗ, xốp), lăn màu, in lên giấy — có thể in nhiều bản.', 'Tượng tròn (xem nhiều hướng), phù điêu (nổi trên mặt phẳng).'],
       q: `? Ưu điểm của tranh in là: | In được nhiều bản giống nhau | Chỉ có một bản duy nhất | Không cần khuôn | Không dùng màu
 ? Phù điêu là: | Hình khối nổi trên mặt phẳng | Tượng xem được mọi hướng | Tranh sơn dầu | Ảnh chụp
 + Tranh Đông Hồ là tranh in khắc gỗ.
-- Tượng tròn chỉ xem được từ một phía.` },
+- Tượng tròn chỉ xem được từ một phía.
+? Tượng tròn là tượng: | Có thể ngắm từ nhiều phía | Chỉ xem mặt trước | Vẽ trên giấy | Phẳng
+? Chất liệu thường dùng tạc tượng là: | Gỗ, đá, đồng, thạch cao | Giấy ăn | Nước | Vải mỏng
++ Tranh có thể vẽ bằng màu nước, màu sáp, màu bột.` },
     { hk: 2, ten: 'Mĩ thuật ứng dụng', bai: ['Thiết kế thiệp, bìa sách', 'Thiết kế thời trang từ vật liệu tái chế', 'Trưng bày sản phẩm', '*Ôn tập cuối năm'],
       lt: ['Thiết kế ứng dụng: sản phẩm vừa đẹp vừa có công năng sử dụng.', 'Quy trình: ý tưởng → phác thảo → chọn vật liệu → thực hiện → hoàn thiện, trưng bày.'],
       q: `? Sản phẩm mĩ thuật ứng dụng cần: | Vừa đẹp vừa có công năng | Chỉ cần đẹp | Chỉ cần rẻ | Không cần dùng được
 + Dùng vật liệu tái chế để thiết kế thời trang góp phần bảo vệ môi trường.
 - Mĩ thuật ứng dụng không liên quan đến đời sống.
-> Ý tưởng > Phác thảo > Chọn vật liệu > Thực hiện > Hoàn thiện và trưng bày` }
+> Ý tưởng > Phác thảo > Chọn vật liệu > Thực hiện > Hoàn thiện và trưng bày
+? Thiết kế túi giấy từ vật liệu tái chế thể hiện: | Ý thức bảo vệ môi trường | Lãng phí | Ô nhiễm | Không có ích
+? Logo là: | Biểu tượng nhận diện của tổ chức, thương hiệu | Bức tranh phong cảnh | Một bài hát | Tượng đài
++ Mĩ thuật ứng dụng gắn với đời sống hằng ngày.` }
   ],
   essays: {
     1: [['Giới thiệu về mĩ thuật thời tiền sử (nội dung, chất liệu, ví dụ).', ['hang', 'con vật', 'than'], 'Hình vẽ, hình khắc trên vách hang; đề tài con vật, săn bắt; chất liệu than, đất son, nhựa cây; ví dụ hang Lascaux (Pháp), hang Đồng Nội (Hoà Bình).'],

@@ -18,7 +18,13 @@ PLT.KB.build({
 = A. G. Bell = Điện thoại
 = Anh em Wright = Máy bay
 = Tủ lạnh = Bảo quản thực phẩm
-> Hình thành ý tưởng > Vẽ phác thảo > Chọn vật liệu, dụng cụ > Làm sản phẩm mẫu > Đánh giá, hoàn thiện` },
+> Hình thành ý tưởng > Vẽ phác thảo > Chọn vật liệu, dụng cụ > Làm sản phẩm mẫu > Đánh giá, hoàn thiện
+? Sáng chế là: | Tạo ra sản phẩm, giải pháp mới | Sao chép sản phẩm | Phá hỏng đồ vật | Mua đồ cũ
+? Nhà phát minh ra bóng đèn sợi đốt được biết đến nhiều là: | Ê-đi-xơn | Niu-tơn | Ác-si-mét | Đác-uyn
+? Điện thoại di động giúp con người: | Liên lạc, học tập, tìm kiếm thông tin | Chỉ chơi game | Nấu ăn | Làm ruộng
+? Sử dụng sản phẩm công nghệ đúng cách là: | Đọc hướng dẫn, dùng đúng mục đích, an toàn | Tháo phá thiết bị | Dùng quá giờ | Để gần nước
++ Công nghệ giúp cuộc sống thuận tiện hơn.
+- Dùng điện thoại suốt đêm không ảnh hưởng sức khoẻ.` },
     { hk: 2, ten: 'Thủ công kĩ thuật', bai: ['Lắp ráp mô hình xe điện chạy bằng pin', 'Mô hình máy phát điện gió', 'Mô hình điện mặt trời'],
       lt: ['Mô hình xe điện: khung xe, bánh xe, động cơ điện, pin, công tắc, dây nối.', 'Máy phát điện gió: gió làm quay cánh quạt → quay máy phát → sinh ra điện.', 'Pin mặt trời: biến năng lượng ánh sáng mặt trời thành điện năng — năng lượng sạch.'],
       q: `? Bộ phận làm bánh xe điện đồ chơi quay là: | Động cơ điện | Vỏ xe | Bánh xe | Khung xe
@@ -26,7 +32,12 @@ PLT.KB.build({
 ? Máy phát điện gió hoạt động nhờ: | Gió làm quay cánh quạt | Đốt than | Nước sôi | Pin tiểu
 + Điện gió, điện mặt trời là năng lượng sạch.
 - Pin mặt trời hoạt động tốt nhất trong bóng tối.
-> Gió thổi > Cánh quạt quay > Máy phát điện quay > Sinh ra điện` }
+> Gió thổi > Cánh quạt quay > Máy phát điện quay > Sinh ra điện
+? Mô hình máy phát điện gió dùng năng lượng: | Gió | Than | Xăng | Dầu
+? Mô hình điện mặt trời biến đổi: | Quang năng thành điện năng | Điện năng thành nhiệt | Gió thành nước | Âm thanh thành điện
+? Lắp mô hình xe điện chạy pin cần: | Pin, động cơ điện, bánh xe, dây nối | Xăng | Than | Nước
++ Năng lượng gió và mặt trời là năng lượng sạch.
+- Pin đã dùng có thể vứt chung với rác thải sinh hoạt.` }
   ],
   essays: {
     1: [['Nêu vai trò của công nghệ trong đời sống và một tác hại nếu dùng không đúng cách.', ['công nghệ', 'tác hại'], 'Công nghệ giúp sản xuất, liên lạc, đi lại, học tập, chữa bệnh. Tác hại: ô nhiễm môi trường, tai nạn, nghiện điện thoại, máy tính nếu dùng sai cách.'],

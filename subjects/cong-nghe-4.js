@@ -15,14 +15,22 @@ PLT.KB.build({
 - Chậu trồng cây không cần lỗ thoát nước.
 # Hoa: Hoa hồng, Hoa cúc, Hoa lan, Hoa đào
 # Cây cảnh: Cây kim tiền, Cây lưỡi hổ, Cây vạn tuế, Cây trầu bà
-> Chuẩn bị chậu và giá thể > Cho giá thể vào chậu > Gieo hạt và phủ lớp đất mỏng > Tưới nước nhẹ nhàng` },
+> Chuẩn bị chậu và giá thể > Cho giá thể vào chậu > Gieo hạt và phủ lớp đất mỏng > Tưới nước nhẹ nhàng
+? Cây cảnh trong nhà cần: | Ánh sáng, nước, đất phù hợp | Không cần nước | Để trong tủ kín | Tưới nước sôi
+? Hoa thường được trồng trong chậu là: | Hoa hồng, cúc, mười giờ | Lúa | Ngô | Mía
+? Khi tưới cây, nên tưới: | Vào sáng sớm hoặc chiều mát | Giữa trưa nắng gắt | Không bao giờ | Bằng nước muối
++ Cây xanh giúp không khí trong lành hơn.
+- Cây cảnh không cần chăm sóc vẫn phát triển tốt.` },
     { hk: 2, ten: 'Lắp ghép mô hình kĩ thuật', bai: ['Giới thiệu bộ lắp ghép mô hình kĩ thuật', 'Lắp ghép mô hình bập bênh', 'Lắp ghép mô hình rô-bốt'],
       lt: ['Bộ lắp ghép gồm: các tấm, thanh thẳng, thanh chữ U, bánh xe, trục, ốc vít; dụng cụ: cờ lê, tua vít.', 'Quy trình: chọn chi tiết → lắp từng bộ phận → lắp ráp hoàn chỉnh → kiểm tra sản phẩm → tháo và cất gọn.'],
       q: `? Dụng cụ dùng để vặn ốc trong bộ lắp ghép là: | Cờ lê và tua vít | Kéo | Bút chì | Thước dây
 ? Sau khi lắp ghép xong và kiểm tra, em cần: | Tháo rời, xếp chi tiết vào hộp | Vứt chi tiết khắp bàn | Làm mất ốc vít | Bẻ cong thanh
 + Cần chọn đúng, đủ chi tiết trước khi lắp.
 - Lắp ghép không cần theo trình tự.
-> Chọn đủ các chi tiết > Lắp từng bộ phận > Lắp ráp hoàn chỉnh > Kiểm tra sản phẩm > Tháo rời và cất gọn` },
+> Chọn đủ các chi tiết > Lắp từng bộ phận > Lắp ráp hoàn chỉnh > Kiểm tra sản phẩm > Tháo rời và cất gọn
+? Bộ lắp ghép mô hình kĩ thuật gồm: | Các tấm, thanh, ốc vít, cờ lê, tua vít | Bút, vở | Bát, đũa | Kim, chỉ
+? Dụng cụ dùng để vặn ốc là: | Cờ lê, tua vít | Kéo | Thước | Hồ dán
++ Lắp ghép đúng quy trình giúp mô hình chắc chắn.` },
     { hk: 2, ten: 'Đồ chơi dân gian', bai: ['Đồ chơi dân gian', 'Làm chuồn chuồn thăng bằng', 'Làm đèn lồng'],
       lt: ['Đồ chơi dân gian: diều, chong chóng, đèn ông sao, đèn lồng, tò he, chuồn chuồn tre…; làm từ vật liệu tự nhiên (tre, giấy, bột).', 'Chuồn chuồn thăng bằng: trọng tâm ở mũi nên đứng vững trên đầu ngón tay.', 'An toàn khi làm đồ chơi: dùng dao, kéo cẩn thận; không dùng nến ở nơi dễ cháy.'],
       q: `? Đồ chơi nào là đồ chơi dân gian? | Tò he | Rô-bốt điện tử | Máy chơi game | Xe điều khiển từ xa
@@ -33,7 +41,11 @@ PLT.KB.build({
 = Tò he = Bột gạo nặn
 = Diều = Thả trên trời khi có gió
 = Đèn ông sao = Tết Trung thu
-= Chong chóng = Quay khi có gió` }
+= Chong chóng = Quay khi có gió
+? Đồ chơi dân gian làm từ tre là: | Chong chóng, diều | Búp bê nhựa | Ô tô điều khiển | Máy bay điện tử
+? Khi thả diều, em nên chọn nơi: | Bãi đất trống, xa đường dây điện | Gần đường dây điện | Giữa đường | Trên mái nhà
++ Đồ chơi dân gian giúp giữ gìn nét văn hoá truyền thống.
+- Thả diều gần đường dây điện là an toàn.` }
   ],
   essays: {
     1: [['Nêu các bước gieo hạt hoa trong chậu.', ['chậu', 'giá thể', 'gieo', 'tưới'], 'Chuẩn bị chậu có lỗ thoát nước, giá thể, hạt giống → cho giá thể vào chậu → gieo hạt đều, phủ lớp đất mỏng → tưới nhẹ, đặt nơi thoáng, đủ ánh sáng.'],

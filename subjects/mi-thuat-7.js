@@ -11,14 +11,20 @@ PLT.KB.build({
 - Kim tự tháp là công trình của người La Mã.
 = Ai Cập = Kim tự tháp, tượng Nhân sư
 = Hy Lạp = Đền Pác-tê-nông
-= La Mã = Đấu trường Cô-li-dê` },
+= La Mã = Đấu trường Cô-li-dê
+? Tượng Nhân sư (Sphinx) thuộc mĩ thuật: | Ai Cập cổ đại | Hy Lạp | La Mã | Trung Hoa
+? Tượng "Thần Vệ nữ Milo" thuộc mĩ thuật: | Hy Lạp cổ đại | Ai Cập | Ấn Độ | Việt Nam
++ Mĩ thuật Hy Lạp cổ đại đề cao vẻ đẹp cân đối của cơ thể người.` },
     { hk: 1, ten: 'Nghệ thuật trung đại Việt Nam', bai: ['Quan sát và nhận thức', 'Luyện tập và sáng tạo', 'Phân tích và đánh giá', 'Vận dụng'],
       lt: ['Mĩ thuật thời Lý: <b>hình rồng</b> mềm mại uốn lượn, tượng A-di-đà chùa Phật Tích, chùa Một Cột.', 'Mĩ thuật thời Trần: tháp Phổ Minh, gốm hoa nâu; thời Lê sơ: chạm khắc đình làng, rồng mạnh mẽ.', 'Hoạ tiết dân tộc: hoa sen, hoa cúc, mây, sóng nước — ứng dụng trong trang trí.'],
       q: `? Hình rồng thời Lý có đặc điểm: | Mềm mại, uốn lượn như con rắn | Hung dữ, nhiều vảy cứng | Hình vuông | Không có thân
 ? Chùa Một Cột được xây dựng dưới thời: | Lý | Trần | Lê sơ | Nguyễn
 ? Gốm hoa nâu là sản phẩm nổi bật thời: | Trần | Nguyễn | Lý | Hồ
 + Hoa sen là hoạ tiết phổ biến trong mĩ thuật truyền thống Việt Nam.
-- Chùa Một Cột được xây dựng thời Nguyễn.` },
+- Chùa Một Cột được xây dựng thời Nguyễn.
+? Chùa Bút Tháp nổi tiếng với tượng: | Phật Bà Quan Âm nghìn mắt nghìn tay | Nữ thần Tự do | Nhân sư | Thần Vệ nữ
+? Kiến trúc tiêu biểu thời Lý – Trần là: | Chùa, tháp (chùa Một Cột, tháp Phổ Minh) | Nhà chọc trời | Kim tự tháp | Lâu đài châu Âu
++ Gốm men thời Lý – Trần có chất lượng cao.` },
     { hk: 2, ten: 'Mĩ thuật ứng dụng: thiết kế đồ hoạ', bai: ['Quan sát và nhận thức', 'Luyện tập và sáng tạo', 'Phân tích và đánh giá', 'Vận dụng'],
       lt: ['Thiết kế logo, bìa sách, áp phích: hình ảnh ngắn gọn, dễ nhận biết, màu sắc hài hoà, chữ rõ ràng.', 'Nguyên lí tạo hình: <b>cân bằng, tương phản, nhịp điệu, nhấn mạnh, lặp lại, chuyển động</b>.'],
       q: `? Một logo tốt cần: | Đơn giản, dễ nhận biết, dễ nhớ | Thật nhiều chi tiết | Nhiều chữ nhỏ | Màu sắc lộn xộn
@@ -27,13 +33,19 @@ PLT.KB.build({
 - Bìa sách không cần thể hiện tên sách.
 = Cân bằng = Bố cục ổn định, hài hoà
 = Tương phản = Đối lập sáng – tối, to – nhỏ
-= Nhịp điệu = Sự lặp lại có biến đổi tạo cảm giác chuyển động` },
+= Nhịp điệu = Sự lặp lại có biến đổi tạo cảm giác chuyển động
+? Áp phích (poster) cần: | Hình ảnh nổi bật, chữ ngắn gọn, thông điệp rõ | Nhiều chữ nhỏ | Không có hình | Màu nhạt mờ
+? Kiểu chữ trong thiết kế đồ hoạ cần: | Dễ đọc, phù hợp nội dung | Càng rối càng tốt | Không quan trọng | Viết tay lộn xộn
++ Màu sắc tương phản giúp thông điệp nổi bật.` },
     { hk: 2, ten: 'Mĩ thuật tạo hình: tranh và tượng', bai: ['Quan sát và nhận thức', 'Luyện tập và sáng tạo', 'Phân tích và đánh giá', 'Vận dụng', '*Trưng bày sản phẩm cuối năm'],
       lt: ['<b>Luật xa gần</b>: vật ở gần to, rõ; vật ở xa nhỏ, mờ; đường tầm mắt.', 'Tượng tròn và phù điêu; chất liệu: đất nặn, giấy, vật liệu tái chế.'],
       q: `? Theo luật xa gần, vật ở xa thường: | Nhỏ và mờ hơn | To và rõ hơn | Có màu đậm nhất | Không thay đổi
 ? Hình khối được chạm nổi trên một mặt phẳng gọi là: | Phù điêu | Tượng tròn | Tranh in | Tranh xé dán
 + Đường tầm mắt là đường ngang ngang tầm mắt người nhìn.
-- Theo luật xa gần, vật ở xa luôn to hơn vật ở gần.` }
+- Theo luật xa gần, vật ở xa luôn to hơn vật ở gần.
+? Tranh tĩnh vật thường vẽ: | Đồ vật, hoa quả | Phong cảnh rộng | Chân dung | Hoạt động thể thao
+? Tạo hình tượng bằng đất nặn cần chú ý: | Tỉ lệ, hình khối, dáng | Chỉ màu sắc | Tên tượng | Kích thước giấy
++ Ánh sáng tạo khối sáng tối trong tranh.` }
   ],
   essays: {
     1: [['Giới thiệu một công trình mĩ thuật cổ đại thế giới em ấn tượng.', ['công trình', 'đặc điểm', 'giá trị'], 'Nêu tên, quốc gia, thời kì, đặc điểm kiến trúc/điêu khắc, giá trị lịch sử – nghệ thuật, cảm nhận của em.'],

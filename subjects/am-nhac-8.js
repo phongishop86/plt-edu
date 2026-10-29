@@ -9,7 +9,10 @@ PLT.KB.build({
 ? Hợp âm Đô trưởng gồm các nốt: | Đô – Mi – Son | La – Đô – Mi | Rê – Pha – La | Son – Si – Rê
 ? Giọng thứ thường mang tính chất: | Buồn, trữ tình | Vui tươi, rộn ràng | Hùng tráng | Không có cảm xúc
 + Giọng Đô trưởng và La thứ đều không có dấu hoá ở hoá biểu.
-- Âm chủ của giọng La thứ là nốt Đô.` },
+- Âm chủ của giọng La thứ là nốt Đô.
+? Kí hiệu tăng giá trị trường độ thêm một nửa của nốt nhạc là: | Dấu chấm dôi | Dấu lặng | Dấu luyến | Dấu nối
+? Dấu lặng đen có trường độ bằng: | Nốt đen | Nốt trắng | Nốt tròn | Nốt móc đơn
++ Hát đúng cao độ, trường độ là yêu cầu cơ bản khi hát.` },
     { hk: 1, ten: 'Âm nhạc truyền thống Việt Nam', bai: ['Hát dân ca', 'Thường thức âm nhạc: Nghệ thuật Chèo, Ca Huế', 'Nghe nhạc', '*Ôn tập học kì I'],
       lt: ['<b>Chèo</b>: sân khấu dân gian đồng bằng Bắc Bộ, các làn điệu: sa mạc, đường trường…; nhạc cụ: trống, đàn nguyệt, nhị, sáo.', '<b>Ca Huế</b>: lối hát thính phòng xứ Huế, thường biểu diễn trên thuyền rồng sông Hương.', '<b>Nhã nhạc cung đình Huế</b>: âm nhạc cung đình triều Nguyễn, được UNESCO ghi danh (2003).'],
       q: `? Chèo là loại hình sân khấu dân gian của vùng: | Đồng bằng Bắc Bộ | Nam Bộ | Tây Nguyên | Tây Bắc
@@ -20,7 +23,10 @@ PLT.KB.build({
 = Chèo = Đồng bằng Bắc Bộ
 = Ca Huế = Sông Hương, xứ Huế
 = Cồng chiêng = Tây Nguyên
-= Đờn ca tài tử = Nam Bộ` },
+= Đờn ca tài tử = Nam Bộ
+? Nhạc cụ dân tộc chỉ có một dây là: | Đàn bầu | Đàn tranh | Đàn nguyệt | Đàn tì bà
+? Đàn nguyệt còn được gọi là: | Đàn kìm | Đàn bầu | Đàn đáy | Đàn tranh
++ Đàn tranh thường có 16 dây hoặc nhiều hơn.` },
     { hk: 2, ten: 'Âm nhạc thế giới', bai: ['Hát', 'Thường thức âm nhạc: Một số thể loại âm nhạc', 'Nghe nhạc', 'Nhạc cụ'],
       lt: ['Thể loại: <b>giao hưởng</b> (dàn nhạc lớn nhiều bè), <b>opera</b> (nhạc kịch), <b>ba lê</b> (vũ kịch), <b>nhạc pop, rock, jazz</b> (âm nhạc đại chúng hiện đại).', 'Dàn nhạc giao hưởng gồm bộ dây, bộ gỗ, bộ đồng, bộ gõ; người chỉ huy dàn nhạc.'],
       q: `? Tác phẩm âm nhạc cho dàn nhạc lớn, nhiều chương là: | Giao hưởng | Dân ca | Đồng dao | Hát ru
@@ -31,13 +37,19 @@ PLT.KB.build({
 = Giao hưởng = Dàn nhạc lớn, nhiều chương
 = Opera = Nhạc kịch có hát
 = Ba lê = Vũ kịch
-= Jazz = Âm nhạc ngẫu hứng, nguồn gốc từ Mỹ` },
+= Jazz = Âm nhạc ngẫu hứng, nguồn gốc từ Mỹ
+? "Sonate Ánh trăng" là tác phẩm của: | Beethoven | Mozart | Chopin | Bach
+? Dàn nhạc giao hưởng được điều khiển bởi: | Nhạc trưởng | Ca sĩ | Khán giả | Nghệ nhân
++ Mozart là nhà soạn nhạc người Áo.` },
     { hk: 2, ten: 'Quê hương – đất nước', bai: ['Hát', 'Nghe nhạc', 'Đọc nhạc', 'Vận dụng – sáng tạo', '*Ôn tập cuối năm'],
       lt: ['Nhạc sĩ Việt Nam với các ca khúc về quê hương: Văn Cao, Phạm Tuyên, Hoàng Việt, Trần Hoàn, Phạm Minh Tuấn…', 'Sáng tạo: biểu diễn hát kết hợp nhạc cụ, đệm hợp âm đơn giản, dàn dựng tiết mục.'],
       q: `? Biểu diễn hát kết hợp đệm nhạc cụ theo hợp âm giúp: | Bài hát phong phú, hài hoà hơn | Bài hát lạc nhịp | Át tiếng hát | Không cần thiết
 ? Khi dàn dựng tiết mục văn nghệ của lớp, cần: | Phân công, tập luyện, phối hợp nhịp nhàng | Mỗi người tự làm | Không cần tập | Chỉ một người biểu diễn
 + Âm nhạc về quê hương góp phần bồi đắp tình yêu đất nước.
-- Hát đệm hợp âm không cần đúng giọng.` }
+- Hát đệm hợp âm không cần đúng giọng.
+? Ca khúc về quê hương thường có tính chất: | Tha thiết, trữ tình | Ồn ào, hỗn loạn | Buồn chán | Không có giai điệu
+? Hát bè là hình thức: | Nhiều giọng hát các bè khác nhau cùng lúc | Hát một mình | Đọc thơ | Đọc rap
++ Lắng nghe khi hát tập thể giúp bài hát hoà quyện.` }
   ],
   essays: {
     1: [['So sánh giọng Đô trưởng và giọng La thứ.', ['âm chủ', 'dấu hoá', 'tính chất'], 'Đô trưởng: âm chủ Đô, không dấu hoá, tính chất sáng, vui. La thứ: âm chủ La, cũng không dấu hoá (giọng song song), tính chất buồn, trữ tình.'],

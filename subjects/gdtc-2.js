@@ -8,31 +8,51 @@ PLT.KB.build({
 ? Khi giậm chân tại chỗ, hai tay: | Đánh tự nhiên phối hợp với chân | Giơ cao lên đầu | Chống hông | Khoanh trước ngực
 + Khi biến đổi đội hình cần giữ trật tự, khoảng cách đều.
 - Khi tập đội hình đội ngũ có thể chạy lung tung.
-> Tập hợp hàng dọc > Dóng hàng > Điểm số > Biến đổi thành vòng tròn` },
+> Tập hợp hàng dọc > Dóng hàng > Điểm số > Biến đổi thành vòng tròn
+? Khi nghe khẩu lệnh "Nghiêm!", em cần: | Đứng thẳng, hai tay khép sát thân | Ngồi xuống | Chạy đi | Nói chuyện
+? Khi tập hợp hàng dọc, em đứng: | Sau lưng bạn phía trước, thẳng hàng | Cạnh bạn bất kì | Ngoài hàng | Quay mặt ra sau
++ Lớp trưởng thường điều khiển lớp tập hợp.
+- Khi tập hợp hàng được xô đẩy bạn.` },
     { hk: 1, ten: 'Bài tập thể dục', bai: ['Động tác vươn thở, động tác tay', 'Động tác chân, động tác lườn, động tác bụng', 'Động tác phối hợp, động tác nhảy, động tác điều hoà'],
       lt: ['Bài thể dục lớp 2: vươn thở, tay, chân, lườn, bụng, phối hợp, nhảy, điều hoà.', 'Tập đều đặn, đúng nhịp, kết hợp hít thở.'],
       q: `? Động tác cuối cùng của bài thể dục là: | Điều hoà | Nhảy | Vươn thở | Lườn
 ? Động tác đầu tiên của bài thể dục là: | Vươn thở | Điều hoà | Nhảy | Bụng
 + Động tác điều hoà giúp cơ thể trở lại trạng thái bình thường.
-> Vươn thở > Tay > Chân > Lườn > Bụng > Phối hợp > Nhảy > Điều hoà` },
+> Vươn thở > Tay > Chân > Lườn > Bụng > Phối hợp > Nhảy > Điều hoà
+? Trước khi tập thể dục cần: | Khởi động các khớp | Ăn thật no | Uống nước đá | Ngủ
+? Tập thể dục buổi sáng giúp: | Cơ thể khoẻ mạnh, tỉnh táo | Mệt mỏi | Buồn ngủ | Ốm yếu
++ Tập thể dục đều đặn giúp cơ thể phát triển tốt.
+- Tập thể dục ngay sau khi ăn no là tốt nhất.` },
     { hk: 1, ten: 'Tư thế và kĩ năng vận động cơ bản', bai: ['Bài tập di chuyển theo vạch kẻ thẳng', 'Bài tập phối hợp di chuyển vòng trái, vòng phải', 'Bài tập phối hợp di chuyển nhanh dần theo vạch kẻ thẳng', 'Bài tập phối hợp di chuyển nhanh dần theo vạch kẻ sang trái và sang phải', 'Các động tác quỳ, ngồi cơ bản', 'Bài tập phối hợp các tư thế quỳ, ngồi cơ bản'],
       lt: ['Di chuyển theo vạch kẻ: mắt nhìn thẳng, giữ thăng bằng.', 'Di chuyển vòng trái, vòng phải: nghiêng người về phía vòng.', 'Quỳ, ngồi: quỳ hai gối, ngồi xổm, ngồi bệt… đúng kĩ thuật, tránh chấn thương.'],
       q: `? Khi di chuyển theo vạch kẻ thẳng, mắt em: | Nhìn thẳng về phía trước | Nhìn xuống chân | Nhắm lại | Nhìn ra sau
 ? Khi di chuyển vòng sang trái, người hơi nghiêng: | Sang trái | Sang phải | Ra sau | Không nghiêng
 + Khởi động kĩ giúp tránh chấn thương.
-- Di chuyển nhanh dần nghĩa là chạy hết sức ngay từ đầu.` },
+- Di chuyển nhanh dần nghĩa là chạy hết sức ngay từ đầu.
+? Tư thế ngồi học đúng là: | Lưng thẳng, mắt cách vở khoảng 25–30 cm | Cúi sát mặt bàn | Nằm bò ra bàn | Ngồi vẹo một bên
+? Khi bật nhảy, tiếp đất cần: | Nhẹ nhàng bằng hai nửa trước bàn chân, chùng gối | Thẳng chân cứng | Bằng gót chân thật mạnh | Bằng tay
++ Đi đúng tư thế giúp cột sống phát triển bình thường.
+- Mang cặp quá nặng một bên vai là tư thế tốt.` },
     { hk: 2, ten: 'Môn Bóng rổ', bai: ['Động tác di chuyển không bóng', 'Động tác dẫn bóng', 'Động tác tung – bắt bóng bằng hai tay', 'Động tác ném rổ hai tay trước ngực'],
       lt: ['Tung – bắt bóng: hai tay đưa ra đón bóng, các ngón tay xoè rộng, co tay hoãn xung.', 'Ném rổ hai tay trước ngực: hai tay cầm bóng trước ngực, duỗi tay đẩy bóng lên về phía rổ.'],
       q: `? Khi bắt bóng, các ngón tay: | Xoè rộng, đón bóng | Nắm chặt thành nắm đấm | Khép chặt | Để sau lưng
 ? Ném rổ hai tay trước ngực, bóng được cầm ở: | Trước ngực | Trên đầu | Sau lưng | Dưới chân
 + Khi tung bóng cần quan sát bạn bắt bóng.
-- Bóng rổ được dùng đầu để ghi điểm.` },
+- Bóng rổ được dùng đầu để ghi điểm.
+? Quả bóng rổ được ném vào: | Rổ | Lưới bóng đá | Lưới cầu lông | Hố cát
+? Khi dẫn bóng rổ, em dùng: | Một tay đập bóng xuống sàn | Chân đá bóng | Ôm bóng chạy | Hai tay cùng đập
++ Tập bóng rổ giúp cơ thể khéo léo, nhanh nhẹn.
+- Được cầm bóng rổ chạy nhiều bước.` },
     { hk: 2, ten: 'Môn Bơi', bai: ['Ôm gối nổi người trong nước', 'Nổi người duỗi thẳng chân tay trong nước', 'Đạp thành bể (hồ) bơi lướt nước', 'Đạp đáy bể bơi lướt nước'],
       lt: ['Ôm gối nổi: hít sâu, ôm gối, cúi đầu, người nổi như quả bóng.', 'Lướt nước: đạp chân vào thành bể, duỗi thẳng tay chân, người lướt trên mặt nước.', 'Luôn học bơi khi có người lớn, thầy cô hướng dẫn.'],
       q: `? Để ôm gối nổi trong nước, trước tiên em cần: | Hít sâu rồi nín thở | Thở ra hết | Nói chuyện | Mở mắt nhìn trời
 ? Học bơi chỉ an toàn khi: | Có thầy cô, người lớn hướng dẫn | Đi một mình | Tắm ở sông sâu | Trời tối
 + Duỗi thẳng tay chân giúp người lướt nước xa hơn.
-- Có thể nhảy xuống chỗ nước sâu khi chưa biết bơi.` }
+- Có thể nhảy xuống chỗ nước sâu khi chưa biết bơi.
+? Khi đi bơi, em cần: | Có người lớn đi cùng, khởi động kĩ | Bơi một mình nơi nước sâu | Bơi khi vừa ăn no | Nhảy xuống ao lạ
+? Kĩ năng đầu tiên khi học bơi là: | Làm quen với nước, nín thở | Bơi xa ngay | Lặn sâu | Nhảy cầu
++ Mặc áo phao giúp an toàn khi xuống nước.
+- Thấy bạn đuối nước nên nhảy xuống cứu ngay dù em không biết bơi.` }
   ],
   essays: {
     1: [['Kể tên các động tác của bài thể dục lớp 2 theo thứ tự.', ['vươn thở', 'tay', 'chân', 'điều hoà'], 'Vươn thở, tay, chân, lườn, bụng, phối hợp, nhảy, điều hoà.'],

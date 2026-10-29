@@ -6,33 +6,50 @@ PLT.KB.build({
       lt: ['Học sinh lớp 12: phát huy vai trò gương mẫu, truyền cảm hứng cho đàn em, lưu giữ kỉ niệm tuổi học trò.'],
       q: `? Hành động thể hiện lòng tri ân thầy cô là: | Học tập tốt, gửi lời cảm ơn chân thành | Nói xấu thầy cô | Bỏ tiết học | Phá hoại tài sản trường
 + Học sinh lớp 12 có thể là tấm gương cho học sinh lớp dưới.
-- Tri ân thầy cô chỉ thể hiện bằng quà đắt tiền.` },
+- Tri ân thầy cô chỉ thể hiện bằng quà đắt tiền.
+? Hoạt động "Lễ trưởng thành" của học sinh lớp 12 có ý nghĩa: | Đánh dấu sự trưởng thành, nhắc nhở trách nhiệm | Chỉ để chụp ảnh | Không có ý nghĩa | Nghỉ học
++ Học sinh lớp 12 có thể hỗ trợ các em lớp dưới trong học tập.` },
     { hk: 1, ten: 'Trưởng thành và tự lập', bai: ['Thể hiện sự trưởng thành của bản thân', 'Kĩ năng sống tự lập'],
       lt: ['Biểu hiện trưởng thành: tự chịu trách nhiệm, tự quản lí thời gian, tài chính, ra quyết định có cân nhắc.', 'Kĩ năng tự lập: nấu ăn cơ bản, giặt giũ, quản lí chi tiêu, an toàn khi sống xa nhà.'],
       q: `? Biểu hiện của người trưởng thành là: | Tự chịu trách nhiệm về quyết định của mình | Đổ lỗi cho người khác | Phụ thuộc hoàn toàn vào bố mẹ | Hành động bốc đồng
 + Kĩ năng tự lập rất cần khi sinh viên sống xa nhà.
-- Trưởng thành chỉ phụ thuộc vào tuổi tác.` },
+- Trưởng thành chỉ phụ thuộc vào tuổi tác.
+? Kĩ năng ra quyết định gồm: | Xác định vấn đề, cân nhắc phương án, chọn và chịu trách nhiệm | Làm theo cảm xúc | Để người khác quyết | Không quyết định
+? Biểu hiện của sự tự lập là: | Tự lo liệu sinh hoạt, học tập | Phụ thuộc hoàn toàn | Đòi hỏi | Lười biếng
++ Quản lí stress tốt giúp đạt kết quả cao trong kì thi.` },
     { hk: 1, ten: 'Trách nhiệm với gia đình và cộng đồng', bai: ['Chăm sóc gia đình', 'Tham gia hoạt động tình nguyện, phát triển cộng đồng'],
       lt: ['Hiến máu tình nguyện: người từ đủ 18 tuổi, đủ sức khoẻ, cân nặng theo quy định.', 'Hoạt động tình nguyện: mùa hè xanh, tiếp sức mùa thi, hỗ trợ người khó khăn.'],
       q: `? Độ tuổi tối thiểu để hiến máu tình nguyện ở Việt Nam là đủ: | 18 tuổi | 16 tuổi | 15 tuổi | 21 tuổi
 + Tham gia hoạt động tình nguyện giúp rèn kĩ năng và lòng nhân ái.
-- Học sinh không thể đóng góp gì cho cộng đồng.` },
+- Học sinh không thể đóng góp gì cho cộng đồng.
+? Chăm sóc người thân khi ốm, em có thể: | Hỏi han, hỗ trợ việc nhà, nhắc uống thuốc theo chỉ định | Thờ ơ | Bỏ đi chơi | Tự ý cho uống thuốc
+? Hoạt động "Tiếp sức mùa thi" là: | Tình nguyện hỗ trợ thí sinh trong kì thi | Thi hộ | Bán tài liệu | Đưa đáp án
++ Đóng góp cho cộng đồng giúp hình thành lối sống có trách nhiệm.` },
     { hk: 2, ten: 'Bảo vệ môi trường và phát triển bền vững', bai: ['Hành động vì môi trường', 'Lối sống xanh'],
       lt: ['Lối sống xanh: tiêu dùng có trách nhiệm, tái sử dụng, tái chế, ưu tiên sản phẩm thân thiện môi trường.'],
       q: `? Biểu hiện của lối sống xanh là: | Mang bình nước cá nhân thay chai nhựa | Dùng đồ nhựa một lần | Lãng phí thức ăn | Xả rác bừa bãi
 + Nguyên tắc 3R gồm giảm thiểu, tái sử dụng, tái chế.
-- Lối sống xanh làm giảm chất lượng cuộc sống.` },
+- Lối sống xanh làm giảm chất lượng cuộc sống.
+? Kinh tế tuần hoàn là: | Tái sử dụng, tái chế, giảm chất thải | Khai thác – sản xuất – vứt bỏ | Xả thải | Lãng phí
+? Hành động giảm phát thải carbon là: | Tiết kiệm điện, dùng phương tiện công cộng | Để máy lạnh chạy suốt | Đốt rác | Chặt rừng
++ Tiêu dùng xanh góp phần phát triển bền vững.` },
     { hk: 2, ten: 'Lựa chọn nghề và trường đào tạo', bai: ['Thông tin tuyển sinh đại học, cao đẳng, trường nghề', 'Ra quyết định chọn nghề, chọn trường'],
       lt: ['Căn cứ chọn nghề: sở thích, năng lực, tính cách, nhu cầu xã hội, điều kiện gia đình.', 'Tìm hiểu tuyển sinh: phương thức xét tuyển (điểm thi tốt nghiệp, học bạ, đánh giá năng lực…), tổ hợp môn, ngành, chỉ tiêu.', 'Con đường sau THPT: đại học, cao đẳng, trung cấp nghề, đi làm, du học.'],
       q: `? Căn cứ quan trọng nhất khi chọn nghề là: | Sự phù hợp giữa sở thích, năng lực và nhu cầu xã hội | Theo bạn thân | Chỉ theo mức lương | Chọn ngẫu nhiên
 ? Nguồn thông tin tuyển sinh đáng tin cậy là: | Website chính thức của trường và Bộ GD&ĐT | Tin đồn trên mạng | Quảng cáo không rõ nguồn | Lời người lạ
 + Học nghề cũng là một con đường lập nghiệp tốt sau THPT.
-- Chỉ có học đại học mới thành công.` },
+- Chỉ có học đại học mới thành công.
+? Phương thức xét tuyển đại học phổ biến gồm: | Điểm thi tốt nghiệp THPT, học bạ, đánh giá năng lực | Chỉ bốc thăm | Chỉ phỏng vấn | Không cần điểm
+? Khi đăng kí nguyện vọng xét tuyển, nên: | Sắp xếp nguyện vọng theo thứ tự ưu tiên | Đăng kí ngẫu nhiên | Chỉ đăng kí một trường quá sức | Không đăng kí
++ Có phương án dự phòng giúp giảm rủi ro khi xét tuyển.` },
     { hk: 2, ten: 'Chuẩn bị hành trang vào đời', bai: ['Kĩ năng viết hồ sơ, phỏng vấn', 'Kế hoạch sau tốt nghiệp'], on: 'Ôn tập cuối năm',
       lt: ['Hồ sơ xin việc/học bổng: CV ngắn gọn, trung thực, nêu học vấn, kĩ năng, hoạt động.', 'Phỏng vấn: trang phục phù hợp, đúng giờ, tự tin, trả lời rõ ràng.'],
       q: `? Khi viết CV cần đảm bảo: | Ngắn gọn, trung thực, rõ ràng | Càng dài càng tốt | Phóng đại thành tích | Không cần thông tin liên hệ
 + Đúng giờ là yêu cầu quan trọng khi đi phỏng vấn.
-- Có thể ghi thành tích không có thật vào CV.` }
+- Có thể ghi thành tích không có thật vào CV.
+? Khi phỏng vấn, trang phục nên: | Gọn gàng, lịch sự | Lôi thôi | Quá hở hang | Đồ ngủ
+? Thư xin việc (cover letter) dùng để: | Giới thiệu bản thân và lí do ứng tuyển | Xin tiền | Khiếu nại | Mời dự tiệc
++ Đúng hẹn là thể hiện sự tôn trọng nhà tuyển dụng.` }
   ],
   essays: {
     1: [['Nêu những biểu hiện của sự trưởng thành ở học sinh lớp 12.', ['trách nhiệm', 'tự lập', 'quyết định'], 'Tự chịu trách nhiệm; tự quản lí thời gian, tài chính; kiểm soát cảm xúc; quan tâm gia đình, cộng đồng; ra quyết định có cân nhắc; định hướng tương lai rõ ràng.', 3],

@@ -10,32 +10,47 @@ PLT.KB.build({
 - Vàng và cam là cặp màu tương phản mạnh.
 = Đỏ = Lục
 = Vàng = Tím
-= Cam = Lam` },
+= Cam = Lam
+? Pha màu vàng với màu đỏ được màu: | Cam | Tím | Lục | Nâu
+? Pha màu lam với màu vàng được màu: | Lục (xanh lá) | Tím | Cam | Hồng
+? Pha màu đỏ với màu lam được màu: | Tím | Cam | Lục | Vàng
++ Màu đỏ, cam, vàng gợi cảm giác ấm áp.` },
     { hk: 1, ten: 'Không gian và tỉ lệ', bai: ['Quan sát', 'Thể hiện', 'Thảo luận', 'Vận dụng'],
       lt: ['Gần to – xa nhỏ; gần rõ – xa mờ; vật ở gần đặt thấp, vật ở xa đặt cao trên mặt tranh.', 'Tỉ lệ: kích thước các phần hợp lí với nhau (đầu người bằng khoảng 1/6 – 1/7 chiều cao cơ thể).'],
       q: `? Để tạo cảm giác xa, vật ở xa được vẽ: | Nhỏ hơn và mờ hơn | To hơn, đậm hơn | Ở dưới cùng tranh | Giống hệt vật ở gần
 ? Vẽ người đứng cạnh ngôi nhà, người cần vẽ: | Nhỏ hơn ngôi nhà, cân đối | To hơn ngôi nhà | Cao bằng mái nhà | Tuỳ ý không cần tỉ lệ
 + Tỉ lệ hợp lí giúp hình vẽ cân đối, giống thật.
-- Vật ở xa luôn vẽ to hơn vật ở gần.` },
+- Vật ở xa luôn vẽ to hơn vật ở gần.
+? Trong tranh, vật ở gần thường được vẽ: | To hơn, rõ hơn | Nhỏ hơn | Mờ hơn | Không vẽ
+? Tỉ lệ khuôn mặt người: mắt thường nằm ở khoảng: | Giữa chiều cao khuôn mặt | Sát cằm | Trên đỉnh đầu | Sát tai
++ Đường chân trời giúp tạo không gian xa gần trong tranh.` },
     { hk: 1, ten: 'Tranh dân gian Việt Nam', bai: ['Quan sát', 'Thể hiện', 'Thảo luận', 'Vận dụng'],
       lt: ['<b>Tranh Đông Hồ</b> (Bắc Ninh): in trên giấy dó quét điệp, màu từ tự nhiên (đỏ son, vàng hoa hoè, đen than lá tre). Ví dụ: Đám cưới chuột, Lợn ăn cây ráy, Gà mái.', '<b>Tranh Hàng Trống</b> (Hà Nội): in nét rồi tô màu bằng tay.'],
       q: `? Tranh Đông Hồ có xuất xứ từ tỉnh: | Bắc Ninh | Huế | Quảng Nam | Cần Thơ
 ? Tranh "Đám cưới chuột" là tranh dân gian: | Đông Hồ | Hàng Trống | Kim Hoàng | Sơn dầu châu Âu
 ? Giấy in tranh Đông Hồ là: | Giấy dó quét điệp | Giấy bìa nhựa | Giấy báo | Giấy bóng kính
 + Màu tranh Đông Hồ được làm từ nguyên liệu tự nhiên.
-- Tranh Đông Hồ được vẽ bằng máy tính.` },
+- Tranh Đông Hồ được vẽ bằng máy tính.
+? Tranh Đông Hồ thường vẽ đề tài: | Sinh hoạt, chúc tụng, lễ hội dân gian | Phong cảnh châu Âu | Khoa học viễn tưởng | Máy móc
++ Màu trong tranh Đông Hồ được làm từ nguyên liệu tự nhiên.` },
     { hk: 2, ten: 'Điêu khắc và tạo hình 3D', bai: ['Quan sát', 'Thể hiện', 'Thảo luận', 'Vận dụng'],
       lt: ['Tượng, phù điêu là sản phẩm điêu khắc. <b>Phù điêu</b>: hình nổi trên một mặt phẳng.', 'Tạo hình 3D từ đất nặn, giấy, vật liệu tái chế: nhân vật, con vật, mô hình.'],
       q: `? Hình nổi trên một mặt phẳng gọi là: | Phù điêu | Tranh in | Tranh xé dán | Bản vẽ
 ? Sản phẩm điêu khắc có thể quan sát: | Từ nhiều phía | Chỉ một mặt | Chỉ khi có đèn | Chỉ trên máy tính
 + Tượng là sản phẩm 3D.
-- Phù điêu là tranh vẽ phẳng.` },
+- Phù điêu là tranh vẽ phẳng.
+? Đất nặn dùng để tạo: | Sản phẩm hình khối 3D | Tranh in | Tranh vẽ chì | Ảnh chụp
+? Phù điêu là hình thức điêu khắc: | Chạm nổi trên mặt phẳng | Tượng tròn | Tranh vẽ | Ảnh
++ Có thể tạo hình 3D từ vật liệu tái chế.` },
     { hk: 2, ten: 'Thiết kế và ứng dụng', bai: ['Quan sát', 'Thể hiện', 'Thảo luận', 'Vận dụng', '*Trưng bày sản phẩm cuối năm'],
       lt: ['Thiết kế bìa sách, thiệp, logo, túi giấy, trang phục: kết hợp chữ, hình, màu hài hoà.', 'Bố cục: sắp xếp hình ảnh chính, phụ cân đối, có trọng tâm.'],
       q: `? Thiết kế bìa sách cần có: | Tên sách, hình ảnh phù hợp, màu hài hoà | Chỉ một màu đen | Không có chữ | Thật nhiều chữ nhỏ
 ? Hình ảnh chính trong tranh thường được đặt: | Ở vị trí nổi bật, to rõ | Ở góc rất nhỏ | Bị che khuất | Không có
 + Bố cục tốt giúp sản phẩm đẹp và rõ ý.
-- Thiết kế không cần chú ý màu sắc.` }
+- Thiết kế không cần chú ý màu sắc.
+? Thiệp chúc mừng gồm: | Hình ảnh trang trí và lời chúc | Chỉ số liệu | Bản đồ | Công thức toán
+? Khi làm đồ dùng học tập từ vật liệu tái chế, em góp phần: | Bảo vệ môi trường | Lãng phí | Gây ô nhiễm | Tốn kém
++ Sản phẩm mĩ thuật ứng dụng vừa đẹp vừa có ích.` }
   ],
   essays: {
     1: [['Giới thiệu tranh dân gian Đông Hồ (nơi làm, chất liệu, đề tài).', ['Bắc Ninh', 'giấy dó', 'đề tài'], 'Làng Đông Hồ (Bắc Ninh); in trên giấy dó quét điệp; màu tự nhiên; đề tài sinh hoạt, chúc tụng, châm biếm: Đám cưới chuột, Lợn ăn cây ráy, Gà mái…'],

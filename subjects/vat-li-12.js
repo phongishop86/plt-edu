@@ -12,6 +12,8 @@ PLT.KB.build({
 + Nội năng của vật là tổng động năng và thế năng của các phân tử cấu tạo nên vật.
 - Nhiệt độ tuyệt đối có thể nhận giá trị âm.
 = Q = mcΔt = Nhiệt lượng thu/toả khi thay đổi nhiệt độ
+= Q = λm = Nhiệt nóng chảy
+= Q = Lm = Nhiệt hoá hơi
 = T = t + 273 = Đổi °C sang K
 ? Nhiệt độ 0 °C tương ứng với bao nhiêu kelvin? | 273 K | 0 K | 100 K | 373 K
 ? Nhiệt dung riêng của nước khoảng: | 4200 J/(kg·K) | 420 J/(kg·K) | 880 J/(kg·K) | 130 J/(kg·K)

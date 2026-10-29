@@ -7,25 +7,35 @@ PLT.KB.build({
       q: `? Nội quy lớp học giúp: | Lớp có nề nếp, mọi người học tập tốt | Lớp mất trật tự | Bạn bè xa cách | Không có tác dụng
 ? Thành viên tích cực của lớp là bạn: | Hăng hái tham gia và giúp đỡ các bạn | Luôn đứng ngoài | Chỉ làm khi được thưởng | Hay bỏ dở việc
 + Mỗi học sinh cần thực hiện tốt nội quy lớp học.
-- Nội quy chỉ dành cho học sinh hư.` },
+- Nội quy chỉ dành cho học sinh hư.
+? Để giữ trường lớp sạch đẹp, em nên: | Bỏ rác đúng nơi quy định | Vẽ bậy lên tường | Bẻ cành cây | Xả rác
++ Tham gia trực nhật là thể hiện trách nhiệm với lớp.` },
     { hk: 1, ten: 'Khám phá bản thân', bai: ['Tuần 5: Điểm mạnh, điểm hạn chế của em', 'Tuần 6: Kiểm soát cảm xúc', 'Tuần 7: Thói quen tốt', 'Tuần 8: Tự tin trước đám đông'],
       lt: ['Nhận biết điểm mạnh để phát huy, điểm hạn chế để khắc phục.', 'Kiểm soát cảm xúc: nhận ra cảm xúc, hít thở, suy nghĩ tích cực, chia sẻ.', 'Tự tin: chuẩn bị kĩ, luyện tập, đứng thẳng, nhìn người nghe, nói rõ ràng.'],
       q: `? Để tự tin khi thuyết trình, em nên: | Chuẩn bị kĩ và luyện tập trước | Không chuẩn bị gì | Nhìn xuống đất | Nói thật nhỏ
 ? Khi tức giận, em có thể: | Hít thở sâu, rời khỏi chỗ đó một lúc | Đập phá | Quát tháo | Đánh người
 + Thói quen tốt giúp em học tập và sống lành mạnh.
-- Ai cũng không có điểm hạn chế.` },
+- Ai cũng không có điểm hạn chế.
+? Khi gặp việc khó, em nên: | Kiên trì thử lại hoặc nhờ giúp đỡ | Bỏ cuộc ngay | Khóc mãi | Đổ lỗi cho bạn
++ Mỗi người đều có những điểm mạnh riêng.` },
     { hk: 1, ten: 'Truyền thống và tri ân', bai: ['Tuần 9: Truyền thống trường em', 'Tuần 10: Biết ơn thầy cô', 'Tuần 11: Ngày hội 20/11', 'Tuần 12: Uống nước nhớ nguồn'],
       lt: ['Tri ân thầy cô, người có công với quê hương, đất nước.', '"Uống nước nhớ nguồn": biết ơn những người đi trước.'],
       q: `? Câu tục ngữ thể hiện lòng biết ơn là: | Uống nước nhớ nguồn | Ăn cỗ đi trước, lội nước theo sau | Nước chảy đá mòn | Một con ngựa đau cả tàu bỏ cỏ
 ? Ngày Thương binh – Liệt sĩ là ngày: | 27/7 | 20/11 | 1/6 | 26/3
 + Thăm nghĩa trang liệt sĩ là thể hiện lòng biết ơn.
-- Tri ân thầy cô chỉ cần làm vào ngày 20/11.` },
+- Tri ân thầy cô chỉ cần làm vào ngày 20/11.
+? Ngày Nhà giáo Việt Nam là ngày: | 20/11 | 1/6 | 2/9 | 8/3
+? Ngày Quốc tế Thiếu nhi là: | 1/6 | 20/11 | 26/3 | 22/12
++ Tri ân thầy cô bằng việc học tập chăm chỉ.` },
     { hk: 1, ten: 'An toàn và sức khoẻ', bai: ['Tuần 13: Phòng tránh tai nạn thương tích', 'Tuần 14: Ứng phó với bắt nạt', 'Tuần 15: An toàn trên mạng', 'Tuần 16: Sơ cứu đơn giản', 'Tuần 17: Tổng kết học kì I'],
       lt: ['An toàn trên mạng: không chia sẻ thông tin cá nhân, không gặp người quen qua mạng, báo người lớn khi bị đe doạ.', 'Sơ cứu vết xước: rửa sạch bằng nước sạch, sát trùng, băng lại; chảy máu cam: ngồi hơi cúi đầu về trước, bóp nhẹ cánh mũi.'],
       q: `? Bị chảy máu cam, em nên: | Ngồi hơi cúi đầu về trước, bóp nhẹ cánh mũi | Ngửa đầu ra sau | Nằm ngửa | Chạy nhảy
 ? Người lạ trên mạng xin địa chỉ nhà và hẹn gặp, em nên: | Không cung cấp và báo bố mẹ | Gửi địa chỉ | Hẹn gặp một mình | Gửi ảnh cá nhân
 + Không chia sẻ mật khẩu cho người khác.
-- Bị bắt nạt trên mạng thì nên im lặng chịu đựng.` },
+- Bị bắt nạt trên mạng thì nên im lặng chịu đựng.
+? Khi đi bộ qua đường, em nên: | Đi trên vạch kẻ đường, quan sát xe | Chạy ngang qua đường | Vừa đi vừa xem điện thoại | Đùa nghịch giữa đường
+? Số điện thoại cấp cứu y tế là: | 115 | 113 | 114 | 111
++ Rửa tay bằng xà phòng giúp phòng bệnh.` },
     { hk: 2, ten: 'Gia đình và chi tiêu', bai: ['Tuần 18: Gia đình yêu thương', 'Tuần 19: Đón Tết cổ truyền', 'Tuần 20: Chia sẻ việc nhà', 'Tuần 21: Chi tiêu hợp lí', 'Tuần 22: Tiết kiệm tiền'],
       lt: ['Chi tiêu hợp lí: phân biệt cái <b>cần</b> và cái <b>muốn</b>; ưu tiên thứ cần thiết.', 'Tiết kiệm: để dành một phần tiền, không mua sắm lãng phí.'],
       q: `? Thứ "cần" cho học tập là: | Sách vở, bút | Đồ chơi đắt tiền | Kẹo | Thẻ trò chơi
@@ -33,13 +43,17 @@ PLT.KB.build({
 + Lập kế hoạch chi tiêu giúp tiết kiệm.
 - Muốn gì mua nấy là chi tiêu hợp lí.
 # Cần: Sách giáo khoa, Áo đồng phục, Bút viết
-# Muốn: Đồ chơi mới, Bim bim, Thẻ game` },
+# Muốn: Đồ chơi mới, Bim bim, Thẻ game
+? Tiết kiệm trong gia đình là: | Tắt điện, khoá nước khi không dùng | Để tivi chạy suốt | Mở vòi nước mãi | Mua đồ không cần thiết
++ Bỏ tiền vào lợn đất là cách tiết kiệm.` },
     { hk: 2, ten: 'Cộng đồng và môi trường', bai: ['Tuần 23: Em với cộng đồng', 'Tuần 24: Hoạt động tình nguyện', 'Tuần 25: Bảo vệ cảnh quan', 'Tuần 26: Giảm rác thải nhựa', 'Tuần 27: Trồng cây xanh'],
       lt: ['Giảm rác thải nhựa: dùng túi vải, bình nước cá nhân, hạn chế ống hút nhựa.', 'Tham gia hoạt động tình nguyện vừa sức: dọn vệ sinh, quyên góp.'],
       q: `? Cách giảm rác thải nhựa là: | Dùng túi vải, bình nước cá nhân | Dùng thật nhiều túi ni lông | Vứt chai nhựa xuống sông | Đốt nhựa
 ? Rác thải nhựa phân huỷ: | Rất lâu, hàng trăm năm | Trong một ngày | Ngay lập tức | Không gây hại
 + Trồng cây xanh góp phần bảo vệ môi trường.
-- Túi ni lông phân huỷ rất nhanh.` },
+- Túi ni lông phân huỷ rất nhanh.
+? Hành động bảo vệ môi trường là: | Trồng cây xanh | Đốt rác nhựa | Xả rác ra sông | Bẻ cây
++ Phân loại rác giúp tái chế dễ hơn.` },
     { hk: 2, ten: 'Nghề nghiệp', bai: ['Tuần 28: Nghề ở địa phương', 'Tuần 29: Công cụ lao động', 'Tuần 30: Phẩm chất người lao động', 'Tuần 31: An toàn lao động', 'Tuần 32: Ước mơ của em', 'Tuần 33: Ngày hội nghề nghiệp', 'Tuần 34: Đón hè an toàn', 'Tuần 35: Tổng kết năm học'],
       lt: ['Mỗi nghề có công cụ, sản phẩm, phẩm chất cần có.', 'An toàn lao động: dùng đồ bảo hộ, làm theo hướng dẫn.'],
       q: `? Công nhân xây dựng cần đội: | Mũ bảo hộ | Mũ bơi | Mũ len | Mũ sinh nhật
@@ -48,7 +62,10 @@ PLT.KB.build({
 = Mũ bảo hộ = Công nhân xây dựng
 = Áo blouse trắng = Bác sĩ
 = Phấn, bảng = Giáo viên
-= Lưới đánh cá = Ngư dân` }
+= Lưới đánh cá = Ngư dân
+? Người làm bánh mì gọi là: | Thợ làm bánh | Bác sĩ | Phi công | Kĩ sư
+? Người chữa bệnh cho động vật là: | Bác sĩ thú y | Giáo viên | Thợ xây | Đầu bếp
++ Nghề nào cũng đáng quý và cần được tôn trọng.` }
   ],
   essays: {
     1: [['Nêu một điểm mạnh và một điểm hạn chế của em, kế hoạch khắc phục hạn chế.', ['điểm mạnh', 'hạn chế', 'khắc phục'], 'Nêu rõ điểm mạnh (ví dụ vẽ đẹp), điểm hạn chế (ví dụ hay quên đồ) và cách khắc phục cụ thể (soạn cặp từ tối, ghi chú…).'],

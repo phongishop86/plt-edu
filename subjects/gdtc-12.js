@@ -7,24 +7,37 @@ PLT.KB.build({
       q: `? Bài kiểm tra bật xa tại chỗ đánh giá: | Sức mạnh chân | Sức bền | Sự mềm dẻo | Khả năng bơi
 ? Chạy tuỳ sức 5 phút đánh giá tố chất: | Sức bền | Sức nhanh | Khéo léo | Sức mạnh tay
 + Kế hoạch luyện tập nên tăng dần lượng vận động.
-- Tập luyện quá sức liên tục giúp thể lực tăng nhanh và an toàn.` },
+- Tập luyện quá sức liên tục giúp thể lực tăng nhanh và an toàn.
+? Bài kiểm tra "nằm ngửa gập bụng" đánh giá: | Sức mạnh cơ bụng | Sức bền chạy | Khéo léo tay | Thị lực
+? Lượng vận động gồm hai yếu tố: | Khối lượng và cường độ | Màu sắc và âm thanh | Tuổi và giới tính | Chiều cao và cân nặng
++ Kiểm tra thể lực định kì giúp điều chỉnh kế hoạch luyện tập.` },
     { hk: 1, ten: 'Bóng đá và futsal', bai: ['Phối hợp chiến thuật', 'Luật futsal'],
       lt: ['Futsal: mỗi đội 5 người (kể cả thủ môn), 2 hiệp × 20 phút (thời gian thực), bóng số 4 ít nảy.', 'Chiến thuật: phối hợp 2 người (bật tường), giữ cự li đội hình.'],
       q: `? Mỗi đội futsal có bao nhiêu cầu thủ trên sân (kể cả thủ môn)? | 5 | 7 | 11 | 6
 ? Phối hợp chuyền bóng cho đồng đội rồi nhận lại ngay gọi là: | Bật tường | Việt vị | Phạt góc | Ném biên
 + Futsal sử dụng bóng ít nảy hơn bóng đá sân lớn.
-- Futsal thi đấu 2 hiệp, mỗi hiệp 45 phút.` },
+- Futsal thi đấu 2 hiệp, mỗi hiệp 45 phút.
+? Trong futsal, ném biên được thay bằng: | Đá biên | Ném bằng hai tay | Ném một tay | Không có biên
+? Thủ môn futsal phải đưa bóng vào cuộc trong vòng: | 4 giây | 10 giây | 30 giây | 1 phút
++ Futsal phát triển kĩ thuật xử lí bóng nhanh trong không gian hẹp.` },
     { hk: 2, ten: 'Bóng chuyền và bóng rổ nâng cao', bai: ['Chiến thuật tấn công, phòng thủ', 'Tổ chức thi đấu, trọng tài'],
       lt: ['Bóng chuyền: chiến thuật chuyền 2 – đập bóng, chắn bóng; vị trí libero (chuyên phòng thủ).', 'Bóng rổ: phòng thủ kèm người, phòng thủ khu vực; luật 24 giây tấn công.'],
       q: `? Trong bóng chuyền, cầu thủ chuyên phòng thủ mặc áo khác màu gọi là: | Libero | Chuyền hai | Đập biên | Đội trưởng
 ? Theo luật FIBA, mỗi lượt tấn công trong bóng rổ có tối đa: | 24 giây | 30 giây | 10 giây | 60 giây
 + Phòng thủ khu vực là chiến thuật phòng thủ trong bóng rổ.
-- Libero được phép đập bóng tấn công từ trên cao mép lưới ở mọi vị trí.` },
+- Libero được phép đập bóng tấn công từ trên cao mép lưới ở mọi vị trí.
+? Đập bóng trong bóng chuyền là kĩ thuật: | Tấn công chủ yếu để ghi điểm | Phòng thủ | Phát bóng | Chuyền thấp tay
+? Phòng thủ kèm người trong bóng rổ là: | Mỗi cầu thủ theo sát một đối thủ | Đứng yên giữa sân | Phòng thủ khu vực | Không phòng thủ
++ Phối hợp chiến thuật giúp đội phát huy sức mạnh tập thể.` },
     { hk: 2, ten: 'Thể thao và lối sống lành mạnh', bai: ['Tổ chức hoạt động thể thao ngoại khoá', 'Thể thao và nghề nghiệp'], on: 'Ôn tập cuối năm',
       lt: ['Lối sống lành mạnh: vận động ít nhất 60 phút/ngày (thanh thiếu niên theo khuyến nghị WHO), ngủ đủ, ăn uống cân đối, không chất kích thích.', 'Nghề liên quan: vận động viên, huấn luyện viên, giáo viên thể dục, trọng tài, chuyên viên phục hồi chức năng.'],
       q: `? WHO khuyến nghị thanh thiếu niên vận động thể lực mức trung bình đến mạnh mỗi ngày ít nhất: | 60 phút | 10 phút | 5 phút | 300 phút
 + Trọng tài là một nghề liên quan đến thể thao.
-- Dùng chất kích thích giúp nâng cao thành tích là hợp lệ.` }
+- Dùng chất kích thích giúp nâng cao thành tích là hợp lệ.
+? Thói quen lành mạnh là: | Tập thể dục đều đặn, ngủ đủ, ăn uống điều độ | Thức khuya chơi game | Hút thuốc lá điện tử | Bỏ bữa sáng
+? Giải thể thao lớn nhất khu vực Đông Nam Á là: | SEA Games | Olympic | World Cup | ASIAD
++ Tham gia câu lạc bộ thể thao giúp rèn luyện kĩ năng làm việc nhóm.
+- Thuốc lá điện tử không gây hại cho sức khoẻ.` }
   ],
   essays: {
     1: [['Xây dựng kế hoạch tự luyện tập nâng cao sức bền trong 4 tuần.', ['mục tiêu', 'tần suất', 'tăng dần'], 'Mục tiêu (chạy liên tục 20 phút); tuần 1: chạy – đi bộ xen kẽ 15 phút, 3 buổi; tuần 2: chạy 15 phút; tuần 3: chạy 18 phút, 4 buổi; tuần 4: chạy 20 phút. Khởi động, thả lỏng; theo dõi nhịp tim, điều chỉnh.', 3],

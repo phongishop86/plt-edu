@@ -7,25 +7,37 @@ PLT.KB.build({
       q: `? Nhịp 3/4 có mấy phách trong một ô nhịp? | 3 | 2 | 4 | 6
 ? Trong nhịp 2/4, mỗi phách có giá trị bằng: | Nốt đen | Nốt trắng | Nốt tròn | Nốt móc kép
 + Âm nhạc có vai trò giáo dục, giải trí và gắn kết cộng đồng.
-- Phách đầu tiên của ô nhịp luôn là phách nhẹ.` },
+- Phách đầu tiên của ô nhịp luôn là phách nhẹ.
+? Dấu nối hai nốt cùng cao độ có tác dụng: | Cộng trường độ hai nốt | Hát tách rời | Tăng cao độ | Lặng
+? Nhịp 4/4 có phách mạnh ở: | Phách 1 | Phách 2 | Phách 4 | Không có
++ Tiết tấu là sự kết hợp các âm có trường độ khác nhau.` },
     { hk: 1, ten: 'Âm nhạc truyền thống Việt Nam', bai: ['Hát dân ca', 'Nghe nhạc', 'Thường thức âm nhạc: Nhã nhạc cung đình Huế, Ca trù', '*Ôn tập học kì I'],
       lt: ['<b>Nhã nhạc cung đình Huế</b>: UNESCO ghi danh năm 2003 — di sản âm nhạc đầu tiên của Việt Nam.', '<b>Ca trù</b>: ghi danh 2009 (cần bảo vệ khẩn cấp); nhạc cụ: đàn đáy, phách, trống chầu.'],
       q: `? Di sản âm nhạc đầu tiên của Việt Nam được UNESCO ghi danh là: | Nhã nhạc cung đình Huế | Quan họ | Đờn ca tài tử | Hát Xoan
 ? Nhạc cụ đặc trưng của Ca trù là: | Đàn đáy | Đàn bầu | Đàn tranh | Sáo trúc
 + Trống chầu được dùng trong biểu diễn Ca trù.
-- Nhã nhạc cung đình Huế là âm nhạc dân gian của người Tây Nguyên.` },
+- Nhã nhạc cung đình Huế là âm nhạc dân gian của người Tây Nguyên.
+? Quan họ Bắc Ninh có hình thức hát: | Đối đáp giữa liền anh và liền chị | Đơn ca với dàn nhạc | Hát rap | Hợp xướng giao hưởng
+? Hát Then gắn với tín ngưỡng của người: | Tày, Nùng, Thái | Kinh ở Nam Bộ | Chăm | Ê-đê
++ Nhã nhạc là âm nhạc cung đình thời Nguyễn.` },
     { hk: 2, ten: 'Âm nhạc thế giới', bai: ['Hát', 'Nghe nhạc', 'Thường thức âm nhạc: Các thời kì âm nhạc cổ điển châu Âu', 'Nhạc cụ'],
       lt: ['Các thời kì: Ba-rốc (Bach, Handel), Cổ điển (Haydn, Mozart, Beethoven), Lãng mạn (Chopin, Schubert, Tchaikovsky).', 'Dàn nhạc giao hưởng: bộ dây, bộ gỗ, bộ đồng, bộ gõ.'],
       q: `? Nhà soạn nhạc thuộc thời kì Cổ điển là: | Mozart | Bach | Chopin | Debussy
 ? Đàn vi-ô-lông thuộc bộ nào trong dàn nhạc giao hưởng? | Bộ dây | Bộ gỗ | Bộ đồng | Bộ gõ
 + Beethoven là cầu nối giữa thời kì Cổ điển và Lãng mạn.
-- Kèn trompet thuộc bộ gỗ.` },
+- Kèn trompet thuộc bộ gỗ.
+? Johann Sebastian Bach là nhà soạn nhạc thời kì: | Ba-rốc | Lãng mạn | Hiện đại | Ấn tượng
+? Kèn clarinet thuộc bộ: | Gỗ | Dây | Đồng | Gõ
++ Haydn được gọi là "cha đẻ của giao hưởng".` },
     { hk: 2, ten: 'Âm nhạc đương đại và sáng tạo', bai: ['Hát', 'Nghe nhạc: Các thể loại nhạc phổ thông', 'Sáng tạo âm nhạc với phần mềm', '*Ôn tập cuối năm'],
       lt: ['Các thể loại phổ thông: pop, rock, jazz, rap, EDM, ballad.', 'Phần mềm âm nhạc: MuseScore (ghi bản nhạc, miễn phí), GarageBand, FL Studio.'],
       q: `? Phần mềm miễn phí dùng để ghi chép bản nhạc là: | MuseScore | Excel | Paint | Word
 ? Thể loại âm nhạc có nguồn gốc từ cộng đồng người Mỹ gốc Phi, nổi bật với ngẫu hứng là: | Jazz | Nhã nhạc | Ca trù | Quan họ
 + Sử dụng nhạc trên mạng cần tôn trọng bản quyền.
-- Rap là thể loại nhạc cổ điển châu Âu thế kỉ XVIII.` }
+- Rap là thể loại nhạc cổ điển châu Âu thế kỉ XVIII.
+? Thể loại K-pop có nguồn gốc từ: | Hàn Quốc | Nhật Bản | Mỹ | Anh
+? Beatbox là kĩ thuật: | Tạo âm thanh nhịp điệu bằng miệng | Chơi đàn bầu | Thổi sáo | Đánh trống đồng
++ Sáng tác nhạc cần tôn trọng bản quyền của người khác.` }
   ],
   essays: {
     1: [['Giới thiệu một di sản âm nhạc Việt Nam được UNESCO ghi danh.', ['UNESCO', 'vùng', 'đặc điểm'], 'Nêu tên di sản, vùng, năm ghi danh, đặc điểm biểu diễn, nhạc cụ, giá trị văn hoá, trách nhiệm gìn giữ.', 3],

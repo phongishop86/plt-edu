@@ -7,24 +7,36 @@ PLT.KB.build({
       q: `? Việc nào máy tính KHÔNG tự làm được? | Tự quyết định thay con người mọi việc | Tính toán nhanh | Lưu trữ tài liệu | Phát nhạc
 ? Máy tính giúp em học tập bằng cách: | Tra cứu, làm bài với phần mềm học tập | Làm hộ toàn bộ bài tập | Thay thầy cô | Thay em đi học
 + Không nên dùng máy tính quá lâu liên tục.
-- Máy tính có thể tự suy nghĩ như con người trong mọi việc.` },
+- Máy tính có thể tự suy nghĩ như con người trong mọi việc.
+? Khi dùng máy tính, khoảng cách từ mắt đến màn hình nên khoảng: | 50–80 cm | 5 cm | 2 m | 10 cm
+? Thiết bị dùng để nhập văn bản là: | Bàn phím | Loa | Màn hình | Máy in
++ Nên nghỉ ngơi mắt sau mỗi 30–45 phút dùng máy tính.` },
     { hk: 1, ten: 'Mạng máy tính và Internet', bai: ['Tìm kiếm thông tin trên website'],
       lt: ['Website gồm nhiều trang web liên kết; trang chủ là trang đầu tiên.', 'Tìm thông tin trên website: dùng thanh menu, ô tìm kiếm, siêu liên kết.', 'Đánh giá thông tin: chọn nguồn tin cậy (trang chính thức của cơ quan, trường học).'],
       q: `? Trang đầu tiên khi truy cập một website gọi là: | Trang chủ | Trang cuối | Trang lỗi | Trang tạm
 ? Nguồn thông tin đáng tin cậy là: | Trang web chính thức của cơ quan nhà nước, nhà trường | Bình luận ẩn danh | Tin nhắn lạ | Trang quảng cáo giật tít
 + Có thể dùng ô tìm kiếm trên website để tìm thông tin nhanh.
-- Mọi thông tin trên mạng đều chính xác.` },
+- Mọi thông tin trên mạng đều chính xác.
+? Website là: | Tập hợp các trang web có chung địa chỉ | Một phần mềm soạn thảo | Một thiết bị | Một bài hát
+? Trình duyệt web dùng để: | Truy cập các trang web | Vẽ tranh | Soạn nhạc | In ảnh
++ Không bấm vào liên kết lạ khi lướt web.` },
     { hk: 1, ten: 'Tổ chức lưu trữ, tìm kiếm và trao đổi thông tin', bai: ['Tổ chức và tìm kiếm thông tin trong máy tính', 'Cây thư mục'],
       lt: ['<b>Cây thư mục</b>: thư mục gốc → thư mục con → tệp, giúp tổ chức thông tin khoa học.', 'Tìm tệp: dùng ô tìm kiếm của File Explorer, gõ tên tệp hoặc phần tên.', 'Đặt tên tệp, thư mục rõ nghĩa giúp dễ tìm.'],
       q: `? Cây thư mục cho biết: | Cách tổ chức các thư mục và tệp | Nhiệt độ máy tính | Tốc độ mạng | Màu màn hình
 ? Đặt tên tệp nên: | Ngắn gọn, rõ nội dung | Toàn dấu cách | Giống hệt nhau | Rất dài vô nghĩa
 + Một thư mục có thể chứa thư mục con và tệp.
-- Không thể tìm kiếm tệp trong máy tính.` },
+- Không thể tìm kiếm tệp trong máy tính.
+? Từ khoá tìm kiếm nên: | Ngắn gọn, đúng trọng tâm | Thật dài lan man | Viết sai chính tả | Không liên quan
+? Thư mục dùng để: | Sắp xếp, chứa các tệp | Chơi game | Nghe nhạc | In tài liệu
++ Đặt tên tệp rõ ràng giúp dễ tìm kiếm.` },
     { hk: 1, ten: 'Đạo đức, pháp luật và văn hoá trong môi trường số', bai: ['Bản quyền nội dung thông tin'],
       lt: ['Bài viết, hình ảnh, âm nhạc, video là sản phẩm có <b>bản quyền</b> của tác giả.', 'Muốn dùng phải xin phép hoặc ghi rõ nguồn theo quy định; không sao chép rồi nhận là của mình.'],
       q: `? Khi dùng hình ảnh của người khác cho bài trình chiếu, em nên: | Ghi rõ nguồn hoặc xin phép | Nhận là của mình | Xoá tên tác giả | Bán lại
 + Tôn trọng bản quyền là tôn trọng công sức của tác giả.
-- Chép bài của người khác rồi ghi tên mình là hợp pháp.` },
+- Chép bài của người khác rồi ghi tên mình là hợp pháp.
+? Khi người lạ trên mạng hỏi địa chỉ nhà, em nên: | Không trả lời và báo bố mẹ | Gửi ngay | Gửi ảnh nhà | Hẹn gặp
+? Sử dụng hình ảnh của người khác cần: | Xin phép và ghi nguồn | Tự ý dùng | Sửa rồi nhận là của mình | Bán lại
++ Tôn trọng bản quyền là hành vi văn minh trên mạng.` },
     { hk: 2, ten: 'Ứng dụng tin học', bai: ['Định dạng văn bản nâng cao', 'Chèn bảng và hình ảnh vào văn bản', 'Thực hành soạn thảo sản phẩm', 'Bài trình chiếu đa phương tiện'],
       lt: ['Định dạng đoạn: căn trái, căn giữa, căn phải, căn đều hai bên; khoảng cách dòng.', 'Chèn bảng (Insert → Table), chèn hình ảnh (Insert → Picture), bố trí hình với chữ.', 'Bài trình chiếu đa phương tiện: chữ, hình, âm thanh, video, hiệu ứng.'],
       q: `? Để chèn bảng vào văn bản, em chọn: | Insert → Table | File → Save | Home → Bold | View → Zoom
@@ -35,7 +47,11 @@ PLT.KB.build({
 = Căn giữa = Tiêu đề
 = Insert → Picture = Chèn hình ảnh
 = Insert → Table = Chèn bảng
-= Ctrl + S = Lưu tệp` },
+= Ctrl + S = Lưu tệp
+? Phần mềm trình chiếu dùng để: | Tạo bài thuyết trình | Tính toán bảng | Duyệt web | Diệt virus
+? Trong soạn thảo, tổ hợp phím Ctrl + C dùng để: | Sao chép | Dán | Cắt | Lưu
+? Tổ hợp phím Ctrl + V dùng để: | Dán | Sao chép | In | Mở tệp
++ Ctrl + S dùng để lưu văn bản.` },
     { hk: 2, ten: 'Giải quyết vấn đề với sự trợ giúp của máy tính', bai: ['Cấu trúc tuần tự', 'Cấu trúc lặp', 'Cấu trúc rẽ nhánh', 'Sử dụng biến trong chương trình', 'Chương trình của em'],
       lt: ['<b>Tuần tự</b>: các lệnh thực hiện lần lượt từ trên xuống.', '<b>Lặp</b>: lặp lại một nhóm lệnh nhiều lần (khối "lặp lại … lần", "liên tục").', '<b>Rẽ nhánh</b>: "nếu … thì …", "nếu … thì … nếu không thì …".', '<b>Biến</b>: nơi lưu giá trị có thể thay đổi (ví dụ điểm số trong trò chơi).'],
       q: `? Cấu trúc "nếu … thì …" là cấu trúc: | Rẽ nhánh | Tuần tự | Lặp | Biến
@@ -47,7 +63,10 @@ PLT.KB.build({
 = Tuần tự = Thực hiện lần lượt từng lệnh
 = Lặp = Lặp lại nhóm lệnh nhiều lần
 = Rẽ nhánh = Chọn việc làm theo điều kiện
-= Biến = Lưu giá trị có thể thay đổi` }
+= Biến = Lưu giá trị có thể thay đổi
+? Trong Scratch, khối lệnh lặp dùng để: | Thực hiện nhiều lần một nhóm lệnh | Dừng chương trình | Đổi phông nền | Xoá nhân vật
+? Khối lệnh "nếu ... thì" trong Scratch là cấu trúc: | Rẽ nhánh | Lặp | Tuần tự | Biến
++ Chương trình gồm các lệnh được sắp xếp theo thứ tự để máy tính thực hiện.` }
   ],
   essays: {
     1: [['Kể những việc em có thể làm với máy tính để phục vụ học tập.', ['tra cứu', 'soạn thảo', 'trình chiếu'], 'Tra cứu thông tin, soạn thảo bài viết, làm bài trình chiếu, luyện gõ phím, học với phần mềm học tập, lưu trữ bài làm.'],
