@@ -74,7 +74,7 @@
           <a href="#/lop/${l <= 5 ? l : 1}"><b>Tiểu học</b><span>Lớp 1 – 5 · Toán, Tiếng Việt</span><i>→</i></a>
           <a href="#/lop/${l >= 6 && l <= 9 ? l : 6}"><b>Trung học cơ sở</b><span>Lớp 6 – 9 · Toán</span><i>→</i></a>
           <a href="#/lop/${l >= 10 ? l : 10}"><b>Trung học phổ thông</b><span>Lớp 10 – 12 · Toán</span><i>→</i></a>
-          <a href="https://phongishop86.github.io/plt-aiedu/"><b>🤖 AI Edu</b><span>Học AI an toàn · trang con</span><i>→</i></a>
+          <a href="https://phongishop86.github.io/plt-aiedu/"><b>🤖 AI Edu</b><span>Học AI an toàn, miễn phí</span><i>→</i></a>
         </div>
         <div class="facts"><span><b>12</b> lớp</span><span><b>575</b> bài Toán</span><span><b>Đề</b> tuần · tháng · kỳ</span><span><b>AI</b> chấm tự luận</span><span>Tiến độ lưu ngay trên máy</span></div>
       </div>
