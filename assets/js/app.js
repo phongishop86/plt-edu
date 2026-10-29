@@ -207,6 +207,7 @@
     if (active) { active.stop(); active = null; }
     const my = ++seq;
     const p = (location.hash.replace(/^#\/?/, '') || '').split('/').map(decodeURIComponent);
+    const lb = $('.lopbox'); if (lb) lb.classList.toggle('on', p[0] === 'lop');
     document.querySelectorAll('.nav a').forEach((a) => a.classList.toggle('on', (a.dataset.r || '') === (p[0] === 'thi' ? 'kiem-tra' : p[0] || '')));
     const needS = ['hoc', 'on-tap', 'kiem-tra', 'thi'].includes(p[0]);
     let S = null;
@@ -230,14 +231,16 @@
   }
   function syncLop() {
     const l = curLop(), s = sidOf(l);
-    $('#nav').innerHTML = `<a href="#/" data-r="">🏠 <span>Trang chủ</span></a><a href="#/lop/${l}" data-r="lop">🏫 <span>Lớp ${l}</span></a><a href="#/hoc/${s}" data-r="hoc">📚 <span>Học bài</span></a><a href="#/on-tap/${s}" data-r="on-tap">🎯 <span>Ôn tập</span></a><a href="#/kiem-tra/${s}" data-r="kiem-tra">📝 <span>Kiểm tra</span></a><a href="#/tien-do" data-r="tien-do">📈 <span>Tiến độ</span></a>`;
+    $('#nav').innerHTML = `<a href="#/" data-r="">🏠 <span>Trang chủ</span></a><a href="#/hoc/${s}" data-r="hoc">📚 <span>Học bài</span></a><a href="#/on-tap/${s}" data-r="on-tap">🎯 <span>Ôn tập</span></a><a href="#/kiem-tra/${s}" data-r="kiem-tra">📝 <span>Kiểm tra</span></a><a href="#/tien-do" data-r="tien-do">📈 <span>Tiến độ</span></a>`;
     const sel = $('#lopSel'); if (sel) sel.value = l;
+    const ic = $('#lopIc'); if (ic) ic.href = `#/lop/${l}`;
   }
   function nav() {
     const top = $('.top .in');
-    const sel = document.createElement('select'); sel.id = 'lopSel'; sel.className = 'lopsel'; sel.title = 'Chọn lớp';
-    sel.innerHTML = Array.from({ length: 12 }, (_, i) => `<option value="${i + 1}">Lớp ${i + 1}</option>`).join('');
-    top.insertBefore(sel, $('#nav'));
+    // Một ô chọn lớp duy nhất: bấm biểu tượng 🏫 để mở trang lớp, chọn lớp khác thì chuyển ngay
+    const box = document.createElement('div'); box.className = 'lopbox';
+    box.innerHTML = `<a id="lopIc" class="lopic" href="#/lop/${curLop()}" title="Mở trang lớp">🏫</a><select id="lopSel" class="lopsel" title="Chọn lớp" aria-label="Chọn lớp">${Array.from({ length: 12 }, (_, i) => `<option value="${i + 1}">Lớp ${i + 1}</option>`).join('')}</select>`;
+    top.insertBefore(box, $('#nav')); const sel = $('#lopSel');
     sel.onchange = () => { setLop(sel.value); syncLop(); location.hash = `#/lop/${sel.value}`; };
     $('#gear').onclick = settings; syncLop();
   }

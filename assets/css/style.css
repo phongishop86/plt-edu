@@ -132,7 +132,7 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:20px}
 }
 
 /* lớp, menu */
-.lopsel{font:inherit;font-weight:700;border:1px solid var(--band-accent);border-radius:999px;padding:6px 10px;background:rgba(255,255,255,.08);color:var(--band-fg);margin-left:auto}.lopsel option{color:#1B2A4A}
+.lopbox{display:flex;align-items:center;margin-left:auto;border:1px solid var(--band-accent);border-radius:999px;background:rgba(255,255,255,.08);padding:2px 4px 2px 2px}.lopbox.on{background:rgba(255,255,255,.18)}.lopic{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;font-size:1.1rem}.lopic:hover{background:rgba(255,255,255,.12)}.lopsel{font:inherit;font-weight:700;border:0;padding:6px 6px 6px 2px;background:transparent;color:var(--band-fg);cursor:pointer;outline:none}.lopsel option{color:#1B2A4A}
 .nav{margin-left:0}
 .grade.cur{border-color:var(--pri)}
 .lopnav{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 10px}.lopnav a{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:#fff;box-shadow:var(--sh);font-weight:900;color:var(--ink)}.lopnav a.on{background:var(--pri);color:#fff}
@@ -142,7 +142,7 @@ a.subj{color:var(--ink)}a.subj:hover{outline:3px solid var(--teal)}
 sup{font-size:.7em}
 .qtext sub{font-size:.7em}
 .mtx{display:inline-block;vertical-align:middle}
-@media (max-width:860px){.tmenu{grid-template-columns:1fr}.lopsel{padding:4px 6px;font-size:.9rem}}
+@media (max-width:860px){.tmenu{grid-template-columns:1fr}.lopsel{padding:4px 4px 4px 0;font-size:.9rem}.lopic{width:30px;height:30px}}
 
 .logo img{width:44px;height:44px;flex:none;filter:drop-shadow(0 2px 3px rgba(0,0,0,.15))}
 .hero .mascot img{width:110px;height:110px}
