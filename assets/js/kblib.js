@@ -23,7 +23,7 @@
       else if (c === '=') { const i = x.indexOf(' = '); if (i > 0) B.pair.push([x.slice(0, i).trim(), x.slice(i + 3).trim()]); }
       else if (c === '_') { if (/\[[^\]]+\]/.test(x)) B.fill.push(x); }
       else if (c === '>') { const p = x.split('>').map((t) => t.trim()).filter(Boolean); if (p.length >= 3) B.ord.push(p); }
-      else if (c === '#') { const i = x.indexOf(':'); if (i > 0) B.grp.push([x.slice(0, i).trim(), x.slice(i + 1).split(',').map((t) => t.trim()).filter(Boolean)]); }
+      else if (c === '#') { const i = x.indexOf(':'); if (i > 0) { const nm = x.slice(0, i).trim(), it = x.slice(i + 1).split(',').map((t) => t.trim()).filter(Boolean); const g = B.grp.find((y) => y[0] === nm); if (g) g[1] = [...new Set(g[1].concat(it))]; else B.grp.push([nm, it]); } }
     });
     return B;
   };
@@ -61,7 +61,8 @@
     ord: (B) => { const p = pick(B.ord); return order('Sắp xếp các ý sau theo <b>đúng thứ tự</b>:', p); },
     grp: (B) => {
       const G = shuffle(B.grp).slice(0, B.grp.length >= 3 && Math.random() < 0.4 ? 3 : 2);
-      let items = []; G.forEach(([c, xs]) => shuffle(xs).slice(0, G.length === 3 ? 2 : r(2, 3)).forEach((t) => items.push({ t, cat: c })));
+      let items = []; G.forEach(([c, xs]) => shuffle(xs.filter((t) => !G.some(([c2, ys]) => c2 !== c && ys.includes(t)))).slice(0, G.length === 3 ? 2 : r(2, 3)).forEach((t) => items.push({ t, cat: c })));
+      if (items.length < 3 || new Set(items.map((x) => x.cat)).size < 2) return MAKERS.mc.length && B.mc.length ? MAKERS.mc(B) : MAKERS.grp(Object.assign({}, B, { grp: shuffle(B.grp) }));
       items = items.filter((x, k, a) => a.findIndex((y) => y.t === x.t) === k);
       return sort('Xếp mỗi ý vào nhóm đúng:', items, G.map((g) => g[0]));
     }
@@ -82,6 +83,71 @@
 
   // Tự luận ngắn: [đề, [ý chính/từ khoá], lời giải mẫu, số câu tối thiểu]
   KB.essays = (list, max) => (list || []).map(([q, kw, dapan, minCau]) => () => Object.assign(essay(q, max || 2, dapan || 'Trình bày đủ các ý: ' + (kw || []).join('; ') + '.', []), { kw: kw || [], minCau: minCau || 3, ph: 'Viết câu trả lời của em (vài câu, đủ ý)…' }));
+
+  /* ---------- Ngân hàng dùng chung cho các môn nghệ thuật, thể chất (bổ sung vào mọi chủ đề) ---------- */
+  KB.SHARE = {
+    gdtc: `? Trước khi tập luyện, việc cần làm đầu tiên là: | Khởi động kĩ các khớp | Chạy hết sức ngay | Ăn thật no | Uống nhiều nước ngọt
+? Sau khi tập luyện, em nên: | Thả lỏng, hồi tĩnh rồi nghỉ ngơi | Tắm nước lạnh ngay | Nằm bất động trên sàn lạnh | Ăn thật nhiều ngay lập tức
+? Trang phục phù hợp khi học Giáo dục thể chất là: | Quần áo thể thao, giày thể thao | Váy dài, dép lê | Áo khoác dày | Đồng phục và giày da
+? Khi tập luyện ngoài trời nắng, em cần: | Đội mũ, uống đủ nước, nghỉ ở chỗ râm | Tập liên tục không nghỉ | Không uống nước | Cởi áo phơi nắng
+? Khi bị trẹo chân lúc tập, em nên: | Dừng tập, báo thầy cô, chườm lạnh | Tiếp tục chạy | Xoa bóp thật mạnh | Giấu không nói
+? Nên ăn no xong bao lâu mới tập luyện mạnh? | Khoảng 1 giờ trở lên | Ngay lập tức | 1 phút | Không cần chờ
+? Tập thể dục thể thao thường xuyên giúp: | Cơ thể khoẻ mạnh, phát triển cân đối | Hay ốm hơn | Mệt mỏi kéo dài | Học kém đi
+? Khi chơi trò chơi vận động, em cần: | Tuân thủ luật chơi, đoàn kết, an toàn | Xô đẩy bạn | Gian lận | Cãi nhau
++ Uống nước từng ngụm nhỏ trong lúc nghỉ giữa giờ tập.
++ Khởi động giúp phòng tránh chấn thương.
++ Ngủ đủ giấc giúp cơ thể hồi phục sau tập luyện.
++ Cần giữ khoảng cách an toàn với bạn khi tập với dụng cụ.
+- Tập càng nhiều càng tốt, không cần nghỉ ngơi.
+- Mặc quần áo chật, đi dép lê khi tập là phù hợp.
+- Bỏ qua phần khởi động để có thêm thời gian chơi.
+- Khi bị đau trong lúc tập nên cố gắng tập tiếp.
+> Khởi động > Tập phần cơ bản > Thả lỏng, hồi tĩnh
+# Nên làm: Khởi động kĩ, Mặc đồ thể thao, Uống nước khi nghỉ, Nghe hướng dẫn của thầy cô
+# Không nên: Tập khi vừa ăn no, Xô đẩy bạn, Bỏ khởi động, Đi dép lê khi chạy`,
+    amnhac: `? Nhạc cụ nào là nhạc cụ gõ? | Trống | Sáo | Kèn | Đàn vi-ô-lông
+? Nhạc cụ nào là nhạc cụ thổi? | Sáo trúc | Thanh phách | Song loan | Trống con
+? Đàn bầu là nhạc cụ dân tộc có mấy dây? | 1 | 2 | 6 | 16
+? Quốc ca Việt Nam là bài "Tiến quân ca" của nhạc sĩ: | Văn Cao | Phạm Tuyên | Hoàng Long | Trịnh Công Sơn
+? Khi hát, tư thế đúng là: | Ngồi hoặc đứng thẳng lưng, thả lỏng vai | Nằm gục xuống bàn | Cúi gập người | Ngửa cổ ra sau
+? Dân ca là: | Bài hát do nhân dân sáng tác, truyền miệng qua nhiều đời | Bài hát mới của ca sĩ | Nhạc nước ngoài | Nhạc quảng cáo
+? Hát quan họ là dân ca của vùng: | Bắc Ninh | Nam Bộ | Tây Nguyên | Huế
+? Không gian văn hoá Cồng chiêng thuộc vùng: | Tây Nguyên | Đồng bằng sông Hồng | Tây Bắc | Nam Bộ
++ Bảy nốt nhạc là Đô, Rê, Mi, Pha, Son, La, Si.
++ Gõ đệm theo nhịp giúp bài hát sinh động hơn.
++ Hát đúng giai điệu và lời ca là yêu cầu cơ bản khi học hát.
++ Âm nhạc giúp con người vui tươi, gắn kết.
+- Hát càng to càng hay, không cần giữ giai điệu.
+- Thanh phách là nhạc cụ thổi.
+- Dân ca là bài hát do một ca sĩ nổi tiếng sáng tác năm nay.
+- Khi chào cờ có thể vừa hát Quốc ca vừa nói chuyện.
+> Đô > Rê > Mi > Pha > Son > La > Si
+# Nhạc cụ gõ: Trống con, Thanh phách, Song loan, Tem-bơ-rin
+# Nhạc cụ thổi: Sáo trúc, Kèn phím, Sáo recorder
+# Nhạc cụ dây: Đàn bầu, Đàn tranh, Đàn ghi-ta`,
+    mithuat: `? Ba màu cơ bản là: | Đỏ, vàng, lam | Cam, lục, tím | Đen, trắng, xám | Hồng, nâu, xanh lá
+? Pha màu đỏ và màu vàng được màu: | Cam | Tím | Lục | Nâu
+? Pha màu vàng và màu lam được màu: | Lục | Cam | Tím | Hồng
+? Pha màu đỏ và màu lam được màu: | Tím | Cam | Lục | Vàng
+? Quả bóng có dạng khối: | Khối cầu | Khối hộp | Khối trụ | Khối nón
+? Hộp phấn có dạng khối: | Khối hộp | Khối cầu | Khối nón | Khối trụ
+? Lon nước ngọt có dạng khối: | Khối trụ | Khối cầu | Khối hộp | Khối nón
+? Khi dùng kéo, em cần: | Cầm cẩn thận, không chĩa mũi kéo vào người khác | Vừa cắt vừa chạy | Ném kéo cho bạn | Cắt lên bàn ghế
++ Màu nóng (đỏ, cam, vàng) gợi cảm giác ấm áp.
++ Màu lạnh (lam, lục, tím) gợi cảm giác mát mẻ.
++ Có thể dùng vật liệu tái chế để tạo sản phẩm mĩ thuật.
++ Cần tôn trọng sản phẩm mĩ thuật của bạn.
+- Màu cam là màu cơ bản.
+- Quả cam có dạng khối hộp.
+- Vẽ bậy lên tường lớp là một hoạt động mĩ thuật.
+- Chỉ có thể vẽ tranh bằng bút chì đen.
+= Đỏ + vàng = Cam
+= Vàng + lam = Lục
+= Đỏ + lam = Tím
+= Nón lá = Khối nón
+# Màu nóng: Đỏ, Cam, Vàng
+# Màu lạnh: Lam, Lục, Tím`
+  };
 
   /* ---------- Tiếng Anh: dựng chủ đề (Unit) từ từ vựng + mẫu câu ----------
      units: [{ ten, hk, ph (âm/chữ cái trọng tâm), v: 'word=nghĩa; word=nghĩa', s: ['câu có [từ] cần điền', …], lt: [...] }] */
@@ -107,8 +173,8 @@
   KB.build = function (def) {
     const gens = {}; let n = 0;
     const topics = def.topics.map((t, i) => {
-      const id = i + 1, B = KB.parse(t.q); const keys = [];
-      if (avail(B).length) { gens['k' + id] = KB.gen(B); keys.push('k' + id); }
+      const id = i + 1, own = KB.parse(t.q), B = KB.parse((t.q || '') + '\n' + (def.share || '')); const keys = [];
+      if (avail(B).length) { const gAll = KB.gen(B), gOwn = avail(own).length ? KB.gen(own) : null; gens['k' + id] = def.share && gOwn ? () => (Math.random() < 0.7 ? gOwn() : gAll()) : gAll; keys.push('k' + id); }
       if (B.tf.length + B.pair.length + B.fill.length + B.ord.length + B.grp.length >= 4 && B.mc.length >= 4) { // dạng thứ hai để đề đa dạng hơn
         const B2 = Object.assign({}, B, { mc: [] }); gens['k' + id + 'b'] = KB.gen(B2); keys.push('k' + id + 'b');
       }

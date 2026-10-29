@@ -1,6 +1,6 @@
 /* Âm nhạc 3 – KNTT. Các chủ đề: hát, nghe nhạc, đọc nhạc, nhạc cụ, thường thức âm nhạc; câu hỏi do PLT-Edu soạn. */
 PLT.KB.build({
-  id: 'am-nhac-3', lop: 3, mon: 'Âm nhạc', icon: '🎵', so: false,
+  id: 'am-nhac-3', lop: 3, mon: 'Âm nhạc', icon: '🎵', so: false, share: PLT.KB.SHARE.amnhac,
   topics: [
     { hk: 1, ten: 'Mở đầu – Âm thanh và nốt nhạc', bai: ['Hát', 'Đọc nhạc', 'Thường thức âm nhạc', 'Vận dụng – Sáng tạo'],
       lt: ['Âm thanh trong âm nhạc có <b>cao độ</b> (cao – thấp), <b>trường độ</b> (dài – ngắn), <b>cường độ</b> (to – nhỏ), <b>âm sắc</b> (màu sắc riêng của mỗi giọng, nhạc cụ).', 'Bảy nốt nhạc: Đô, Rê, Mi, Pha, Son, La, Si; được viết trên <b>khuông nhạc</b> gồm 5 dòng kẻ.'],

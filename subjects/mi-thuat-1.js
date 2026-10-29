@@ -1,6 +1,6 @@
 /* Mĩ thuật 1 – KNTT (9 chủ đề: chấm, nét, hình, màu, khối cơ bản và vận dụng). Câu hỏi do PLT-Edu soạn. */
 PLT.KB.build({
-  id: 'mi-thuat-1', lop: 1, mon: 'Mĩ thuật', icon: '🎨', so: false,
+  id: 'mi-thuat-1', lop: 1, mon: 'Mĩ thuật', icon: '🎨', so: false, share: PLT.KB.SHARE.mithuat,
   topics: [
     { hk: 1, ten: 'Mĩ thuật trong cuộc sống', bai: ['Quan sát', 'Thể hiện', 'Thảo luận', 'Vận dụng'],
       lt: ['Mĩ thuật có ở khắp nơi: tranh vẽ, tượng, đồ chơi, quần áo, đồ dùng, nhà cửa…', 'Đồ dùng học mĩ thuật: bút chì, bút màu, giấy vẽ, kéo, hồ dán, đất nặn.'],

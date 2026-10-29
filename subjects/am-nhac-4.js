@@ -1,6 +1,6 @@
 /* Âm nhạc 4 – KNTT. Hát, nghe nhạc, đọc nhạc, nhạc cụ, thường thức âm nhạc; câu hỏi do PLT-Edu soạn. */
 PLT.KB.build({
-  id: 'am-nhac-4', lop: 4, mon: 'Âm nhạc', icon: '🎵', so: false,
+  id: 'am-nhac-4', lop: 4, mon: 'Âm nhạc', icon: '🎵', so: false, share: PLT.KB.SHARE.amnhac,
   topics: [
     { hk: 1, ten: 'Nốt nhạc và khuông nhạc', bai: ['Hát', 'Đọc nhạc', 'Lí thuyết âm nhạc', 'Vận dụng – Sáng tạo'],
       lt: ['Khuông nhạc có 5 dòng, 4 khe; <b>khoá Son</b> đặt đầu khuông.', 'Hình nốt: <b>nốt trắng</b> (dài 2 phách), <b>nốt đen</b> (1 phách), <b>nốt móc đơn</b> (nửa phách).', '<b>Dấu lặng</b>: kí hiệu ngưng nghỉ không phát ra âm thanh.'],

@@ -1,6 +1,6 @@
 /* Mĩ thuật 3 – KNTT. Chủ đề về yếu tố và nguyên lí tạo hình; câu hỏi do PLT-Edu soạn. */
 PLT.KB.build({
-  id: 'mi-thuat-3', lop: 3, mon: 'Mĩ thuật', icon: '🎨', so: false,
+  id: 'mi-thuat-3', lop: 3, mon: 'Mĩ thuật', icon: '🎨', so: false, share: PLT.KB.SHARE.mithuat,
   topics: [
     { hk: 1, ten: 'Sự thú vị của màu sắc', bai: ['Quan sát', 'Thể hiện', 'Thảo luận', 'Vận dụng'],
       lt: ['Màu cơ bản: đỏ, vàng, lam. Màu thứ cấp: cam, lục, tím.', '<b>Màu nóng</b> (đỏ, cam, vàng) gợi cảm giác ấm áp; <b>màu lạnh</b> (lam, lục, tím) gợi cảm giác mát mẻ.'],

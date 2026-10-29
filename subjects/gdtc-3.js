@@ -1,6 +1,6 @@
 /* Giáo dục thể chất 3 – KNTT. Câu hỏi ôn kiến thức, kĩ thuật, an toàn do PLT-Edu soạn. */
 PLT.KB.build({
-  id: 'gdtc-3', lop: 3, mon: 'Giáo dục thể chất', icon: '⚽',
+  id: 'gdtc-3', lop: 3, mon: 'Giáo dục thể chất', icon: '⚽', share: PLT.KB.SHARE.gdtc,
   topics: [
     { hk: 1, ten: 'Đội hình đội ngũ', bai: ['Biến đổi đội hình từ một hàng dọc thành hai, ba hàng dọc', 'Biến đổi đội hình từ một hàng ngang thành hai, ba hàng ngang', 'Động tác quay trái, quay phải, quay sau'],
       lt: ['Biến đổi đội hình theo khẩu lệnh, giữ cự li, thẳng hàng.', 'Quay trái: lấy gót chân trái làm trụ, quay 90° sang trái. Quay phải: trụ gót chân phải. Quay sau: quay 180° theo chiều phải.'],

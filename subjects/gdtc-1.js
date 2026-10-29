@@ -1,6 +1,6 @@
 /* Giáo dục thể chất 1 – KNTT. Chủ đề, bài theo mục lục SGK; câu hỏi do PLT-Edu soạn (ôn kiến thức, luật chơi, an toàn). */
 PLT.KB.build({
-  id: 'gdtc-1', lop: 1, mon: 'Giáo dục thể chất', icon: '⚽',
+  id: 'gdtc-1', lop: 1, mon: 'Giáo dục thể chất', icon: '⚽', share: PLT.KB.SHARE.gdtc,
   topics: [
     { hk: 1, ten: 'Đội hình đội ngũ', bai: ['Các tư thế đứng nghiêm, đứng nghỉ', 'Tập hợp đội hình hàng dọc, dóng hàng, điểm số', 'Tập hợp đội hình hàng ngang, dóng hàng, điểm số', 'Động tác quay các hướng'],
       lt: ['<b>Đứng nghiêm</b>: hai gót chân sát nhau, mũi chân chếch chữ V, tay khép sát thân, mắt nhìn thẳng.', '<b>Đứng nghỉ</b>: chùng một chân, dồn trọng tâm vào chân kia.', 'Hàng dọc: đứng nối tiếp nhau, dóng thẳng hàng theo người đứng trước. Hàng ngang: đứng cạnh nhau.', 'Quay phải, quay trái, quay sau theo khẩu lệnh.'],

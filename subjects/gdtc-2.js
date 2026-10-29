@@ -1,6 +1,6 @@
 /* Giáo dục thể chất 2 – KNTT. Chủ đề, bài theo mục lục SGK; câu hỏi do PLT-Edu soạn. */
 PLT.KB.build({
-  id: 'gdtc-2', lop: 2, mon: 'Giáo dục thể chất', icon: '⚽',
+  id: 'gdtc-2', lop: 2, mon: 'Giáo dục thể chất', icon: '⚽', share: PLT.KB.SHARE.gdtc,
   topics: [
     { hk: 1, ten: 'Đội hình đội ngũ', bai: ['Biến đổi đội hình từ hàng dọc thành vòng tròn và ngược lại', 'Biến đổi đội hình từ hàng ngang thành vòng tròn và ngược lại', 'Giậm chân tại chỗ, đứng lại'],
       lt: ['Biến đổi đội hình theo khẩu lệnh, nhanh, trật tự, giữ khoảng cách đều.', '"Giậm chân… giậm!": giậm chân tại chỗ, đánh tay tự nhiên. "Đứng lại… đứng!": dừng lại ở tư thế nghiêm.'],

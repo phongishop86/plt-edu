@@ -1,6 +1,6 @@
 /* Âm nhạc 1 – KNTT. Chủ đề, nội dung theo mục lục SGK; câu hỏi do PLT-Edu soạn. */
 PLT.KB.build({
-  id: 'am-nhac-1', lop: 1, mon: 'Âm nhạc', icon: '🎵', so: false,
+  id: 'am-nhac-1', lop: 1, mon: 'Âm nhạc', icon: '🎵', so: false, share: PLT.KB.SHARE.amnhac,
   topics: [
     { hk: 1, ten: 'Âm thanh kì diệu', bai: ['Hát: Vào rừng hoa', 'Thường thức âm nhạc: Âm thanh kì diệu', 'Đọc nhạc: Bậc thang Đô – Rê – Mi', 'Vận dụng – Sáng tạo: To – Nhỏ'],
       lt: ['Xung quanh em có nhiều âm thanh: tiếng chim hót, tiếng mưa, tiếng còi xe…', 'Âm thanh có thể <b>to</b> hoặc <b>nhỏ</b>.', 'Ba nốt nhạc đầu tiên: <b>Đô – Rê – Mi</b>, đi lên như bậc thang.'],

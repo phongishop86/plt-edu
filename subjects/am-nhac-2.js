@@ -1,6 +1,6 @@
 /* Âm nhạc 2 – KNTT. 8 chủ đề theo mục lục SGK; câu hỏi do PLT-Edu soạn. */
 PLT.KB.build({
-  id: 'am-nhac-2', lop: 2, mon: 'Âm nhạc', icon: '🎵', so: false,
+  id: 'am-nhac-2', lop: 2, mon: 'Âm nhạc', icon: '🎵', so: false, share: PLT.KB.SHARE.amnhac,
   topics: [
     { hk: 1, ten: 'Thế giới âm nhạc kì diệu', bai: ['Hát: Dàn nhạc trong vườn', 'Thường thức âm nhạc: Ước mơ của bạn Đô', 'Đọc nhạc: Bài số 1', 'Vận dụng – Sáng tạo'],
       lt: ['Tư thế khi học hát: ngồi hoặc đứng thẳng lưng, thả lỏng vai.', 'Bảy nốt nhạc: <b>Đô, Rê, Mi, Pha, Son, La, Si</b>.', 'Nhạc cụ gõ thường dùng: trống con, thanh phách, song loan, tem-bơ-rin, trai-en-gô.'],

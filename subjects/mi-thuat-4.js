@@ -1,6 +1,6 @@
 /* Mĩ thuật 4 – KNTT. Câu hỏi do PLT-Edu soạn theo các chủ đề tạo hình và ứng dụng. */
 PLT.KB.build({
-  id: 'mi-thuat-4', lop: 4, mon: 'Mĩ thuật', icon: '🎨', so: false,
+  id: 'mi-thuat-4', lop: 4, mon: 'Mĩ thuật', icon: '🎨', so: false, share: PLT.KB.SHARE.mithuat,
   topics: [
     { hk: 1, ten: 'Màu sắc và cảm xúc', bai: ['Quan sát', 'Thể hiện', 'Thảo luận', 'Vận dụng'],
       lt: ['Màu nóng gợi ấm áp, sôi nổi; màu lạnh gợi mát mẻ, yên tĩnh.', '<b>Màu tương phản</b> (đỏ – lục, vàng – tím, cam – lam) đặt cạnh nhau làm nổi bật nhau.', 'Đậm nhạt của màu tạo chiều sâu, khối.'],

@@ -1,6 +1,6 @@
 /* Mĩ thuật 2 – KNTT. Các chủ đề về yếu tố tạo hình và vận dụng; câu hỏi do PLT-Edu soạn. */
 PLT.KB.build({
-  id: 'mi-thuat-2', lop: 2, mon: 'Mĩ thuật', icon: '🎨', so: false,
+  id: 'mi-thuat-2', lop: 2, mon: 'Mĩ thuật', icon: '🎨', so: false, share: PLT.KB.SHARE.mithuat,
   topics: [
     { hk: 1, ten: 'Sắc màu thiên nhiên', bai: ['Quan sát', 'Thể hiện', 'Thảo luận', 'Vận dụng'],
       lt: ['Thiên nhiên có nhiều màu sắc: xanh của lá, đỏ của hoa, vàng của nắng…', 'Màu <b>cơ bản</b>: đỏ, vàng, lam. Màu <b>thứ cấp</b> (pha từ 2 màu cơ bản): cam, lục, tím.'],

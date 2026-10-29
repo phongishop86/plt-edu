@@ -1,6 +1,6 @@
 /* Giáo dục thể chất 4 – KNTT. Câu hỏi ôn kiến thức, kĩ thuật, luật chơi, an toàn do PLT-Edu soạn. */
 PLT.KB.build({
-  id: 'gdtc-4', lop: 4, mon: 'Giáo dục thể chất', icon: '⚽',
+  id: 'gdtc-4', lop: 4, mon: 'Giáo dục thể chất', icon: '⚽', share: PLT.KB.SHARE.gdtc,
   topics: [
     { hk: 1, ten: 'Đội hình đội ngũ', bai: ['Biến đổi đội hình từ một hàng dọc thành hai, bốn hàng dọc và ngược lại', 'Đi đều vòng bên phải, vòng bên trái', 'Đổi chân khi đi đều sai nhịp'],
       lt: ['Đi đều: bước chân trái trước, tay phải đánh ra trước, giữ đúng nhịp "1 – 2".', 'Khi đi đều sai nhịp: bước đệm (đổi chân) để trở về đúng nhịp.'],
