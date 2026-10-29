@@ -244,6 +244,15 @@
     sel.onchange = () => { setLop(sel.value); syncLop(); location.hash = `#/lop/${sel.value}`; };
     $('#gear').onclick = settings; syncLop();
   }
+  // Bong bóng "Quay lại" nổi ở góc dưới bên phải (biểu tượng logo) – không cần tìm nút Back của trình duyệt
+  const stack = [location.hash || '#/']; const back = document.createElement('button');
+  back.className = 'backfab'; back.type = 'button'; back.title = 'Quay lại trang trước'; back.setAttribute('aria-label', 'Quay lại');
+  back.innerHTML = '<img src="assets/img/logo-96.png" alt=""><span>←</span>';
+  back.onclick = () => { if (stack.length > 1) history.back(); else location.hash = '#/'; };
+  document.body.appendChild(back);
+  const fab = () => { const h = location.hash.replace(/^#\/?/, ''); back.hidden = !h; document.body.classList.toggle('in-exam', h.startsWith('thi/')); };
+  window.addEventListener('hashchange', () => { const h = location.hash || '#/'; if (stack.length > 1 && stack[stack.length - 2] === h) stack.pop(); else stack.push(h); fab(); });
+  fab();
   window.addEventListener('hashchange', route);
   nav(); route();
 })();

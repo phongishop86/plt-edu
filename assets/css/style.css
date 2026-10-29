@@ -183,3 +183,10 @@ sup{font-size:.7em}
 @media (max-width:1060px){.nav span{display:none}.nav a{font-size:1.15rem;padding:7px 10px}.logo small{display:none}}
 @media (max-width:760px){.eco-sis b{display:none}.eco-sis{padding:3px;margin-left:4px}.nav a{padding:6px 8px}}
 @media (max-width:680px) and (min-width:601px){.logo span{display:none}}
+/* Bong bóng quay lại */
+.backfab{position:fixed;right:18px;bottom:18px;z-index:40;width:58px;height:58px;border-radius:50%;border:3px solid var(--band-accent,#F4A261);background:#1B2A4A;padding:0;cursor:pointer;box-shadow:0 8px 22px rgba(12,19,34,.35);display:grid;place-items:center;transition:transform .15s}
+.backfab:hover{transform:scale(1.07)}.backfab:active{transform:scale(.95)}
+.backfab img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+.backfab span{position:absolute;left:-6px;top:-6px;width:24px;height:24px;border-radius:50%;background:var(--band-accent,#F4A261);color:#1B2A4A;font-weight:900;font-size:15px;display:grid;place-items:center;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.backfab[hidden]{display:none}
+@media (max-width:860px){.backfab{width:50px;height:50px;right:12px;bottom:12px}body.in-exam .backfab{bottom:168px}}
