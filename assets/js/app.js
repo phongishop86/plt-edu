@@ -231,7 +231,7 @@
   }
   function syncLop() {
     const l = curLop(), s = sidOf(l);
-    $('#nav').innerHTML = `<a href="#/" data-r="">🏠 <span>Trang chủ</span></a><a href="#/hoc/${s}" data-r="hoc">📚 <span>Học bài</span></a><a href="#/on-tap/${s}" data-r="on-tap">🎯 <span>Ôn tập</span></a><a href="#/kiem-tra/${s}" data-r="kiem-tra">📝 <span>Kiểm tra</span></a><a href="#/tien-do" data-r="tien-do">📈 <span>Tiến độ</span></a>`;
+    $('#nav').innerHTML = `<a href="#/" data-r="" title="Trang chủ">🏠 <span>Trang chủ</span></a><a href="#/hoc/${s}" data-r="hoc" title="Học bài">📚 <span>Học bài</span></a><a href="#/on-tap/${s}" data-r="on-tap" title="Ôn tập">🎯 <span>Ôn tập</span></a><a href="#/kiem-tra/${s}" data-r="kiem-tra" title="Kiểm tra">📝 <span>Kiểm tra</span></a><a href="#/tien-do" data-r="tien-do" title="Tiến độ">📈 <span>Tiến độ</span></a>`;
     const sel = $('#lopSel'); if (sel) sel.value = l;
     const ic = $('#lopIc'); if (ic) ic.href = `#/lop/${l}`;
   }

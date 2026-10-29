@@ -13,12 +13,12 @@ h1{font-size:1.7rem;margin:.3em 0 .4em;line-height:1.25}h2{font-size:1.3rem;marg
 .muted{color:var(--muted)}.small{font-size:.88rem}.ok{color:var(--ok)}.bad{color:var(--bad)}
 /* header */
 .top{position:sticky;top:0;z-index:20;background:var(--band);color:var(--band-fg);border-bottom:3px solid var(--band-accent)}
-.top .in{max-width:1180px;margin:auto;display:flex;align-items:center;gap:12px;padding:8px 16px}
+.top .in{max-width:1320px;margin:auto;display:flex;align-items:center;gap:clamp(6px,1vw,12px);padding:8px 16px}
 .logo{white-space:nowrap;display:flex;align-items:center;gap:8px;font-weight:800;font-size:1.2rem;color:var(--band-fg)}
 .logo i{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:conic-gradient(var(--pri) 0 33%,var(--teal) 0 66%,var(--blue) 0);color:#fff;font-style:normal;font-size:.8rem;letter-spacing:-.5px}
 .logo small{display:block;font-size:.7rem;font-weight:600;color:var(--band-muted);line-height:1}
-.nav{display:flex;gap:4px;margin-left:auto;overflow-x:auto}
-.nav a{padding:8px 12px;border-radius:999px;color:var(--band-muted);font-weight:700;white-space:nowrap}
+.nav{display:flex;gap:2px;margin-left:auto;min-width:0}
+.nav a{padding:8px clamp(7px,.8vw,12px);border-radius:999px;color:var(--band-muted);font-weight:700;white-space:nowrap;font-size:clamp(.86rem,.62rem + .38vw,1rem)}
 .nav a.on,.nav a:hover{background:rgba(255,255,255,.1);color:var(--band-fg)}
 .gear{border:0;background:rgba(255,255,255,.1);border-radius:50%;width:40px;height:40px;font-size:1.15rem;cursor:pointer;flex:none}
 main{max-width:1180px;margin:auto;padding:16px 16px 60px}
@@ -177,3 +177,9 @@ sup{font-size:.7em}
 .sys{display:inline-block;margin:6px 0;padding-left:6px;border-left:3px solid var(--ink);font-weight:700;line-height:1.8}
 /* Điện thoại: hàng 1 = logo, AI Edu, chọn lớp, đăng nhập, cài đặt; hàng 2 = menu chức năng (cuộn ngang) */
 @media (max-width:600px){.top .in{flex-wrap:wrap;row-gap:6px}.top .in .nav{order:9;flex-basis:100%;justify-content:space-between}.nav a{flex:1;text-align:center}.lopbox{margin-left:auto}}
+/* Menu co giãn tự nhiên, không thanh cuộn: hẹp dần thì thu nhỏ chữ, hẹp nữa thì chỉ còn biểu tượng */
+@media (max-width:1180px){.eco-sis small{display:none}.eco-lg span{display:none}.eco-lg{padding:8px 10px}}
+@media (min-width:1181px){.eco-lg span{display:inline}.eco-lg{padding:9px 14px}}
+@media (max-width:1060px){.nav span{display:none}.nav a{font-size:1.15rem;padding:7px 10px}.logo small{display:none}}
+@media (max-width:760px){.eco-sis b{display:none}.eco-sis{padding:3px;margin-left:4px}.nav a{padding:6px 8px}}
+@media (max-width:680px) and (min-width:601px){.logo span{display:none}}
