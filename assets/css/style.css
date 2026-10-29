@@ -175,3 +175,5 @@ sup{font-size:.7em}
 .emo{font-size:1.5rem;letter-spacing:2px;margin:8px 0;line-height:1.5}.emo.big2{font-size:2.2rem}
 .passage{background:#fffdf6;border-left:4px solid var(--teal);border-radius:10px;padding:10px 14px;margin:8px 0 12px;font-size:1.02rem;line-height:1.7}
 .sys{display:inline-block;margin:6px 0;padding-left:6px;border-left:3px solid var(--ink);font-weight:700;line-height:1.8}
+/* Điện thoại: hàng 1 = logo, AI Edu, chọn lớp, đăng nhập, cài đặt; hàng 2 = menu chức năng (cuộn ngang) */
+@media (max-width:600px){.top .in{flex-wrap:wrap;row-gap:6px}.top .in .nav{order:9;flex-basis:100%;justify-content:space-between}.nav a{flex:1;text-align:center}.lopbox{margin-left:auto}}
