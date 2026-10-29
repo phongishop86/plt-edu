@@ -82,7 +82,7 @@
   KB.gen = (B) => { const a = avail(B); return () => MAKERS[pick(a)](B); };
 
   // Tự luận ngắn: [đề, [ý chính/từ khoá], lời giải mẫu, số câu tối thiểu]
-  KB.essays = (list, max) => (list || []).map(([q, kw, dapan, minCau]) => () => Object.assign(essay(q, max || 2, dapan || 'Trình bày đủ các ý: ' + (kw || []).join('; ') + '.', []), { kw: kw || [], minCau: minCau || 3, ph: 'Viết câu trả lời của em (vài câu, đủ ý)…' }));
+  KB.essays = (list, max) => (list || []).map(([q, kw, dapan, minCau]) => () => Object.assign(essay(q, max || 2, dapan || 'Trình bày đủ các ý: ' + (kw || []).join('; ') + '.', (kw || []).length && kw.every((k) => /^-?[\d\s]+(,\d+)?$/.test(String(k).trim())) ? kw.map((k) => PLT.U.parseNum(String(k))) : []), { kw: kw || [], minCau: minCau || 3, ph: 'Viết câu trả lời của em (vài câu, đủ ý)…' }));
 
   /* ---------- Ngân hàng dùng chung cho các môn nghệ thuật, thể chất (bổ sung vào mọi chủ đề) ---------- */
   KB.SHARE = {
