@@ -71,12 +71,12 @@
         <p class="lead">Lý thuyết ngắn gọn, mô phỏng tương tác, câu hỏi ngẫu nhiên không giới hạn và đề kiểm tra theo tuần, tháng, học kỳ — có AI chấm tự luận.</p>
         <p class="pick-q">Em đang học…</p>
         <div class="pick">
-          <a href="#/lop/${l <= 5 ? l : 1}"><b>Tiểu học</b><span>Lớp 1 – 5 · Toán, Tiếng Việt</span><i>→</i></a>
-          <a href="#/lop/${l >= 6 && l <= 9 ? l : 6}"><b>Trung học cơ sở</b><span>Lớp 6 – 9 · Toán</span><i>→</i></a>
-          <a href="#/lop/${l >= 10 ? l : 10}"><b>Trung học phổ thông</b><span>Lớp 10 – 12 · Toán</span><i>→</i></a>
+          <a href="#/lop/${l <= 5 ? l : 1}"><b>Tiểu học</b><span>Lớp 1 – 5 · đủ 9–12 môn</span><i>→</i></a>
+          <a href="#/lop/${l >= 6 && l <= 9 ? l : 6}"><b>Trung học cơ sở</b><span>Lớp 6 – 9 · đủ 12 môn</span><i>→</i></a>
+          <a href="#/lop/${l >= 10 ? l : 10}"><b>Trung học phổ thông</b><span>Lớp 10 – 12 · đủ 16 môn</span><i>→</i></a>
           <a href="https://phongishop86.github.io/plt-aiedu/"><b>🤖 AI Edu</b><span>Học AI an toàn, miễn phí</span><i>→</i></a>
         </div>
-        <div class="facts"><span><b>12</b> lớp</span><span><b>575</b> bài Toán</span><span><b>Đề</b> tuần · tháng · kỳ</span><span><b>AI</b> chấm tự luận</span><span>Tiến độ lưu ngay trên máy</span></div>
+        <div class="facts"><span><b>12</b> lớp</span><span><b>149</b> môn học</span><span><b>3 900+</b> bài học</span><span><b>Đề</b> tuần · tháng · kỳ</span><span><b>AI</b> chấm tự luận</span><span>Tiến độ lưu ngay trên máy</span></div>
       </div>
       <div class="hcard"><div class="hl"><img src="assets/img/logo-192.png" alt=""><div><b>Đang học: Lớp ${l}</b><span>Chọn lớp khác bên dưới hoặc trên thanh menu</span></div></div>
         <div class="lops">${Array.from({ length: 12 }, (_, i) => i + 1).map((x) => `<a href="#/lop/${x}" class="${x === l ? 'on' : ''}">${x}</a>`).join('')}</div>
