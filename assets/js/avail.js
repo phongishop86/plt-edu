@@ -9,5 +9,6 @@ window.PLT_AVAIL = [
   'ngu-van-7', 'tieng-anh-7', 'khtn-7', 'lsdl-7', 'gdcd-7', 'tin-hoc-7', 'cong-nghe-7', 'am-nhac-7', 'mi-thuat-7', 'gdtc-7', 'hdtn-7',
   'ngu-van-8', 'tieng-anh-8', 'khtn-8', 'lsdl-8', 'gdcd-8', 'tin-hoc-8', 'cong-nghe-8', 'am-nhac-8', 'mi-thuat-8', 'gdtc-8', 'hdtn-8',
   'ngu-van-9', 'tieng-anh-9', 'khtn-9', 'lsdl-9', 'gdcd-9', 'tin-hoc-9', 'cong-nghe-9', 'am-nhac-9', 'mi-thuat-9', 'gdtc-9', 'hdtn-9',
-  'tieng-anh-10', 'vat-li-10', 'hoa-hoc-10', 'tieng-anh-11', 'vat-li-11', 'hoa-hoc-11', 'tieng-anh-12', 'vat-li-12', 'hoa-hoc-12'
+  'tieng-anh-10', 'vat-li-10', 'hoa-hoc-10', 'tieng-anh-11', 'vat-li-11', 'hoa-hoc-11', 'tieng-anh-12', 'vat-li-12', 'hoa-hoc-12',
+  'sinh-hoc-10', 'lich-su-10', 'dia-li-10', 'sinh-hoc-11', 'lich-su-11', 'dia-li-11', 'sinh-hoc-12', 'lich-su-12', 'dia-li-12'
 ];
