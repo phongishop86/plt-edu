@@ -35,7 +35,7 @@
   function ensure(sid) {
     if (PLT.subjects[sid]) return Promise.resolve(PLT.subjects[sid]);
     const c = CATALOG[sid]; if (!c) return Promise.resolve(null);
-    if (!loading[sid]) loading[sid] = new Promise((ok) => { const s = document.createElement('script'); s.src = c.file; s.onload = () => ok(PLT.subjects[sid] || null); s.onerror = () => ok(null); document.body.appendChild(s); });
+    if (!loading[sid]) loading[sid] = new Promise((ok) => { const s = document.createElement('script'); s.src = c.file + (window.PLT_VER ? '?v=' + window.PLT_VER : ''); s.onload = () => ok(PLT.subjects[sid] || null); s.onerror = () => ok(null); document.body.appendChild(s); });
     return loading[sid];
   }
 
