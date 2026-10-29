@@ -154,17 +154,17 @@
   KB.eng = function (def) {
     const all = []; def.units.forEach((u) => { u.V = u.v.split(';').map((x) => x.split('=').map((y) => y.trim())).filter((x) => x.length === 2 && x[0]); u.V.forEach((x) => all.push(x)); });
     const words = [...new Set(all.map((x) => x[0]))];
-    const clean = (t) => t.replace(/\[([^\]|]+)(\|[^\]]*)?\]/g, '$1');
+    const clean = (t) => t.replace(/\]\s*\([^)]*\)/g, ']').replace(/\[([^\]|]+)(\|[^\]]*)?\]/g, '$1');
     let lt = 0;
     const topics = def.units.map((u, i) => {
       const lines = u.V.map(([w, m]) => `= ${w} = ${m}`);
-      (u.s || []).forEach((t) => { if (/\[/.test(t)) { const m = t.match(/\[([^\]|]+)/); const hit = all.find(([w]) => m && (w.toLowerCase() === m[1].toLowerCase() || m[1].toLowerCase().replace(/(ing|s)$/, '') === w.toLowerCase().replace(/e$/, ''))); lines.push('_ ' + (hit ? t.replace(/\]/, '] (' + hit[1] + ')') : t)); } const ws = clean(t).split(/\s+/); if (ws.length >= 3 && ws.length <= 9 && new Set(ws).size === ws.length) lines.push('> ' + ws.join(' > ')); });
+      (u.s || []).forEach((t) => { if (/\[/.test(t)) { const m = t.match(/\[([^\]|]+)/); const hit = all.find(([w]) => m && (w.toLowerCase() === m[1].toLowerCase() || m[1].toLowerCase().replace(/(ing|s)$/, '') === w.toLowerCase().replace(/e$/, ''))); lines.push('_ ' + (hit && !/\]\s*\(/.test(t) ? t.replace(/\]/, '] (' + hit[1] + ')') : t)); } const ws = clean(t).split(/\s+/); if (ws.length >= 3 && ws.length <= 9 && new Set(ws).size === ws.length) lines.push('> ' + ws.join(' > ')); });
       (u.q || []).forEach((x) => lines.push(x));
       const fns = {};
       const ph = u.ph;
       if (ph) fns.ph = () => { const ok = u.V.filter(([w]) => w.toLowerCase().includes(ph.toLowerCase())); const a = pick(ok.length ? ok : u.V)[0]; const bad = shuffle(words.filter((w) => !w.toLowerCase().includes(ph.toLowerCase()))).slice(0, 3); return mc(`Từ nào có âm/chữ <b>"${ph}"</b>?`, a, bad, `"${a}" có chứa "${ph}".`); };
       fns.miss = () => { const cand = u.V.filter(([w]) => /^[a-z]{3,}$/i.test(w)); if (!cand.length) return mc(`<b>${u.V[0][1]}</b> trong tiếng Anh là:`, u.V[0][0], shuffle(words.filter((w) => w !== u.V[0][0])).slice(0, 3)); const [w, m] = pick(cand); const k = r(0, w.length - 1); const ch = w[k]; const letters = shuffle('abcdefghijklmnopqrstuvwxyz'.split('').filter((c) => c !== ch.toLowerCase())).slice(0, 3); return mc(`Điền chữ cái còn thiếu: <b style="letter-spacing:3px">${w.slice(0, k)}_${w.slice(k + 1)}</b> (${m})`, ch, letters, `Từ đúng: ${w} — ${m}.`); };
-      return { hk: u.hk || (i < def.units.length / 2 ? 1 : 2), ten: u.ten, nhan0: 'Unit ' + (i + 1), lt: u.lt || [`<b>Từ vựng:</b> ${u.V.map(([w, m]) => `<b>${w}</b> (${m})`).join(', ')}.`].concat(ph ? [`<b>Âm/chữ cái:</b> ${ph}`] : []).concat((u.s || []).length ? [`<b>Mẫu câu:</b> ${(u.s || []).map((t) => '<i>' + clean(t) + '</i>').join(' · ')}`] : []), bai: (u.bai || ['Lesson 1 – Từ vựng', 'Lesson 2 – Mẫu câu', 'Lesson 3 – Âm và chữ cái']).map((b) => '*' + b), on: u.on, q: lines.join('\n'), fns };
+      return { hk: u.hk || (i < def.units.length / 2 ? 1 : 2), ten: u.ten, nhan0: 'Unit ' + (i + 1), lt: [`<b>Từ vựng:</b> ${u.V.map(([w, m]) => `<b>${w}</b> (${m})`).join(', ')}.`].concat(ph ? [`<b>Âm/chữ cái:</b> ${ph}`] : []).concat(u.lt || []).concat((u.s || []).length ? [`<b>Mẫu câu:</b> ${(u.s || []).map((t) => '<i>' + clean(t) + '</i>').join(' · ')}`] : []), bai: (u.bai || (def.lop >= 6 ? ['Vocabulary – Từ vựng', 'Grammar – Ngữ pháp', 'Skills & Review – Kĩ năng, ôn tập'] : ['Lesson 1 – Từ vựng', 'Lesson 2 – Mẫu câu', 'Lesson 3 – Âm và chữ cái'])).map((b) => '*' + b), on: u.on, q: lines.join('\n'), fns };
     });
     return KB.build({ id: def.id, lop: def.lop, mon: 'Tiếng Anh', icon: '🔤', bo: 'Global Success', so: false, topics, essays: def.essays, essayMax: def.essayMax });
   };
@@ -172,7 +172,7 @@
   /* def: { id, lop, mon, icon, nhan ('Chủ đề'|'Unit'|'Chương'|'Bài'), topics: [{ hk, ten, lt (mảng ý hoặc HTML), bai: [tên bài | [so, tên]], q: chuỗi ngân hàng, on: 'Ôn tập…' }], essays: {1:[…], 2:[…]}, so: false (không đánh số bài); tên bài bắt đầu bằng * thì không đánh số } */
   KB.build = function (def) {
     const gens = {}; let n = 0;
-    const topics = def.topics.map((t, i) => {
+    const topics = def.topics.slice().sort((a, b) => (a.hk || 1) - (b.hk || 1)).map((t, i) => {
       const id = i + 1, own = KB.parse(t.q), B = KB.parse((t.q || '') + '\n' + (def.share || '')); const keys = [];
       if (avail(B).length) { const gAll = KB.gen(B), gOwn = avail(own).length ? KB.gen(own) : null; gens['k' + id] = def.share && gOwn ? () => (Math.random() < 0.7 ? gOwn() : gAll()) : gAll; keys.push('k' + id); }
       if (B.tf.length + B.pair.length + B.fill.length + B.ord.length + B.grp.length >= 4 && B.mc.length >= 4) { // dạng thứ hai để đề đa dạng hơn
