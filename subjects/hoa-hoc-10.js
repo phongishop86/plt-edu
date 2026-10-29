@@ -18,7 +18,15 @@ PLT.KB.build({
 = Phân lớp p = Tối đa 6 electron
 = Phân lớp d = Tối đa 10 electron
 = Phân lớp f = Tối đa 14 electron
-> 1s > 2s > 2p > 3s > 3p > 4s > 3d` },
+> 1s > 2s > 2p > 3s > 3p > 4s > 3d
+? Hạt mang điện tích dương trong nguyên tử là: | Proton | Electron | Neutron | Photon
+? Hạt không mang điện trong hạt nhân là: | Neutron | Proton | Electron | Ion
+? Nguyên tử có 11 proton thì số electron là: | 11 | 12 | 10 | 22
+? Đồng vị là những nguyên tử có cùng: | Số proton, khác số neutron | Số neutron, khác số proton | Số khối | Khối lượng
+? Lớp electron thứ 2 (lớp L) chứa tối đa bao nhiêu electron? | 8 | 2 | 18 | 32
+? Cấu hình electron của Na (Z = 11) là: | 1s²2s²2p⁶3s¹ | 1s²2s²2p⁶ | 1s²2s²2p⁵3s² | 1s²2s²3s¹
+- Electron có khối lượng lớn hơn proton.
+_ Số khối A = Z + [N]` },
     { hk: 1, nhan: 'Chương 2', ten: 'Bảng tuần hoàn các nguyên tố hoá học', bai: ['Bài 5. Cấu tạo của bảng tuần hoàn các nguyên tố hoá học', 'Bài 6. Xu hướng biến đổi một số tính chất của nguyên tử các nguyên tố trong một chu kì và trong một nhóm', 'Bài 7. Xu hướng biến đổi thành phần và một số tính chất của hợp chất trong một chu kì', 'Bài 8. Định luật tuần hoàn. Ý nghĩa của bảng tuần hoàn', '*Bài 9. Ôn tập chương 2'],
       lt: ['Bảng tuần hoàn: xếp theo chiều tăng điện tích hạt nhân; <b>chu kì</b> = số lớp electron; nhóm A: số thứ tự nhóm = số e lớp ngoài cùng.', 'Trong một chu kì (trái → phải): bán kính nguyên tử giảm, độ âm điện tăng, tính kim loại giảm, tính phi kim tăng.', 'Trong một nhóm A (trên → dưới): bán kính tăng, độ âm điện giảm, tính kim loại tăng.', 'Oxide và hydroxide: tính base giảm, tính acid tăng theo chiều tăng Z trong chu kì.'],
       q: `? Số thứ tự chu kì bằng: | Số lớp electron | Số electron lớp ngoài cùng | Số proton | Số neutron
@@ -31,7 +39,16 @@ PLT.KB.build({
 = Chu kì = Hàng ngang, cùng số lớp electron
 = Nhóm = Cột dọc, tính chất tương tự
 = Nhóm VIIA = Halogen
-= Nhóm VIIIA = Khí hiếm` },
+= Nhóm VIIIA = Khí hiếm
+? Các nguyên tố trong cùng một nhóm A có cùng: | Số electron lớp ngoài cùng | Số lớp electron | Số khối | Số neutron
+? Các nguyên tố trong cùng một chu kì có cùng: | Số lớp electron | Số electron hoá trị | Tính chất hoá học | Số proton
+? Trong một chu kì, theo chiều tăng điện tích hạt nhân, tính kim loại: | Giảm dần | Tăng dần | Không đổi | Tăng rồi giảm
+? Nhóm IA (trừ H) gồm các: | Kim loại kiềm | Halogen | Khí hiếm | Kim loại kiềm thổ
+? Nhóm VIIIA gồm các: | Khí hiếm | Halogen | Kim loại kiềm | Kim loại chuyển tiếp
++ Bảng tuần hoàn hiện nay có 7 chu kì.
+- Trong một nhóm A, từ trên xuống, bán kính nguyên tử giảm dần.
+= Nhóm IA = Kim loại kiềm
+= Nhóm IIA = Kim loại kiềm thổ` },
     { hk: 1, nhan: 'Chương 3', ten: 'Liên kết hoá học', bai: ['Bài 10. Quy tắc octet', 'Bài 11. Liên kết ion', 'Bài 12. Liên kết cộng hoá trị', 'Bài 13. Liên kết hydrogen và tương tác van der Waals', '*Bài 14. Ôn tập chương 3'],
       lt: ['<b>Quy tắc octet</b>: nguyên tử có xu hướng đạt 8 electron lớp ngoài cùng (như khí hiếm).', '<b>Liên kết ion</b>: lực hút tĩnh điện giữa cation và anion (NaCl), thường giữa kim loại điển hình và phi kim điển hình.', '<b>Liên kết cộng hoá trị</b>: dùng chung cặp electron; không phân cực (H₂, Cl₂) và phân cực (HCl, H₂O); liên kết đơn, đôi, ba; liên kết σ, π.', '<b>Liên kết hydrogen</b>: giữa H (liên kết với F, O, N) và nguyên tử F, O, N khác; làm nhiệt độ sôi của H₂O cao bất thường.'],
       q: `? Liên kết trong phân tử NaCl là: | Liên kết ion | Liên kết cộng hoá trị không phân cực | Liên kết kim loại | Liên kết hydrogen
@@ -44,7 +61,13 @@ PLT.KB.build({
 = NaCl = Liên kết ion
 = H₂O = Cộng hoá trị phân cực
 = O₂ = Liên kết đôi
-= N₂ = Liên kết ba` },
+= N₂ = Liên kết ba
+? Liên kết trong phân tử H₂ là: | Cộng hoá trị không cực | Ion | Cộng hoá trị có cực | Kim loại
+? Liên kết trong phân tử H₂O là: | Cộng hoá trị có cực | Ion | Cộng hoá trị không cực | Kim loại
+? Theo quy tắc octet, nguyên tử có xu hướng đạt: | 8 electron lớp ngoài cùng | 2 electron | 18 electron | 6 electron
+? Liên kết hydrogen làm cho nước có: | Nhiệt độ sôi cao bất thường | Nhiệt độ sôi rất thấp | Không tan | Màu xanh
++ Hiệu độ âm điện ≥ 1,7 thường tạo liên kết ion.
+- Liên kết cộng hoá trị hình thành do sự cho nhận electron hoàn toàn.` },
     { hk: 2, nhan: 'Chương 4, 5', ten: 'Phản ứng oxi hoá – khử. Năng lượng hoá học', bai: ['Bài 15. Phản ứng oxi hoá – khử', '*Bài 16. Ôn tập chương 4', 'Bài 17. Biến thiên enthalpy trong các phản ứng hoá học', '*Bài 18. Ôn tập chương 5'],
       lt: ['<b>Số oxi hoá</b>; <b>chất khử</b> nhường electron (số oxi hoá tăng), <b>chất oxi hoá</b> nhận electron (số oxi hoá giảm). "Khử cho – O nhận".', 'Cân bằng phản ứng oxi hoá – khử bằng phương pháp thăng bằng electron.', '<b>Enthalpy tạo thành chuẩn</b> Δ_fH°₂₉₈; biến thiên enthalpy phản ứng Δ_rH: < 0 toả nhiệt, > 0 thu nhiệt.'],
       q: `? Chất khử là chất: | Nhường electron | Nhận electron | Không thay đổi số oxi hoá | Là chất xúc tác
@@ -59,7 +82,12 @@ PLT.KB.build({
 = Chất khử = Nhường electron, số oxi hoá tăng
 = Chất oxi hoá = Nhận electron, số oxi hoá giảm
 = Δ_rH < 0 = Phản ứng toả nhiệt
-= Δ_rH > 0 = Phản ứng thu nhiệt` },
+= Δ_rH > 0 = Phản ứng thu nhiệt
+? Số oxi hoá của đơn chất luôn bằng: | 0 | +1 | −1 | +2
+? Phản ứng toả nhiệt có biến thiên enthalpy: | ΔH < 0 | ΔH > 0 | ΔH = 0 | Không xác định
+? Phản ứng đốt cháy nhiên liệu là phản ứng: | Toả nhiệt | Thu nhiệt | Không có năng lượng | Trung hoà
+? Quá trình oxi hoá là quá trình: | Nhường electron | Nhận electron | Nhận proton | Tạo kết tủa
++ Phản ứng nung đá vôi là phản ứng thu nhiệt.` },
     { hk: 2, nhan: 'Chương 6, 7', ten: 'Tốc độ phản ứng. Nguyên tố nhóm VIIA – Halogen', bai: ['Bài 19. Tốc độ phản ứng', '*Bài 20. Ôn tập chương 6', 'Bài 21. Nhóm halogen', 'Bài 22. Hydrogen halide. Muối halide', '*Bài 23. Ôn tập chương 7'],
       lt: ['Tốc độ phản ứng phụ thuộc: nồng độ, áp suất (chất khí), nhiệt độ, diện tích bề mặt, chất xúc tác. <b>Quy tắc Van\'t Hoff</b>: nhiệt độ tăng 10 °C, tốc độ tăng γ lần (γ = 2–4).', 'Halogen (nhóm VIIA): F, Cl, Br, I; có 7 e lớp ngoài cùng; tính oxi hoá giảm dần từ F đến I.', 'HF, HCl, HBr, HI; tính acid tăng dần HF < HCl < HBr < HI. Nhận biết ion halide bằng AgNO₃: AgCl trắng, AgBr vàng nhạt, AgI vàng.'],
       q: `? Yếu tố nào KHÔNG làm tăng tốc độ phản ứng? | Giảm nhiệt độ | Tăng nồng độ | Dùng chất xúc tác | Tăng diện tích bề mặt
@@ -72,7 +100,15 @@ PLT.KB.build({
 = AgCl = Kết tủa trắng
 = AgBr = Kết tủa vàng nhạt
 = AgI = Kết tủa vàng
-> F > Cl > Br > I` }
+> F > Cl > Br > I
+? Yếu tố làm tăng tốc độ phản ứng là: | Tăng nhiệt độ | Giảm nồng độ | Giảm diện tích bề mặt | Làm lạnh
+? Chất xúc tác có vai trò: | Làm tăng tốc độ phản ứng, không bị tiêu hao | Bị tiêu hao hoàn toàn | Làm giảm tốc độ | Tạo sản phẩm mới
+? Halogen ở thể lỏng ở điều kiện thường là: | Bromine | Chlorine | Fluorine | Iodine
+? Halogen ở thể rắn, màu tím đen là: | Iodine | Bromine | Chlorine | Fluorine
+? Thuốc thử nhận biết ion Cl⁻ là: | Dung dịch AgNO₃ | Quỳ tím | Phenolphthalein | Dung dịch NaOH
+? Hồ tinh bột chuyển màu xanh tím khi gặp: | Iodine | Chlorine | Bromine | Fluorine
++ Trong nhóm halogen, tính oxi hoá giảm dần từ F đến I.
+- Nghiền nhỏ chất rắn làm giảm tốc độ phản ứng.` }
   ],
   essays: {
     1: [['Nguyên tố X có Z = 17. Viết cấu hình electron, xác định vị trí của X trong bảng tuần hoàn và cho biết X là kim loại hay phi kim.', ['1s²2s²2p⁶3s²3p⁵', 'chu kì 3', 'VIIA', 'phi kim'], 'Cấu hình 1s² 2s² 2p⁶ 3s² 3p⁵; ô 17, chu kì 3 (3 lớp e), nhóm VIIA (7 e lớp ngoài cùng); X là phi kim (chlorine).'],

@@ -14,7 +14,16 @@ PLT.KB.build({
 = Glucose = Monosaccharide, có trong quả nho
 = Saccharose = Disaccharide, có trong mía
 = Tinh bột = Polysaccharide, có trong gạo
-= Cellulose = Polysaccharide, thành phần của gỗ, bông` },
+= Cellulose = Polysaccharide, thành phần của gỗ, bông
+? Ester được tạo thành từ phản ứng giữa: | Carboxylic acid và alcohol | Acid và base | Kim loại và acid | Alkane và oxygen
+? Phản ứng thuỷ phân ester trong môi trường kiềm gọi là: | Phản ứng xà phòng hoá | Phản ứng ester hoá | Phản ứng trùng hợp | Phản ứng cộng
+? Chất béo là triester của glycerol với: | Acid béo | Acetic acid | Ethanol | Glucose
+? Glucose có công thức phân tử: | C₆H₁₂O₆ | C₁₂H₂₂O₁₁ | (C₆H₁₀O₅)ₙ | C₂H₅OH
+? Saccharose có nhiều trong: | Mía, củ cải đường | Gạo | Thịt | Muối ăn
+? Tinh bột gặp iodine cho màu: | Xanh tím | Đỏ | Vàng | Không màu
+? Cellulose là thành phần chính của: | Bông, gỗ | Thịt | Sữa | Dầu ăn
++ Glucose có phản ứng tráng bạc.
+- Saccharose là monosaccharide.` },
     { hk: 1, nhan: 'Chương 3, 4', ten: 'Hợp chất chứa nitrogen. Polymer', bai: ['Bài 8. Amine', 'Bài 9. Amino acid và peptide', 'Bài 10. Protein và enzyme', 'Bài 12. Đại cương về polymer', 'Bài 13. Vật liệu polymer'],
       lt: ['Amine: dẫn xuất của NH₃; methylamine, aniline (C₆H₅NH₂ – tạo kết tủa trắng với nước bromine).', 'Amino acid: chứa –NH₂ và –COOH (lưỡng tính); peptide: liên kết –CO–NH–. Protein: đông tụ khi đun nóng; phản ứng màu biuret (tím).', 'Polymer: trùng hợp (PE, PVC, PS) và trùng ngưng (nylon-6,6, tơ lapsan). Vật liệu: chất dẻo, tơ, cao su, keo dán, vật liệu composite.'],
       q: `? Aniline có công thức: | C₆H₅NH₂ | CH₃NH₂ | C₆H₅OH | NH₃
@@ -27,7 +36,15 @@ PLT.KB.build({
 = PE = Trùng hợp ethylene
 = PVC = Trùng hợp vinyl chloride
 = Nylon-6,6 = Trùng ngưng
-= Cao su thiên nhiên = Polyisoprene` },
+= Cao su thiên nhiên = Polyisoprene
+? Amine có tính chất: | Base | Acid mạnh | Trung tính tuyệt đối | Oxi hoá mạnh
+? Amino acid có tính chất: | Lưỡng tính | Chỉ acid | Chỉ base | Không phản ứng
+? Liên kết peptide là liên kết –CO–NH– giữa hai đơn vị: | α-amino acid | Glucose | Ester | Alkene
+? Protein bị đông tụ khi: | Đun nóng hoặc gặp acid, base | Để ở nhiệt độ phòng | Hoà tan trong nước lạnh | Chiếu sáng nhẹ
+? PE (polyethylene) được điều chế bằng phản ứng: | Trùng hợp ethylene | Trùng ngưng | Thuỷ phân | Ester hoá
+? Tơ nylon-6,6 thuộc loại: | Tơ tổng hợp | Tơ thiên nhiên | Tơ bán tổng hợp | Không phải tơ
++ Phản ứng màu biuret dùng nhận biết protein.
+- Cao su thiên nhiên được điều chế từ ethanol.` },
     { hk: 1, nhan: 'Chương 5', ten: 'Pin điện và điện phân', bai: ['Bài 15. Thế điện cực và nguồn điện hoá học', 'Bài 16. Điện phân', '*Bài 17. Ôn tập chương 5'],
       lt: ['Cặp oxi hoá – khử Mⁿ⁺/M; thế điện cực chuẩn E°; E° càng nhỏ, kim loại càng có tính khử mạnh.', 'Pin Galvani (Zn–Cu): anode (−) xảy ra oxi hoá, cathode (+) xảy ra khử; suất điện động E°pin = E°cathode − E°anode.', 'Điện phân: cathode (−) xảy ra sự khử, anode (+) xảy ra sự oxi hoá. Ứng dụng: điều chế kim loại (Al, Na), mạ điện, tinh chế kim loại.'],
       q: `? Trong pin điện hoá, tại anode xảy ra: | Sự oxi hoá | Sự khử | Không phản ứng | Kết tủa
@@ -38,7 +55,13 @@ PLT.KB.build({
 - Thế điện cực chuẩn càng lớn thì kim loại có tính khử càng mạnh.
 = Anode (pin) = Cực âm, xảy ra oxi hoá
 = Cathode (pin) = Cực dương, xảy ra khử
-= Mạ điện = Ứng dụng điện phân` },
+= Mạ điện = Ứng dụng điện phân
+? Trong pin điện hoá, anode là điện cực xảy ra: | Quá trình oxi hoá | Quá trình khử | Không phản ứng | Kết tủa
+? Trong pin Zn – Cu, kim loại bị ăn mòn là: | Zn | Cu | Cả hai | Không kim loại nào
+? Điện phân nóng chảy dùng để điều chế: | Kim loại mạnh như Na, Al | Vàng | Bạc | Đồng từ quặng
+? Trong điện phân, cathode là nơi xảy ra: | Quá trình khử | Quá trình oxi hoá | Bay hơi | Không có phản ứng
+? Nhôm được sản xuất công nghiệp bằng cách: | Điện phân nóng chảy Al₂O₃ | Nhiệt luyện | Thuỷ luyện | Lọc nước biển
+- Thế điện cực chuẩn càng nhỏ, tính khử của kim loại càng yếu.` },
     { hk: 2, nhan: 'Chương 6', ten: 'Đại cương về kim loại', bai: ['Bài 18. Cấu tạo và liên kết trong tinh thể kim loại', 'Bài 19. Tính chất vật lí và tính chất hoá học của kim loại', 'Bài 20. Kim loại trong tự nhiên và phương pháp tách kim loại', 'Bài 21. Hợp kim', 'Bài 22. Sự ăn mòn kim loại', '*Bài 23. Ôn tập chương 6'],
       lt: ['Liên kết kim loại: lực hút giữa ion dương và electron tự do → tính dẻo, dẫn điện, dẫn nhiệt, ánh kim.', 'Phương pháp tách kim loại: <b>nhiệt luyện</b> (CO, C, H₂ khử oxide: Fe, Cu…), <b>thuỷ luyện</b> (Cu, Ag), <b>điện phân</b> (Na, Al…).', '<b>Ăn mòn hoá học</b> và <b>ăn mòn điện hoá</b> (cần 2 điện cực khác nhau, tiếp xúc, cùng dung dịch chất điện li). Chống ăn mòn: phủ bề mặt, dùng kim loại hi sinh (Zn bảo vệ vỏ tàu thép).'],
       q: `? Kim loại dẫn điện tốt nhất là: | Ag | Cu | Al | Fe
@@ -51,7 +74,13 @@ PLT.KB.build({
 = Ag = Dẫn điện tốt nhất
 = Hg = Nhiệt độ nóng chảy thấp nhất (lỏng ở nhiệt độ thường)
 = W = Nhiệt độ nóng chảy cao nhất
-= Cr = Kim loại cứng nhất` },
+= Cr = Kim loại cứng nhất
+? Kim loại có nhiệt độ nóng chảy thấp nhất, ở thể lỏng ở nhiệt độ thường là: | Thuỷ ngân (Hg) | Tungsten (W) | Sắt (Fe) | Đồng (Cu)
+? Tính chất hoá học chung của kim loại là: | Tính khử | Tính oxi hoá | Tính acid | Lưỡng tính
+? Phương pháp bảo vệ vỏ tàu biển bằng thép thường dùng: | Gắn khối kẽm (phương pháp điện hoá) | Gắn khối đồng | Sơn màu đỏ | Ngâm nước biển
+? Ăn mòn điện hoá xảy ra khi: | Có hai điện cực khác nhau tiếp xúc và cùng nhúng trong dung dịch điện li | Chỉ có một kim loại khô | Không có nước | Kim loại nguyên chất trong chân không
++ Vàng là kim loại dẻo nhất.
+- Kim loại có tính oxi hoá đặc trưng.` },
     { hk: 2, nhan: 'Chương 7, 8', ten: 'Nguyên tố nhóm IA, IIA. Kim loại chuyển tiếp và phức chất', bai: ['Bài 24. Nguyên tố nhóm IA', 'Bài 25. Nguyên tố nhóm IIA', 'Bài 27. Đại cương về kim loại chuyển tiếp dãy thứ nhất', 'Bài 28. Sơ lược về phức chất', 'Bài 29. Một số tính chất và ứng dụng của phức chất'],
       lt: ['Nhóm IA (kim loại kiềm): Li, Na, K…; 1 e lớp ngoài cùng; tính khử rất mạnh; tác dụng mạnh với nước; bảo quản trong dầu hoả. Hợp chất: NaOH, NaHCO₃, Na₂CO₃, NaCl.', 'Nhóm IIA: Be, Mg, Ca, Sr, Ba; CaCO₃, CaO, Ca(OH)₂; <b>nước cứng</b> chứa nhiều Ca²⁺, Mg²⁺; làm mềm bằng Na₂CO₃, Na₃PO₄, trao đổi ion.', 'Kim loại chuyển tiếp dãy thứ nhất (Sc → Cu): nhiều số oxi hoá, hợp chất có màu. Phức chất: nguyên tử trung tâm + phối tử (ví dụ [Cu(NH₃)₄]²⁺ màu xanh lam đậm).'],
       q: `? Kim loại kiềm được bảo quản bằng cách: | Ngâm trong dầu hoả | Ngâm trong nước | Để ngoài không khí | Ngâm trong ethanol
@@ -64,7 +93,13 @@ PLT.KB.build({
 = NaHCO₃ = Bột nở (baking soda)
 = CaCO₃ = Đá vôi
 = CaO = Vôi sống
-= Ca(OH)₂ = Vôi tôi` }
+= Ca(OH)₂ = Vôi tôi
+? Kim loại kiềm có số electron lớp ngoài cùng là: | 1 | 2 | 3 | 7
+? Thạch cao nung có công thức: | CaSO₄·0,5H₂O | CaCO₃ | CaO | Ca(OH)₂
+? Đá vôi có thành phần chính là: | CaCO₃ | CaSO₄ | CaO | MgCO₃
+? Kim loại chuyển tiếp dùng nhiều nhất trong công nghiệp (gang, thép) là: | Sắt | Đồng | Kẽm | Chromium
++ Na₂CO₃ có thể dùng làm mềm nước cứng.
+- Kim loại kiềm có tính khử yếu.` }
   ],
   essays: {
     1: [['Viết phương trình xà phòng hoá tristearin bằng NaOH. Giải thích vì sao xà phòng có khả năng giặt rửa.', ['C₁₇H₃₅COONa', 'glycerol', 'ưa nước', 'kị nước'], '(C₁₇H₃₅COO)₃C₃H₅ + 3NaOH → 3C₁₇H₃₅COONa + C₃H₅(OH)₃. Phân tử xà phòng có đầu ưa nước và đuôi kị nước (ưa dầu); đuôi gắn vào vết bẩn dầu mỡ, đầu hướng ra nước, chia nhỏ vết bẩn và kéo vào nước.'],

@@ -14,7 +14,18 @@ PLT.KB.build({
 = Tái bản = DNA → DNA
 = Phiên mã = DNA → mRNA
 = Dịch mã = mRNA → chuỗi polypeptide
-= UAA, UAG, UGA = Bộ ba kết thúc` },
+= UAA, UAG, UGA = Bộ ba kết thúc
+? Mã di truyền là mã bộ ba, nghĩa là: | Ba nucleotide liên tiếp mã hoá một amino acid | Ba gene mã hoá một protein | Ba amino acid | Ba NST
+? Quá trình tổng hợp RNA từ DNA gọi là: | Phiên mã | Dịch mã | Nhân đôi | Đột biến
+? Quá trình tổng hợp protein từ mRNA gọi là: | Dịch mã | Phiên mã | Nhân đôi DNA | Giảm phân
+? Theo nguyên tắc bổ sung trong DNA, A liên kết với: | T | G | C | U
+? Nhân đôi DNA diễn ra theo nguyên tắc: | Bổ sung và bán bảo toàn | Chỉ bảo toàn | Ngẫu nhiên | Không có nguyên tắc
+? Đột biến gene là: | Biến đổi trong cấu trúc gene | Biến đổi số lượng NST | Thay đổi môi trường | Thường biến
++ Mã di truyền có tính thoái hoá (nhiều bộ ba cùng mã hoá một amino acid).
+- Trong RNA có base thymine (T).
+= DNA → RNA = Phiên mã
+= mRNA → protein = Dịch mã
+= DNA → DNA = Nhân đôi` },
     { hk: 1, nhan: 'Chương 2, 3', ten: 'Di truyền nhiễm sắc thể và mở rộng học thuyết di truyền', bai: ['Bài 7. Cấu trúc và chức năng của nhiễm sắc thể', 'Bài 8. Học thuyết di truyền Mendel', 'Bài 9. Mở rộng học thuyết Mendel', 'Bài 10. Di truyền liên kết giới tính, liên kết gene và hoán vị gene', 'Bài 12. Đột biến nhiễm sắc thể', 'Bài 13. Di truyền học người và di truyền y học', 'Bài 15. Di truyền gene ngoài nhân', 'Bài 16. Tương tác giữa kiểu gene với môi trường và thành tựu chọn giống'],
       lt: ['Mendel: quy luật phân li (3 : 1), phân li độc lập (9 : 3 : 3 : 1). Lai phân tích để kiểm tra kiểu gene.', 'Mở rộng: trội không hoàn toàn (1 : 2 : 1), đồng trội, tương tác gene, đa hiệu.', 'Liên kết gene hoàn toàn, hoán vị gene (tần số f ≤ 50%); di truyền liên kết với giới tính (gene trên X: mù màu, máu khó đông).', 'Đột biến NST: cấu trúc (mất, lặp, đảo, chuyển đoạn) và số lượng (lệch bội: Down 2n+1 NST 21, Turner XO; đa bội).', 'Gene ngoài nhân (ti thể, lục lạp) di truyền theo dòng mẹ. Thường biến: biến đổi kiểu hình do môi trường, không di truyền; mức phản ứng do kiểu gene quy định.'],
       q: `? Phép lai Aa × Aa (trội hoàn toàn) cho tỉ lệ kiểu hình: | 3 : 1 | 1 : 1 | 1 : 2 : 1 | 9 : 3 : 3 : 1
@@ -29,14 +40,29 @@ PLT.KB.build({
 = Aa × aa = Lai phân tích, tỉ lệ 1 : 1
 = Trội không hoàn toàn = F₂ tỉ lệ 1 : 2 : 1
 = Down = Ba NST số 21
-= Turner = XO` },
+= Turner = XO
+? Phép lai một cặp tính trạng của Mendel, F₂ có tỉ lệ kiểu hình: | 3 : 1 | 1 : 1 | 9 : 3 : 3 : 1 | 1 : 2 : 1 luôn luôn
+? Kiểu gene Aa được gọi là: | Dị hợp | Đồng hợp trội | Đồng hợp lặn | Thuần chủng
+? Lai phân tích là phép lai giữa cá thể mang tính trạng trội với: | Cá thể mang tính trạng lặn | Cá thể trội | Bất kì cá thể | Bố mẹ
+? Ở người, giới tính nam có cặp NST giới tính: | XY | XX | XO | YY
+? Bệnh máu khó đông ở người do gene lặn nằm trên: | NST X | NST Y | NST thường | Ti thể
+? Thường biến là: | Biến đổi kiểu hình do môi trường, không di truyền | Đột biến gene | Đột biến NST | Biến dị tổ hợp
++ Liên kết gene hoàn toàn hạn chế xuất hiện biến dị tổ hợp.
+- Thường biến di truyền được cho đời sau.` },
     { hk: 1, nhan: 'Chương 4', ten: 'Di truyền quần thể', bai: ['Bài 18. Di truyền học quần thể'],
       lt: ['Quần thể đặc trưng bởi vốn gene, tần số allele, tần số kiểu gene.', 'Quần thể tự thụ phấn: tỉ lệ dị hợp giảm dần, đồng hợp tăng dần.', '<b>Định luật Hardy – Weinberg</b>: quần thể ngẫu phối ở trạng thái cân bằng có cấu trúc p²AA + 2pqAa + q²aa = 1 (p + q = 1).'],
       q: `? Quần thể cân bằng Hardy – Weinberg có cấu trúc: | p²AA + 2pqAa + q²aa = 1 | pAA + qaa = 1 | p²AA + q²aa = 1 | 2pAA + qaa = 1
 ? Quần thể có p(A) = 0,6 ở trạng thái cân bằng thì tần số kiểu gene Aa là: | 0,48 | 0,36 | 0,16 | 0,24
 ? Qua các thế hệ tự thụ phấn, tỉ lệ kiểu gene dị hợp: | Giảm dần | Tăng dần | Không đổi | Bằng 0 ngay
 + Tổng tần số các allele của một gene trong quần thể bằng 1.
-- Ngẫu phối làm thay đổi tần số allele qua các thế hệ.` },
+- Ngẫu phối làm thay đổi tần số allele qua các thế hệ.
+? Quần thể ở trạng thái cân bằng Hardy – Weinberg có cấu trúc: | p²AA + 2pqAa + q²aa = 1 | pAA + qaa = 1 | AA + aa = 1 | 2pAA + qaa = 1
+? Quần thể có p(A) = 0,6. Tần số allele a là: | 0,4 | 0,6 | 0,36 | 0,16
+? Tự thụ phấn qua nhiều thế hệ làm: | Tăng tỉ lệ đồng hợp, giảm dị hợp | Tăng dị hợp | Không đổi | Tăng đột biến
+? Ứng dụng của di truyền học trong chọn giống là: | Tạo giống mới năng suất cao | Gây bệnh di truyền | Làm giảm đa dạng | Tăng thiên tai
++ Kĩ thuật chuyển gene tạo ra sinh vật biến đổi gene.
+- Giao phối gần làm tăng sức sống ở đời con.
+_ Nếu p = 0,7 thì q = [0,3]` },
     { hk: 2, nhan: 'Chương 5', ten: 'Tiến hoá', bai: ['Bài 19. Các bằng chứng tiến hoá', 'Bài 20. Quan niệm của Darwin về chọn lọc tự nhiên và hình thành loài', 'Bài 21. Học thuyết tiến hoá tổng hợp hiện đại', 'Bài 22. Tiến hoá lớn và quá trình phát sinh chủng loại'],
       lt: ['Bằng chứng: hoá thạch, giải phẫu so sánh (cơ quan tương đồng, cơ quan thoái hoá), tế bào học, sinh học phân tử.', 'Darwin: <b>chọn lọc tự nhiên</b> giữ lại biến dị có lợi, đào thải biến dị có hại.', 'Thuyết tiến hoá tổng hợp: tiến hoá nhỏ (biến đổi vốn gene quần thể); nhân tố tiến hoá: đột biến, di – nhập gene, chọn lọc tự nhiên, phiêu bạt di truyền, giao phối không ngẫu nhiên. Cách li sinh sản → hình thành loài mới.'],
       q: `? Cánh dơi và tay người là ví dụ về: | Cơ quan tương đồng | Cơ quan tương tự | Cơ quan thoái hoá | Hoá thạch
@@ -47,7 +73,14 @@ PLT.KB.build({
 - Thường biến là nguyên liệu chủ yếu của tiến hoá.
 = Đột biến = Nguyên liệu sơ cấp
 = Chọn lọc tự nhiên = Định hướng tiến hoá
-= Phiêu bạt di truyền = Thay đổi ngẫu nhiên tần số allele` },
+= Phiêu bạt di truyền = Thay đổi ngẫu nhiên tần số allele
+? Theo Darwin, nhân tố chính hình thành loài là: | Chọn lọc tự nhiên | Đột biến nhân tạo | Ăn uống | Khí hậu ổn định
+? Nhân tố tiến hoá cung cấp nguyên liệu sơ cấp là: | Đột biến | Chọn lọc tự nhiên | Di – nhập gene | Giao phối ngẫu nhiên
+? Cơ quan tương đồng là các cơ quan: | Cùng nguồn gốc, có thể khác chức năng | Khác nguồn gốc, cùng chức năng | Thoái hoá | Không tồn tại
+? Cánh dơi và cánh chim là ví dụ về cơ quan: | Tương đồng (chi trước) | Tương tự | Thoái hoá | Không liên quan
+? Cách li sinh sản là dấu hiệu: | Hình thành loài mới | Tuyệt chủng | Không tiến hoá | Thường biến
++ Hoá thạch là bằng chứng trực tiếp về lịch sử sự sống.
+- Chọn lọc tự nhiên tạo ra đột biến mới.` },
     { hk: 2, nhan: 'Chương 6, 7, 8', ten: 'Sinh thái học và phát triển bền vững', bai: ['Bài 23. Môi trường và các nhân tố sinh thái', 'Bài 24. Sinh thái học quần thể', 'Bài 26. Quần xã sinh vật', 'Bài 27. Hệ sinh thái', 'Bài 28. Trao đổi vật chất và chuyển hoá năng lượng trong hệ sinh thái', 'Bài 29. Chu trình sinh địa hoá và sinh quyển', 'Bài 30. Diễn thế sinh thái', 'Bài 33. Sinh thái học phục hồi và bảo tồn', 'Bài 34. Phát triển bền vững'],
       lt: ['Giới hạn sinh thái; nhân tố vô sinh, hữu sinh. Quần thể: kích thước, mật độ, tỉ lệ giới tính, cấu trúc tuổi; tăng trưởng hình chữ J, chữ S.', 'Quan hệ trong quần xã: cạnh tranh, kí sinh, vật ăn thịt – con mồi, cộng sinh, hợp tác, hội sinh, ức chế cảm nhiễm.', 'Chuỗi, lưới thức ăn; bậc dinh dưỡng; năng lượng truyền qua các bậc giảm dần (hiệu suất khoảng 10%). Chu trình carbon, nitrogen, nước.', 'Diễn thế nguyên sinh, thứ sinh. Phát triển bền vững: đáp ứng nhu cầu hiện tại mà không làm tổn hại thế hệ tương lai.'],
       q: `? Quan hệ giữa nấm và tảo trong địa y là: | Cộng sinh | Kí sinh | Cạnh tranh | Vật ăn thịt – con mồi
@@ -60,7 +93,15 @@ PLT.KB.build({
 = Cộng sinh = Hai loài cùng có lợi, bắt buộc
 = Kí sinh = Một loài có lợi, một loài có hại
 = Hội sinh = Một loài có lợi, loài kia không lợi không hại
-= Cạnh tranh = Hai loài cùng bị hại` }
+= Cạnh tranh = Hai loài cùng bị hại
+? Nhân tố sinh thái vô sinh là: | Ánh sáng, nhiệt độ, độ ẩm | Vi khuẩn | Động vật ăn thịt | Con người
+? Mối quan hệ cùng có lợi giữa hai loài là: | Cộng sinh | Kí sinh | Cạnh tranh | Vật ăn thịt – con mồi
+? Trong chuỗi thức ăn, sinh vật sản xuất là: | Thực vật | Động vật ăn thịt | Vi khuẩn phân giải | Nấm kí sinh
+? Năng lượng truyền qua mỗi bậc dinh dưỡng chỉ khoảng: | 10% | 90% | 50% | 100%
+? Hiệu ứng nhà kính chủ yếu do tăng khí: | CO₂ | O₂ | N₂ | He
+? Biện pháp phát triển bền vững là: | Sử dụng hợp lí tài nguyên, bảo tồn đa dạng sinh học | Khai thác rừng tối đa | Xả thải không xử lí | Săn bắt động vật quý
++ Diễn thế sinh thái là quá trình biến đổi tuần tự của quần xã.
+- Năng lượng trong hệ sinh thái được tuần hoàn khép kín.` }
   ],
   essays: {
     1: [['Một gene có 2 400 nucleotide, trong đó A = 480. Tính số nucleotide mỗi loại và số liên kết hydrogen của gene.', ['480', '720', '3120'], 'A = T = 480; G = X = (2 400 − 2·480)/2 = 720. Số liên kết hydrogen H = 2A + 3G = 960 + 2 160 = 3 120.'],
