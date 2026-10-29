@@ -98,6 +98,7 @@ main{max-width:1180px;margin:auto;padding:16px 16px 60px}
 .sortq{display:grid;gap:8px}.srow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:6px 8px;border-radius:10px;border:2px solid transparent}.srow.right{border-color:var(--ok)}.srow.wrong{border-color:var(--bad)}.stxt{font-weight:800;min-width:150px;font-size:1.05rem}
 .essay{width:100%;font:inherit;border:2px solid var(--line);border-radius:12px;padding:10px}
 .essayfb{margin-top:8px;background:var(--soft);padding:10px;border-radius:10px}
+.essayfb .muted{white-space:pre-line}
 .exp{margin-top:12px;background:#fff9e6;border-left:4px solid var(--yellow);padding:10px 12px;border-radius:8px}
 .fb{margin-top:10px;padding:10px 14px;border-radius:12px;font-weight:800}.fb.good{background:#e6f7ee;color:var(--ok)}.fb.badf{background:#fdecec;color:var(--bad)}.fb.warn{background:var(--soft)}
 .pbar{height:10px;background:#f1e8d8;border-radius:999px;overflow:hidden;margin-bottom:10px}.pbar span{display:block;height:100%;background:linear-gradient(90deg,var(--teal),var(--blue));transition:width .3s}

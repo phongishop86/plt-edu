@@ -10,5 +10,6 @@ window.PLT_AVAIL = [
   'ngu-van-8', 'tieng-anh-8', 'khtn-8', 'lsdl-8', 'gdcd-8', 'tin-hoc-8', 'cong-nghe-8', 'am-nhac-8', 'mi-thuat-8', 'gdtc-8', 'hdtn-8',
   'ngu-van-9', 'tieng-anh-9', 'khtn-9', 'lsdl-9', 'gdcd-9', 'tin-hoc-9', 'cong-nghe-9', 'am-nhac-9', 'mi-thuat-9', 'gdtc-9', 'hdtn-9',
   'tieng-anh-10', 'vat-li-10', 'hoa-hoc-10', 'tieng-anh-11', 'vat-li-11', 'hoa-hoc-11', 'tieng-anh-12', 'vat-li-12', 'hoa-hoc-12',
-  'sinh-hoc-10', 'lich-su-10', 'dia-li-10', 'sinh-hoc-11', 'lich-su-11', 'dia-li-11', 'sinh-hoc-12', 'lich-su-12', 'dia-li-12'
+  'sinh-hoc-10', 'lich-su-10', 'dia-li-10', 'sinh-hoc-11', 'lich-su-11', 'dia-li-11', 'sinh-hoc-12', 'lich-su-12', 'dia-li-12',
+  'gdktpl-10', 'gdktpl-11', 'gdktpl-12', 'ngu-van-10', 'ngu-van-11', 'ngu-van-12', 'tin-hoc-10', 'tin-hoc-11', 'tin-hoc-12', 'cong-nghe-10', 'cong-nghe-11', 'cong-nghe-12', 'gdqp-10', 'gdqp-11', 'gdqp-12', 'am-nhac-10', 'am-nhac-11', 'am-nhac-12', 'mi-thuat-10', 'mi-thuat-11', 'mi-thuat-12', 'gdtc-10', 'gdtc-11', 'gdtc-12', 'hdtn-10', 'hdtn-11', 'hdtn-12'
 ];
