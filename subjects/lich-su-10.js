@@ -17,7 +17,12 @@ PLT.KB.build({
 ? Bảo tồn di sản văn hoá giúp: | Giữ gìn giá trị lịch sử, phát triển du lịch | Phá bỏ di tích | Giảm hiểu biết | Không có ý nghĩa
 ? Chức năng cơ bản của Sử học là: | Khoa học và xã hội | Giải trí | Quảng cáo | Thể thao
 + Tri thức lịch sử giúp hiểu rõ hiện tại và dự báo tương lai.
-- Hiện thực lịch sử và nhận thức lịch sử luôn hoàn toàn giống nhau.` },
+- Hiện thực lịch sử và nhận thức lịch sử luôn hoàn toàn giống nhau.
+? Hiện thực lịch sử là: | Tất cả những gì đã diễn ra trong quá khứ | Những gì con người viết lại | Truyền thuyết | Dự đoán tương lai
++ Học lịch sử giúp hiểu biết về cội nguồn, bản sắc dân tộc.
+- Mọi truyền thuyết đều là sử liệu gốc chính xác.
+= Hiện thực lịch sử = Quá khứ đã diễn ra
+= Nhận thức lịch sử = Quá khứ được con người tìm hiểu, ghi lại` },
     { hk: 1, ten: 'Một số nền văn minh thế giới thời kì cổ – trung đại', bai: ['Bài 4. Khái niệm văn minh. Một số nền văn minh phương Đông thời kì cổ – trung đại', 'Bài 5. Một số nền văn minh phương Tây thời kì cổ – trung đại'],
       lt: ['Văn minh: trạng thái phát triển cao của văn hoá, khi có nhà nước và chữ viết.', 'Ai Cập: chữ tượng hình, kim tự tháp, giấy papyrus; Ấn Độ: chữ Phạn, Phật giáo, Hin-đu giáo, chữ số (kể cả số 0); Trung Hoa: chữ Hán, Nho giáo, 4 phát minh.', 'Hy Lạp – La Mã: bảng chữ cái Latinh, triết học, Thế vận hội Olympic, kiến trúc đền Pác-tê-nông, đấu trường Cô-li-dê; Văn hoá Phục hưng.'],
       q: `? Chữ số 0 do người nước nào phát minh? | Ấn Độ | Ai Cập | Hy Lạp | La Mã
@@ -38,7 +43,13 @@ PLT.KB.build({
 ? Phong trào Văn hoá Phục hưng khởi đầu ở: | I-ta-li-a | Anh | Pháp | Đức
 + Đạo Phật ra đời ở Ấn Độ.
 - Vạn Lý Trường Thành thuộc văn minh Ai Cập.
-= Hy Lạp – La Mã = Đền Pác-tê-nông, Đấu trường Cô-li-dê` },
+= Hy Lạp – La Mã = Đền Pác-tê-nông, Đấu trường Cô-li-dê
+? Bốn phát minh kĩ thuật lớn của Trung Quốc cổ – trung đại gồm: | Giấy, la bàn, thuốc súng, kĩ thuật in | Điện, máy hơi nước, ô tô, máy bay | Kính thiên văn, đồng hồ, giấy, sắt | Bánh xe, chữ viết, lịch, gốm
+? Chữ số Ả Rập thực chất có nguồn gốc từ: | Ấn Độ | Ai Cập | Hy Lạp | La Mã
+? Nền dân chủ chủ nô phát triển nhất thời cổ đại ở: | A-ten (Hy Lạp) | Ai Cập | Lưỡng Hà | Trung Quốc
+? Phong trào Văn hoá Phục hưng khởi nguồn từ: | I-ta-li-a | Anh | Pháp | Đức
++ Đấu trường Cô-li-dê là công trình tiêu biểu của La Mã cổ đại.
+- Văn hoá Phục hưng ra đời ở Trung Quốc.` },
     { hk: 1, ten: 'Các cuộc cách mạng công nghiệp trong lịch sử thế giới', bai: ['Bài 6. Các cuộc cách mạng công nghiệp thời cận đại', 'Bài 7. Các cuộc cách mạng công nghiệp thời hiện đại'],
       lt: ['<b>CMCN lần 1</b> (cuối XVIII, Anh): máy hơi nước, cơ khí hoá. <b>Lần 2</b> (cuối XIX – đầu XX): điện, động cơ đốt trong, dây chuyền sản xuất.', '<b>Lần 3</b> (từ giữa XX): máy tính, tự động hoá, Internet. <b>Lần 4</b> (từ đầu XXI): trí tuệ nhân tạo, Internet vạn vật, dữ liệu lớn, công nghệ sinh học — kết nối thực – ảo.'],
       q: `? Thành tựu tiêu biểu của CMCN lần thứ nhất là: | Máy hơi nước | Điện | Máy tính | Trí tuệ nhân tạo
@@ -54,7 +65,10 @@ PLT.KB.build({
 ? Cách mạng công nghiệp lần thứ ba gắn với: | Máy tính, điện tử, Internet | Máy hơi nước | Xe ngựa | Cối xay gió
 ? Cách mạng công nghiệp lần thứ tư dựa trên: | Trí tuệ nhân tạo, IoT, dữ liệu lớn | Máy dệt | Than đá | Đầu máy xe lửa
 + Cách mạng công nghiệp thúc đẩy đô thị hoá.
-- Cách mạng công nghiệp không gây tác động tiêu cực đến môi trường.` },
+- Cách mạng công nghiệp không gây tác động tiêu cực đến môi trường.
+? Cách mạng công nghiệp lần thứ tư dựa trên nền tảng: | Kĩ thuật số, AI, IoT | Máy hơi nước | Than đá | Sức kéo động vật
++ Cách mạng công nghiệp làm thay đổi sâu sắc cơ cấu xã hội.
+- Cách mạng công nghiệp lần thứ ba gắn với máy hơi nước.` },
     { hk: 2, ten: 'Văn minh Đông Nam Á', bai: ['Bài 8. Hành trình phát triển và thành tựu của văn minh Đông Nam Á thời kì cổ – trung đại'],
       lt: ['Cơ sở: điều kiện tự nhiên nhiệt đới gió mùa, nền nông nghiệp lúa nước; tiếp thu văn hoá Ấn Độ, Trung Hoa.', 'Thành tựu: tín ngưỡng phồn thực, thờ cúng tổ tiên; tôn giáo (Phật giáo, Hin-đu giáo, Hồi giáo); kiến trúc Ăng-co Vát, Bô-rô-bu-đua, Thạt Luổng, chùa Vàng (Mi-an-ma).'],
       q: `? Đền Bô-rô-bu-đua thuộc quốc gia: | In-đô-nê-xi-a | Cam-pu-chia | Lào | Thái Lan
@@ -68,7 +82,12 @@ PLT.KB.build({
 ? Ăng-co Vát là công trình kiến trúc của: | Cam-pu-chia | Lào | Thái Lan | Mi-an-ma
 ? Cư dân Đông Nam Á cổ chủ yếu làm: | Nông nghiệp trồng lúa nước | Chăn nuôi du mục | Săn bắn | Khai mỏ
 + Thạt Luổng là công trình kiến trúc tiêu biểu của Lào.
-- Đông Nam Á không có tín ngưỡng bản địa.` },
+- Đông Nam Á không có tín ngưỡng bản địa.
+? Đông Nam Á chịu ảnh hưởng sâu sắc của văn hoá: | Ấn Độ và Trung Hoa | Ai Cập | Hy Lạp | La Mã
+? Đền Ăng-co Vát thuộc quốc gia: | Campuchia | Lào | Thái Lan | Myanmar
+? Đền Bô-rô-bu-đua thuộc quốc gia: | Indonesia | Malaysia | Philippines | Brunei
+? Cư dân Đông Nam Á cổ chủ yếu sống bằng nghề: | Trồng lúa nước | Chăn nuôi du mục | Săn bắt | Buôn bán đường biển xa
+- Đông Nam Á không chịu ảnh hưởng của văn hoá Ấn Độ.` },
     { hk: 2, ten: 'Một số nền văn minh trên đất nước Việt Nam (trước 1858)', bai: ['Bài 9. Một số nền văn minh cổ trên đất nước Việt Nam', 'Bài 10. Văn minh Đại Việt'],
       lt: ['Văn minh <b>Văn Lang – Âu Lạc</b> (sông Hồng, sông Mã): trống đồng Đông Sơn, nông nghiệp lúa nước, thành Cổ Loa.', 'Văn minh <b>Chăm-pa</b> (miền Trung): tháp Chăm, Thánh địa Mỹ Sơn. Văn minh <b>Phù Nam</b> (Nam Bộ): cảng thị Óc Eo.', '<b>Văn minh Đại Việt</b> (X – XIX): Văn Miếu, Quốc Tử Giám, khoa cử; chữ Nôm; kiến trúc chùa Một Cột, Hoàng thành Thăng Long; gốm Chu Đậu, Bát Tràng.'],
       q: `? Trống đồng Đông Sơn là thành tựu của văn minh: | Văn Lang – Âu Lạc | Chăm-pa | Phù Nam | Đại Việt
@@ -88,7 +107,14 @@ PLT.KB.build({
 ? Quốc Tử Giám – trường đại học đầu tiên – được lập năm: | 1076 | 1070 | 1010 | 1428
 ? Nhà Lý dời đô từ Hoa Lư về Thăng Long năm: | 1010 | 938 | 1225 | 1802
 + Văn minh Đại Việt gắn với nền nông nghiệp lúa nước.
-- Thánh địa Mỹ Sơn thuộc văn minh Phù Nam.` },
+- Thánh địa Mỹ Sơn thuộc văn minh Phù Nam.
+? Văn minh Văn Lang – Âu Lạc gắn với văn hoá khảo cổ: | Đông Sơn | Sa Huỳnh | Óc Eo | Hoà Bình
+? Văn minh Chăm-pa gắn với văn hoá: | Sa Huỳnh | Đông Sơn | Óc Eo | Phùng Nguyên
+? Văn minh Phù Nam gắn với văn hoá: | Óc Eo | Đông Sơn | Sa Huỳnh | Bắc Sơn
+? Văn Miếu – Quốc Tử Giám được xây dựng năm 1070 dưới triều: | Lý | Trần | Lê sơ | Nguyễn
+? Thánh địa Mỹ Sơn là di tích của văn minh: | Chăm-pa | Văn Lang | Phù Nam | Đại Việt
++ Trống đồng Đông Sơn là biểu tượng của văn minh Văn Lang – Âu Lạc.
+- Văn minh Phù Nam hình thành ở vùng Bắc Bộ.` },
     { hk: 2, ten: 'Cộng đồng các dân tộc Việt Nam', bai: ['Bài 11. Các dân tộc trên đất nước Việt Nam', 'Bài 12. Khái quát về đời sống vật chất và tinh thần của cộng đồng các dân tộc Việt Nam', 'Bài 13. Khối đại đoàn kết dân tộc trong lịch sử Việt Nam'], on: 'Ôn tập cuối năm',
       lt: ['Việt Nam có 54 dân tộc, thuộc 8 nhóm ngôn ngữ (Việt – Mường, Tày – Thái, Môn – Khơ-me, Mông – Dao, Nam Đảo, Hán, Tạng – Miến, Ka-đai).', 'Đời sống vật chất: nhà ở (nhà sàn, nhà trệt), trang phục, ẩm thực; đời sống tinh thần: tín ngưỡng thờ cúng tổ tiên, lễ hội, nghệ thuật.', 'Khối đại đoàn kết dân tộc là nhân tố quyết định thắng lợi trong dựng nước và giữ nước.'],
       q: `? Các dân tộc Việt Nam được xếp vào bao nhiêu nhóm ngôn ngữ? | 8 | 5 | 54 | 3
@@ -101,7 +127,11 @@ PLT.KB.build({
 ? Khối đại đoàn kết dân tộc có vai trò: | Nhân tố quyết định thắng lợi trong dựng nước và giữ nước | Không quan trọng | Chỉ trong thời bình | Chỉ trong kinh tế
 ? Các dân tộc ở Việt Nam thuộc bao nhiêu ngữ hệ? | 5 | 2 | 8 | 10
 + Nhà nước Việt Nam thực hiện chính sách bình đẳng, đoàn kết giữa các dân tộc.
-- Các dân tộc thiểu số không có chữ viết riêng nào.` }
+- Các dân tộc thiểu số không có chữ viết riêng nào.
+? Dân tộc chiếm số dân đông nhất ở Việt Nam là: | Kinh | Tày | Thái | Mường
+? Ngữ hệ của tiếng Việt là: | Nam Á | Hán – Tạng | Nam Đảo | Thái – Ka-đai
++ Khối đại đoàn kết dân tộc là nguồn sức mạnh trong dựng nước và giữ nước.
+- Các dân tộc thiểu số không có quyền bình đẳng.` }
   ],
   essays: {
     1: [['Phân biệt hiện thực lịch sử và lịch sử được con người nhận thức. Cho ví dụ.', ['khách quan', 'nhận thức', 'ví dụ'], 'Hiện thực lịch sử: những gì đã diễn ra trong quá khứ, tồn tại khách quan, không thay đổi (chiến thắng Bạch Đằng 938). Lịch sử được nhận thức: hiểu biết, ghi chép, đánh giá của con người về quá khứ, có thể khác nhau tuỳ nguồn sử liệu, quan điểm.'],

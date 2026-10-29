@@ -24,7 +24,13 @@ PLT.KB.build({
 - Hô hấp ở thực vật không tạo ra CO₂.
 = C3 = Sản phẩm đầu tiên là hợp chất 3C
 = C4 = Thích nghi khí hậu nóng, cường độ ánh sáng cao
-= CAM = Mở khí khổng ban đêm, như xương rồng, dứa` },
+= CAM = Mở khí khổng ban đêm, như xương rồng, dứa
+? Rễ cây hấp thụ nước chủ yếu nhờ: | Tế bào lông hút | Lá | Hoa | Thân gỗ
+? Nước được vận chuyển từ rễ lên lá qua: | Mạch gỗ | Mạch rây | Tế bào biểu bì lá | Khí khổng
+? Nguyên tố khoáng thiết yếu tham gia cấu tạo diệp lục là: | Magnesium (Mg) | Chì (Pb) | Natri (Na) | Thuỷ ngân (Hg)
+? Sắc tố quang hợp chủ yếu ở thực vật là: | Diệp lục | Hemoglobin | Melanin | Insulin
++ Thoát hơi nước giúp hạ nhiệt độ lá.
+- Mạch rây vận chuyển nước và muối khoáng từ rễ lên lá.` },
     { hk: 1, nhan: 'Chương 1 (tiếp)', ten: 'Trao đổi chất và chuyển hoá năng lượng ở động vật', bai: ['Bài 8. Dinh dưỡng và tiêu hoá ở động vật', 'Bài 9. Hô hấp ở động vật', 'Bài 10. Tuần hoàn ở động vật', 'Bài 11. Thực hành: Một số thí nghiệm về tuần hoàn', 'Bài 12. Miễn dịch ở người và động vật', 'Bài 13. Bài tiết và cân bằng nội môi'],
       lt: ['Tiêu hoá: nội bào (động vật đơn bào) → túi tiêu hoá → ống tiêu hoá.', 'Hô hấp: qua bề mặt cơ thể, hệ thống ống khí (côn trùng), mang (cá), phổi (bò sát, chim, thú).', 'Tuần hoàn hở và kín; tuần hoàn đơn (cá) và kép (lưỡng cư, bò sát, chim, thú). Tim có tính tự động.', '<b>Miễn dịch</b>: không đặc hiệu (da, niêm mạc, thực bào) và đặc hiệu (dịch thể – kháng thể, tế bào – tế bào T). Vaccine tạo miễn dịch chủ động.', 'Cân bằng nội môi: thận, gan, phổi điều hoà áp suất thẩm thấu, pH, đường huyết.'],
       q: `? Côn trùng hô hấp bằng: | Hệ thống ống khí | Mang | Phổi | Da
@@ -50,7 +56,13 @@ PLT.KB.build({
 - Cá hô hấp chủ yếu bằng phổi.
 = Hồng cầu = Vận chuyển O₂
 = Bạch cầu = Bảo vệ cơ thể
-= Tiểu cầu = Đông máu` },
+= Tiểu cầu = Đông máu
+? Ở người, quá trình tiêu hoá hoá học chủ yếu diễn ra ở: | Ruột non | Dạ dày | Thực quản | Ruột già
+? Cá hô hấp bằng: | Mang | Phổi | Da | Ống khí
+? Côn trùng hô hấp bằng: | Hệ thống ống khí | Phổi | Mang | Da
+? Cơ quan lọc máu, tạo nước tiểu là: | Thận | Gan | Tim | Phổi
++ Hồng cầu vận chuyển O₂ nhờ hemoglobin.
+- Động mạch dẫn máu từ các cơ quan về tim.` },
     { hk: 2, nhan: 'Chương 2', ten: 'Cảm ứng ở sinh vật', bai: ['Bài 14. Khái quát về cảm ứng ở sinh vật', 'Bài 15. Cảm ứng ở thực vật', 'Bài 16. Cảm ứng ở động vật', 'Bài 17. Thực hành: Cảm ứng ở sinh vật', 'Bài 18. Tập tính ở động vật'],
       lt: ['Thực vật: <b>hướng động</b> (hướng sáng, hướng trọng lực, hướng nước, hướng tiếp xúc) và <b>ứng động</b> (cụp lá cây trinh nữ, nở hoa).', 'Động vật: hệ thần kinh dạng lưới, chuỗi hạch, dạng ống. Phản xạ (cung phản xạ); điện thế nghỉ, điện thế hoạt động; synapse.', '<b>Tập tính</b>: bẩm sinh và học được (in vết, điều kiện hoá, học khôn…).'],
       q: `? Ngọn cây hướng về phía ánh sáng là: | Hướng sáng dương | Hướng trọng lực | Ứng động | Hướng nước âm
@@ -64,7 +76,13 @@ PLT.KB.build({
 ? Phản xạ là: | Phản ứng của cơ thể trả lời kích thích qua hệ thần kinh | Sự sinh trưởng | Sự tiêu hoá | Sự bài tiết
 ? Phản xạ có điều kiện được hình thành: | Qua học tập, rèn luyện | Bẩm sinh | Không cần kích thích | Di truyền
 + Synapse là nơi truyền tin giữa các neuron.
-- Phản xạ không điều kiện là do học tập mà có.` },
+- Phản xạ không điều kiện là do học tập mà có.
+? Hiện tượng ngọn cây hướng về phía ánh sáng là: | Hướng sáng | Hướng đất | Hướng nước | Ứng động
+? Đơn vị cấu tạo cơ bản của hệ thần kinh là: | Neuron | Hồng cầu | Tế bào gan | Tế bào cơ trơn
+? Phản xạ có điều kiện là phản xạ: | Hình thành trong đời sống, qua học tập | Bẩm sinh | Di truyền | Không thay đổi
+? Hoa trinh nữ cụp lá khi bị chạm là ví dụ về: | Ứng động | Hướng sáng | Hướng đất | Sinh sản
++ Cung phản xạ gồm thụ thể, neuron cảm giác, trung ương, neuron vận động, cơ quan đáp ứng.
+- Tập tính bẩm sinh phải học mới có.` },
     { hk: 2, nhan: 'Chương 3, 4, 5', ten: 'Sinh trưởng, phát triển và sinh sản ở sinh vật', bai: ['Bài 19. Khái quát về sinh trưởng và phát triển ở sinh vật', 'Bài 20. Sinh trưởng và phát triển ở thực vật', 'Bài 22. Sinh trưởng và phát triển ở động vật', 'Bài 24. Khái quát về sinh sản ở sinh vật', 'Bài 25. Sinh sản ở thực vật', 'Bài 27. Sinh sản ở động vật', 'Bài 28. Mối quan hệ giữa các quá trình sinh lí trong cơ thể sinh vật', 'Bài 29. Một số ngành nghề liên quan đến sinh học cơ thể'],
       lt: ['Mô phân sinh đỉnh (sinh trưởng sơ cấp), mô phân sinh bên (sinh trưởng thứ cấp – tăng đường kính). Hormone thực vật: auxin, gibberellin, cytokinin (kích thích); abscisic acid, ethylene (ức chế, ethylene làm quả chín).', 'Động vật: biến thái hoàn toàn (bướm), không hoàn toàn (châu chấu), không qua biến thái (người). Hormone: GH, thyroxine, testosterone, estrogen.', 'Sinh sản vô tính (giâm, chiết, ghép, nuôi cấy mô) và hữu tính (thụ phấn, thụ tinh kép ở thực vật hạt kín).'],
       q: `? Hormone thực vật thúc đẩy quả chín là: | Ethylene | Auxin | Gibberellin | Cytokinin
@@ -85,7 +103,14 @@ PLT.KB.build({
 ? Sinh sản vô tính tạo ra con cháu: | Giống hệt nhau và giống mẹ | Đa dạng di truyền | Không sống được | Luôn khác loài
 ? Giâm, chiết, ghép cành là hình thức: | Sinh sản sinh dưỡng nhân tạo | Sinh sản hữu tính | Thụ phấn | Nảy mầm hạt
 + Gibberellin kích thích sinh trưởng chiều cao của thân.
-- Sinh sản hữu tính không có sự kết hợp giao tử.` }
+- Sinh sản hữu tính không có sự kết hợp giao tử.
+? Hormone kích thích kéo dài tế bào, phát triển chồi ngọn ở thực vật là: | Auxin | Abscisic acid | Ethylene | Insulin
+? Hormone thúc quả chín là: | Ethylene | Auxin | Gibberellin | Cytokinin
+? Ếch phát triển qua biến thái: | Hoàn toàn (nòng nọc → ếch) | Không qua biến thái | Không hoàn toàn | Trực tiếp
+? Giâm cành, chiết cành là hình thức: | Sinh sản sinh dưỡng nhân tạo | Sinh sản hữu tính | Sinh sản bằng bào tử | Tự thụ phấn
+? Nuôi cấy mô tế bào thực vật dựa trên tính: | Toàn năng của tế bào | Biến dị | Đột biến | Di truyền liên kết
++ Hormone sinh trưởng (GH) ở người do tuyến yên tiết ra.
+- Sinh sản vô tính tạo ra con cái có nhiều biến dị tổ hợp.` }
   ],
   essays: {
     1: [['Trình bày con đường hấp thụ, vận chuyển nước từ đất vào rễ, lên lá và thoát ra ngoài.', ['lông hút', 'mạch gỗ', 'khí khổng', 'thoát hơi nước'], 'Nước từ đất vào tế bào lông hút (thẩm thấu) → qua vỏ rễ (con đường gian bào, tế bào chất) → mạch gỗ rễ → mạch gỗ thân → lá → thoát ra ngoài chủ yếu qua khí khổng; động lực: áp suất rễ, lực liên kết, lực hút do thoát hơi nước.'],

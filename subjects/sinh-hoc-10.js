@@ -13,7 +13,14 @@ PLT.KB.build({
 ? Đơn vị cơ bản cấu tạo nên mọi cơ thể sống là: | Tế bào | Mô | Cơ quan | Phân tử
 ? Tập hợp các cá thể cùng loài, sống trong một khoảng không gian xác định là: | Quần thể | Quần xã | Hệ sinh thái | Cơ thể
 ? Ngành nghề liên quan đến sinh học là: | Bác sĩ, kĩ sư nông nghiệp, công nghệ sinh học | Kế toán | Lập trình game | Lái tàu
-+ Các cấp độ tổ chức sống là hệ thống mở, tự điều chỉnh.` },
++ Các cấp độ tổ chức sống là hệ thống mở, tự điều chỉnh.
+? Cấp độ tổ chức sống cơ bản nhất là: | Tế bào | Phân tử | Cơ quan | Quần thể
+? Tập hợp các cá thể cùng loài sống trong một khu vực, một thời điểm là: | Quần thể | Quần xã | Hệ sinh thái | Sinh quyển
+? Đặc điểm chung của các cấp độ tổ chức sống là: | Hệ thống mở, tự điều chỉnh, liên tục tiến hoá | Hệ thống kín | Không trao đổi chất | Không sinh sản
+? Ngành nghề nào liên quan đến sinh học? | Công nghệ sinh học | Kiến trúc | Kế toán | Luật
++ Cấp tổ chức cao hơn có đặc điểm nổi trội mà cấp dưới không có.
+- Phân tử là cấp độ tổ chức sống cơ bản nhất.
+> Tế bào > Mô > Cơ quan > Hệ cơ quan > Cơ thể` },
     { hk: 1, nhan: 'Chương 1, 2', ten: 'Thành phần hoá học và cấu trúc tế bào', bai: ['Bài 4. Các nguyên tố hoá học và nước', 'Bài 5. Các phân tử sinh học', 'Bài 6. Thực hành: Nhận biết một số phân tử sinh học', 'Bài 7. Tế bào nhân sơ', 'Bài 8. Tế bào nhân thực', 'Bài 9. Thực hành: Quan sát tế bào'],
       lt: ['Nguyên tố đa lượng (C, H, O, N…), vi lượng (Fe, Zn, I…). Carbon là nguyên tố quan trọng tạo khung các phân tử hữu cơ. Nước chiếm phần lớn khối lượng tế bào, là dung môi.', 'Phân tử sinh học: <b>carbohydrate</b> (năng lượng, cấu trúc), <b>lipid</b> (dự trữ, cấu tạo màng), <b>protein</b> (cấu trúc, enzyme…), <b>nucleic acid</b> (DNA, RNA – mang thông tin di truyền).', '<b>Tế bào nhân sơ</b> (vi khuẩn): chưa có màng nhân, không có bào quan có màng, ribosome nhỏ.', '<b>Tế bào nhân thực</b>: có nhân hoàn chỉnh; ti thể (hô hấp), lục lạp (quang hợp – ở thực vật), lưới nội chất, bộ máy Golgi, lysosome…'],
       q: `? Tế bào nhân sơ khác tế bào nhân thực ở chỗ: | Chưa có màng nhân | Có ti thể | Có lục lạp | Có lưới nội chất
@@ -38,7 +45,11 @@ PLT.KB.build({
 ? Bào quan thực hiện hô hấp tế bào, tạo ATP là: | Ti thể | Lục lạp | Bộ máy Golgi | Không bào
 ? Bào quan quang hợp ở tế bào thực vật là: | Lục lạp | Ti thể | Ribosome | Trung thể
 + Nước là dung môi hoà tan nhiều chất trong tế bào.
-- Vi khuẩn là sinh vật nhân thực.` },
+- Vi khuẩn là sinh vật nhân thực.
+? Nguyên tố chiếm tỉ lệ lớn và là bộ khung của các hợp chất hữu cơ là: | Carbon | Sắt | Iodine | Đồng
+? Bào quan là "nhà máy năng lượng" của tế bào là: | Ti thể | Lục lạp | Bộ máy Golgi | Lysosome
+? Tế bào nhân sơ khác tế bào nhân thực ở chỗ: | Chưa có màng nhân | Có ti thể | Có lục lạp | Có lưới nội chất
+- Vi khuẩn có nhân hoàn chỉnh với màng nhân.` },
     { hk: 1, nhan: 'Chương 3, 4', ten: 'Trao đổi chất qua màng, truyền tin và chuyển hoá năng lượng', bai: ['Bài 10. Trao đổi chất qua màng tế bào', 'Bài 11. Thực hành: Thí nghiệm co và phản co nguyên sinh', 'Bài 12. Truyền tin tế bào', 'Bài 13. Khái quát về chuyển hoá vật chất và năng lượng', 'Bài 14. Phân giải và tổng hợp các chất trong tế bào', 'Bài 15. Thực hành: Thí nghiệm phân tích ảnh hưởng của một số yếu tố đến hoạt tính enzyme'],
       lt: ['Vận chuyển <b>thụ động</b> (theo chiều gradient nồng độ, không tốn năng lượng: khuếch tán, thẩm thấu) và <b>chủ động</b> (ngược gradient, tốn ATP); nhập bào, xuất bào.', 'Môi trường ưu trương → tế bào co nguyên sinh; nhược trương → tế bào trương nước.', '<b>ATP</b>: "đồng tiền năng lượng" của tế bào. <b>Enzyme</b>: chất xúc tác sinh học, hoạt tính chịu ảnh hưởng của nhiệt độ, pH, nồng độ.', 'Quang hợp: 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂ (ánh sáng, diệp lục). Hô hấp tế bào: C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + ATP.'],
       q: `? Vận chuyển các chất ngược chiều gradient nồng độ, tốn năng lượng là: | Vận chuyển chủ động | Khuếch tán | Thẩm thấu | Vận chuyển thụ động
@@ -57,7 +68,14 @@ PLT.KB.build({
 ? ATP được gọi là: | "Đồng tiền năng lượng" của tế bào | Enzyme | Hormone | Vitamin
 ? Pha sáng của quang hợp diễn ra ở: | Màng thylakoid | Chất nền lục lạp | Ti thể | Nhân
 + Hô hấp tế bào giải phóng năng lượng từ chất hữu cơ.
-- Enzyme bị tiêu hao hoàn toàn sau phản ứng.` },
+- Enzyme bị tiêu hao hoàn toàn sau phản ứng.
+? Vận chuyển thụ động các chất qua màng: | Không tiêu tốn năng lượng ATP | Tiêu tốn ATP | Ngược chiều nồng độ | Cần bơm protein tiêu hao năng lượng
+? Tế bào hồng cầu cho vào nước cất sẽ: | Trương lên và vỡ | Co lại | Không thay đổi | Phân chia
+? Enzyme là chất xúc tác sinh học có bản chất chủ yếu là: | Protein | Lipid | Carbohydrate | Muối khoáng
+? Phương trình tổng quát quang hợp tạo ra: | Glucose và O₂ | CO₂ và H₂O | ATP và CO₂ | Protein
+? Hô hấp tế bào diễn ra chủ yếu ở: | Ti thể | Lục lạp | Nhân | Ribosome
+? Phân tử mang năng lượng trực tiếp cho hoạt động tế bào là: | ATP | DNA | Glucose | Tinh bột
+- Vận chuyển chủ động không cần năng lượng.` },
     { hk: 2, nhan: 'Chương 5', ten: 'Chu kì tế bào và phân bào', bai: ['Bài 16. Chu kì tế bào và nguyên phân', 'Bài 17. Giảm phân', 'Bài 18. Thực hành: Làm và quan sát tiêu bản quá trình nguyên phân và giảm phân', 'Bài 19. Công nghệ tế bào'],
       lt: ['Chu kì tế bào: <b>kì trung gian</b> (G1, S – nhân đôi DNA, G2) và <b>phân bào</b>.', '<b>Nguyên phân</b>: 4 kì (đầu, giữa, sau, cuối) → 2 tế bào con giống hệt mẹ (2n). Ý nghĩa: sinh trưởng, tái sinh.', '<b>Giảm phân</b>: 2 lần phân bào, 1 lần nhân đôi NST → 4 tế bào con (n); trao đổi chéo tạo biến dị tổ hợp.', '<b>Công nghệ tế bào</b>: nuôi cấy mô, nhân bản vô tính, tế bào gốc.'],
       q: `? Pha nhân đôi DNA trong kì trung gian là: | Pha S | Pha G1 | Pha G2 | Kì giữa
@@ -72,7 +90,13 @@ PLT.KB.build({
 ? Giảm phân tạo ra: | 4 tế bào con có bộ NST n | 2 tế bào 2n | 1 tế bào 2n | 8 tế bào
 ? Kì trung gian là giai đoạn: | Tế bào sinh trưởng và nhân đôi DNA | NST phân li | Hình thành màng nhân | Phân chia tế bào chất
 ? Ung thư liên quan đến sự: | Phân bào mất kiểm soát | Giảm phân bình thường | Ngừng phân bào | Tăng ATP
-+ Giảm phân xảy ra ở tế bào sinh dục chín.` },
++ Giảm phân xảy ra ở tế bào sinh dục chín.
+? Kì nào của nguyên phân các nhiễm sắc thể xếp thành một hàng ở mặt phẳng xích đạo? | Kì giữa | Kì đầu | Kì sau | Kì cuối
+? Từ một tế bào mẹ, nguyên phân tạo ra: | 2 tế bào con có bộ NST giống mẹ | 4 tế bào con đơn bội | 1 tế bào | 8 tế bào
+? Ung thư là kết quả của: | Sự phân bào mất kiểm soát | Tế bào chết | Tế bào ngừng phân chia | Nhiễm trùng thông thường
+? Giảm phân xảy ra ở: | Tế bào sinh dục chín | Tế bào da | Tế bào thần kinh | Tế bào gan
++ Nguyên phân giúp cơ thể đa bào lớn lên và tái tạo mô.
+- Giảm phân tạo ra các tế bào con lưỡng bội.` },
     { hk: 2, nhan: 'Chương 6, 7', ten: 'Sinh học vi sinh vật và virus', bai: ['Bài 20. Sự đa dạng và phương pháp nghiên cứu vi sinh vật', 'Bài 21. Trao đổi chất, sinh trưởng và sinh sản ở vi sinh vật', 'Bài 22. Vai trò và ứng dụng của vi sinh vật', 'Bài 23. Thực hành: Tìm hiểu về các sản phẩm công nghệ vi sinh vật', 'Bài 24. Khái quát về virus', 'Bài 25. Một số bệnh do virus và các thành tựu nghiên cứu ứng dụng virus', 'Bài 26. Thực hành: Điều tra một số bệnh do virus và tuyên truyền phòng chống bệnh'],
       lt: ['Vi sinh vật: vi khuẩn, vi nấm, vi tảo, động vật nguyên sinh; kích thước nhỏ, sinh trưởng nhanh.', 'Sinh trưởng của quần thể vi khuẩn trong nuôi cấy không liên tục: pha tiềm phát → luỹ thừa → cân bằng → suy vong.', 'Ứng dụng: sữa chua, nước mắm, rượu, phân bón vi sinh, xử lí rác thải, sản xuất kháng sinh.', '<b>Virus</b>: chưa có cấu tạo tế bào, gồm lõi nucleic acid và vỏ protein (capsid); sống kí sinh nội bào bắt buộc. Bệnh do virus: cúm, sởi, HIV/AIDS, COVID-19; phòng bằng vaccine.'],
       q: `? Virus khác vi khuẩn ở điểm: | Chưa có cấu tạo tế bào | Có thành tế bào | Có ribosome | Sống tự do
@@ -93,7 +117,14 @@ PLT.KB.build({
 ? Kháng sinh dùng để điều trị bệnh do: | Vi khuẩn | Virus cảm cúm | Dị ứng | Thiếu vitamin
 + Vaccine giúp cơ thể tạo miễn dịch chủ động.
 - Kháng sinh tiêu diệt được virus cúm.
-> Hấp phụ > Xâm nhập > Tổng hợp > Lắp ráp > Phóng thích` }
+> Hấp phụ > Xâm nhập > Tổng hợp > Lắp ráp > Phóng thích
+? Virus có đặc điểm: | Chỉ nhân lên trong tế bào sống | Có cấu tạo tế bào | Sống tự do | Có ribosome
+? Vi sinh vật được dùng để làm sữa chua là: | Vi khuẩn lactic | Nấm men rượu | Virus | Tảo
+? Bệnh do virus gây ra là: | Cúm | Lao | Tả | Uốn ván
+? Thuốc kháng sinh có tác dụng tiêu diệt: | Vi khuẩn | Virus | Mọi loại vi sinh vật | Tế bào người
+? Vaccine giúp cơ thể: | Tạo miễn dịch chủ động | Tiêu diệt ngay mọi virus | Thay thế kháng sinh | Không cần hệ miễn dịch
++ Nấm men được dùng trong làm bánh mì, nấu rượu.
+- Kháng sinh có thể chữa khỏi bệnh cúm do virus.` }
   ],
   essays: {
     1: [['So sánh cấu tạo tế bào nhân sơ và tế bào nhân thực.', ['màng nhân', 'bào quan', 'ribosome', 'kích thước'], 'Nhân sơ: kích thước nhỏ, chưa có màng nhân (vùng nhân), không có bào quan có màng, ribosome 70S. Nhân thực: kích thước lớn, nhân có màng, nhiều bào quan có màng (ti thể, lưới nội chất, Golgi…), ribosome 80S.'],

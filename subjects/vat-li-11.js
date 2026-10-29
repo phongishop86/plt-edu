@@ -15,7 +15,6 @@ PLT.KB.build({
 - Chu kì con lắc đơn tỉ lệ thuận với khối lượng vật.
 - Tại vị trí cân bằng, gia tốc của vật đạt cực đại.
 = T = 2π/ω = Chu kì
-= T = 2π√(l/g) = Chu kì con lắc đơn
 = ω = √(k/m) = Tần số góc con lắc lò xo
 = W = ½kA² = Cơ năng con lắc lò xo
 ? Chu kì dao động là: | Thời gian thực hiện một dao động toàn phần | Số dao động trong 1 giây | Biên độ dao động | Li độ cực đại
@@ -25,7 +24,14 @@ PLT.KB.build({
 ? Hiện tượng cộng hưởng xảy ra khi: | Tần số lực cưỡng bức bằng tần số riêng | Lực cưỡng bức bằng 0 | Biên độ bằng 0 | Không có ma sát
 + Trong dao động điều hoà, cơ năng được bảo toàn.
 - Tần số góc ω = 2π/f.
-_ Tần số góc: ω = 2π[f]` },
+_ Tần số góc: ω = 2π[f]
+? Chu kì của con lắc lò xo phụ thuộc vào: | Khối lượng vật và độ cứng lò xo | Biên độ dao động | Vận tốc ban đầu | Màu sắc vật
+? Chu kì con lắc đơn dao động nhỏ phụ thuộc vào: | Chiều dài dây và gia tốc trọng trường | Khối lượng vật nặng | Biên độ | Vật liệu dây
+? Một vật dao động điều hoà có tần số 2 Hz. Chu kì dao động là: | 0,5 s | 2 s | 4 s | 1 s
+? Hiện tượng biên độ dao động cưỡng bức tăng mạnh khi tần số ngoại lực bằng tần số riêng gọi là: | Cộng hưởng | Tắt dần | Giao thoa | Nhiễu xạ
++ Trong dao động điều hoà, cơ năng được bảo toàn (bỏ qua ma sát).
+- Vận tốc của vật dao động điều hoà cực đại tại vị trí biên.
+_ Chu kì T và tần số f liên hệ: T = 1/[f]` },
     { hk: 1, nhan: 'Chương II', ten: 'Sóng', bai: ['Bài 8. Mô tả sóng', 'Bài 9. Sóng ngang. Sóng dọc. Sự truyền năng lượng của sóng cơ', 'Bài 10. Thực hành: Đo tần số của sóng âm', 'Bài 11. Sóng điện từ', 'Bài 12. Giao thoa sóng', 'Bài 13. Sóng dừng', 'Bài 14. Bài tập về sóng', 'Bài 15. Thực hành: Đo tốc độ truyền âm'],
       lt: ['Bước sóng λ = v·T = v/f.', '<b>Sóng ngang</b>: phần tử dao động vuông góc phương truyền; <b>sóng dọc</b>: dao động dọc phương truyền (sóng âm trong không khí).', '<b>Sóng điện từ</b> truyền được trong chân không với tốc độ c = 3·10⁸ m/s; thang sóng: sóng vô tuyến, hồng ngoại, ánh sáng nhìn thấy, tử ngoại, tia X, tia gamma.', '<b>Giao thoa</b> ánh sáng (Y-âng): khoảng vân i = λD/a. <b>Sóng dừng</b> trên dây hai đầu cố định: l = kλ/2.'],
       q: `? Bước sóng được tính bằng: | λ = v/f | λ = v·f | λ = f/v | λ = vT²
@@ -49,7 +55,14 @@ _ Tần số góc: ω = 2π[f]` },
 = Sóng vô tuyến = Bước sóng dài nhất trong thang sóng điện từ
 = Tia hồng ngoại = Tác dụng nhiệt
 = Tia tử ngoại = Diệt khuẩn, gây sạm da
-= Tia X = Chụp chiếu trong y tế` },
+= Tia X = Chụp chiếu trong y tế
+? Sóng có phương dao động vuông góc với phương truyền sóng là: | Sóng ngang | Sóng dọc | Sóng âm trong không khí | Sóng dừng
+? Bước sóng λ, tốc độ v và tần số f liên hệ theo công thức: | v = λ·f | v = λ/f | v = f/λ | v = λ + f
+? Sóng có tần số 50 Hz, bước sóng 2 m. Tốc độ truyền sóng là: | 100 m/s | 25 m/s | 52 m/s | 48 m/s
+? Ánh sáng nhìn thấy có bước sóng trong khoảng: | 380 nm – 760 nm | 1 mm – 1 m | 1 pm – 1 nm | 10 m – 100 m
+? Trong sóng dừng, khoảng cách giữa hai nút liên tiếp là: | λ/2 | λ | λ/4 | 2λ
++ Sóng âm không truyền được trong chân không.
+- Sóng điện từ cần môi trường vật chất để lan truyền.` },
     { hk: 2, nhan: 'Chương III', ten: 'Điện trường', bai: ['Bài 16. Lực tương tác giữa các điện tích', 'Bài 17. Khái niệm điện trường', 'Bài 18. Điện trường đều', 'Bài 19. Thế năng điện', 'Bài 20. Điện thế', 'Bài 21. Tụ điện'],
       lt: ['<b>Định luật Coulomb</b>: F = k·|q₁q₂|/r² (k = 9·10⁹ N·m²/C²).', 'Cường độ điện trường E = F/q; điện tích điểm: E = k|Q|/r². Điện trường đều: E = U/d.', 'Điện thế V = A/q; hiệu điện thế U_MN = V_M − V_N.', '<b>Tụ điện</b>: điện dung C = Q/U (F); năng lượng W = ½CU². Tụ ghép song song: C = C₁ + C₂; nối tiếp: 1/C = 1/C₁ + 1/C₂.'],
       q: `? Định luật Coulomb: lực tương tác giữa hai điện tích điểm tỉ lệ nghịch với: | Bình phương khoảng cách | Khoảng cách | Tích điện tích | Hằng số k
@@ -62,12 +75,16 @@ _ Tần số góc: ω = 2π[f]` },
 = F = k|q₁q₂|/r² = Định luật Coulomb
 = E = U/d = Điện trường đều
 = C = Q/U = Điện dung
-= W = ½CU² = Năng lượng tụ điện
 ? Theo định luật Cu-lông, lực tương tác giữa hai điện tích: | Tỉ lệ nghịch với bình phương khoảng cách | Tỉ lệ thuận với khoảng cách | Không phụ thuộc khoảng cách | Tỉ lệ nghịch với khoảng cách
 ? Đơn vị của cường độ điện trường là: | V/m | V | C | F
 ? Năng lượng của tụ điện tích điện được tính bằng: | W = C·U²/2 | W = C·U | W = U/C | W = Q·C
 ? Đường sức điện của điện tích dương có hướng: | Đi ra từ điện tích | Đi vào điện tích | Khép kín | Tròn quanh điện tích
-+ Tụ điện là hệ hai vật dẫn đặt gần nhau, ngăn cách bởi lớp cách điện.` },
++ Tụ điện là hệ hai vật dẫn đặt gần nhau, ngăn cách bởi lớp cách điện.
+? Theo định luật Coulomb, lực tương tác giữa hai điện tích điểm: | Tỉ lệ nghịch với bình phương khoảng cách | Tỉ lệ thuận với khoảng cách | Không phụ thuộc khoảng cách | Tỉ lệ nghịch với khoảng cách
+? Đơn vị điện dung của tụ điện là: | Fara (F) | Vôn (V) | Culông (C) | Ôm (Ω)
+? Tụ điện có điện dung 2 µF, hiệu điện thế 10 V. Điện tích của tụ là: | 20 µC | 5 µC | 0,2 µC | 12 µC
++ Đường sức điện xuất phát từ điện tích dương và kết thúc ở điện tích âm.
+- Khi khoảng cách tăng gấp đôi, lực Coulomb tăng gấp bốn lần.` },
     { hk: 2, nhan: 'Chương IV', ten: 'Dòng điện. Mạch điện', bai: ['Bài 22. Cường độ dòng điện', 'Bài 23. Điện trở. Định luật Ohm', 'Bài 24. Nguồn điện', 'Bài 25. Năng lượng và công suất điện', 'Bài 26. Thực hành: Đo suất điện động và điện trở trong của pin điện hoá'],
       lt: ['Cường độ dòng điện I = Δq/Δt (A).', 'Điện trở R = ρl/S; phụ thuộc nhiệt độ. Định luật Ohm cho toàn mạch: I = E/(R + r).', 'Nguồn điện có suất điện động E và điện trở trong r; U = E − I·r.', 'Năng lượng điện A = UIt; công suất P = UI = I²R = U²/R.'],
       q: `? Định luật Ohm cho toàn mạch: | I = E/(R + r) | I = U/R + r | I = E·(R + r) | I = R/E
@@ -88,7 +105,15 @@ _ Tần số góc: ω = 2π[f]` },
 ? Điện trở của dây kim loại tăng khi: | Nhiệt độ tăng | Nhiệt độ giảm | Dây ngắn lại | Tiết diện tăng
 + Suất điện động đặc trưng cho khả năng thực hiện công của nguồn điện.
 - Hai điện trở mắc song song có điện trở tương đương lớn hơn mỗi điện trở thành phần.
-_ Định luật Ôm toàn mạch: I = E / (R + [r])` }
+_ Định luật Ôm toàn mạch: I = E / (R + [r])
+? Một điện trở 10 Ω mắc vào hiệu điện thế 20 V. Cường độ dòng điện là: | 2 A | 200 A | 0,5 A | 30 A
+? Hai điện trở 4 Ω và 6 Ω mắc nối tiếp. Điện trở tương đương là: | 10 Ω | 2,4 Ω | 24 Ω | 2 Ω
+? Hai điện trở 6 Ω mắc song song. Điện trở tương đương là: | 3 Ω | 12 Ω | 6 Ω | 36 Ω
+? Công suất tiêu thụ của đoạn mạch được tính bằng: | P = U·I | P = U/I | P = I/U | P = U + I
+? Suất điện động của nguồn điện đặc trưng cho: | Khả năng thực hiện công của nguồn | Điện trở của nguồn | Khối lượng nguồn | Nhiệt độ nguồn
++ Điện năng tiêu thụ được đo bằng công tơ điện.
+- Điện trở của dây dẫn kim loại giảm khi nhiệt độ tăng.
+_ Định luật Ôm cho toàn mạch: I = E/(R + [r])` }
   ],
   essays: {
     1: [['Một con lắc lò xo có k = 100 N/m, m = 0,25 kg dao động với biên độ 4 cm. Tính tần số góc, chu kì và cơ năng.', ['20', '0,314', '0,08'], 'ω = √(k/m) = √(100/0,25) = 20 rad/s; T = 2π/ω ≈ 0,314 s; W = ½kA² = ½·100·0,04² = 0,08 J.'],

@@ -12,8 +12,6 @@ PLT.KB.build({
 + Nội năng của vật là tổng động năng và thế năng của các phân tử cấu tạo nên vật.
 - Nhiệt độ tuyệt đối có thể nhận giá trị âm.
 = Q = mcΔt = Nhiệt lượng thu/toả khi thay đổi nhiệt độ
-= Q = λm = Nhiệt nóng chảy
-= Q = Lm = Nhiệt hoá hơi
 = T = t + 273 = Đổi °C sang K
 ? Nhiệt độ 0 °C tương ứng với bao nhiêu kelvin? | 273 K | 0 K | 100 K | 373 K
 ? Nhiệt dung riêng của nước khoảng: | 4200 J/(kg·K) | 420 J/(kg·K) | 880 J/(kg·K) | 130 J/(kg·K)
@@ -23,7 +21,14 @@ PLT.KB.build({
 ? Trong quá trình nóng chảy của chất rắn kết tinh, nhiệt độ: | Không đổi | Tăng liên tục | Giảm | Dao động
 + Nhiệt nóng chảy riêng là nhiệt lượng cần để 1 kg chất rắn nóng chảy hoàn toàn ở nhiệt độ nóng chảy.
 - Nội năng của vật không phụ thuộc nhiệt độ.
-_ Nhiệt độ tuyệt đối: T = t + [273]` },
+_ Nhiệt độ tuyệt đối: T = t + [273]
+? Nước sôi ở 100 °C (áp suất chuẩn) tương ứng với nhiệt độ tuyệt đối: | 373 K | 273 K | 100 K | 173 K
+? Nhiệt lượng cần cung cấp để 2 kg nước tăng thêm 10 °C (c = 4 200 J/kg·K) là: | 84 000 J | 8 400 J | 42 000 J | 21 000 J
+? Quá trình chuyển từ thể lỏng sang thể khí gọi là: | Hoá hơi | Nóng chảy | Đông đặc | Ngưng tụ
+? Nhiệt nóng chảy riêng của một chất là nhiệt lượng cần để: | 1 kg chất đó nóng chảy hoàn toàn ở nhiệt độ nóng chảy | Tăng 1 °C cho 1 kg chất | Làm bay hơi 1 kg chất | Đun sôi nước
++ Trong quá trình nóng chảy của chất rắn kết tinh, nhiệt độ không đổi.
+- 0 K tương ứng với 0 °C.
+_ T(K) = t(°C) + [273]` },
     { hk: 1, nhan: 'Chương II', ten: 'Khí lí tưởng', bai: ['Bài 8. Mô hình động học phân tử chất khí', 'Bài 9. Định luật Boyle', 'Bài 10. Định luật Charles', 'Bài 11. Phương trình trạng thái của khí lí tưởng', 'Bài 12. Áp suất khí theo mô hình động học phân tử. Quan hệ giữa động năng phân tử và nhiệt độ', 'Bài 13. Bài tập về khí lí tưởng'],
       lt: ['<b>Định luật Boyle</b> (đẳng nhiệt): p₁V₁ = p₂V₂.', '<b>Định luật Charles</b> (đẳng áp): V₁/T₁ = V₂/T₂.', '<b>Phương trình trạng thái</b>: pV/T = hằng số; <b>phương trình Clapeyron</b>: pV = nRT (R = 8,31 J/mol·K).', 'Động năng trung bình phân tử: W_đ = (3/2)kT.'],
       q: `? Định luật Boyle áp dụng cho quá trình: | Đẳng nhiệt | Đẳng áp | Đẳng tích | Đoạn nhiệt
@@ -44,7 +49,12 @@ _ Nhiệt độ tuyệt đối: T = t + [273]` },
 - Trong quá trình đẳng áp, thể tích tỉ lệ nghịch với nhiệt độ tuyệt đối.
 = Đẳng nhiệt = p tỉ lệ nghịch với V
 = Đẳng áp = V tỉ lệ thuận với T
-= Đẳng tích = p tỉ lệ thuận với T` },
+= Đẳng tích = p tỉ lệ thuận với T
+? Theo định luật Boyle, ở nhiệt độ không đổi: | p·V = hằng số | p/V = hằng số | V/T = hằng số | p·T = hằng số
+? Khí được nén đẳng nhiệt từ 4 lít xuống 2 lít thì áp suất: | Tăng gấp đôi | Giảm một nửa | Không đổi | Tăng gấp bốn
+? Theo định luật Charles, ở áp suất không đổi, thể tích khí: | Tỉ lệ thuận với nhiệt độ tuyệt đối | Tỉ lệ nghịch với nhiệt độ | Không đổi | Tỉ lệ với áp suất
++ Áp suất khí là do các phân tử khí va chạm vào thành bình.
+- Phân tử khí lí tưởng có tương tác mạnh với nhau khi không va chạm.` },
     { hk: 2, nhan: 'Chương III', ten: 'Từ trường', bai: ['Bài 14. Từ trường', 'Bài 15. Lực từ tác dụng lên dây dẫn mang dòng điện. Cảm ứng từ', 'Bài 16. Từ thông. Hiện tượng cảm ứng điện từ', 'Bài 17. Máy phát điện xoay chiều', 'Bài 18. Ứng dụng hiện tượng cảm ứng điện từ', 'Bài 19. Điện từ trường. Mô hình sóng điện từ', 'Bài 20. Bài tập về từ trường'],
       lt: ['Lực từ lên dây dẫn: F = B·I·l·sinα; chiều theo <b>quy tắc bàn tay trái</b>. Đơn vị cảm ứng từ: tesla (T).', 'Từ thông Φ = B·S·cosα (Wb). <b>Định luật Faraday</b>: e_c = −ΔΦ/Δt; chiều dòng cảm ứng theo <b>định luật Lenz</b>.', 'Máy phát điện xoay chiều, máy biến áp: U₁/U₂ = N₁/N₂. Dòng điện xoay chiều: giá trị hiệu dụng I = I₀/√2.', 'Điện trường biến thiên sinh ra từ trường và ngược lại → điện từ trường, sóng điện từ.'],
       q: `? Đơn vị của cảm ứng từ là: | Tesla (T) | Vêbe (Wb) | Henri (H) | Vôn (V)
@@ -65,7 +75,14 @@ _ Nhiệt độ tuyệt đối: T = t + [273]` },
 ? Máy biến áp có số vòng cuộn thứ cấp lớn hơn sơ cấp là máy: | Tăng áp | Hạ áp | Không đổi áp | Phát điện
 ? Giá trị hiệu dụng của điện áp xoay chiều liên hệ với giá trị cực đại: | U = U₀/√2 | U = U₀ | U = 2U₀ | U = U₀²
 + Đường sức từ là những đường cong khép kín.
-_ Máy biến áp lí tưởng: U1/U2 = N1/[N2]` },
+_ Máy biến áp lí tưởng: U1/U2 = N1/[N2]
+? Lực từ tác dụng lên đoạn dây dẫn mang dòng điện đặt trong từ trường được tính bằng: | F = B·I·l·sinα | F = B/I | F = m·a | F = q·E
+? Đơn vị cảm ứng từ là: | Tesla (T) | Vêbe (Wb) | Henry (H) | Vôn (V)
+? Đơn vị từ thông là: | Vêbe (Wb) | Tesla (T) | Ampe (A) | Oát (W)
+? Máy biến áp hoạt động dựa trên hiện tượng: | Cảm ứng điện từ | Quang điện | Nhiệt điện | Phóng xạ
+? Máy biến áp có N1 = 1 000 vòng, N2 = 100 vòng, U1 = 220 V. Điện áp U2 là: | 22 V | 2 200 V | 110 V | 220 V
++ Quy tắc nắm tay phải dùng để xác định chiều đường sức từ của dòng điện.
+- Máy biến áp có thể biến đổi điện áp của dòng điện không đổi.` },
     { hk: 2, nhan: 'Chương IV', ten: 'Vật lí hạt nhân', bai: ['Bài 21. Cấu trúc hạt nhân', 'Bài 22. Phản ứng hạt nhân và năng lượng liên kết', 'Bài 23. Hiện tượng phóng xạ', 'Bài 24. Công nghiệp hạt nhân', 'Bài 25. Bài tập về vật lí hạt nhân'],
       lt: ['Hạt nhân ᴬ_Z X gồm Z proton và N = A − Z neutron; <b>đồng vị</b>: cùng Z khác A.', 'Năng lượng liên kết W_lk = Δm·c²; năng lượng liên kết riêng càng lớn, hạt nhân càng bền.', 'Phản ứng hạt nhân bảo toàn số nucleon và điện tích. <b>Phân hạch</b> (hạt nhân nặng vỡ ra), <b>nhiệt hạch</b> (hạt nhân nhẹ tổng hợp).', '<b>Phóng xạ</b>: α (⁴₂He), β⁻, β⁺, γ; định luật phóng xạ N = N₀·2^(−t/T), T là chu kì bán rã.'],
       q: `? Hạt nhân ¹⁴₆C có số neutron là: | 8 | 6 | 14 | 20
@@ -89,7 +106,14 @@ _ Máy biến áp lí tưởng: U1/U2 = N1/[N2]` },
 + Nhà máy điện hạt nhân sử dụng phản ứng phân hạch.
 - Tia alpha có khả năng đâm xuyên mạnh nhất.
 = Tia alpha = Hạt nhân heli, đâm xuyên yếu
-= Tia bêta = Êlectron hoặc pôzitron` }
+= Tia bêta = Êlectron hoặc pôzitron
+? Hạt nhân ²³⁵U có số neutron là: | 143 | 92 | 235 | 327
+? Tia phóng xạ có khả năng đâm xuyên mạnh nhất là: | Tia gamma | Tia alpha | Tia beta | Tia hồng ngoại
+? Phản ứng hạt nhân xảy ra trong lõi Mặt Trời chủ yếu là: | Phản ứng nhiệt hạch | Phản ứng phân hạch | Phản ứng hoá học | Phóng xạ alpha
+? Lò phản ứng hạt nhân của nhà máy điện hạt nhân sử dụng phản ứng: | Phân hạch | Nhiệt hạch | Đốt cháy than | Quang hợp
++ Tia alpha là dòng hạt nhân heli.
+- Độ hụt khối của hạt nhân luôn bằng 0.
+= Chu kì bán rã = Thời gian một nửa số hạt nhân bị phân rã` }
   ],
   essays: {
     1: [['Tính nhiệt lượng cần cung cấp để biến 1 kg nước đá ở 0 °C thành nước ở 20 °C (λ = 3,4·10⁵ J/kg; c = 4 200 J/kg·K).', ['340 000', '84 000', '424 000'], 'Nóng chảy: Q₁ = λm = 340 000 J; đun nóng: Q₂ = mcΔt = 1·4 200·20 = 84 000 J; Q = 424 000 J.'],

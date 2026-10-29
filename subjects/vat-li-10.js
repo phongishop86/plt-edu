@@ -19,7 +19,11 @@ PLT.KB.build({
 ? Sai số ngẫu nhiên có thể giảm bằng cách: | Đo nhiều lần rồi lấy giá trị trung bình | Đo một lần | Dùng dụng cụ hỏng | Bỏ qua kết quả
 ? Kí hiệu cảnh báo chất dễ cháy có hình: | Ngọn lửa | Đầu lâu xương chéo | Tia sét | Bình gas
 + Sai số hệ thống thường do dụng cụ đo gây ra.
-- Ampe (A) không phải là đơn vị cơ bản trong hệ SI.` },
+- Ampe (A) không phải là đơn vị cơ bản trong hệ SI.
+? Kí hiệu cảnh báo chất dễ cháy trong phòng thí nghiệm thường có hình: | Ngọn lửa | Đầu lâu | Tia sét | Bông hoa
++ Sai số hệ thống thường do dụng cụ đo hoặc phương pháp đo gây ra.
+- Kết quả đo luôn chính xác tuyệt đối, không có sai số.
+= Kelvin (K) = Nhiệt độ` },
     { hk: 1, nhan: 'Chương II', ten: 'Động học', bai: ['Bài 4. Độ dịch chuyển và quãng đường đi được', 'Bài 5. Tốc độ và vận tốc', 'Bài 6. Thực hành: Đo tốc độ của vật chuyển động', 'Bài 7. Đồ thị độ dịch chuyển – thời gian', 'Bài 8. Chuyển động biến đổi. Gia tốc', 'Bài 9. Chuyển động thẳng biến đổi đều', 'Bài 10. Sự rơi tự do', 'Bài 11. Thực hành: Đo gia tốc rơi tự do', 'Bài 12. Chuyển động ném'],
       lt: ['<b>Độ dịch chuyển</b> (vectơ) khác <b>quãng đường</b> (vô hướng). Vận tốc v = d/t; tốc độ trung bình = s/t.', '<b>Gia tốc</b> a = Δv/Δt (m/s²). Chuyển động thẳng biến đổi đều: v = v₀ + at; d = v₀t + ½at²; v² − v₀² = 2ad.', '<b>Rơi tự do</b>: chuyển động nhanh dần đều, a = g ≈ 9,8 m/s²; v = gt; h = ½gt².', '<b>Ném ngang</b>: tầm xa L = v₀·√(2h/g).'],
       q: `? Đơn vị của gia tốc là: | m/s² | m/s | m | s²
@@ -43,7 +47,15 @@ PLT.KB.build({
 ? Đồ thị độ dịch chuyển – thời gian của chuyển động thẳng đều là: | Đường thẳng | Đường parabol | Đường tròn | Đường cong bất kì
 ? Trong chuyển động ném ngang, theo phương ngang vật chuyển động: | Thẳng đều | Nhanh dần đều | Chậm dần đều | Đứng yên
 - Quãng đường đi được luôn nhỏ hơn độ lớn độ dịch chuyển.
-_ Gia tốc rơi tự do gần mặt đất lấy gần đúng g = [9,8] m/s².` },
+_ Gia tốc rơi tự do gần mặt đất lấy gần đúng g = [9,8] m/s².
+? Một ô tô đi 120 km trong 2 giờ. Tốc độ trung bình là: | 60 km/h | 240 km/h | 30 km/h | 120 km/h
+? Vật rơi tự do không vận tốc đầu (g = 10 m/s²). Sau 2 s, vận tốc của vật là: | 20 m/s | 10 m/s | 40 m/s | 5 m/s
+? Quãng đường vật rơi tự do (g = 10 m/s²) trong 3 s đầu là: | 45 m | 30 m | 90 m | 15 m
+? Công thức vận tốc của chuyển động thẳng biến đổi đều là: | v = v₀ + at | v = s/t² | v = at² | v = v₀ − s
+? Một vật được ném ngang. Theo phương ngang, vật chuyển động: | Thẳng đều | Nhanh dần đều | Chậm dần đều | Đứng yên
++ Gia tốc rơi tự do gần mặt đất xấp xỉ 9,8 m/s².
+- Quãng đường đi được luôn bằng độ lớn độ dịch chuyển.
+_ Đổi đơn vị: 72 km/h = [20] m/s.` },
     { hk: 1, nhan: 'Chương III', ten: 'Động lực học', bai: ['Bài 13. Tổng hợp và phân tích lực. Cân bằng lực', 'Bài 14. Định luật 1 Newton', 'Bài 15. Định luật 2 Newton', 'Bài 16. Định luật 3 Newton', 'Bài 17. Trọng lực và lực căng', 'Bài 18. Lực ma sát', 'Bài 19. Lực cản và lực nâng', 'Bài 20. Một số ví dụ về cách giải các bài toán thuộc phần động lực học', 'Bài 21. Moment lực. Cân bằng của vật rắn', 'Bài 22. Thực hành: Tổng hợp lực'],
       lt: ['<b>Định luật 1 Newton</b> (quán tính): vật không chịu lực hoặc hợp lực bằng 0 thì đứng yên hoặc chuyển động thẳng đều.', '<b>Định luật 2</b>: a = F/m (F = ma). <b>Định luật 3</b>: lực và phản lực cùng độ lớn, cùng phương, ngược chiều, đặt vào hai vật khác nhau.', 'Trọng lực P = mg; lực ma sát trượt F = μN.', '<b>Moment lực</b> M = F·d; quy tắc moment: tổng moment theo chiều kim đồng hồ bằng tổng moment ngược chiều.'],
       q: `? Biểu thức định luật 2 Newton là: | F = ma | F = m/a | F = a/m | F = mv
@@ -69,7 +81,14 @@ _ Gia tốc rơi tự do gần mặt đất lấy gần đúng g = [9,8] m/s².`
 + Khối lượng là đại lượng đặc trưng cho mức quán tính của vật.
 - Lực và phản lực cân bằng nhau vì cùng đặt vào một vật.
 = Định luật I Newton = Định luật quán tính
-= Định luật II Newton = F = m·a` },
+= Định luật II Newton = F = m·a
+? Lực 10 N tác dụng lên vật 2 kg. Gia tốc của vật là: | 5 m/s² | 20 m/s² | 0,2 m/s² | 12 m/s²
+? Khi xe phanh gấp, hành khách bị ngả về phía trước là do: | Quán tính | Lực ma sát | Trọng lực | Lực đẩy Archimedes
+? Lực đẩy Archimedes có độ lớn bằng: | Trọng lượng phần chất lỏng bị vật chiếm chỗ | Trọng lượng vật | Khối lượng vật | Áp suất chất lỏng
+? Moment lực đối với trục quay được tính bằng: | M = F·d | M = F/d | M = m·g | M = F + d
++ Lực và phản lực theo định luật III Newton có cùng độ lớn, ngược chiều.
+- Lực và phản lực tác dụng lên cùng một vật nên cân bằng nhau.
+= Định luật III Newton = Lực và phản lực` },
     { hk: 2, nhan: 'Chương IV', ten: 'Năng lượng, công, công suất', bai: ['Bài 23. Năng lượng. Công cơ học', 'Bài 24. Công suất', 'Bài 25. Động năng, thế năng', 'Bài 26. Cơ năng và định luật bảo toàn cơ năng', 'Bài 27. Hiệu suất'],
       lt: ['Công A = F·s·cosα (J); công suất P = A/t (W).', 'Động năng W_đ = ½mv²; thế năng trọng trường W_t = mgh; cơ năng W = W_đ + W_t được bảo toàn khi chỉ có trọng lực, lực đàn hồi.', 'Hiệu suất H = A_có ích / A_toàn phần × 100%.'],
       q: `? Công thức tính công khi lực hợp với hướng dịch chuyển góc α là: | A = F·s·cosα | A = F·s·sinα | A = F/s | A = F·t
@@ -91,7 +110,14 @@ _ Gia tốc rơi tự do gần mặt đất lấy gần đúng g = [9,8] m/s².`
 ? Hiệu suất của máy luôn: | Nhỏ hơn 1 (100%) | Lớn hơn 100% | Bằng 0 | Âm
 + Công suất cho biết tốc độ thực hiện công.
 - Khi vật rơi tự do, thế năng của vật tăng dần.
-_ Động năng: Wđ = m·v² / [2]` },
+_ Động năng: Wđ = m·v² / [2]
+? Công của lực F = 10 N kéo vật đi 5 m theo hướng của lực là: | 50 J | 2 J | 15 J | 500 J
+? Động năng của vật 2 kg chuyển động với tốc độ 3 m/s là: | 9 J | 6 J | 18 J | 3 J
+? Công suất là: | Công thực hiện trong một đơn vị thời gian | Lực nhân thời gian | Năng lượng toàn phần | Khối lượng nhân vận tốc
+? Máy thực hiện công 600 J trong 2 s có công suất: | 300 W | 1 200 W | 600 W | 150 W
+? Hiệu suất của động cơ luôn: | Nhỏ hơn 100% | Lớn hơn 100% | Bằng 100% | Bằng 0
+- Đơn vị của công suất là jun (J).
+_ Động năng: Wđ = ½·m·v[²]` },
     { hk: 2, nhan: 'Chương V, VI, VII', ten: 'Động lượng. Chuyển động tròn đều. Biến dạng của vật rắn', bai: ['Bài 28. Động lượng', 'Bài 29. Định luật bảo toàn động lượng', 'Bài 30. Thực hành: Xác định động lượng của vật trước và sau va chạm', 'Bài 31. Động học của chuyển động tròn đều', 'Bài 32. Lực hướng tâm và gia tốc hướng tâm', 'Bài 33. Biến dạng của vật rắn', 'Bài 34. Khối lượng riêng. Áp suất chất lỏng'],
       lt: ['<b>Động lượng</b> p = m·v (kg·m/s). <b>Định luật bảo toàn động lượng</b>: tổng động lượng của hệ kín không đổi. Ứng dụng: chuyển động bằng phản lực (tên lửa).', 'Chuyển động tròn đều: ω = Δθ/Δt; v = ωr; chu kì T = 2π/ω; gia tốc hướng tâm a_ht = v²/r = ω²r; lực hướng tâm F_ht = m·a_ht.', '<b>Định luật Hooke</b>: F_đh = k·|Δl|.', 'Áp suất chất lỏng p = p₀ + ρgh.'],
       q: `? Động lượng được tính bằng: | p = m·v | p = m/v | p = ½mv² | p = mgh
@@ -102,9 +128,6 @@ _ Động năng: Wđ = m·v² / [2]` },
 + Trong chuyển động tròn đều, tốc độ không đổi nhưng vận tốc luôn đổi hướng.
 - Gia tốc hướng tâm có hướng ra xa tâm quỹ đạo.
 = p = mv = Động lượng
-= F = k|Δl| = Định luật Hooke
-= a = v²/r = Gia tốc hướng tâm
-= v = ωr = Liên hệ tốc độ dài và tốc độ góc
 ? Động lượng của vật được tính bằng: | p = m·v | p = m/v | p = m·a | p = F·s
 ? Đơn vị của động lượng là: | kg·m/s | N·m | J | W
 ? Trong chuyển động tròn đều, gia tốc hướng tâm có hướng: | Về tâm quỹ đạo | Ra xa tâm | Tiếp tuyến | Cùng chiều vận tốc
@@ -112,7 +135,16 @@ _ Động năng: Wđ = m·v² / [2]` },
 ? Theo định luật Húc, lực đàn hồi của lò xo: | Tỉ lệ thuận với độ biến dạng | Tỉ lệ nghịch với độ biến dạng | Không đổi | Bằng 0
 ? Công thức tính áp suất chất lỏng ở độ sâu h là: | p = ρ·g·h | p = m·g | p = F·s | p = ρ/h
 + Súng giật lùi khi bắn là do bảo toàn động lượng.
-- Trong chuyển động tròn đều, tốc độ thay đổi liên tục.` }
+- Trong chuyển động tròn đều, tốc độ thay đổi liên tục.
+? Động lượng của vật 2 kg chuyển động với vận tốc 5 m/s là: | 10 kg·m/s | 2,5 kg·m/s | 7 kg·m/s | 25 kg·m/s
+? Chuyển động bằng phản lực (tên lửa) dựa trên định luật: | Bảo toàn động lượng | Bảo toàn khối lượng | Ôm | Húc
+? Theo định luật Hooke, lực đàn hồi của lò xo: | Tỉ lệ thuận với độ biến dạng | Tỉ lệ nghịch với độ biến dạng | Không phụ thuộc độ biến dạng | Bằng trọng lượng lò xo
+? Lò xo độ cứng 100 N/m bị dãn 0,05 m. Lực đàn hồi là: | 5 N | 2 000 N | 0,5 N | 50 N
++ Tốc độ góc của chuyển động tròn đều không đổi.
+- Trong va chạm mềm, động năng của hệ luôn được bảo toàn.
+= Động lượng = p = m·v
+= Định luật Hooke = F = k·|Δl|
+= Gia tốc hướng tâm = a = v²/r` }
   ],
   essays: {
     1: [['Một ô tô đang chạy 10 m/s thì tăng tốc đều, sau 5 s đạt 20 m/s. Tính gia tốc và quãng đường đi được trong thời gian đó.', ['2', '75'], 'a = (20 − 10)/5 = 2 m/s². s = v₀t + ½at² = 10·5 + ½·2·25 = 75 m.'],

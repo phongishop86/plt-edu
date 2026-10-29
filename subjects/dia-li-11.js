@@ -20,7 +20,13 @@ PLT.KB.build({
 ? Liên hợp quốc có trụ sở tại: | Niu Oóc | Pa-ri | Bắc Kinh | Tô-ki-ô
 ? Diễn đàn Hợp tác Kinh tế châu Á – Thái Bình Dương viết tắt là: | APEC | ASEAN | EU | OPEC
 + FDI là đầu tư trực tiếp nước ngoài.
-- Toàn cầu hoá chỉ diễn ra trong lĩnh vực văn hoá.` },
+- Toàn cầu hoá chỉ diễn ra trong lĩnh vực văn hoá.
+? Nhóm nước phát triển thường có cơ cấu kinh tế: | Dịch vụ chiếm tỉ trọng lớn nhất | Nông nghiệp chiếm tỉ trọng lớn nhất | Công nghiệp khai khoáng là chủ yếu | Không có dịch vụ
+? Đầu tư trực tiếp nước ngoài viết tắt là: | FDI | ODA | GDP | WTO
+? ODA là: | Hỗ trợ phát triển chính thức | Đầu tư trực tiếp | Thương mại tự do | Tổng sản phẩm
+? EU, ASEAN là ví dụ của: | Khu vực hoá kinh tế | Toàn cầu hoá văn hoá | Tổ chức quân sự | Tổ chức tôn giáo
++ Kinh tế tri thức coi tri thức và công nghệ là động lực phát triển.
+- Các nước đang phát triển có HDI cao nhất thế giới.` },
     { hk: 1, nhan: 'Khu vực', ten: 'Mỹ La-tinh, Liên minh châu Âu, Đông Nam Á, Tây Nam Á', bai: ['Bài 6–8. Khu vực Mỹ La-tinh', 'Bài 9–10. Liên minh châu Âu', 'Bài 11–14. Khu vực Đông Nam Á; Hiệp hội các quốc gia Đông Nam Á', 'Bài 15–17. Khu vực Tây Nam Á'],
       lt: ['Mỹ La-tinh: giàu tài nguyên, rừng A-ma-dôn; đô thị hoá tự phát; kinh tế phát triển chưa ổn định.', 'EU: trụ sở Brúc-xen; thị trường chung, đồng Ơ-rô; trung tâm kinh tế hàng đầu thế giới.', 'Đông Nam Á: 11 quốc gia; khí hậu nhiệt đới gió mùa, xích đạo; nông nghiệp lúa nước, công nghiệp chế biến, du lịch; ASEAN.', 'Tây Nam Á: giàu dầu mỏ, khí tự nhiên (vịnh Péc-xích); nhiều xung đột.'],
       q: `? Khu vực có trữ lượng dầu mỏ lớn nhất thế giới là: | Tây Nam Á | Đông Nam Á | Mỹ La-tinh | Bắc Âu
@@ -41,7 +47,14 @@ PLT.KB.build({
 = Bra-xin = Lớn nhất Mỹ La-tinh
 = In-đô-nê-xi-a = Lớn nhất Đông Nam Á
 = Lào = Không giáp biển
-= Xin-ga-po = Quốc đảo, trung tâm tài chính` },
+= Xin-ga-po = Quốc đảo, trung tâm tài chính
+? Kênh đào Xuy-ê nối liền: | Địa Trung Hải và Biển Đỏ | Thái Bình Dương và Đại Tây Dương | Biển Đen và biển Ca-xpi | Ấn Độ Dương và Thái Bình Dương
+? Kênh đào Pa-na-ma nối liền: | Thái Bình Dương và Đại Tây Dương | Địa Trung Hải và Biển Đỏ | Biển Bắc và Biển Ban-tích | Ấn Độ Dương và Đại Tây Dương
+? Trụ sở chính của ASEAN đặt tại: | Gia-các-ta (Indonesia) | Hà Nội | Băng Cốc | Xin-ga-po
+? Quốc gia có diện tích lớn nhất Mỹ La-tinh là: | Bra-xin | Ác-hen-ti-na | Mê-hi-cô | Chi-lê
+? Eo biển Ma-lắc-ca nằm giữa: | Bán đảo Mã Lai và đảo Xu-ma-tra | Việt Nam và Lào | Philippines và Đài Loan | Thái Lan và Campuchia
++ Đông Nam Á là khu vực có nhiều núi lửa và động đất.
+- Kênh đào Xuy-ê nối Thái Bình Dương với Đại Tây Dương.` },
     { hk: 2, nhan: 'Quốc gia', ten: 'Hoa Kỳ, Liên bang Nga, Nhật Bản', bai: ['Bài 18–19. Hoa Kỳ', 'Bài 20–22. Liên bang Nga', 'Bài 23–25. Nhật Bản'],
       lt: ['<b>Hoa Kỳ</b>: nền kinh tế lớn nhất thế giới; dân cư nhập cư đa dạng; nông nghiệp hiện đại, công nghiệp công nghệ cao (Thung lũng Si-li-côn).', '<b>Liên bang Nga</b>: diện tích lớn nhất thế giới; giàu tài nguyên (dầu khí, than, rừng); công nghiệp năng lượng, quốc phòng, hàng không vũ trụ.', '<b>Nhật Bản</b>: quần đảo, nhiều động đất, núi lửa; dân số già; công nghiệp công nghệ cao (ô tô, điện tử, robot); kinh tế đối ngoại phát triển.'],
       q: `? Quốc gia có diện tích lớn nhất thế giới là: | Liên bang Nga | Hoa Kỳ | Trung Quốc | Ca-na-đa
@@ -60,7 +73,11 @@ PLT.KB.build({
 ? Hồ nước ngọt sâu nhất thế giới thuộc Liên bang Nga là: | Hồ Bai-can | Hồ Vích-to-ri-a | Hồ Ti-ti-ca-ca | Ngũ Hồ
 ? Sông dài nhất châu Âu, thuộc Liên bang Nga là: | Vôn-ga | Đa-nuýp | Rai-nơ | Ô-bi
 + Hoa Kỳ có nền nông nghiệp hiện đại, xuất khẩu nông sản hàng đầu thế giới.
-- Nhật Bản giàu tài nguyên khoáng sản.` },
+- Nhật Bản giàu tài nguyên khoáng sản.
+? Thủ đô của Liên bang Nga là: | Mát-xcơ-va | Xanh Pê-téc-bua | Vla-đi-vô-xtốc | Ki-ép
+? Đảo lớn nhất Nhật Bản là: | Hôn-su | Hốc-cai-đô | Kiu-xiu | Xi-cô-cư
+? Nhật Bản thiếu tài nguyên nào nên phải nhập khẩu nhiều? | Khoáng sản, nhiên liệu | Hải sản | Lao động trình độ cao | Công nghệ
+- Thủ đô của Nhật Bản là Ô-xa-ca.` },
     { hk: 2, nhan: 'Quốc gia', ten: 'Trung Quốc, Ô-xtrây-li-a, Cộng hoà Nam Phi', bai: ['Bài 26–28. Cộng hoà Nhân dân Trung Hoa', 'Bài 29. Thực hành: Tìm hiểu về kinh tế Ô-xtrây-li-a', 'Bài 30–31. Cộng hoà Nam Phi'], on: 'Ôn tập cuối năm',
       lt: ['<b>Trung Quốc</b>: dân số rất đông; cải cách mở cửa từ 1978; kinh tế lớn thứ hai thế giới; vùng duyên hải phía đông phát triển nhất.', '<b>Ô-xtrây-li-a</b>: lục địa – quốc gia; khai khoáng, chăn nuôi cừu, nông nghiệp xuất khẩu, du lịch.', '<b>Cộng hoà Nam Phi</b>: giàu vàng, kim cương, bạch kim; nền kinh tế phát triển nhất châu Phi; thành viên BRICS.'],
       q: `? Trung Quốc bắt đầu cải cách mở cửa từ năm: | 1978 | 1949 | 1986 | 2001
@@ -75,7 +92,8 @@ PLT.KB.build({
 ? Cộng hoà Nam Phi nằm ở: | Cực nam châu Phi | Bắc Phi | Tây Phi | Trung Phi
 ? Đặc khu kinh tế đầu tiên của Trung Quốc là: | Thâm Quyến | Bắc Kinh | Tây An | Lhasa
 + Ô-xtrây-li-a là quốc gia duy nhất chiếm cả một lục địa.
-- Thủ đô của Ô-xtrây-li-a là Xít-ni.` }
+- Thủ đô của Ô-xtrây-li-a là Xít-ni.
++ Ô-xtrây-li-a là quốc gia xuất khẩu nhiều than và quặng sắt.` }
   ],
   essays: {
     1: [['Phân tích cơ hội và thách thức của toàn cầu hoá đối với các nước đang phát triển.', ['cơ hội', 'thách thức', 'đầu tư', 'cạnh tranh'], 'Cơ hội: mở rộng thị trường, thu hút vốn FDI, tiếp thu công nghệ, kinh nghiệm quản lí, chuyển dịch cơ cấu kinh tế. Thách thức: cạnh tranh gay gắt, phụ thuộc bên ngoài, ô nhiễm môi trường, giữ gìn bản sắc văn hoá, khoảng cách giàu nghèo.'],

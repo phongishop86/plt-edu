@@ -20,7 +20,13 @@ PLT.KB.build({
 ? Chất điện li mạnh là: | NaCl | C₂H₅OH | Đường saccharose | CH₃COOH
 + Chất xúc tác không làm chuyển dịch cân bằng hoá học.
 - Dung dịch NaOH có pH nhỏ hơn 7.
-_ Dung dịch có nồng độ H⁺ bằng 10⁻³ M thì pH = [3]` },
+_ Dung dịch có nồng độ H⁺ bằng 10⁻³ M thì pH = [3]
+? Phản ứng thuận nghịch là phản ứng: | Xảy ra theo hai chiều ngược nhau trong cùng điều kiện | Chỉ xảy ra một chiều | Không xảy ra | Xảy ra tức thì
+? Theo nguyên lí Le Chatelier, tăng nồng độ chất phản ứng thì cân bằng chuyển dịch theo chiều: | Thuận | Nghịch | Không chuyển dịch | Ngẫu nhiên
+? Dung dịch có pH = 3 có môi trường: | Acid | Base | Trung tính | Không xác định
+? Dung dịch có pH = 7 ở 25 °C có môi trường: | Trung tính | Acid | Base | Muối
+- Dung dịch có pH = 12 là môi trường acid.
+_ Dung dịch base có pH [lớn] hơn 7.` },
     { hk: 1, nhan: 'Chương 2', ten: 'Nitrogen – Sulfur', bai: ['Bài 4. Nitrogen', 'Bài 5. Ammonia. Muối ammonium', 'Bài 6. Một số hợp chất của nitrogen với oxygen', 'Bài 7. Sulfur và sulfur dioxide', 'Bài 8. Sulfuric acid và muối sulfate', '*Bài 9. Ôn tập chương 2'],
       lt: ['N₂ chiếm ~78% thể tích không khí, kém hoạt động ở nhiệt độ thường (liên kết ba bền).', 'NH₃: khí mùi khai, tan nhiều trong nước, có tính base; sản xuất bằng phương pháp Haber: N₂ + 3H₂ ⇌ 2NH₃.', 'HNO₃: acid mạnh, tính oxi hoá mạnh. NOₓ gây mưa acid, hiện tượng phú dưỡng.', 'SO₂ vừa có tính oxi hoá vừa tính khử; gây mưa acid. H₂SO₄ đặc có tính háo nước, oxi hoá mạnh; pha loãng: rót từ từ acid vào nước.'],
       q: `? Khí chiếm khoảng 78% thể tích không khí là: | N₂ | O₂ | CO₂ | Ar
@@ -40,7 +46,13 @@ _ Dung dịch có nồng độ H⁺ bằng 10⁻³ M thì pH = [3]` },
 ? Khi pha loãng H₂SO₄ đặc phải: | Rót từ từ acid vào nước | Rót nước vào acid | Đổ nhanh | Đun nóng
 ? H₂SO₄ đặc có tính: | Háo nước, oxi hoá mạnh | Base mạnh | Không phản ứng | Khử mạnh
 + Phân đạm cung cấp nguyên tố nitrogen cho cây trồng.
-- Nitrogen là khí duy trì sự cháy mạnh.` },
+- Nitrogen là khí duy trì sự cháy mạnh.
+? Khí chiếm khoảng 78% thể tích không khí là: | Nitrogen | Oxygen | Carbon dioxide | Argon
+? Ammonia có công thức hoá học là: | NH₃ | NO₂ | HNO₃ | N₂O
+? Dung dịch ammonia làm quỳ tím chuyển: | Xanh | Đỏ | Không đổi | Vàng
+? Khí SO₂ là nguyên nhân chính gây ra: | Mưa acid | Hiệu ứng nhà kính duy nhất | Thủng tầng ozone do CFC | Hiện tượng thuỷ triều
+? Sulfuric acid đặc có tính: | Háo nước và oxi hoá mạnh | Base mạnh | Trơ | Khử mạnh
+? Khi pha loãng H₂SO₄ đặc, cần: | Rót từ từ acid vào nước | Rót nước vào acid | Đổ nhanh cùng lúc | Đun sôi acid` },
     { hk: 1, nhan: 'Chương 3, 4', ten: 'Đại cương hoá học hữu cơ. Hydrocarbon', bai: ['Bài 10. Hợp chất hữu cơ và hoá học hữu cơ', 'Bài 11. Phương pháp tách biệt và tinh chế hợp chất hữu cơ', 'Bài 12. Công thức phân tử hợp chất hữu cơ', 'Bài 13. Cấu tạo hoá học hợp chất hữu cơ', 'Bài 15. Alkane', 'Bài 16. Hydrocarbon không no', 'Bài 17. Arene (hydrocarbon thơm)'],
       lt: ['Phương pháp tách, tinh chế: chưng cất, chiết, kết tinh, sắc kí cột. Phổ hồng ngoại (IR) xác định nhóm chức; phổ khối lượng (MS) xác định phân tử khối.', '<b>Đồng phân</b>: cùng công thức phân tử, khác cấu tạo. <b>Đồng đẳng</b>: hơn kém nhau một hay nhiều nhóm CH₂.', 'Alkane CₙH₂ₙ₊₂ (phản ứng thế, cháy, cracking); alkene CₙH₂ₙ (phản ứng cộng, trùng hợp; quy tắc Markovnikov); alkyne CₙH₂ₙ₋₂; arene: benzene C₆H₆, toluene.'],
       q: `? Công thức chung của alkene là: | CₙH₂ₙ | CₙH₂ₙ₊₂ | CₙH₂ₙ₋₂ | CₙH₂ₙ₋₆
@@ -66,7 +78,18 @@ _ Dung dịch có nồng độ H⁺ bằng 10⁻³ M thì pH = [3]` },
 = Alkane = Chỉ có liên kết đơn
 = Alkene = Có một liên kết đôi C=C
 = Alkyne = Có một liên kết ba C≡C
-= Arene = Có vòng benzene` },
+= Arene = Có vòng benzene
+? Công thức chung của alkane là: | CₙH₂ₙ₊₂ | CₙH₂ₙ | CₙH₂ₙ₋₂ | CₙH₂ₙ₋₆
+? Công thức chung của alkene là: | CₙH₂ₙ (n ≥ 2) | CₙH₂ₙ₊₂ | CₙH₂ₙ₋₂ | CₙHₙ
+? Chất làm mất màu nước bromine là: | Ethylene | Methane | Ethane | Propane
+? Thành phần chính của khí thiên nhiên là: | Methane | Ethylene | Benzene | Acetylene
+? Các chất đồng phân có cùng: | Công thức phân tử | Công thức cấu tạo | Tính chất hoá học | Nhiệt độ sôi
++ Hợp chất hữu cơ nhất thiết phải chứa nguyên tố carbon.
+- Methane có liên kết đôi trong phân tử.
+= Methane = CH₄
+= Ethylene = C₂H₄
+= Acetylene = C₂H₂
+= Benzene = C₆H₆` },
     { hk: 2, nhan: 'Chương 5', ten: 'Dẫn xuất halogen – Alcohol – Phenol', bai: ['Bài 19. Dẫn xuất halogen', 'Bài 20. Alcohol', 'Bài 21. Phenol', '*Bài 22. Ôn tập chương 5'],
       lt: ['Dẫn xuất halogen: phản ứng thế nguyên tử halogen bằng nhóm OH, phản ứng tách (quy tắc Zaitsev).', '<b>Alcohol</b>: nhóm –OH gắn với carbon no; ethanol C₂H₅OH; tác dụng với Na, oxi hoá thành aldehyde/ketone; glycerol hoà tan Cu(OH)₂ tạo dung dịch xanh lam.', '<b>Phenol</b> C₆H₅OH: –OH gắn trực tiếp vòng benzene; tính acid yếu (tác dụng NaOH); tạo kết tủa trắng với nước bromine.'],
       q: `? Ethanol có công thức: | C₂H₅OH | CH₃OH | C₆H₅OH | CH₃COOH
@@ -83,7 +106,12 @@ _ Dung dịch có nồng độ H⁺ bằng 10⁻³ M thì pH = [3]` },
 ? Glycerol hoà tan Cu(OH)₂ tạo dung dịch: | Xanh lam | Đỏ gạch | Trắng | Vàng
 ? Nhóm chức của alcohol là: | –OH gắn vào carbon no | –COOH | –CHO | –NH₂
 + Phenol tác dụng với nước bromine tạo kết tủa trắng.
-- Ethanol không cháy được.` },
+- Ethanol không cháy được.
+? Công thức của ethanol là: | C₂H₅OH | CH₃OH | C₆H₅OH | CH₃COOH
+? Methanol rất độc, có thể gây: | Mù loà, tử vong | Tăng thị lực | Không ảnh hưởng | Chữa bệnh
+? Glycerol hoà tan Cu(OH)₂ tạo dung dịch màu: | Xanh lam | Đỏ gạch | Vàng | Không màu
++ Ethanol được dùng làm nhiên liệu sinh học (xăng E5).
+- Phenol là một alcohol.` },
     { hk: 2, nhan: 'Chương 6', ten: 'Hợp chất carbonyl – Carboxylic acid', bai: ['Bài 23. Hợp chất carbonyl', 'Bài 24. Carboxylic acid', '*Bài 25. Ôn tập chương 6'],
       lt: ['Hợp chất carbonyl: aldehyde (–CHO), ketone (–CO–). Aldehyde có phản ứng tráng bạc (thuốc thử Tollens), tác dụng Cu(OH)₂/OH⁻ đun nóng tạo kết tủa đỏ gạch.', '<b>Carboxylic acid</b> (–COOH): acetic acid CH₃COOH; tính acid yếu; phản ứng ester hoá với alcohol (xúc tác H₂SO₄ đặc).'],
       q: `? Nhóm chức của aldehyde là: | –CHO | –COOH | –OH | –CO– giữa hai gốc
@@ -101,7 +129,12 @@ _ Dung dịch có nồng độ H⁺ bằng 10⁻³ M thì pH = [3]` },
 ? Thuốc thử Tollens dùng để nhận biết: | Aldehyde | Alcohol | Alkane | Ester
 ? Acetone thuộc loại: | Ketone | Aldehyde | Carboxylic acid | Alcohol
 + Carboxylic acid làm quỳ tím hoá đỏ.
-- Aldehyde không có phản ứng tráng bạc.` }
+- Aldehyde không có phản ứng tráng bạc.
+? Công thức của acetic acid là: | CH₃COOH | HCOOH | C₂H₅OH | CH₃CHO
+? Aldehyde tham gia phản ứng tráng bạc tạo: | Kết tủa bạc | Khí H₂ | Kết tủa xanh | Không có hiện tượng
+? Formaldehyde (HCHO) dung dịch 37–40% được gọi là: | Formalin | Giấm | Cồn | Xăng
++ Carboxylic acid làm quỳ tím chuyển đỏ.
+- Acetone là một carboxylic acid.` }
   ],
   essays: {
     1: [['Viết phương trình tổng hợp NH₃ trong công nghiệp. Nêu các biện pháp làm cân bằng chuyển dịch theo chiều thuận (biết phản ứng toả nhiệt).', ['N₂ + 3H₂', 'áp suất', 'nhiệt độ', 'xúc tác'], 'N₂ + 3H₂ ⇌ 2NH₃ (Δ_rH < 0). Tăng áp suất (giảm số mol khí), tăng nồng độ N₂, H₂, tách NH₃ ra; nhiệt độ vừa phải (thấp có lợi cho cân bằng nhưng tốc độ chậm nên chọn ~450 °C) và dùng xúc tác Fe để tăng tốc độ.'],

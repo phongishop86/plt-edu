@@ -14,7 +14,11 @@ PLT.KB.build({
 ? Phương pháp bản đồ – biểu đồ thể hiện: | Giá trị tổng cộng của hiện tượng trong mỗi đơn vị lãnh thổ | Hướng di chuyển | Ranh giới đất | Độ cao địa hình
 ? Khi đọc bản đồ, việc đầu tiên cần làm là: | Đọc tên bản đồ và chú giải | Đo khoảng cách ngay | Bỏ qua chú giải | Đọc từ dưới lên
 + Ứng dụng bản đồ số giúp chỉ đường, tìm địa điểm.
-- Tỉ lệ bản đồ càng lớn thì mức độ chi tiết càng thấp.` },
+- Tỉ lệ bản đồ càng lớn thì mức độ chi tiết càng thấp.
+? Bản đồ có tỉ lệ 1:1 000 000 thì 1 cm trên bản đồ ứng với ngoài thực địa: | 10 km | 1 km | 100 km | 100 m
+? Phương pháp khoanh vùng thường dùng thể hiện: | Vùng phân bố của đối tượng không liên tục | Hướng gió | Nhiệt độ theo giờ | Độ cao điểm
++ Tỉ lệ bản đồ càng lớn thì mức độ chi tiết càng cao.
+- Bản đồ tỉ lệ 1:1 000 000 chi tiết hơn bản đồ 1:10 000.` },
     { hk: 1, nhan: 'Chương 2, 3', ten: 'Trái Đất. Thạch quyển', bai: ['Bài 4. Sự hình thành Trái Đất, vỏ Trái Đất và vật liệu cấu tạo vỏ Trái Đất', 'Bài 5. Hệ quả địa lí các chuyển động chính của Trái Đất', 'Bài 6. Thạch quyển, thuyết kiến tạo mảng', 'Bài 7. Nội lực và ngoại lực', 'Bài 8. Thực hành: Nhận xét về sự phân bố các vành đai động đất, núi lửa'],
       lt: ['Cấu trúc Trái Đất: vỏ, man-ti, nhân. <b>Thạch quyển</b> gồm vỏ Trái Đất và phần trên của man-ti.', 'Hệ quả tự quay: ngày đêm, giờ, lệch hướng chuyển động. Chuyển động quanh Mặt Trời: mùa, ngày đêm dài ngắn khác nhau.', '<b>Thuyết kiến tạo mảng</b>: thạch quyển gồm các mảng di chuyển; nơi tiếp xúc hình thành núi, động đất, núi lửa.', '<b>Nội lực</b> (vận động kiến tạo, uốn nếp, đứt gãy) và <b>ngoại lực</b> (phong hoá, bóc mòn, vận chuyển, bồi tụ).'],
       q: `? Thạch quyển gồm: | Vỏ Trái Đất và phần trên của lớp man-ti | Chỉ có nhân Trái Đất | Lớp không khí | Lớp nước
@@ -35,7 +39,12 @@ PLT.KB.build({
 ? Ngày 22/6, bán cầu Bắc có: | Ngày dài nhất, đêm ngắn nhất | Ngày bằng đêm | Đêm dài nhất | Không có ngày
 ? Lớp man-ti chiếm khoảng bao nhiêu thể tích Trái Đất? | 80% | 15% | 1% | 50%
 + Vỏ Trái Đất là lớp mỏng nhất trong cấu trúc Trái Đất.
-- Ngày 21/3 ở bán cầu Bắc là ngày dài nhất năm.` },
+- Ngày 21/3 ở bán cầu Bắc là ngày dài nhất năm.
+? Thời gian Trái Đất quay một vòng quanh Mặt Trời khoảng: | 365 ngày 6 giờ | 24 giờ | 30 ngày | 12 tháng 15 ngày
+? Ở bán cầu Bắc, ngày 22/6 là ngày: | Hạ chí, ngày dài nhất năm | Đông chí | Xuân phân | Thu phân
+? Lớp vỏ Trái Đất ở đại dương được cấu tạo chủ yếu bởi đá: | Badan | Granit | Trầm tích | Vôi
++ Ở bán cầu Bắc, vật chuyển động bị lệch về bên phải.
+- Ngày 22/12, bán cầu Bắc có ngày dài nhất năm.` },
     { hk: 1, nhan: 'Chương 4, 5', ten: 'Khí quyển. Thuỷ quyển', bai: ['Bài 9. Khí quyển, các yếu tố khí hậu', 'Bài 10. Thực hành: Đọc bản đồ các đới khí hậu, phân tích biểu đồ khí hậu', 'Bài 11. Thuỷ quyển, nước trên lục địa', 'Bài 12. Nước biển và đại dương', 'Bài 13. Thực hành: Phân tích chế độ nước của sông'],
       lt: ['Khí quyển: tầng đối lưu, bình lưu, giữa, nhiệt, khuếch tán. Nhiệt độ giảm theo độ cao (~0,6 °C/100 m) ở tầng đối lưu.', 'Các đai khí áp và gió: Tín phong, gió Tây ôn đới, gió Đông cực; gió mùa, gió địa phương (gió phơn).', 'Chế độ nước sông phụ thuộc: chế độ mưa, băng tuyết, địa hình, thực vật, hồ đầm.', 'Sóng, thuỷ triều (do lực hút của Mặt Trăng, Mặt Trời), dòng biển nóng, lạnh.'],
       q: `? Ở tầng đối lưu, nhiệt độ không khí: | Giảm theo độ cao | Tăng theo độ cao | Không đổi | Tăng rất nhanh
@@ -51,7 +60,14 @@ PLT.KB.build({
 ? Độ muối trung bình của nước biển khoảng: | 35‰ | 5‰ | 100‰ | 1‰
 ? Băng hà chiếm khoảng bao nhiêu % lượng nước ngọt trên Trái Đất? | Khoảng 70% | 10% | 1% | 100%
 + Dòng biển nóng làm khí hậu ven bờ ấm và ẩm hơn.
-- Nước ngầm không phải là một thành phần của thuỷ quyển.` },
+- Nước ngầm không phải là một thành phần của thuỷ quyển.
+? Khí áp cao thường gây ra thời tiết: | Ít mưa | Mưa nhiều | Bão | Lốc xoáy
+? Khu vực có lượng mưa lớn nhất thế giới thường ở: | Xích đạo | Chí tuyến | Cực | Sa mạc
+? Gió phơn (gió fơn) là loại gió: | Khô nóng khi vượt núi xuống sườn khuất gió | Ẩm ướt | Lạnh từ cực | Thổi từ biển vào ban ngày
+? Nguồn nước ngọt chiếm tỉ lệ lớn nhất trên Trái Đất là: | Băng tuyết | Nước sông | Nước hồ | Hơi nước
+? Dòng biển nóng thường làm khí hậu ven bờ: | Ấm và ẩm hơn | Lạnh và khô | Không ảnh hưởng | Băng giá
++ Gió đất thổi từ đất liền ra biển vào ban đêm.
+- Nước sông chiếm phần lớn lượng nước ngọt trên Trái Đất.` },
     { hk: 1, nhan: 'Chương 6, 7', ten: 'Sinh quyển. Một số quy luật của vỏ địa lí', bai: ['Bài 14. Đất trên Trái Đất', 'Bài 15. Sinh quyển', 'Bài 16. Thực hành: Phân tích sự phân bố của đất và sinh vật trên Trái Đất', 'Bài 17. Vỏ địa lí, quy luật thống nhất và hoàn chỉnh', 'Bài 18. Quy luật địa đới và quy luật phi địa đới'],
       lt: ['Đất hình thành từ đá mẹ, khí hậu, sinh vật, địa hình, thời gian, con người.', 'Sinh quyển: nơi có sự sống; giới hạn từ đáy đại dương đến tầng đối lưu.', 'Quy luật <b>thống nhất và hoàn chỉnh</b>: các thành phần vỏ địa lí tác động lẫn nhau. Quy luật <b>địa đới</b> (theo vĩ độ) và <b>phi địa đới</b> (đai cao, địa ô).'],
       q: `? Sự thay đổi các thành phần tự nhiên theo vĩ độ là quy luật: | Địa đới | Phi địa đới | Đai cao | Thống nhất và hoàn chỉnh
@@ -64,7 +80,12 @@ PLT.KB.build({
 ? Rừng mưa nhiệt đới phân bố chủ yếu ở: | Vùng xích đạo | Vùng cực | Ôn đới lạnh | Sa mạc
 ? Biểu hiện của quy luật địa ô là: | Thảm thực vật thay đổi theo kinh độ từ đông sang tây | Thay đổi theo độ cao | Thay đổi theo vĩ độ | Thay đổi theo thời gian
 + Con người có ảnh hưởng lớn đến sự phân bố của sinh vật.
-- Sinh quyển chỉ bao gồm thực vật.` },
+- Sinh quyển chỉ bao gồm thực vật.
+? Thảm thực vật đài nguyên phân bố ở vùng: | Cận cực | Xích đạo | Nhiệt đới | Hoang mạc nhiệt đới
+? Đất đỏ vàng (feralit) là đất đặc trưng của vùng: | Nhiệt đới ẩm | Ôn đới lạnh | Cực | Hoang mạc
+? Rừng mưa nhiệt đới phân bố chủ yếu ở vùng: | Xích đạo | Ôn đới | Cận cực | Cực
++ Tính địa đới thể hiện rõ qua sự phân bố các vòng đai nhiệt, đai khí áp và đới khí hậu.
+- Vỏ địa lí bao gồm toàn bộ Trái Đất từ vỏ đến nhân.` },
     { hk: 2, nhan: 'Chương 8, 9', ten: 'Địa lí dân cư. Các nguồn lực phát triển kinh tế', bai: ['Bài 19. Dân số và sự phát triển dân số thế giới', 'Bài 20. Phân bố dân cư và đô thị hoá trên thế giới', 'Bài 21. Các nguồn lực phát triển kinh tế', 'Bài 22. Cơ cấu nền kinh tế, tổng sản phẩm trong nước và tổng thu nhập quốc gia'],
       lt: ['Gia tăng dân số tự nhiên = tỉ suất sinh − tỉ suất tử; gia tăng cơ học (xuất cư, nhập cư).', 'Cơ cấu dân số theo tuổi (dân số trẻ, già), theo giới.', 'Đô thị hoá: tăng dân số thành thị, mở rộng lối sống đô thị.', 'Nguồn lực: vị trí địa lí, tự nhiên, kinh tế – xã hội. GDP (tổng sản phẩm trong nước), GNI (tổng thu nhập quốc gia).'],
       q: `? Tỉ suất gia tăng dân số tự nhiên được tính bằng: | Tỉ suất sinh thô trừ tỉ suất tử thô | Tỉ suất sinh cộng tỉ suất tử | Số người nhập cư | Số người xuất cư
@@ -78,7 +99,13 @@ PLT.KB.build({
 ? GNI/người dùng để: | Đánh giá mức sống bình quân | Đo diện tích | Đo dân số | Đo nhiệt độ
 ? Nguồn lực có vai trò quyết định đến phát triển kinh tế là: | Kinh tế – xã hội (con người, vốn, khoa học công nghệ) | Chỉ khoáng sản | Chỉ khí hậu | Chỉ địa hình
 + Đô thị hoá tự phát gây ra nhiều vấn đề môi trường, xã hội.
-- Gia tăng dân số quá nhanh không ảnh hưởng đến kinh tế.` },
+- Gia tăng dân số quá nhanh không ảnh hưởng đến kinh tế.
+? Cơ cấu dân số già có đặc điểm: | Tỉ lệ người cao tuổi cao | Tỉ lệ trẻ em rất cao | Tỉ suất sinh cao | Tuổi thọ thấp
+? Châu lục có mật độ dân số cao nhất là: | Châu Á | Châu Phi | Châu Đại Dương | Châu Mỹ
+? Nhân tố quyết định sự phân bố dân cư là: | Phương thức sản xuất | Khí hậu | Địa hình | Sông ngòi
+? GNI khác GDP ở chỗ GNI tính thêm: | Thu nhập ròng từ nước ngoài | Giá trị xuất khẩu | Dân số | Diện tích
++ Di cư từ nông thôn ra thành thị góp phần đẩy nhanh đô thị hoá.
+- Châu Đại Dương có mật độ dân số cao nhất thế giới.` },
     { hk: 2, nhan: 'Chương 10, 11, 12, 13', ten: 'Địa lí các ngành kinh tế và phát triển bền vững', bai: ['Bài 23–27. Địa lí ngành nông nghiệp, lâm nghiệp, thuỷ sản', 'Bài 28–32. Địa lí ngành công nghiệp', 'Bài 33–38. Địa lí ngành dịch vụ (giao thông vận tải, bưu chính viễn thông, du lịch, thương mại, tài chính – ngân hàng)', 'Bài 39. Môi trường và tài nguyên thiên nhiên', 'Bài 40. Phát triển bền vững và tăng trưởng xanh'],
       lt: ['Nông nghiệp: đất trồng là tư liệu sản xuất chủ yếu; phụ thuộc điều kiện tự nhiên, có tính mùa vụ.', 'Công nghiệp: khai thác than, dầu khí; điện; điện tử – tin học; sản xuất hàng tiêu dùng. Tổ chức lãnh thổ: điểm, khu, trung tâm, vùng công nghiệp.', 'Dịch vụ: giao thông vận tải (đường bộ, sắt, biển, hàng không…), viễn thông, du lịch, thương mại, tài chính.', '<b>Phát triển bền vững</b>: hài hoà kinh tế, xã hội, môi trường; <b>tăng trưởng xanh</b>.'],
       q: `? Tư liệu sản xuất chủ yếu của nông nghiệp là: | Đất trồng | Máy móc | Vốn | Lao động trẻ
@@ -99,7 +126,14 @@ PLT.KB.build({
 + Tăng trưởng xanh gắn với giảm phát thải khí nhà kính.
 - Năng lượng mặt trời là nguồn năng lượng không tái tạo.
 = Kênh Xuy-ê = Nối Địa Trung Hải và Biển Đỏ
-= Kênh Pa-na-ma = Nối Thái Bình Dương và Đại Tây Dương` }
+= Kênh Pa-na-ma = Nối Thái Bình Dương và Đại Tây Dương
+? Ngành công nghiệp được gọi là "ngành công nghiệp năng lượng" gồm: | Khai thác than, dầu khí và sản xuất điện | Dệt may | Chế biến thực phẩm | Điện tử
+? Cây lương thực có sản lượng lớn, phổ biến ở vùng nhiệt đới gió mùa châu Á là: | Lúa gạo | Lúa mì | Ngô | Kê
+? Lúa mì phân bố chủ yếu ở vùng khí hậu: | Ôn đới và cận nhiệt | Xích đạo | Nhiệt đới ẩm | Cực
+? Ngành dịch vụ du lịch được coi là ngành: | "Công nghiệp không khói" | Công nghiệp nặng | Nông nghiệp | Khai khoáng
+? Tài nguyên thiên nhiên có thể tái tạo là: | Rừng, nước, đất | Than đá | Dầu mỏ | Quặng sắt
++ Tăng trưởng xanh gắn với giảm phát thải và sử dụng hiệu quả tài nguyên.
+- Dầu mỏ là tài nguyên vô tận.` }
   ],
   essays: {
     1: [['Trình bày hệ quả chuyển động tự quay quanh trục của Trái Đất.', ['ngày đêm', 'giờ', 'lệch hướng'], 'Sự luân phiên ngày đêm; giờ trên Trái Đất và đường chuyển ngày quốc tế (24 múi giờ); sự lệch hướng chuyển động của các vật thể (bán cầu Bắc lệch phải, bán cầu Nam lệch trái).'],
