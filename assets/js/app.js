@@ -41,20 +41,46 @@
 
   // Lấy n câu hỏi xoay vòng qua các dạng
   const keyOf = (q) => q.q + '|' + (q.choices ? q.choices[q.ai] : JSON.stringify(q.blanks || (q.items || []).map((x) => (typeof x === 'string' ? x : x.l || x.t)).sort()));
-  function build(S, gens, n) {
-    const out = [], seen = new Set(); let pool = []; let g = 0;
-    while (out.length < n && g++ < n * 20) {
-      if (!pool.length) pool = shuffle(gens);
-      const q = S.gens[pool.pop()](); const key = keyOf(q);
-      if (!seen.has(key)) { seen.add(key); out.push(q); }
+  /* Tạo bộ câu hỏi:
+     - xoay vòng các dạng, mỗi dạng tối đa ~40% số câu để đề luôn đa dạng;
+     - còn thiếu thì lấy thêm dạng ôn tập xoắn ốc (các bài khác cùng học kì, rồi cả năm);
+     - ưu tiên câu chưa gặp gần đây (nhớ ~800 câu/môn trên máy) để mỗi lần vào là đề khác. */
+  const seenKey = (S) => 'plt_seen:' + S.id;
+  const seenGet = (S) => { try { return new Set(JSON.parse(localStorage.getItem(seenKey(S)) || '[]')); } catch (e) { return new Set(); } };
+  const seenAdd = (S, qs) => { try { const old = JSON.parse(localStorage.getItem(seenKey(S)) || '[]'); const all = old.concat(qs.map((q) => keyOf(Object.assign({}, q, { q: String(q.q).replace(/^<span class="nctag">[^<]*<\/span> /, '') })))); localStorage.setItem(seenKey(S), JSON.stringify(all.slice(-800))); } catch (e) { /* bộ nhớ trình duyệt không khả dụng */ } };
+  const isNC = (k) => /^nc[12]_/.test(k);
+  const ncGens = (S, hk) => Object.keys(S.gens).filter((k) => isNC(k) && (!hk || k[2] === String(hk)));
+  function build(S, gens, n, hk, adv) {
+    const out = [], seen = new Set(), recent = seenGet(S), used = {};
+    gens = gens.filter((k) => !isNC(k));
+    const nAdv = Math.min(adv || 0, ncGens(S, hk).length ? n : 0), nBase = n - nAdv;
+    const cap = Math.max(2, Math.ceil(nBase * (nBase <= 8 ? 0.6 : 0.4)));
+    const take = (list, limit, tries, goal, tag) => {
+      let pool = [], g = 0;
+      while (out.length < goal && g++ < tries) {
+        if (!pool.length) pool = shuffle(list.filter((k) => (used[k] || 0) < limit));
+        if (!pool.length) break;
+        const k = pool.pop(); let q, key, t = 0;
+        do { q = S.gens[k](); key = keyOf(q); t++; } while ((seen.has(key) || recent.has(key)) && t < 6);
+        if (seen.has(key)) continue;
+        if (tag) { q.lv = 'nc'; q.q = '<span class="nctag">⭐ Nâng cao</span> ' + q.q; }
+        seen.add(key); out.push(q); used[k] = (used[k] || 0) + 1;
+      }
+    };
+    take(gens, cap, nBase * 12, nBase);
+    if (out.length < nBase) { // bổ sung dạng ôn tập cùng học kì, rồi cả năm
+      const same = [...new Set(S.topics.filter((t) => !hk || t.hk === hk).flatMap((t) => t.gens))].filter((k) => !gens.includes(k) && !isNC(k));
+      take(same, cap, nBase * 12, nBase);
     }
-    if (out.length < n && !build.inner) { // ngân hàng của các bài này còn ít: bổ sung từ các bài khác cùng môn
-      build.inner = true; const more = Object.keys(S.gens).filter((k) => !gens.includes(k));
-      if (more.length) build(S, more, n * 3).forEach((q) => { const key = keyOf(q); if (out.length < n && !seen.has(key)) { seen.add(key); out.push(q); } });
-      build.inner = false;
-    }
-    return out;
+    if (out.length < nBase) take(Object.keys(S.gens).filter((k) => !isNC(k)), nBase, nBase * 20, nBase);
+    if (out.length < nBase) take(gens, nBase, nBase * 20, nBase); // ngân hàng quá ít: cho phép lặp dạng
+    const base = shuffle(out.splice(0));
+    if (nAdv) { const L1 = ncGens(S, hk), L0 = ncGens(S, 0); take(L1, Math.max(1, Math.ceil(nAdv / Math.max(1, L1.length))), nAdv * 20, nAdv, true); if (out.length < nAdv) take(L0, Math.max(1, Math.ceil(nAdv / L0.length)) + 1, nAdv * 30, nAdv, true); }
+    const res = base.concat(out); // câu nâng cao đặt cuối đề (theo ma trận: dễ → khó)
+    seenAdd(S, res);
+    return res;
   }
+  const advCount = (S, kind) => { const l = S.lop; if (kind === 'w') return l <= 2 ? 0 : 1; if (kind === 'm') return l <= 5 ? 1 : 2; return l <= 2 ? 1 : l <= 5 ? 2 : l <= 9 ? 3 : 4; };
   const stars = (p) => (p == null ? '<span class="muted">chưa làm</span>' : p >= 80 ? '⭐⭐⭐' : p >= 50 ? '⭐⭐' : '⭐');
   const progKey = (S, t) => S.id + ':' + t;
   function saveProg(S, t, ok, n) { const k = progKey(S, t), p = Math.round((ok / n) * 100), o = PLT.data.prog[k] || { best: 0, n: 0 }; PLT.data.prog[k] = { best: Math.max(o.best, p), n: o.n + 1, last: p }; PLT.save(); }
@@ -114,10 +140,10 @@
     const tabs = {
       lt() {
         $('#tab').innerHTML = `<div class="card theory">${t.lt}</div><h3>Các bài trong ${tname(S, t).toLowerCase()}</h3><div class="bai">${items.map((b) => `<button class="bitem" data-k="${b.k}"><span>${b.so ? 'Bài ' + b.so : '✦'}</span>${b.ten}<em>Luyện 5 câu ▶</em></button>`).join('')}</div>`;
-        $('#tab').onclick = (e) => { const b = e.target.closest('[data-k]'); if (!b) return; const B = S.bai[+b.dataset.k]; runPractice($('#tab'), S, B.gens, 5, (B.so ? `Bài ${B.so}. ` : '') + B.ten, t.id); };
+        $('#tab').onclick = (e) => { const b = e.target.closest('[data-k]'); if (!b) return; const B = S.bai[+b.dataset.k]; runPractice($('#tab'), S, B.gens, 8, (B.so ? `Bài ${B.so}. ` : '') + B.ten, t.id); };
       },
       tt() { $('#tab').innerHTML = t.widgets.map((w, i) => `<div class="card"><h3>${PLT.widgets[w.split(':')[0]].title}</h3><div id="w${i}"></div></div>`).join(''); t.widgets.forEach((w, i) => { const [n, a] = w.split(':'); PLT.widgets[n].render($('#w' + i), a); }); $('#tab').onclick = null; },
-      bt() { $('#tab').onclick = null; runPractice($('#tab'), S, t.gens, 8, 'Bài tập ' + tname(S, t).toLowerCase(), t.id); }
+      bt() { $('#tab').onclick = null; runPractice($('#tab'), S, t.gens, 12, 'Bài tập ' + tname(S, t).toLowerCase(), t.id); }
     };
     $('.tabs').onclick = (e) => { const b = e.target.closest('button'); if (!b) return; document.querySelectorAll('.tabs button').forEach((x) => x.classList.toggle('on', x === b)); tabs[b.dataset.t](); };
     tabs.lt();
@@ -125,17 +151,18 @@
   function runPractice(box, S, gens, n, title, tid) {
     box.onclick = null;
     box.innerHTML = `<div class="card"><h3>${title}</h3><div id="pbox"></div></div>`;
-    PLT.Q.practice($('#pbox', box), build(S, gens, n), { onDone: (ok, tot) => tid && saveProg(S, tid, ok, tot), again: () => runPractice(box, S, gens, n, title, tid) });
+    PLT.Q.practice($('#pbox', box), build(S, gens, n, tid ? (S.topics.find((x) => x.id === tid) || {}).hk : 0), { onDone: (ok, tot) => tid && saveProg(S, tid, ok, tot), again: () => runPractice(box, S, gens, n, title, tid) });
   }
 
   /* ---------------- Ôn tập nhanh ---------------- */
   function quiz(S) {
     const all = [...new Set(S.topics.flatMap((t) => t.gens))];
     app.innerHTML = crumb(S, `Ôn tập nhanh · ${S.mon} ${S.lop}`) + `<h1>🎯 Ôn tập nhanh · ${S.mon} ${S.lop}</h1><p class="muted">Câu hỏi được tạo ngẫu nhiên – mỗi lượt một bộ đề khác, chấm ngay từng câu.</p>
-      <div class="card row wrap"><label>Phạm vi <select class="sel" id="qs"><option value="all">Cả năm</option><option value="hk1">Học kì 1</option><option value="hk2">Học kì 2</option>${S.topics.map((t) => `<option value="${t.id}">${tname(S, t)}. ${t.ten}</option>`).join('')}</select></label>
-      <label>Số câu <select class="sel" id="qn"><option>10</option><option>20</option><option>30</option></select></label><button class="btn" id="qgo">Bắt đầu ▶</button></div><div id="qbox"></div>`;
+      <div class="card row wrap"><label>Phạm vi <select class="sel" id="qs"><option value="all">Cả năm</option><option value="hk1">Học kì 1</option><option value="hk2">Học kì 2</option>${ncGens(S).length ? '<option value="nc">⭐ Nâng cao (bài khó)</option>' : ''}${S.topics.map((t) => `<option value="${t.id}">${tname(S, t)}. ${t.ten}</option>`).join('')}</select></label>
+      <label>Số câu <select class="sel" id="qn"><option>15</option><option>20</option><option>30</option><option>40</option></select></label><button class="btn" id="qgo">Bắt đầu ▶</button></div><div id="qbox"></div>`;
     $('#qgo').onclick = () => {
       const v = $('#qs').value, n = +$('#qn').value;
+      if (v === 'nc') { const box = $('#qbox'); box.innerHTML = '<div class="card"><h3>⭐ Bài tập nâng cao</h3><div id="pbox"></div></div>'; const go = () => PLT.Q.practice($('#pbox', box), build(S, [], n, 0, n), { again: go }); go(); return; }
       const gens = v === 'all' ? all : v === 'hk1' || v === 'hk2' ? [...new Set(S.topics.filter((t) => t.hk === +v[2]).flatMap((t) => t.gens))] : S.topics.find((t) => t.id === +v).gens;
       runPractice($('#qbox'), S, gens, n, $('#qs').selectedOptions[0].text, /^\d+$/.test(v) ? +v : null);
       $('#qbox').scrollIntoView({ behavior: 'smooth' });
@@ -148,20 +175,20 @@
     const sid = S.id; tab = tab || 'tuan';
     const best = (id) => { const r = PLT.data.tests.filter((x) => x.id === id); return r.length ? `<span class="pill">Cao nhất ${String(Math.max(...r.map((x) => x.diem))).replace('.', ',')}đ</span>` : ''; };
     let list = '';
-    if (tab === 'tuan') list = S.weeks.map((w) => `<a class="tcard" href="#/thi/${sid}/w${w.tuan}"><b>Tuần ${w.tuan}</b><span class="muted small">${range(w.bai)}</span><span class="small">${w.bai.map((b) => b.ten).join(' · ')}</span><span class="meta">10 câu · 15 phút ${best(sid + ':w' + w.tuan)}</span></a>`).join('');
-    if (tab === 'thang') list = S.months.map((m) => `<a class="tcard" href="#/thi/${sid}/m${m.thang}"><b>Tháng ${m.thang}</b><span class="muted small">Tuần ${m.tuan[0]}–${m.tuan[1]} · ${range(m.bai)}</span><span class="meta">16 câu + 1 tự luận · 30 phút ${best(sid + ':m' + m.thang)}</span></a>`).join('');
-    if (tab === 'ky') list = S.terms.map((t) => `<a class="tcard" href="#/thi/${sid}/${t.id}"><b>${t.ten}</b><span class="muted small">${range(t.bai)}</span><span class="meta">${S.lop >= 6 ? '12 câu + 2 tự luận · 45 phút' : '12 câu + 2 tự luận · 40 phút'} ${best(sid + ':' + t.id)}</span></a>`).join('');
+    if (tab === 'tuan') list = S.weeks.map((w) => `<a class="tcard" href="#/thi/${sid}/w${w.tuan}"><b>Tuần ${w.tuan}</b><span class="muted small">${range(w.bai)}</span><span class="small">${w.bai.map((b) => b.ten).join(' · ')}</span><span class="meta">${S.lop <= 2 ? '10 câu · 15 phút' : '15 câu · 20 phút'} ${best(sid + ':w' + w.tuan)}</span></a>`).join('');
+    if (tab === 'thang') list = S.months.map((m) => `<a class="tcard" href="#/thi/${sid}/m${m.thang}"><b>Tháng ${m.thang}</b><span class="muted small">Tuần ${m.tuan[0]}–${m.tuan[1]} · ${range(m.bai)}</span><span class="meta">${S.lop <= 2 ? '15 câu + 1 tự luận · 30 phút' : '20 câu + 1 tự luận · 35 phút'} ${best(sid + ':m' + m.thang)}</span></a>`).join('');
+    if (tab === 'ky') list = S.terms.map((t) => `<a class="tcard" href="#/thi/${sid}/${t.id}"><b>${t.ten}</b><span class="muted small">${range(t.bai)}</span><span class="meta">${S.lop >= 6 ? '20 câu + 2 tự luận · 60 phút' : S.lop <= 2 ? '15 câu + 2 tự luận · 40 phút' : '20 câu + 2 tự luận · 45 phút'} ${best(sid + ':' + t.id)}</span></a>`).join('');
     app.innerHTML = crumb(S, `Kiểm tra · ${S.mon} ${S.lop}`) + `<h1>📝 Kiểm tra · ${S.mon} ${S.lop}</h1><p class="muted">Mỗi lần làm là một đề mới. Phân phối bài theo tuần/tháng là tham khảo, thầy cô/phụ huynh có thể điều chỉnh.</p>
       <div class="tabs"><a href="#/kiem-tra/${sid}/tuan" class="${tab === 'tuan' ? 'on' : ''}">Theo tuần</a><a href="#/kiem-tra/${sid}/thang" class="${tab === 'thang' ? 'on' : ''}">Theo tháng</a><a href="#/kiem-tra/${sid}/ky" class="${tab === 'ky' ? 'on' : ''}">Giữa kỳ – Cuối kỳ</a></div><div class="tgrid">${list}</div>`;
   }
   function takeTest(S, code) {
     const sid = S.id; let cfg; const big = S.lop >= 6;
-    if (code[0] === 'w') { const w = S.weeks.find((x) => x.tuan === +code.slice(1)); if (!w) return testList(S); cfg = { title: `Kiểm tra tuần ${w.tuan}`, gens: [...new Set(w.bai.flatMap((b) => b.gens))], n: 10, min: 15, essays: 0, hk: w.bai[0].hk };
-    } else if (code[0] === 'm') { const m = S.months.find((x) => x.thang === +code.slice(1)); if (!m) return testList(S); cfg = { title: `Kiểm tra tháng ${m.thang}`, gens: [...new Set(m.bai.flatMap((b) => b.gens))], n: 16, min: 30, essays: 1, hk: m.bai[m.bai.length - 1].hk };
-    } else { const t = S.terms.find((x) => x.id === code); if (!t) return testList(S); cfg = { title: t.ten, gens: [...new Set(t.bai.flatMap((b) => b.gens))], n: 12, min: big ? 45 : 40, essays: 2, hk: t.essay }; }
+    if (code[0] === 'w') { const w = S.weeks.find((x) => x.tuan === +code.slice(1)); if (!w) return testList(S); cfg = { title: `Kiểm tra tuần ${w.tuan}`, gens: [...new Set(w.bai.flatMap((b) => b.gens))], n: S.lop <= 2 ? 10 : 15, min: S.lop <= 2 ? 15 : 20, essays: 0, hk: w.bai[0].hk };
+    } else if (code[0] === 'm') { const m = S.months.find((x) => x.thang === +code.slice(1)); if (!m) return testList(S); cfg = { title: `Kiểm tra tháng ${m.thang}`, gens: [...new Set(m.bai.flatMap((b) => b.gens))], n: S.lop <= 2 ? 15 : 20, min: S.lop <= 2 ? 30 : 35, essays: 1, hk: m.bai[m.bai.length - 1].hk };
+    } else { const t = S.terms.find((x) => x.id === code); if (!t) return testList(S); cfg = { title: t.ten, gens: [...new Set(t.bai.flatMap((b) => b.gens))], n: S.lop <= 2 ? 15 : 20, min: big ? 60 : S.lop <= 2 ? 40 : 45, essays: 2, hk: t.essay }; }
     const pool = (S.essays && (S.essays[cfg.hk] || S.essays[1])) || [];
     const es = shuffle(pool).slice(0, cfg.essays).map((f) => f());
-    const qs = build(S, cfg.gens, cfg.n).concat(es);
+    const qs = build(S, cfg.gens, cfg.n, code === 'ck2' ? 0 : cfg.hk, advCount(S, code[0] === 'w' ? 'w' : code[0] === 'm' ? 'm' : 't')).concat(es);
     app.innerHTML = crumb(S, `<a href="#/kiem-tra/${sid}">Kiểm tra</a> › ${cfg.title}`) + `<h1>${cfg.title} <small class="muted">· ${S.mon} ${S.lop}</small></h1><div id="ebox"></div>`;
     active = PLT.Q.exam($('#ebox'), { id: sid + ':' + code, subject: S.id, title: `${cfg.title} – ${S.mon} ${S.lop}`, questions: qs, minutes: cfg.min, again: () => takeTest(S, code), back: () => (location.hash = `#/kiem-tra/${sid}`) });
   }

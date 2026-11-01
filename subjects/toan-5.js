@@ -77,16 +77,72 @@
       () => { const a = r(4, 12), b = r(3, a), c = r(2, 10); return essay(`Một bể nước dạng hình hộp chữ nhật có chiều dài ${a} dm, chiều rộng ${b} dm, chiều cao ${c} dm. Bể chứa được nhiều nhất bao nhiêu lít nước? (1 dm³ = 1 l)`, 2, `V = ${a} × ${b} × ${c} = ${a * b * c} (dm³) = ${a * b * c} l.`, [a * b * c]); }]
   };
 
+  // ---- Bổ sung dạng câu hỏi (đợt 11/2026) ----
+  const rn = (x) => Number(x.toFixed(6));
+  const KL = [['tấn', 1000], ['tạ', 100], ['yến', 10], ['kg', 1]], DD = [['km', 1000], ['hm', 100], ['dam', 10], ['m', 1], ['dm', 0.1], ['cm', 0.01], ['mm', 0.001]];
+  G.doikl = () => {
+    const t = r(0, 3);
+    if (t === 0) { const i = r(0, 2), j = r(i + 1, 3), a = r(2, 60); const v = a * KL[i][1] / KL[j][1]; return fillV(`Điền số thích hợp: <b>${a} ${KL[i][0]} = ? ${KL[j][0]}</b>`, v, fmt(v), `1 ${KL[i][0]} = ${fmt(KL[i][1] / KL[j][1])} ${KL[j][0]} nên ${a} ${KL[i][0]} = ${fmt(v)} ${KL[j][0]}.`, KL[j][0]); }
+    if (t === 1) { const a = r(1, 9), b = r(1, 99); return fillV(`Điền số thích hợp: <b>${a} tạ ${b} kg = ? kg</b>`, a * 100 + b, fmt(a * 100 + b), `${a} tạ = ${a * 100} kg; ${a * 100} + ${b} = ${a * 100 + b} (kg).`, 'kg'); }
+    if (t === 2) { const v = rn(r(105, 9950) / 1000); return fillV(`Viết số thích hợp: <b>${fmt(v)} tấn = ? kg</b>`, Math.round(v * 1000), fmt(Math.round(v * 1000)), `1 tấn = 1 000 kg nên ${fmt(v)} tấn = ${fmt(v)} × 1 000 = ${fmt(Math.round(v * 1000))} kg.`, 'kg'); }
+    const g = r(50, 950); return fillV(`Viết số thập phân thích hợp: <b>${g} g = ? kg</b>`, rn(g / 1000), fmt(rn(g / 1000)), `1 g = ${frac(1, '1 000')} kg = 0,001 kg nên ${g} g = ${fmt(rn(g / 1000))} kg.`, 'kg');
+  };
+  G.stpdv2 = () => {
+    const u = pick([['tấn', 'kg', 1000], ['kg', 'g', 1000], ['km', 'm', 1000], ['m', 'cm', 100], ['tạ', 'kg', 100]]);
+    const a = r(1, 40), b = r(1, u[2] - 1), v = rn(a + b / u[2]);
+    return fill(`Điền số thích hợp: <b>${fmt(v)} ${u[0]} = ? ${u[0]} ? ${u[1]}</b>`, [{ pre: '', ans: a, post: u[0] }, { pre: '', ans: b, post: u[1] }], `Phần nguyên là ${a} ${u[0]}; phần thập phân ${fmt(rn(b / u[2]))} ${u[0]} = ${b} ${u[1]} (vì 1 ${u[0]} = ${fmt(u[2])} ${u[1]}).`);
+  };
+  G.ssdv = () => {
+    const u = pick([['tấn', 'kg', 1000], ['kg', 'g', 1000], ['km', 'm', 1000], ['m', 'cm', 100]]);
+    const a = r(1, 9), b = r(1, u[2] - 1), x = a * u[2] + b; const d = pick([-1, 0, 1]) * pick([1, 10, 100].filter((k) => k < u[2]));
+    const y = x + d, v = rn(y / u[2]); const s = x > y ? '>' : x < y ? '<' : '=';
+    return mc(`Chọn dấu thích hợp: <b>${a} ${u[0]} ${b} ${u[1]} … ${fmt(v)} ${u[0]}</b>`, s, ['>', '<', '='].filter((z) => z !== s), `Đổi cùng đơn vị: ${a} ${u[0]} ${b} ${u[1]} = ${fmt(x)} ${u[1]}; ${fmt(v)} ${u[0]} = ${fmt(y)} ${u[1]}. Vậy ${fmt(x)} ${s} ${fmt(y)}.`);
+  };
+  G.doidai5 = () => {
+    const t = r(0, 2);
+    if (t === 0) { const i = r(0, 4), j = r(i + 1, 6), a = r(2, 50); const v = rn(a * DD[i][1] / DD[j][1]); return fillV(`Điền số thích hợp: <b>${a} ${DD[i][0]} = ? ${DD[j][0]}</b>`, v, fmt(v), `Mỗi đơn vị đo độ dài liền nhau gấp 10 lần. ${a} ${DD[i][0]} = ${fmt(v)} ${DD[j][0]}.`, DD[j][0]); }
+    if (t === 1) { const v = rn(r(101, 999) / 100); return fillV(`Viết số thích hợp: <b>${fmt(v)} m = ? cm</b>`, Math.round(v * 100), fmt(Math.round(v * 100)), `1 m = 100 cm nên ${fmt(v)} m = ${fmt(Math.round(v * 100))} cm.`, 'cm'); }
+    const m = r(120, 9800); return fillV(`Viết số thập phân thích hợp: <b>${fmt(m)} m = ? km</b>`, rn(m / 1000), fmt(rn(m / 1000)), `1 000 m = 1 km nên ${fmt(m)} m = ${fmt(rn(m / 1000))} km.`, 'km');
+  };
+  G.doidt5 = () => {
+    const t = r(0, 3);
+    if (t === 0) { const a = r(2, 90); return fillV(`Điền số thích hợp: <b>${a} m² = ? dm²</b>`, a * 100, fmt(a * 100), '1 m² = 100 dm² (hai đơn vị đo diện tích liền nhau gấp 100 lần).', 'dm²'); }
+    if (t === 1) { const a = r(2, 40); return fillV(`Điền số thích hợp: <b>${a} ha = ? m²</b>`, a * 10000, fmt(a * 10000), '1 ha = 10 000 m².', 'm²'); }
+    if (t === 2) { const a = r(2, 30); return fillV(`Điền số thích hợp: <b>${a} km² = ? ha</b>`, a * 100, fmt(a * 100), '1 km² = 100 ha.', 'ha'); }
+    const a = r(1, 9), b = r(1, 99); return fillV(`Viết số thập phân thích hợp: <b>${a} m² ${b} dm² = ? m²</b>`, rn(a + b / 100), fmt(rn(a + b / 100)), `${b} dm² = ${frac(b, 100)} m² = ${fmt(rn(b / 100))} m².`, 'm²');
+  };
+  G.tg5b = () => {
+    const t = r(0, 2);
+    if (t === 0) { const h = pick([0.5, 1.5, 2.5, 0.25, 1.25, 0.75, 3.5]); return fillV(`Điền số thích hợp: <b>${fmt(h)} giờ = ? phút</b>`, h * 60, fmt(h * 60), `1 giờ = 60 phút nên ${fmt(h)} giờ = ${fmt(h)} × 60 = ${fmt(h * 60)} phút.`, 'phút'); }
+    if (t === 1) { const m = pick([15, 30, 45, 90, 150, 75, 120]); return fillV(`Viết số thập phân thích hợp: <b>${m} phút = ? giờ</b>`, rn(m / 60), fmt(rn(m / 60)), `${m} phút = ${m} : 60 = ${fmt(rn(m / 60))} giờ.`, 'giờ'); }
+    const y = r(1, 5); return fillV(`Điền số thích hợp: <b>${y} năm = ? tháng</b>`, y * 12, fmt(y * 12), `1 năm = 12 tháng nên ${y} năm = ${y * 12} tháng.`, 'tháng');
+  };
+  G.tbc5 = () => { const n = r(3, 5), a = Array.from({ length: n }, () => r(10, 90)); const s = a.reduce((x, y) => x + y, 0); const k = s % n; a[0] += (n - k) % n; const s2 = a.reduce((x, y) => x + y, 0); return fill1(`Tìm số trung bình cộng của các số: <b>${a.join('; ')}</b>`, s2 / n, `Tổng: ${a.join(' + ')} = ${s2}; trung bình cộng = ${s2} : ${n} = ${s2 / n}.`); };
+  G.ptram5b = () => {
+    const t = r(0, 2);
+    if (t === 0) { const N = r(2, 40) * 50, p = pick([10, 20, 25, 40, 50, 75]); return fillV(`Một cửa hàng có ${fmt(N)} kg gạo, đã bán ${p}% số gạo. Hỏi đã bán bao nhiêu ki-lô-gam gạo?`, N * p / 100, fmt(N * p / 100), `${fmt(N)} × ${p} : 100 = ${fmt(N * p / 100)} (kg).`, 'kg'); }
+    if (t === 1) { const b = r(4, 20) * 5, a = b * pick([1, 2, 3, 4]) / 5; return fillV(`Lớp có ${b} học sinh, trong đó ${a} học sinh nữ. Tỉ số phần trăm học sinh nữ so với cả lớp là:`, a / b * 100, fmt(a / b * 100), `${a} : ${b} = ${fmt(a / b)} = ${fmt(a / b * 100)}%.`, '%'); }
+    const x = r(2, 20) * 10, p = pick([10, 20, 25, 50]); return fillV(`${p}% của một số là ${fmt(x * p / 100)}. Tìm số đó.`, x, fmt(x), `Số đó là: ${fmt(x * p / 100)} : ${p} × 100 = ${fmt(x)}.`);
+  };
+
+  // ---- Bổ sung dạng câu hỏi (đợt 11/2026) ----
+  G.nc1_timxstp = () => { const x = r(2, 40) / 2, a = pick([2.5, 1.5, 4, 0.5]), b = pick([1.5, 2.25, 3, 0.75]); const v = Number((x * a + b).toFixed(4)); return fillV(`Tìm x: <b>x × ${fmt(a)} + ${fmt(b)} = ${fmt(v)}</b>`, x, fmt(x), `x × ${fmt(a)} = ${fmt(v)} − ${fmt(b)} = ${fmt(Number((v - b).toFixed(4)))}; x = ${fmt(Number((v - b).toFixed(4)))} : ${fmt(a)} = ${fmt(x)}.`); };
+  G.nc1_thuasoruong = () => { const a = r(2, 9) * 10, b = r(2, 8) * 10, h = r(2, 9) * 5; const S2 = (a + b) * h / 2; const k = pick([50, 60, 70]); return fillV(`Thửa ruộng hình thang có hai đáy ${a} m và ${b} m, chiều cao ${h} m. Cứ 100 m² thu hoạch được ${k} kg thóc. Cả thửa ruộng thu được bao nhiêu ki-lô-gam thóc?`, S2 * k / 100, fmt(S2 * k / 100), `Diện tích: (${a} + ${b}) × ${h} : 2 = ${fmt(S2)} (m²). Số thóc: ${fmt(S2)} : 100 × ${k} = ${fmt(S2 * k / 100)} (kg).`, 'kg'); };
+  G.nc1_doiphuc = () => { const a = r(1, 9), b = r(1, 9), c = r(10, 99); const v = a * 1000 + b * 100 + c; return fillV(`Viết số thập phân: <b>${a} tấn ${b} tạ ${c} kg = ? tấn</b>`, v / 1000, fmt(v / 1000), `${a} tấn ${b} tạ ${c} kg = ${fmt(v)} kg = ${fmt(v / 1000)} tấn (1 tạ = 100 kg; 1 tấn = 1 000 kg).`, 'tấn'); };
+  G.nc2_gapnhau = () => { const v1 = r(3, 9) * 5, v2 = r(3, 9) * 5, t = pick([1.5, 2, 2.5, 3]); return fillV(`Hai xe khởi hành cùng lúc từ hai địa điểm cách nhau ${fmt((v1 + v2) * t)} km, đi ngược chiều nhau. Vận tốc xe thứ nhất ${v1} km/giờ, xe thứ hai ${v2} km/giờ. Sau bao lâu hai xe gặp nhau?`, t, fmt(t), `Mỗi giờ hai xe gần nhau: ${v1} + ${v2} = ${v1 + v2} (km). Thời gian gặp nhau: ${fmt((v1 + v2) * t)} : ${v1 + v2} = ${fmt(t)} (giờ).`, 'giờ'); };
+  G.nc2_giamgia = () => { const p = r(10, 60) * 10000, a = pick([10, 20, 25]), b = pick([10, 20]); const p1 = p * (100 + a) / 100, p2 = p1 * (100 - b) / 100; return fillV(`Một chiếc áo giá ${fmt(p)} đồng. Cửa hàng tăng giá ${a}%, sau đó lại giảm ${b}% giá mới. Giá chiếc áo sau cùng là bao nhiêu đồng?`, p2, fmt(p2), `Sau khi tăng: ${fmt(p)} × ${100 + a}% = ${fmt(p1)}. Sau khi giảm: ${fmt(p1)} × ${100 - b}% = ${fmt(p2)} (đồng).`, 'đồng'); };
+  G.nc2_be = () => { const a = r(10, 25) / 10, b = r(8, 20) / 10, c = r(5, 15) / 10, p = pick([50, 75, 80]); const V = Number((a * b * c).toFixed(4)); return fillV(`Bể nước hình hộp chữ nhật dài ${fmt(a)} m, rộng ${fmt(b)} m, cao ${fmt(c)} m. Bể đang chứa ${p}% thể tích. Hỏi trong bể có bao nhiêu lít nước?`, Math.round(V * p * 10), fmt(Math.round(V * p * 10)), `Thể tích bể: ${fmt(a)} × ${fmt(b)} × ${fmt(c)} = ${fmt(V)} (m³) = ${fmt(Math.round(V * 1000))} dm³. Lượng nước: ${fmt(Math.round(V * 1000))} × ${p}% = ${fmt(Math.round(V * p * 10))} lít.`, 'lít'); };
+
   const T = [
     { id: 1, hk: 1, ten: 'Ôn tập và bổ sung', widgets: ['phanso'],
       lt: `<ul><li>Ôn số tự nhiên và bốn phép tính.</li><li><b>Phân số thập phân</b>: mẫu số là 10, 100, 1 000, … Ví dụ ${frac(3, 5)} = ${frac(6, 10)}.</li><li><b>Cộng, trừ phân số khác mẫu</b>: quy đồng mẫu số rồi cộng (trừ) tử số.</li><li><b>Hỗn số</b> 2${frac(3, 4)} gồm phần nguyên 2 và phần phân số ${frac(3, 4)}; đổi ra phân số: 2${frac(3, 4)} = ${frac(11, 4)}.</li></ul>`,
-      bai: [[1, 'Ôn tập số tự nhiên', ['sotn5']], [2, 'Ôn tập các phép tính với số tự nhiên', ['sotn5']], [3, 'Ôn tập phân số', ['pstp']], [4, 'Phân số thập phân', ['pstp']], [5, 'Ôn tập các phép tính với phân số', ['psops']], [6, 'Cộng, trừ hai phân số khác mẫu số', ['psops']], [7, 'Hỗn số', ['honso']], [8, 'Ôn tập hình học và đo lường', ['hh5']], [9, 'Luyện tập chung', null]] },
+      bai: [[1, 'Ôn tập số tự nhiên', ['sotn5', 'tbc5']], [2, 'Ôn tập các phép tính với số tự nhiên', ['sotn5', 'tbc5']], [3, 'Ôn tập phân số', ['pstp']], [4, 'Phân số thập phân', ['pstp']], [5, 'Ôn tập các phép tính với phân số', ['psops']], [6, 'Cộng, trừ hai phân số khác mẫu số', ['psops']], [7, 'Hỗn số', ['honso']], [8, 'Ôn tập hình học và đo lường', ['hh5']], [9, 'Luyện tập chung', null]] },
     { id: 2, hk: 1, ten: 'Số thập phân', widgets: [],
       lt: `<ul><li><b>Số thập phân</b> gồm phần nguyên và phần thập phân, ngăn cách bởi dấu phẩy: 12,345.</li><li>Sau dấu phẩy: hàng phần mười, phần trăm, phần nghìn. ${frac(1, 10)} = 0,1; ${frac(1, 100)} = 0,01.</li><li>Thêm hoặc bớt chữ số 0 ở tận cùng bên phải phần thập phân, số không đổi: 0,5 = 0,50.</li><li><b>So sánh</b>: phần nguyên trước, rồi lần lượt từng hàng thập phân.</li><li><b>Làm tròn</b>: xét chữ số ngay sau hàng làm tròn.</li></ul>`,
-      bai: [[10, 'Khái niệm số thập phân', ['stp']], [11, 'So sánh các số thập phân', ['stp']], [12, 'Viết số đo đại lượng dưới dạng số thập phân', ['stpdv']], [13, 'Làm tròn số thập phân', ['lamtronstp']], [14, 'Luyện tập chung', null]] },
+      bai: [[10, 'Khái niệm số thập phân', ['stp']], [11, 'So sánh các số thập phân', ['stp', 'ssdv']], [12, 'Viết số đo đại lượng dưới dạng số thập phân', ['stpdv', 'doikl', 'stpdv2', 'ssdv']], [13, 'Làm tròn số thập phân', ['lamtronstp']], [14, 'Luyện tập chung', null]] },
     { id: 3, hk: 1, ten: 'Một số đơn vị đo diện tích', widgets: [],
       lt: '<ul><li><b>Ki-lô-mét vuông</b> (km²): diện tích hình vuông cạnh 1 km.</li><li><b>Héc-ta</b> (ha): 1 ha = 10 000 m²; 1 km² = 100 ha.</li><li>Hai đơn vị đo diện tích liền nhau gấp/kém nhau 100 lần.</li></ul>',
-      bai: [[15, 'Ki-lô-mét vuông. Héc-ta', ['km2ha']], [16, 'Các đơn vị đo diện tích', ['km2ha']], [17, 'Thực hành và trải nghiệm với một số đơn vị đo đại lượng', ['km2ha', 'stpdv']], [18, 'Luyện tập chung', null]] },
+      bai: [[15, 'Ki-lô-mét vuông. Héc-ta', ['km2ha', 'doidt5']], [16, 'Các đơn vị đo diện tích', ['km2ha', 'doidt5']], [17, 'Thực hành và trải nghiệm với một số đơn vị đo đại lượng', ['km2ha', 'stpdv', 'doikl', 'doidai5', 'doidt5']], [18, 'Luyện tập chung', null]] },
     { id: 4, hk: 1, ten: 'Các phép tính với số thập phân', widgets: [],
       lt: '<ul><li><b>Cộng, trừ</b>: đặt dấu phẩy thẳng cột rồi tính như số tự nhiên.</li><li><b>Nhân</b>: nhân như số tự nhiên, phần thập phân của tích có số chữ số bằng tổng số chữ số thập phân của hai thừa số.</li><li><b>Chia</b>: số chia là số thập phân thì dịch dấu phẩy ở cả hai số sang phải cho đến khi số chia thành số tự nhiên.</li><li>Nhân với 10, 100, … chuyển dấu phẩy sang phải 1, 2, … chữ số; chia (hoặc nhân với 0,1; 0,01…) thì chuyển sang trái.</li></ul>',
       bai: [[19, 'Phép cộng số thập phân', ['congstp']], [20, 'Phép trừ số thập phân', ['congstp']], [21, 'Phép nhân số thập phân', ['nhanstp']], [22, 'Phép chia số thập phân', ['chiastp']], [23, 'Nhân, chia số thập phân với 10; 100; 1 000;… hoặc với 0,1; 0,01; 0,001;…', ['nhan10stp']], [24, 'Luyện tập chung', null]] },
@@ -98,7 +154,7 @@
       bai: [[30, 'Ôn tập số thập phân', ['stp', 'lamtronstp']], [31, 'Ôn tập các phép tính với số thập phân', ['congstp', 'nhanstp', 'chiastp']], [32, 'Ôn tập một số hình phẳng', ['dttg', 'dtthang']], [33, 'Ôn tập diện tích, chu vi một số hình phẳng', ['hinhtron5']], [34, 'Ôn tập đo lường', ['stpdv', 'km2ha']], [35, 'Ôn tập chung', 'HK1']] },
     { id: 7, hk: 2, ten: 'Tỉ số và các bài toán liên quan', widgets: [],
       lt: `<ul><li><b>Tỉ số</b> của a và b là a : b (hay ${frac('a', 'b')}).</li><li><b>Tỉ số phần trăm</b> của a và b: a : b × 100 %. <b>Tìm m% của N</b>: N × m : 100.</li><li><b>Tỉ lệ bản đồ</b> 1 : 1 000 nghĩa là 1 cm trên bản đồ ứng với 1 000 cm thực tế.</li><li><b>Tổng – tỉ</b>: tìm tổng số phần → giá trị 1 phần → mỗi số. <b>Hiệu – tỉ</b>: tìm hiệu số phần → giá trị 1 phần → mỗi số.</li></ul>`,
-      bai: [[36, 'Tỉ số. Tỉ số phần trăm', ['tiso', 'phantram']], [37, 'Tỉ lệ bản đồ và ứng dụng', ['tilebd']], [38, 'Tìm hai số khi biết tổng và tỉ số của hai số đó', ['tongtiso']], [39, 'Tìm hai số khi biết hiệu và tỉ số của hai số đó', ['hieutiso']], [40, 'Tìm tỉ số phần trăm của hai số', ['phantram']], [41, 'Tìm giá trị phần trăm của một số', ['phantram']], [42, 'Máy tính cầm tay', ['maytinh']], [43, 'Thực hành và trải nghiệm sử dụng máy tính cầm tay', ['maytinh', 'phantram']], [44, 'Luyện tập chung', null]] },
+      bai: [[36, 'Tỉ số. Tỉ số phần trăm', ['tiso', 'phantram', 'ptram5b']], [37, 'Tỉ lệ bản đồ và ứng dụng', ['tilebd']], [38, 'Tìm hai số khi biết tổng và tỉ số của hai số đó', ['tongtiso']], [39, 'Tìm hai số khi biết hiệu và tỉ số của hai số đó', ['hieutiso']], [40, 'Tìm tỉ số phần trăm của hai số', ['phantram']], [41, 'Tìm giá trị phần trăm của một số', ['phantram']], [42, 'Máy tính cầm tay', ['maytinh']], [43, 'Thực hành và trải nghiệm sử dụng máy tính cầm tay', ['maytinh', 'phantram']], [44, 'Luyện tập chung', null]] },
     { id: 8, hk: 2, ten: 'Thể tích. Đơn vị đo thể tích', widgets: [],
       lt: '<ul><li><b>Thể tích</b> cho biết một vật chiếm bao nhiêu chỗ trong không gian.</li><li>1 m³ = 1 000 dm³; 1 dm³ = 1 000 cm³ (1 dm³ = 1 lít).</li><li>Hai đơn vị đo thể tích liền nhau gấp/kém nhau 1 000 lần.</li></ul>',
       bai: [[45, 'Thể tích của một hình', ['dvtt']], [46, 'Xăng-ti-mét khối. Đề-xi-mét khối', ['dvtt']], [47, 'Mét khối', ['dvtt']], [48, 'Luyện tập chung', null]] },
@@ -107,7 +163,7 @@
       bai: [[49, 'Hình khai triển của hình lập phương, hình hộp chữ nhật và hình trụ', ['hhcn', 'hlp']], [50, 'Diện tích xung quanh và diện tích toàn phần của hình hộp chữ nhật', ['hhcn']], [51, 'Diện tích xung quanh và diện tích toàn phần của hình lập phương', ['hlp']], [52, 'Thể tích của hình hộp chữ nhật', ['hhcn']], [53, 'Thể tích của hình lập phương', ['hlp']], [54, 'Thực hành tính toán và ước lượng thể tích một số hình khối', ['hhcn', 'hlp']], [55, 'Luyện tập chung', null]] },
     { id: 10, hk: 2, ten: 'Số đo thời gian. Vận tốc. Chuyển động đều', widgets: ['dongho'],
       lt: '<ul><li>1 năm = 12 tháng; 1 ngày = 24 giờ; 1 giờ = 60 phút; 1 phút = 60 giây.</li><li>Cộng, trừ số đo thời gian: tính riêng từng đơn vị, đổi khi số phút/giây từ 60 trở lên.</li><li><b>Vận tốc</b> v = s : t; <b>quãng đường</b> s = v × t; <b>thời gian</b> t = s : v. Chú ý đơn vị phải phù hợp (km – giờ – km/giờ).</li></ul>',
-      bai: [[56, 'Các đơn vị đo thời gian', ['tgian']], [57, 'Cộng, trừ số đo thời gian', ['tgian']], [58, 'Nhân, chia số đo thời gian với một số', ['tgian']], [59, 'Vận tốc của một chuyển động đều', ['chuyendong']], [60, 'Quãng đường, thời gian của một chuyển động đều', ['chuyendong']], [61, 'Thực hành tính toán và ước lượng về vận tốc, quãng đường, thời gian trong chuyển động đều', ['chuyendong']], [62, 'Luyện tập chung', null]] },
+      bai: [[56, 'Các đơn vị đo thời gian', ['tgian', 'tg5b']], [57, 'Cộng, trừ số đo thời gian', ['tgian', 'tg5b']], [58, 'Nhân, chia số đo thời gian với một số', ['tgian']], [59, 'Vận tốc của một chuyển động đều', ['chuyendong']], [60, 'Quãng đường, thời gian của một chuyển động đều', ['chuyendong']], [61, 'Thực hành tính toán và ước lượng về vận tốc, quãng đường, thời gian trong chuyển động đều', ['chuyendong']], [62, 'Luyện tập chung', null]] },
     { id: 11, hk: 2, ten: 'Một số yếu tố thống kê và xác suất', widgets: ['bocbi'],
       lt: '<ul><li>Thu thập, phân loại, sắp xếp số liệu.</li><li><b>Biểu đồ hình quạt tròn</b>: cả hình tròn là 100%; mỗi phần ứng với một tỉ số phần trăm.</li><li><b>Tỉ số số lần lặp lại một sự kiện</b> so với tổng số lần thực hiện, ví dụ 7 : 20.</li></ul>',
       bai: [[63, 'Thu thập, phân loại, sắp xếp các số liệu', ['quat5']], [64, 'Biểu đồ hình quạt tròn', ['quat5']], [65, 'Tỉ số của số lần lặp lại một sự kiện so với tổng số lần thực hiện', ['tisolap']], [66, 'Thực hành và trải nghiệm thu thập, phân tích, biểu diễn các số liệu thống kê', ['quat5', 'tisolap']], [67, 'Luyện tập chung', null]] },
