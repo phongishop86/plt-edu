@@ -28,7 +28,11 @@
 
   const curLop = () => { const l = +PLT.data.settings.lop; return l >= 1 && l <= 12 ? l : 3; };
   const setLop = (l) => { PLT.data.settings.lop = +l; PLT.save(); };
-  const sidOf = (l) => 'toan-' + l;
+  // Môn đang học của từng lớp (nhớ môn chọn gần nhất); chưa chọn thì để trống → hiện danh sách môn
+  const lastSid = (l) => ((PLT.data.settings.last || {})[l] || '');
+  const setLast = (S) => { const st = PLT.data.settings; st.last = st.last || {}; if (st.last[S.lop] !== S.id) { st.last[S.lop] = S.id; PLT.save(); } };
+  const sidOf = (l) => lastSid(l);
+  const modePath = (mode, l) => { const s = sidOf(l); return s ? `#/${mode}/${s}` : `#/${mode}`; };
 
   // Nạp file môn học khi cần (chạy được cả khi mở trực tiếp index.html)
   const loading = {};
@@ -106,25 +110,22 @@
       </div>
       <div class="hcard"><div class="hl"><img src="assets/img/logo-192.png" alt=""><div><b>Đang học: Lớp ${l}</b><span>Chọn lớp khác bên dưới hoặc trên thanh menu</span></div></div>
         <div class="lops">${Array.from({ length: 12 }, (_, i) => i + 1).map((x) => `<a href="#/lop/${x}" class="${x === l ? 'on' : ''}">${x}</a>`).join('')}</div>
-        <div class="qa"><a href="#/hoc/${s}"><span>📚</span>Học bài</a><a href="#/on-tap/${s}"><span>🎯</span>Ôn tập</a><a href="#/kiem-tra/${s}"><span>📝</span>Kiểm tra</a></div></div>
+        <div class="qa"><a href="${modePath('hoc', l)}"><span>📚</span>Học bài</a><a href="${modePath('on-tap', l)}"><span>🎯</span>Ôn tập</a><a href="${modePath('kiem-tra', l)}"><span>📝</span>Kiểm tra</a></div></div>
     </div></section>
       ${grades.map(([g, ls]) => `<h2>${g}</h2><div class="grades">${ls.map((x) => `<a class="grade${x === l ? ' cur' : ''}" href="#/lop/${x}"><span>Lớp</span><b>${x}</b><em>${BOOKS[x].length} môn</em></a>`).join('')}</div>`).join('')}
       <h2>Một buổi học có gì</h2><div class="feats">
-        <a class="feat" href="#/hoc/${s}"><span>📚</span><b>Học bài</b><p>Lý thuyết ngắn gọn, mô phỏng tương tác, bài tập có lời giải.</p></a>
-        <a class="feat" href="#/on-tap/${s}"><span>🎯</span><b>Ôn tập nhanh</b><p>Câu hỏi ngẫu nhiên không giới hạn, chấm ngay từng câu.</p></a>
-        <a class="feat" href="#/kiem-tra/${s}"><span>📝</span><b>Kiểm tra</b><p>Đề theo tuần, tháng, giữa kỳ, cuối kỳ. Có giờ làm bài, AI chấm tự luận.</p></a>
+        <a class="feat" href="${modePath('hoc', l)}"><span>📚</span><b>Học bài</b><p>Lý thuyết ngắn gọn, mô phỏng tương tác, bài tập có lời giải.</p></a>
+        <a class="feat" href="${modePath('on-tap', l)}"><span>🎯</span><b>Ôn tập nhanh</b><p>Câu hỏi ngẫu nhiên không giới hạn, chấm ngay từng câu.</p></a>
+        <a class="feat" href="${modePath('kiem-tra', l)}"><span>📝</span><b>Kiểm tra</b><p>Đề theo tuần, tháng, giữa kỳ, cuối kỳ. Có giờ làm bài, AI chấm tự luận.</p></a>
         <a class="feat" href="#/tien-do"><span>📈</span><b>Tiến độ</b><p>Xem sao đạt được ở từng chủ đề và lịch sử điểm kiểm tra.</p></a></div>`;
   }
 
   /* ---------------- Trang lớp: menu các môn ---------------- */
   async function grade(l) {
     l = +l; if (!(l >= 1 && l <= 12)) return home(); setLop(l); syncLop();
-    const S = await ensure(sidOf(l));
-    const menu = S ? `<div class="card"><div class="row" style="justify-content:space-between"><h2 style="margin:0">🔢 Toán ${l} <small class="muted">· ${S.bo}</small></h2><div class="row"><a class="btn" href="#/on-tap/${S.id}">🎯 Ôn tập</a><a class="btn ghost" href="#/kiem-tra/${S.id}">📝 Kiểm tra</a></div></div>
-      <div class="tmenu">${[1, 2].map((hk) => `<div><div class="hk">Học kì ${hk}</div>${S.topics.filter((t) => t.hk === hk).map((t) => `<a class="tlink" href="#/hoc/${S.id}/${t.id}"><span>${t.id}</span><b>${t.ten}</b><em>${stars((PLT.data.prog[progKey(S, t.id)] || {}).best)} · ${t.bai.length} bài</em></a>`).join('')}</div>`).join('')}</div></div>` : '';
     app.innerHTML = `<div class="crumb"><a href="#/">Trang chủ</a> › Lớp ${l}</div><h1>Lớp ${l} <small class="muted">· ${CAP(l)}</small></h1>
       <div class="lopnav">${Array.from({ length: 12 }, (_, i) => i + 1).map((x) => `<a href="#/lop/${x}" class="${x === l ? 'on' : ''}">${x}</a>`).join('')}</div>
-      ${menu}<h2>Các môn học lớp ${l}</h2><div class="subjects">${BOOKS[l].map((m) => { const cid = cidOf(l, m), has = !!cid; return `<${has ? `a href="#/hoc/${cid}"` : 'div'} class="subj${has ? '' : ' soon'}"><div class="si">${ICON[m] || '📘'}</div><b>${m} ${l}</b><span class="muted small">${has ? 'Đã có: học bài, ôn tập, kiểm tra' : 'Đang biên soạn – sắp có'}</span></${has ? 'a' : 'div'}>`; }).join('')}</div>`;
+      <h2>Các môn học lớp ${l} <small class="muted">· ${BOOKS[l].length} môn</small></h2>${subjGrid(l, 'hoc')}`;
   }
 
   /* ---------------- Học bài ---------------- */
@@ -197,7 +198,7 @@
   async function progress() {
     app.innerHTML = '<p class="muted">Đang tải…</p>';
     const used = new Set(Object.keys(PLT.data.prog).map((k) => k.split(':')[0]).concat(PLT.data.tests.map((x) => x.subject || '')));
-    used.add(sidOf(curLop()));
+    if (sidOf(curLop())) used.add(sidOf(curLop()));
     const subs = (await Promise.all([...used].filter((s) => CATALOG[s]).map(ensure))).filter(Boolean).sort((a, b) => a.lop - b.lop);
     const rows = subs.map((S) => `<div class="card"><h3>${S.icon} ${S.mon} ${S.lop}</h3><table class="dtable full"><tr><th>Chủ đề / Chương</th><th>Kết quả tốt nhất</th><th>Số lượt</th></tr>${S.topics.map((t) => { const p = PLT.data.prog[progKey(S, t.id)]; return `<tr><td><a href="#/hoc/${S.id}/${t.id}">${t.id}. ${t.ten}</a></td><td>${stars(p && p.best)} ${p ? p.best + '%' : ''}</td><td>${p ? p.n : 0}</td></tr>`; }).join('')}</table></div>`).join('');
     const tests = PLT.data.tests.length ? `<table class="dtable full"><tr><th>Ngày</th><th>Bài kiểm tra</th><th>Điểm</th></tr>${PLT.data.tests.map((x) => `<tr><td>${new Date(x.ngay).toLocaleString('vi-VN')}</td><td>${esc(x.ten)}</td><td><b>${String(x.diem).replace('.', ',')}</b></td></tr>`).join('')}</table>` : '<p class="muted">Chưa làm bài kiểm tra nào.</p>';
@@ -228,6 +229,16 @@
     $('#sreset', d).onclick = () => { if (confirm('Xóa toàn bộ tiến độ và lịch sử kiểm tra?')) { PLT.data.prog = {}; PLT.data.tests = []; PLT.save(); d.remove(); route(); } };
   }
 
+  /* ---------------- Chọn môn (khi chưa chọn môn cho lớp) ---------------- */
+  function subjGrid(l, mode) {
+    return `<div class="subjects">${BOOKS[l].map((m) => { const cid = cidOf(l, m), has = !!cid; return `<${has ? `a href="#/${mode}/${cid}"` : 'div'} class="subj${has ? '' : ' soon'}"><div class="si">${ICON[m] || '📘'}</div><b>${m} ${l}</b><span class="muted small">${has ? { hoc: 'Học bài, lý thuyết, bài tập', 'on-tap': 'Ôn tập câu hỏi ngẫu nhiên', 'kiem-tra': 'Đề tuần, tháng, học kì' }[mode] : 'Đang biên soạn – sắp có'}</span></${has ? 'a' : 'div'}>`; }).join('')}</div>`;
+  }
+  function pickSubject(mode) {
+    const l = curLop(), t = { hoc: '📚 Học bài', 'on-tap': '🎯 Ôn tập', 'kiem-tra': '📝 Kiểm tra' }[mode];
+    app.innerHTML = `<div class="crumb"><a href="#/">Trang chủ</a> › <a href="#/lop/${l}">Lớp ${l}</a> › ${t.slice(2)}</div><h1>${t} · Lớp ${l}</h1><p class="muted">Chọn môn học:</p>${subjGrid(l, mode)}`;
+    window.scrollTo(0, 0);
+  }
+
   /* ---------------- Điều hướng ---------------- */
   let seq = 0;
   async function route() {
@@ -238,12 +249,13 @@
     document.querySelectorAll('.nav a').forEach((a) => a.classList.toggle('on', (a.dataset.r || '') === (p[0] === 'thi' ? 'kiem-tra' : p[0] || '')));
     const needS = ['hoc', 'on-tap', 'kiem-tra', 'thi'].includes(p[0]);
     let S = null;
+    if (needS && !p[1]) { pickSubject(p[0] === 'thi' ? 'kiem-tra' : p[0]); return; }
     if (needS) {
-      const sid = p[1] || sidOf(curLop());
+      const sid = p[1];
       app.innerHTML = '<p class="muted">Đang tải bài học…</p>';
       S = await ensure(sid); if (my !== seq) return;
       if (!S) { app.innerHTML = '<div class="card">Không tải được môn học này. Kiểm tra lại kết nối hoặc tải lại trang.</div>'; return; }
-      if (S.lop !== curLop()) { setLop(S.lop); syncLop(); }
+      setLast(S); if (S.lop !== curLop()) setLop(S.lop); syncLop();
     }
     switch (p[0]) {
       case 'lop': await grade(p[1]); break;
@@ -258,7 +270,7 @@
   }
   function syncLop() {
     const l = curLop(), s = sidOf(l);
-    $('#nav').innerHTML = `<a href="#/" data-r="" title="Trang chủ">🏠 <span>Trang chủ</span></a><a href="#/hoc/${s}" data-r="hoc" title="Học bài">📚 <span>Học bài</span></a><a href="#/on-tap/${s}" data-r="on-tap" title="Ôn tập">🎯 <span>Ôn tập</span></a><a href="#/kiem-tra/${s}" data-r="kiem-tra" title="Kiểm tra">📝 <span>Kiểm tra</span></a><a href="#/tien-do" data-r="tien-do" title="Tiến độ">📈 <span>Tiến độ</span></a>`;
+    $('#nav').innerHTML = `<a href="#/" data-r="" title="Trang chủ">🏠 <span>Trang chủ</span></a><a href="${modePath('hoc', l)}" data-r="hoc" title="Học bài">📚 <span>Học bài</span></a><a href="${modePath('on-tap', l)}" data-r="on-tap" title="Ôn tập">🎯 <span>Ôn tập</span></a><a href="${modePath('kiem-tra', l)}" data-r="kiem-tra" title="Kiểm tra">📝 <span>Kiểm tra</span></a><a href="#/tien-do" data-r="tien-do" title="Tiến độ">📈 <span>Tiến độ</span></a>`;
     const sel = $('#lopSel'); if (sel) sel.value = l;
     const ic = $('#lopIc'); if (ic) ic.href = `#/lop/${l}`;
   }
