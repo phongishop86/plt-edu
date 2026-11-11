@@ -5,7 +5,42 @@
   const G = { tunghia: TV.tunghia, bienphap: TV.bienphap(5), ketTu: TV.ketTu, daitu: TV.daitu, thanhphan: TV.thanhphan, trangngu: TV.trangngu, tuloai: TV.tuloai(5), viethoa: TV.vietHoa, ct: TV.chinhta(['hỏi/ngã', 'r/d/gi', 'l/n', 's/x']), dochieu: TV.dochieu(5) };
   const LT = (s) => `<ul>${s.map((x) => `<li>${x}</li>`).join('')}</ul>`;
   const ESSAY = { 1: [TV.vietdoan(5, [["Viết đoạn văn tả cảnh đẹp thiên nhiên mà em từng được ngắm.", ["cảnh", "đẹp"]], ["Viết đoạn văn nêu ý kiến tán thành một việc làm tốt ở trường em.", ["tán thành", "vì"]]]), TV.vietdoan(5, [["Viết đoạn văn kể lại một câu chuyện có sáng tạo (thay đổi kết thúc hoặc lời kể).", ["câu chuyện"]], ["Viết đoạn văn giới thiệu một cuốn sách em yêu thích.", ["sách"]]])], 2: [TV.vietdoan(5, [["Viết đoạn văn tả một người thân hoặc một người em kính trọng.", ["người"]], ["Viết đoạn văn nêu ý kiến về việc học sinh sử dụng điện thoại di động.", ["điện thoại", "ý kiến"]]]), TV.vietdoan(5, [["Viết đoạn văn nêu tình cảm, cảm xúc về một nét đẹp văn hoá của quê hương.", ["quê hương"]], ["Viết đoạn văn giới thiệu một tấm gương tiêu biểu của dân tộc.", ["tấm gương"]]])] };
-  TV.build({ id: 'tieng-viet-5', lop: 5, gens: G, essays: ESSAY, topics: [
+  TV.build({ nc: { 1: `? Từ "đường" trong "đường phố" và "đường ăn" là: | Từ đồng âm | Từ đa nghĩa | Từ trái nghĩa | Từ láy
+? Từ "chân" trong "chân bàn", "chân núi" là: | Từ đa nghĩa (nghĩa chuyển) | Từ đồng âm | Từ trái nghĩa | Danh từ riêng
+? Đại từ trong câu "Nam rủ Hùng đi đá bóng nhưng cậu ấy bận." là: | cậu ấy | Nam | Hùng | đá bóng
+? Từ nào đồng nghĩa với "hoà bình"? | thái bình | chiến tranh | bình thường | yên lặng
+? Từ nào trái nghĩa với "cẩn thận"? | cẩu thả | chu đáo | kĩ lưỡng | chăm chút
+? Cặp từ nào là cặp từ trái nghĩa? | sống – chết | to – lớn | đẹp – xinh | chăm – siêng
+? "Lá rụng về cội" ý nói: | Con người luôn hướng về nguồn cội, quê hương | Lá cây rụng nhiều | Nên quét lá | Cây đổi mùa
+? Từ nào viết đúng quy tắc viết hoa tên nước ngoài? | Pa-ri | pa-ri | Pa-Ri | pA-ri
++ Từ đồng âm có âm giống nhau nhưng nghĩa khác xa nhau.
++ "Mắt" trong "mắt na" (quả na) là nghĩa chuyển.
+- "Đỏ" và "son" là cặp từ trái nghĩa.
+_ Đồng nghĩa với "nhân hậu" là "nhân [ái|từ]".
+= Nghĩa gốc = Bàn chân của bé
+= Nghĩa chuyển = Chân núi, chân bàn
+= Từ đồng âm = Hòn đá – đá bóng
+= Từ trái nghĩa = Thắng – thua
+# Từ đồng nghĩa với "to": lớn, khổng lồ, vĩ đại
+# Từ trái nghĩa với "to": nhỏ, bé, tí hon`, 2: `? Câu "Trời mưa to nên đường trơn." là: | Câu ghép | Câu đơn | Câu cảm | Câu khiến
+? Cặp kết từ trong câu "Vì trời mưa nên chúng em nghỉ chơi." biểu thị quan hệ: | Nguyên nhân – kết quả | Tương phản | Điều kiện – kết quả | Tăng tiến
+? Cặp kết từ "Tuy … nhưng …" biểu thị quan hệ: | Tương phản | Nguyên nhân – kết quả | Giả thiết – kết quả | Tăng tiến
+? Cặp kết từ "Nếu … thì …" biểu thị quan hệ: | Điều kiện (giả thiết) – kết quả | Tương phản | Tăng tiến | Lựa chọn
+? Cặp kết từ "Không những … mà còn …" biểu thị quan hệ: | Tăng tiến | Tương phản | Nguyên nhân | Điều kiện
+? Hai câu "Hà Nội là thủ đô. Thủ đô có nhiều danh lam thắng cảnh." liên kết bằng cách: | Lặp từ ngữ | Thay thế từ ngữ | Dùng từ nối | Không liên kết
+? Hai câu "Lan học rất giỏi. Bạn ấy còn hát hay." liên kết bằng cách: | Thay thế từ ngữ | Lặp từ ngữ | Không liên kết | Dùng dấu phẩy
+? Câu "Mùa xuân, cây cối đâm chồi, chim chóc hót vang." có mấy vế câu? | 2 | 1 | 3 | 4
++ Câu ghép gồm nhiều vế câu, mỗi vế có cấu tạo giống một câu đơn.
++ Điệp từ, điệp ngữ là lặp lại từ ngữ để nhấn mạnh.
+- Câu "Em đi học." là câu ghép.
+_ Tuy nhà xa [nhưng] Lan chưa bao giờ đi học muộn.
+_ Nếu trời mưa [thì] buổi cắm trại bị hoãn.
+= Vì … nên … = Nguyên nhân – kết quả
+= Tuy … nhưng … = Tương phản
+= Nếu … thì … = Điều kiện – kết quả
+= Không những … mà còn … = Tăng tiến
+# Liên kết bằng từ nối: Tuy nhiên, Vì vậy, Ngoài ra
+# Liên kết bằng thay thế: bạn ấy, nơi đó, việc này` },  id: 'tieng-viet-5', lop: 5, gens: G, essays: ESSAY, topics: [
     { hk: 1, ten: "Thế giới tuổi thơ", skills: ["tunghia", "tuloai", "ct", "dochieu"],
       lt: LT(["<b>Từ đồng nghĩa</b>: đồng nghĩa hoàn toàn và không hoàn toàn; lựa chọn từ phù hợp ngữ cảnh.", "Ôn danh từ, động từ, tính từ.", "Viết đoạn văn, bài văn tả phong cảnh."]),
       bai: ["Thanh âm của gió", "Cánh đồng hoa", "Tuổi Ngựa", "Bến sông tuổi thơ", "Tiếng hạt nảy mầm", "Ngôi sao sân cỏ", "Bộ sưu tập độc đáo", "Trước cổng trời"] },

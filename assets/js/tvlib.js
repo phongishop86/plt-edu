@@ -103,6 +103,7 @@
       if (t.on) bai.push([0, t.on, null]);
       return { id, hk: t.hk, ten: t.ten, nhan: 'Chủ điểm ' + id, widgets: t.widgets || [], lt: t.lt, review: t.review, bai };
     });
-    return PLT.buildCourse({ id: def.id, lop: def.lop, mon: 'Tiếng Việt', icon: '📖', topics, gens: def.gens, essays: def.essays });
+    const gens = Object.assign({}, def.gens, def.nc && PLT.KB ? PLT.KB.ncGens(def.nc) : {});
+    return PLT.buildCourse({ id: def.id, lop: def.lop, mon: 'Tiếng Việt', icon: '📖', topics, gens, essays: def.essays });
   };
 })();

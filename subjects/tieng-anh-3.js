@@ -1,5 +1,37 @@
 /* Tiếng Anh 3 – Global Success (2 tập, 20 Unit). Unit, mẫu câu, từ vựng theo Book map SGK; câu hỏi do PLT-Edu soạn. */
 PLT.KB.eng({
+  nc: { 1: `? Choose the correct answer: "What's your name?" | My name is Nam. | I'm eight. | I'm fine, thanks. | It's a book.
+? Choose the correct answer: "How do you spell your name?" | N-A-M. | It's Nam. | I'm Nam. | Fine, thanks.
+? Choose the correct word: "These ___ my pencils." | are | is | am | be
+? Choose the correct word: "This is ___ eraser." | an | a | two | the a
+? Odd one out: | school | ruler | pen | notebook
+? Choose the correct question for: "It's blue." | What colour is it? | What is it? | Where is it? | How old is it?
+? "May I come in?" – ___ (đồng ý) | Yes, you can. | No, you don't. | Yes, I am. | Yes, it is.
++ We use "an" before words starting with a vowel sound: an apple, an eraser.
+- "These" is used for one thing.
+= Stand up = Đứng lên
+= Sit down = Ngồi xuống
+= Open your book = Mở sách ra
+= Close your book = Gấp sách lại
+_ That is [my] school bag. (của tôi)
+_ How old [are] you? – I'm eight.
+> Is > this > your > pencil > case`, 2: `? Choose the correct answer: "Who's that?" | It's my brother. | It's a cat. | I'm fine. | Yes, it is.
+? Choose the correct word: "There ___ two chairs in the room." | are | is | am | be
+? Choose the correct word: "My sister ___ seven years old." | is | are | am | has
+? Choose the correct word: "I have ___ dog and two cats." | a | an | two | some
+? "What's he doing?" – He's ___. | reading | read | reads | to read
+? Odd one out: | bicycle | living room | kitchen | bedroom
+? Choose the correct answer: "How many cats do you have?" | I have two. | I'm two. | It's two. | They're two years.
++ We add "-s" to most nouns to make plural: a book – two books.
+- "Where are the books?" – "It's on the table." is correct.
+= in front of = phía trước
+= behind = phía sau
+= next to = bên cạnh
+= between = ở giữa
+_ My father is [cooking] in the kitchen. (đang nấu ăn)
+_ There [are] three bedrooms in my house.
+> What > are > you > doing
+> They > are > playing > football` },
   id: 'tieng-anh-3', lop: 3,
   units: [
     { ten: 'Hello', v: 'hello=xin chào; hi=chào; goodbye=tạm biệt; bye=tạm biệt; fine=khoẻ; thank you=cảm ơn bạn', s: ['[Hello], I\'m Mai.', 'How are you?', 'Fine, [thank you].', '[Goodbye], Ben.'], q: ['? Đáp lại câu "How are you?" bằng: | Fine, thank you. | I\'m Mai. | Goodbye. | Yes, it is.'] },

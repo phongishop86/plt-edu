@@ -10,7 +10,38 @@
   const DE2 = [['Tả một đồ vật hoặc đồ chơi em yêu thích.', ['em', 'thích']], ['Kể về việc em đã làm để chăm sóc cây cối hoặc bảo vệ môi trường.', ['cây', 'em']], ['Viết lời cảm ơn hoặc lời xin lỗi gửi một người bạn.', ['bạn', 'cảm ơn']], ['Tả cảnh đẹp ở quê hương em hoặc nơi em sống.', ['quê', 'đẹp']]];
   const ESSAY = { 1: [TV.vietdoan(2, DE1.slice(0, 2)), TV.vietdoan(2, DE1.slice(2))], 2: [TV.vietdoan(2, DE2.slice(0, 2)), TV.vietdoan(2, DE2.slice(2))] };
   const LT = (s) => `<ul>${s.map((x) => `<li>${x}</li>`).join('')}</ul>`;
-  TV.build({
+  TV.build({ nc: { 1: `? Từ nào không cùng nhóm với các từ còn lại? | nhảy dây | thước kẻ | bút chì | cặp sách
+? Câu "Bạn Lan là học sinh lớp 2A." thuộc kiểu câu nào? | Câu giới thiệu | Câu nêu hoạt động | Câu nêu đặc điểm | Câu hỏi
+? Câu "Đàn cò bay lượn trên cánh đồng." trả lời cho câu hỏi nào? | Làm gì? | Là gì? | Thế nào? | Ở đâu?
+? Bộ phận in đậm trong câu "Bông hoa hồng <b>rất thơm</b>." trả lời câu hỏi: | Thế nào? | Là gì? | Làm gì? | Khi nào?
+? Từ nào viết sai chính tả? | xạch sẽ | sạch sẽ | sáng sủa | xinh xắn
+? Từ nào cùng nghĩa với "thông minh"? | sáng dạ | chậm chạp | hiền lành | khoẻ mạnh
+? Từ nào trái nghĩa với "siêng năng"? | lười biếng | chăm chỉ | cần cù | chịu khó
+? Câu nào dùng dấu chấm hỏi đúng? | Bạn tên là gì? | Bạn tên là gì. | Mình tên là Nam? | Bạn ơi đi học thôi?
++ Từ "lấp lánh" là từ chỉ đặc điểm.
++ Từ "quét nhà" là từ chỉ hoạt động.
+- Câu "Em đang đọc sách." là câu nêu đặc điểm.
+_ Cô giáo em rất [hiền|dịu dàng|hiền lành].
+= Câu giới thiệu = Ai là gì?
+= Câu nêu hoạt động = Ai làm gì?
+= Câu nêu đặc điểm = Ai thế nào?
+# Từ chỉ sự vật: bàn học, con mèo, quyển vở
+# Từ chỉ hoạt động: viết bài, đá bóng, nấu cơm
+# Từ chỉ đặc điểm: xanh biếc, cao vút, ngoan ngoãn`, 2: `? "Mẹ già như chuối chín cây" có sử dụng: | So sánh | Nhân hoá | Hỏi đáp | Liệt kê
+? Câu "Ông mặt trời thức dậy." có hình ảnh: | Sự vật được gọi, tả như người | Không có biện pháp | So sánh | Đối lập
+? Từ nào chỉ tình cảm gia đình? | yêu thương | chăm chỉ | sạch sẽ | nhanh nhẹn
+? "Lá lành đùm lá rách" khuyên chúng ta điều gì? | Giúp đỡ, đùm bọc người khó khăn | Giữ gìn lá cây | Không làm rách lá | Chăm học
+? "Uống nước nhớ nguồn" khuyên chúng ta: | Biết ơn người đi trước | Uống nhiều nước | Tiết kiệm nước | Giữ sạch nguồn nước
+? Dấu phẩy đặt đúng trong câu nào? | Lan, Mai và Hoa là bạn thân. | Lan Mai, và Hoa là bạn thân. | Lan Mai và, Hoa là bạn thân. | Lan Mai và Hoa, là bạn thân.
+? Từ nào viết đúng? | quả chuối | quả truối | quả chuối chuối | quã chuối
++ "Anh em như thể chân tay" nói về tình cảm anh em gắn bó.
+- "Chín người mười ý" khuyên mọi người đoàn kết, cùng một ý.
+_ Ăn quả nhớ kẻ [trồng cây].
+_ Có công mài sắt, có ngày nên [kim].
+= Hiền như = Bụt
+= Chậm như = Rùa
+= Nhanh như = Sóc
+> Mùa xuân > cây cối > đâm chồi > nảy lộc` }, 
     id: 'tieng-viet-2', lop: 2, gens: G, essays: ESSAY,
     topics: [
       { hk: 1, ten: 'Em lớn lên từng ngày', skills: ['ct1', 'tuloai', 'kieucau', 'dochieu'],

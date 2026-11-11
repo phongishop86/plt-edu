@@ -1,5 +1,39 @@
 /* Tiếng Anh 5 – Global Success (2 tập, 20 Unit). Câu hỏi do PLT-Edu soạn theo chủ đề, từ vựng, mẫu câu của từng Unit. */
 PLT.KB.eng({
+  nc: { 1: `? Choose the correct answer: "What's your address?" | It's 12 Le Loi Street. | It's in my bag. | It's a big house. | I'm from Ha Noi.
+? Choose the correct word: "She ___ to school every day." | goes | go | going | went
+? Choose the correct word: "He often ___ his homework after dinner." | does | do | doing | did
+? Choose the correct word: "How often ___ you go swimming?" | do | does | are | is
+? Choose the correct answer: "How often do you go to the library?" | Once a week. | By bus. | At 7 o'clock. | With my friends.
+? Choose the correct answer: "How do you go to school?" | By bike. | Once a week. | At school. | It's far.
+? Choose the correct word: "I like ___ comics." | reading | read | reads | to reading
+? Choose the correct word: "Mai is ___ than Lan." (cao hơn) | taller | tall | tallest | more tall
++ We add "-es" to verbs ending in -o, -sh, -ch with he/she/it: goes, watches.
+- "She don't like fish." is correct.
+= always = luôn luôn
+= usually = thường xuyên
+= sometimes = thỉnh thoảng
+= never = không bao giờ
+_ My mother [usually] gets up at 6 a.m. (thường xuyên)
+_ He [watches] TV every evening. (watch)
+> What > time > do > you > get > up
+> How > often > do > you > go > shopping`, 2: `? Choose the correct answer: "What will you do tomorrow?" | I will visit my grandparents. | I visited my grandparents. | I visit my grandparents yesterday. | I am visit my grandparents.
+? Choose the correct word: "There ___ a lot of animals at the zoo last Sunday." | were | was | are | is
+? Choose the correct word: "What's the matter with you?" – I ___ a headache. | have | has | am | is
+? Choose the correct advice: "I have a toothache." | You should go to the dentist. | You should eat more sweets. | You shouldn't brush your teeth. | You should go to bed late.
+? Choose the correct word: "Ha Noi is ___ than Hue." (lớn hơn) | bigger | biger | more big | biggest
+? Choose the correct word: "This is the ___ building in my town." (cao nhất) | tallest | taller | tall | most tall
+? Choose the correct answer: "Would you like some milk?" | Yes, please. | Yes, I would like. | No, I don't. | Yes, it is.
+? Choose the correct word: "I'm going ___ visit Ha Long Bay next summer." | to | for | at | in
++ "Should" is used to give advice.
+- "Will" is followed by a past verb: "I will went".
+= big = bigger
+= good = better
+= hot = hotter
+= beautiful = more beautiful
+_ He has a fever. He should [take] some medicine.
+_ We [will] go camping next weekend. (sẽ)
+> What > would > you > like > to > eat` },
   id: 'tieng-anh-5', lop: 5,
   units: [
     { ten: 'All about me!', v: 'class=lớp; grade=khối lớp; school=trường; address=địa chỉ; active=năng động; friendly=thân thiện; helpful=hay giúp đỡ', s: ['Can you tell me about yourself?', 'I\'m in [grade] 5.', 'I\'m [friendly] and helpful.'] },

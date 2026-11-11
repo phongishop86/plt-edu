@@ -54,7 +54,7 @@
   const seenAdd = (S, qs) => { try { const old = JSON.parse(localStorage.getItem(seenKey(S)) || '[]'); const all = old.concat(qs.map((q) => keyOf(Object.assign({}, q, { q: String(q.q).replace(/^<span class="nctag">[^<]*<\/span> /, '') })))); localStorage.setItem(seenKey(S), JSON.stringify(all.slice(-800))); } catch (e) { /* bộ nhớ trình duyệt không khả dụng */ } };
   const isNC = (k) => /^nc[12]_/.test(k);
   const ncGens = (S, hk) => Object.keys(S.gens).filter((k) => isNC(k) && (!hk || k[2] === String(hk)));
-  function build(S, gens, n, hk, adv) {
+  function build(S, gens, n, hk, adv, notag) {
     const out = [], seen = new Set(), recent = seenGet(S), used = {};
     gens = gens.filter((k) => !isNC(k));
     const nAdv = Math.min(adv || 0, ncGens(S, hk).length ? n : 0), nBase = n - nAdv;
@@ -67,7 +67,7 @@
         const k = pool.pop(); let q, key, t = 0;
         do { q = S.gens[k](); key = keyOf(q); t++; } while ((seen.has(key) || recent.has(key)) && t < 6);
         if (seen.has(key)) continue;
-        if (tag) { q.lv = 'nc'; q.q = '<span class="nctag">⭐ Nâng cao</span> ' + q.q; }
+        if (tag) { q.lv = 'nc'; if (!notag) q.q = '<span class="nctag">⭐ Nâng cao</span> ' + q.q; }
         seen.add(key); out.push(q); used[k] = (used[k] || 0) + 1;
       }
     };
@@ -180,18 +180,35 @@
     if (tab === 'thang') list = S.months.map((m) => `<a class="tcard" href="#/thi/${sid}/m${m.thang}"><b>Tháng ${m.thang}</b><span class="muted small">Tuần ${m.tuan[0]}–${m.tuan[1]} · ${range(m.bai)}</span><span class="meta">${S.lop <= 2 ? '15 câu + 1 tự luận · 30 phút' : '20 câu + 1 tự luận · 35 phút'} ${best(sid + ':m' + m.thang)}</span></a>`).join('');
     if (tab === 'ky') list = S.terms.map((t) => `<a class="tcard" href="#/thi/${sid}/${t.id}"><b>${t.ten}</b><span class="muted small">${range(t.bai)}</span><span class="meta">${S.lop >= 6 ? '20 câu + 2 tự luận · 60 phút' : S.lop <= 2 ? '15 câu + 2 tự luận · 40 phút' : '20 câu + 2 tự luận · 45 phút'} ${best(sid + ':' + t.id)}</span></a>`).join('');
     app.innerHTML = crumb(S, `Kiểm tra · ${S.mon} ${S.lop}`) + `<h1>📝 Kiểm tra · ${S.mon} ${S.lop}</h1><p class="muted">Mỗi lần làm là một đề mới. Phân phối bài theo tuần/tháng là tham khảo, thầy cô/phụ huynh có thể điều chỉnh.</p>
-      <div class="tabs"><a href="#/kiem-tra/${sid}/tuan" class="${tab === 'tuan' ? 'on' : ''}">Theo tuần</a><a href="#/kiem-tra/${sid}/thang" class="${tab === 'thang' ? 'on' : ''}">Theo tháng</a><a href="#/kiem-tra/${sid}/ky" class="${tab === 'ky' ? 'on' : ''}">Giữa kỳ – Cuối kỳ</a></div><div class="tgrid">${list}</div>`;
+      <div class="tabs"><a href="#/kiem-tra/${sid}/tuan" class="${tab === 'tuan' ? 'on' : ''}">Theo tuần</a><a href="#/kiem-tra/${sid}/thang" class="${tab === 'thang' ? 'on' : ''}">Theo tháng</a><a href="#/kiem-tra/${sid}/ky" class="${tab === 'ky' ? 'on' : ''}">Giữa kỳ – Cuối kỳ</a>${ncGens(S).length ? `<a href="#/nang-cao/${sid}">⭐ Đề nâng cao*</a>` : ''}</div><div class="tgrid">${list}</div>`;
   }
   function takeTest(S, code) {
     const sid = S.id; let cfg; const big = S.lop >= 6;
-    if (code[0] === 'w') { const w = S.weeks.find((x) => x.tuan === +code.slice(1)); if (!w) return testList(S); cfg = { title: `Kiểm tra tuần ${w.tuan}`, gens: [...new Set(w.bai.flatMap((b) => b.gens))], n: S.lop <= 2 ? 10 : 15, min: S.lop <= 2 ? 15 : 20, essays: 0, hk: w.bai[0].hk };
+    if (/^nc\d+$/.test(code)) { const k = +code.slice(2), hk = k <= 3 ? 1 : k <= 6 ? 2 : 0; cfg = { title: `Đề nâng cao* số ${k}`, gens: [], n: S.lop <= 2 ? 10 : 15, min: S.lop <= 2 ? 30 : S.lop <= 5 ? 45 : 60, essays: 0, hk, nc: true };
+    } else if (code[0] === 'w') { const w = S.weeks.find((x) => x.tuan === +code.slice(1)); if (!w) return testList(S); cfg = { title: `Kiểm tra tuần ${w.tuan}`, gens: [...new Set(w.bai.flatMap((b) => b.gens))], n: S.lop <= 2 ? 10 : 15, min: S.lop <= 2 ? 15 : 20, essays: 0, hk: w.bai[0].hk };
     } else if (code[0] === 'm') { const m = S.months.find((x) => x.thang === +code.slice(1)); if (!m) return testList(S); cfg = { title: `Kiểm tra tháng ${m.thang}`, gens: [...new Set(m.bai.flatMap((b) => b.gens))], n: S.lop <= 2 ? 15 : 20, min: S.lop <= 2 ? 30 : 35, essays: 1, hk: m.bai[m.bai.length - 1].hk };
     } else { const t = S.terms.find((x) => x.id === code); if (!t) return testList(S); cfg = { title: t.ten, gens: [...new Set(t.bai.flatMap((b) => b.gens))], n: S.lop <= 2 ? 15 : 20, min: big ? 60 : S.lop <= 2 ? 40 : 45, essays: 2, hk: t.essay }; }
     const pool = (S.essays && (S.essays[cfg.hk] || S.essays[1])) || [];
     const es = shuffle(pool).slice(0, cfg.essays).map((f) => f());
-    const qs = build(S, cfg.gens, cfg.n, code === 'ck2' ? 0 : cfg.hk, advCount(S, code[0] === 'w' ? 'w' : code[0] === 'm' ? 'm' : 't')).concat(es);
-    app.innerHTML = crumb(S, `<a href="#/kiem-tra/${sid}">Kiểm tra</a> › ${cfg.title}`) + `<h1>${cfg.title} <small class="muted">· ${S.mon} ${S.lop}</small></h1><div id="ebox"></div>`;
-    active = PLT.Q.exam($('#ebox'), { id: sid + ':' + code, subject: S.id, title: `${cfg.title} – ${S.mon} ${S.lop}`, questions: qs, minutes: cfg.min, again: () => takeTest(S, code), back: () => (location.hash = `#/kiem-tra/${sid}`) });
+    const qs = cfg.nc ? build(S, [], cfg.n, cfg.hk, cfg.n, true) : build(S, cfg.gens, cfg.n, code === 'ck2' ? 0 : cfg.hk, advCount(S, code[0] === 'w' ? 'w' : code[0] === 'm' ? 'm' : 't')).concat(es);
+    const backTo = cfg.nc ? 'nang-cao' : 'kiem-tra';
+    app.innerHTML = crumb(S, `<a href="#/${backTo}/${sid}">${cfg.nc ? 'Nâng cao*' : 'Kiểm tra'}</a> › ${cfg.title}`) + `<h1>${cfg.title} <small class="muted">· ${S.mon} ${S.lop}</small></h1><div id="ebox"></div>`;
+    active = PLT.Q.exam($('#ebox'), { id: sid + ':' + code, subject: S.id, title: `${cfg.title} – ${S.mon} ${S.lop}`, questions: qs, minutes: cfg.min, again: () => takeTest(S, code), back: () => (location.hash = `#/${backTo}/${sid}`) });
+  }
+
+  /* ---------------- Nâng cao* (bồi dưỡng học sinh giỏi) ---------------- */
+  const NC_MON = ['Toán', 'Tiếng Việt', 'Tiếng Anh'];
+  function advanced(S) {
+    const sid = S.id, h1 = ncGens(S, 1).length, h2 = ncGens(S, 2).length;
+    if (!h1 && !h2) { app.innerHTML = crumb(S, 'Nâng cao*') + `<div class="card">Môn này chưa có phần nâng cao. Hiện đã có cho: ${NC_MON.join(', ')} (tiểu học) và Toán các lớp.</div>`; return; }
+    const n = S.lop <= 2 ? 10 : 15, min = S.lop <= 2 ? 30 : S.lop <= 5 ? 45 : 60;
+    const best = (id) => { const r = PLT.data.tests.filter((x) => x.id === id); return r.length ? `<span class="pill">Cao nhất ${String(Math.max(...r.map((x) => x.diem))).replace('.', ',')}đ</span>` : ''; };
+    const de = [1, 2, 3, 4, 5, 6, 7, 8, 9].filter((k) => (k <= 3 ? h1 : k <= 6 ? h2 : 1)).map((k) => `<a class="tcard ncard" href="#/thi/${sid}/nc${k}"><b>⭐ Đề nâng cao* số ${k}</b><span class="muted small">${k <= 3 ? 'Kiến thức học kì 1' : k <= 6 ? 'Kiến thức học kì 2' : 'Kiến thức cả năm'} · toàn câu suy luận, nâng cao</span><span class="meta">${n} câu · ${min} phút ${best(sid + ':nc' + k)}</span></a>`).join('');
+    app.innerHTML = crumb(S, 'Nâng cao*') + `<h1>⭐ Nâng cao* <small class="muted">· ${S.mon} ${S.lop}</small></h1>
+      <div class="card ncintro"><b>Dành cho học sinh khá, giỏi và ôn thi học sinh giỏi.</b> Các câu hỏi đòi hỏi suy luận nhiều bước; làm xong bấm xem đáp án để đọc lời giải chi tiết.</div>
+      <div class="card row wrap"><label>Luyện tập nâng cao <select class="sel" id="ncs">${h1 ? '<option value="1">Học kì 1</option>' : ''}${h2 ? '<option value="2">Học kì 2</option>' : ''}<option value="0">Cả năm</option></select></label><button class="btn" id="ncgo">⭐ Bắt đầu (10 câu)</button></div>
+      <div id="ncbox"></div><h2>📝 Đề nâng cao* (tính giờ)</h2><div class="tgrid">${de}</div>`;
+    $('#ncgo').onclick = () => { const hk = +$('#ncs').value; const box = $('#ncbox'); box.innerHTML = '<div class="card"><div id="pbox"></div></div>'; const go = () => PLT.Q.practice($('#pbox', box), build(S, [], 10, hk, 10, true), { again: go }); go(); box.scrollIntoView({ behavior: 'smooth' }); };
   }
 
   /* ---------------- Tiến độ ---------------- */
@@ -231,10 +248,11 @@
 
   /* ---------------- Chọn môn (khi chưa chọn môn cho lớp) ---------------- */
   function subjGrid(l, mode) {
-    return `<div class="subjects">${BOOKS[l].map((m) => { const cid = cidOf(l, m), has = !!cid; return `<${has ? `a href="#/${mode}/${cid}"` : 'div'} class="subj${has ? '' : ' soon'}"><div class="si">${ICON[m] || '📘'}</div><b>${m} ${l}</b><span class="muted small">${has ? { hoc: 'Học bài, lý thuyết, bài tập', 'on-tap': 'Ôn tập câu hỏi ngẫu nhiên', 'kiem-tra': 'Đề tuần, tháng, học kì' }[mode] : 'Đang biên soạn – sắp có'}</span></${has ? 'a' : 'div'}>`; }).join('')}</div>`;
+    const list = mode === 'nang-cao' ? BOOKS[l].filter((m) => (l <= 5 ? NC_MON : ['Toán']).includes(m)) : BOOKS[l];
+    return `<div class="subjects">${list.map((m) => { const cid = cidOf(l, m), has = !!cid; return `<${has ? `a href="#/${mode}/${cid}"` : 'div'} class="subj${has ? '' : ' soon'}"><div class="si">${ICON[m] || '📘'}</div><b>${m} ${l}</b><span class="muted small">${has ? { hoc: 'Học bài, lý thuyết, bài tập', 'on-tap': 'Ôn tập câu hỏi ngẫu nhiên', 'kiem-tra': 'Đề tuần, tháng, học kì', 'nang-cao': 'Bài khó, đề nâng cao, bồi dưỡng HSG' }[mode] : 'Đang biên soạn – sắp có'}</span></${has ? 'a' : 'div'}>`; }).join('')}</div>`;
   }
   function pickSubject(mode) {
-    const l = curLop(), t = { hoc: '📚 Học bài', 'on-tap': '🎯 Ôn tập', 'kiem-tra': '📝 Kiểm tra' }[mode];
+    const l = curLop(), t = { hoc: '📚 Học bài', 'on-tap': '🎯 Ôn tập', 'kiem-tra': '📝 Kiểm tra', 'nang-cao': '⭐ Nâng cao*' }[mode];
     app.innerHTML = `<div class="crumb"><a href="#/">Trang chủ</a> › <a href="#/lop/${l}">Lớp ${l}</a> › ${t.slice(2)}</div><h1>${t} · Lớp ${l}</h1><p class="muted">Chọn môn học:</p>${subjGrid(l, mode)}`;
     window.scrollTo(0, 0);
   }
@@ -246,8 +264,8 @@
     const my = ++seq;
     const p = (location.hash.replace(/^#\/?/, '') || '').split('/').map(decodeURIComponent);
     const lb = $('.lopbox'); if (lb) lb.classList.toggle('on', p[0] === 'lop');
-    document.querySelectorAll('.nav a').forEach((a) => a.classList.toggle('on', (a.dataset.r || '') === (p[0] === 'thi' ? 'kiem-tra' : p[0] || '')));
-    const needS = ['hoc', 'on-tap', 'kiem-tra', 'thi'].includes(p[0]);
+    markNav();
+    const needS = ['hoc', 'on-tap', 'kiem-tra', 'thi', 'nang-cao'].includes(p[0]);
     let S = null;
     if (needS && !p[1]) { pickSubject(p[0] === 'thi' ? 'kiem-tra' : p[0]); return; }
     if (needS) {
@@ -263,16 +281,23 @@
       case 'on-tap': quiz(S); break;
       case 'kiem-tra': testList(S, p[2]); break;
       case 'thi': takeTest(S, p[2]); break;
+      case 'nang-cao': advanced(S); break;
       case 'tien-do': await progress(); break;
       default: home();
     }
     window.scrollTo(0, 0);
   }
+  function markNav() {
+    const p = (location.hash.replace(/^#\/?/, '') || '').split('/');
+    const r = p[0] === 'thi' ? (/^nc/.test(p[2] || '') ? 'nang-cao' : 'kiem-tra') : p[0] || '';
+    document.querySelectorAll('.nav a').forEach((a) => a.classList.toggle('on', (a.dataset.r || '') === r));
+  }
   function syncLop() {
     const l = curLop(), s = sidOf(l);
-    $('#nav').innerHTML = `<a href="#/" data-r="" title="Trang chủ">🏠 <span>Trang chủ</span></a><a href="${modePath('hoc', l)}" data-r="hoc" title="Học bài">📚 <span>Học bài</span></a><a href="${modePath('on-tap', l)}" data-r="on-tap" title="Ôn tập">🎯 <span>Ôn tập</span></a><a href="${modePath('kiem-tra', l)}" data-r="kiem-tra" title="Kiểm tra">📝 <span>Kiểm tra</span></a><a href="#/tien-do" data-r="tien-do" title="Tiến độ">📈 <span>Tiến độ</span></a>`;
+    $('#nav').innerHTML = `<a href="#/" data-r="" title="Trang chủ">🏠 <span>Trang chủ</span></a><a href="${modePath('hoc', l)}" data-r="hoc" title="Học bài">📚 <span>Học bài</span></a><a href="${modePath('on-tap', l)}" data-r="on-tap" title="Ôn tập">🎯 <span>Ôn tập</span></a><a href="${modePath('kiem-tra', l)}" data-r="kiem-tra" title="Kiểm tra">📝 <span>Kiểm tra</span></a><a href="${modePath('nang-cao', l)}" data-r="nang-cao" title="Nâng cao* – bồi dưỡng học sinh giỏi">⭐ <span>Nâng cao*</span></a><a href="#/tien-do" data-r="tien-do" title="Tiến độ">📈 <span>Tiến độ</span></a>`;
     const sel = $('#lopSel'); if (sel) sel.value = l;
     const ic = $('#lopIc'); if (ic) ic.href = `#/lop/${l}`;
+    markNav();
   }
   function nav() {
     const top = $('.top .in');

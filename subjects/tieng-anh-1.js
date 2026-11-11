@@ -1,5 +1,32 @@
 /* Tiếng Anh 1 – Global Success. Tên Unit, âm, từ vựng, mẫu câu theo bảng Book map của SGK; câu hỏi do PLT-Edu soạn. */
 PLT.KB.eng({
+  nc: { 1: `? Odd one out (Từ nào khác loại?): | apple | cat | dog | bird
+? Odd one out: | red | ball | doll | kite
+? Odd one out: | pen | one | two | three
+? Which letter comes next? A, B, C, ... | D | E | F | G
+? Which word starts with letter "b"? | ball | doll | cat | fish
+? "What colour is it?" – It's ... (quả chuối) | yellow | blue | black | pink
+? Choose the correct answer: "How old are you?" | I'm six. | I'm fine. | It's a cat. | Goodbye.
++ "Hello" is used to greet someone. (Chào hỏi)
+- "Goodbye" is used when we meet someone. (Gặp nhau)
+= Hello = Xin chào
+= Goodbye = Tạm biệt
+= Thank you = Cảm ơn
+_ Hello, I'm [Mai]. (Điền tên: Mai)
+> I > am > six`, 2: `? Odd one out: | milk | mother | father | sister
+? Odd one out: | run | bed | table | chair
+? Which one can fly? | bird | fish | cow | pig
+? Which one can swim? | fish | chair | ball | book
+? "How many apples?" – (3 quả) | Three. | Two. | Five. | One.
+? Choose the correct answer: "Is it a dog?" | Yes, it is. | Yes, I am. | No, I'm not. | It's a pen.
++ Two plus three is five.
+- A cat has two legs.
+= mother = mẹ
+= father = bố
+= brother = anh/em trai
+= sister = chị/em gái
+_ I can [see] with my eyes. (nhìn)
+> This > is > my > mother` },
   id: 'tieng-anh-1', lop: 1,
   units: [
     { ten: 'In the school playground', ph: 'b', v: 'ball=quả bóng; bike=xe đạp; book=quyển sách; Bill=Bill (tên bạn nam); bye=tạm biệt', s: ['Hello, I\'m [Bill].', 'Goodbye, [Bill].', 'Hi, I\'m Mai.'] },

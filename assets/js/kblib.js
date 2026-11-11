@@ -80,6 +80,10 @@
     return a;
   };
   KB.gen = (B) => { const a = avail(B); return () => MAKERS[pick(a)](B); };
+  // Ngân hàng câu nâng cao (*): { 1: 'ngân hàng HK1', 2: 'ngân hàng HK2' } → các dạng nc1_…, nc2_…
+  KB.ncGens = (nc) => { const g = {}; [1, 2].forEach((hk) => { const src = (nc || {})[hk]; if (!src) return; const NB = KB.parse(src); if (!avail(NB).length) return; g['nc' + hk + '_k'] = KB.gen(NB);
+    if (NB.mc.length >= 3 && NB.tf.length + NB.pair.length + NB.fill.length + NB.ord.length + NB.grp.length >= 3) g['nc' + hk + '_kb'] = KB.gen(Object.assign({}, NB, { mc: [] }));
+    if (NB.mc.length >= 3) g['nc' + hk + '_km'] = KB.gen(Object.assign({}, NB, { tf: [], pair: [], fill: [], ord: [], grp: [] })); }); return g; };
 
   // Tự luận ngắn: [đề, [ý chính/từ khoá], lời giải mẫu, số câu tối thiểu]
   KB.essays = (list, max) => (list || []).map(([q, kw, dapan, minCau]) => () => Object.assign(essay(q, max || 2, dapan || 'Trình bày đủ các ý: ' + (kw || []).join('; ') + '.', (kw || []).length && kw.every((k) => /^-?[\d\s]+(,\d+)?$/.test(String(k).trim())) ? kw.map((k) => PLT.U.parseNum(String(k))) : []), { kw: kw || [], minCau: minCau || 3, ph: 'Viết câu trả lời của em (vài câu, đủ ý)…' }));
@@ -166,7 +170,7 @@
       fns.miss = () => { const cand = u.V.filter(([w]) => /^[a-z]{3,}$/i.test(w)); if (!cand.length) return mc(`<b>${u.V[0][1]}</b> trong tiếng Anh là:`, u.V[0][0], shuffle(words.filter((w) => w !== u.V[0][0])).slice(0, 3)); const [w, m] = pick(cand); const k = r(0, w.length - 1); const ch = w[k]; const letters = shuffle('abcdefghijklmnopqrstuvwxyz'.split('').filter((c) => c !== ch.toLowerCase())).slice(0, 3); return mc(`Điền chữ cái còn thiếu: <b style="letter-spacing:3px">${w.slice(0, k)}_${w.slice(k + 1)}</b> (${m})`, ch, letters, `Từ đúng: ${w} — ${m}.`); };
       return { hk: u.hk || (i < def.units.length / 2 ? 1 : 2), ten: u.ten, nhan0: 'Unit ' + (i + 1), lt: [`<b>Từ vựng:</b> ${u.V.map(([w, m]) => `<b>${w}</b> (${m})`).join(', ')}.`].concat(ph ? [`<b>Âm/chữ cái:</b> ${ph}`] : []).concat(u.lt || []).concat((u.s || []).length ? [`<b>Mẫu câu:</b> ${(u.s || []).map((t) => '<i>' + clean(t) + '</i>').join(' · ')}`] : []), bai: (u.bai || (def.lop >= 6 ? ['Vocabulary – Từ vựng', 'Grammar – Ngữ pháp', 'Skills & Review – Kĩ năng, ôn tập'] : ['Lesson 1 – Từ vựng', 'Lesson 2 – Mẫu câu', 'Lesson 3 – Âm và chữ cái'])).map((b) => '*' + b), on: u.on, q: lines.join('\n'), fns };
     });
-    return KB.build({ id: def.id, lop: def.lop, mon: 'Tiếng Anh', icon: '🔤', bo: 'Global Success', so: false, topics, essays: def.essays, essayMax: def.essayMax });
+    return KB.build({ id: def.id, lop: def.lop, mon: 'Tiếng Anh', icon: '🔤', bo: 'Global Success', so: false, topics, essays: def.essays, essayMax: def.essayMax, nc: def.nc });
   };
 
   /* def: { id, lop, mon, icon, nhan ('Chủ đề'|'Unit'|'Chương'|'Bài'), topics: [{ hk, ten, lt (mảng ý hoặc HTML), bai: [tên bài | [so, tên]], q: chuỗi ngân hàng, on: 'Ôn tập…' }], essays: {1:[…], 2:[…]}, so: false (không đánh số bài); tên bài bắt đầu bằng * thì không đánh số } */
@@ -184,6 +188,8 @@
       const lt = Array.isArray(t.lt) ? `<ul>${t.lt.map((x) => `<li>${x}</li>`).join('')}</ul>` : t.lt || '';
       return { id, hk: t.hk, ten: t.ten, nhan: t.nhan0 ? t.nhan0 : t.nhan || (def.nhan || 'Chủ đề') + ' ' + (t.so || id), widgets: [], lt, review: !keys.length, bai };
     });
+    // Ngân hàng câu nâng cao (*): def.nc = { 1: 'ngân hàng HK1', 2: 'ngân hàng HK2' } → các dạng nc1_…, nc2_…
+    Object.assign(gens, KB.ncGens(def.nc));
     const essays = { 1: KB.essays((def.essays || {})[1], def.essayMax), 2: KB.essays((def.essays || {})[2], def.essayMax) };
     const d = { id: def.id, lop: def.lop, mon: def.mon, icon: def.icon || '📘', topics, gens, essays }; if (def.bo) d.bo = def.bo;
     return PLT.buildCourse(d);

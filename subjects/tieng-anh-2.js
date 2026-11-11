@@ -1,5 +1,32 @@
 /* Tiếng Anh 2 – Global Success. Tên Unit, âm, từ vựng, mẫu câu theo Book map SGK; câu hỏi do PLT-Edu soạn. */
 PLT.KB.eng({
+  nc: { 1: `? Odd one out: | kitchen | lemon | orange | banana
+? Odd one out: | jump | ten | seven | nine
+? Choose the correct word: "There ___ a cat in the box." | is | are | am | be
+? Choose the correct word: "I ___ a ball." | have | has | is | am
+? What's missing? "s_n" (mặt trời) | u | a | o | i
+? "Where is the teddy bear?" – It's ___ the bed. (trên) | on | at | of | to
++ "Goodnight" is said at night before going to bed.
+- "Ten" comes before "nine".
+= on = trên
+= in = trong
+= under = dưới
+_ I like [noodles|rice]. (Điền món em thích: mì hoặc cơm)
+> I > can > ride > a > bike
+> Look > at > the > kite`, 2: `? Odd one out: | ship | shirt | shorts | shoes
+? Odd one out: | farmer | cow | goat | horse
+? Choose the correct answer: "What's the weather like?" | It's sunny. | It's a pen. | I'm fine. | Yes, it is.
+? Which word has the sound /ʃ/ like "shop"? | fish | fun | five | fan
+? "Can you swim?" – ___ (Có) | Yes, I can. | Yes, I do. | Yes, I am. | Yes, it is.
+? Choose the correct word: "She ___ a doctor." | is | are | am | have
++ There are seven days in a week.
+- A farmer works in a hospital.
+= doctor = bác sĩ
+= teacher = giáo viên
+= farmer = nông dân
+= cook = đầu bếp
+_ It's [hot] in summer. (nóng)
+> What's > your > name` },
   id: 'tieng-anh-2', lop: 2,
   units: [
     { ten: 'At my birthday party', ph: 'p', v: 'pasta=mì Ý; popcorn=bỏng ngô; pizza=bánh pizza; party=bữa tiệc', s: ['The [popcorn] is yummy.', 'The [pizza] is yummy.', 'The pasta is yummy.'] },

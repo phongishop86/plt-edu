@@ -5,7 +5,39 @@
   const G = { ct1: TV.chinhta(['c/k', 'g/gh', 'ng/ngh', 'ch/tr', 'iu/ưu']), ct2: TV.chinhta(['s/x', 'r/d/gi', 'l/n', 'hỏi/ngã', 'an/ang']), tuloai: TV.tuloai(3), kieucau: TV.kieucau(3), daucau: TV.daucau, tunghia: TV.tunghia, bienphap: TV.bienphap(3), viethoa: TV.vietHoa, dochieu: TV.dochieu(3) };
   const LT = (s) => `<ul>${s.map((x) => `<li>${x}</li>`).join('')}</ul>`;
   const ESSAY = { 1: [TV.vietdoan(3, [["Kể lại một trải nghiệm đáng nhớ trong kì nghỉ hè của em.", ["em", "hè"]], ["Kể về một người thân trong gia đình mà em yêu quý.", ["yêu"]]]), TV.vietdoan(3, [["Nêu các bước làm một món ăn hoặc một đồ chơi em yêu thích.", ["trước", "sau"]], ["Viết thư ngắn hỏi thăm một người bạn hoặc người thân ở xa.", ["thăm"]]])], 2: [TV.vietdoan(3, [["Nêu tình cảm, cảm xúc của em về một cảnh vật thiên nhiên em yêu thích.", ["em", "thích"]], ["Viết đoạn văn giới thiệu về quê hương hoặc nơi em ở.", ["quê"]]]), TV.vietdoan(3, [["Nêu lí do em thích (hoặc không thích) một nhân vật trong câu chuyện đã đọc.", ["nhân vật", "vì"]], ["Kể về việc em đã làm để bảo vệ môi trường, Trái Đất.", ["môi trường"]]])] };
-  TV.build({ id: 'tieng-viet-3', lop: 3, gens: G, essays: ESSAY, topics: [
+  TV.build({ nc: { 1: `? Câu "Trăng tròn như quả bóng." so sánh trăng với: | quả bóng | tròn | như | trăng rằm
+? Trong câu "Những ngôi sao thức ngoài kia / Chẳng bằng mẹ đã thức vì chúng con", tác giả dùng biện pháp: | So sánh (kém) và nhân hoá | Chỉ liệt kê | Điệp từ | Không có biện pháp
+? Từ ngữ chỉ sự so sánh "hơn kém" là: | chẳng bằng | như | giống như | tựa
+? Câu nào là câu cảm? | Ôi, bông hoa đẹp quá! | Hãy giữ trật tự! | Bạn đi đâu đấy? | Em đi học.
+? Câu nào là câu khiến? | Các em hãy trật tự! | Trời đẹp quá! | Hôm nay là thứ Hai. | Ai đang hát thế?
+? Dấu hai chấm trong câu "Mẹ mua cho em: bút, vở, thước kẻ." dùng để: | Báo hiệu phần liệt kê | Báo hiệu lời nói trực tiếp | Kết thúc câu | Ngăn cách chủ ngữ
+? Từ nào có nghĩa giống "tổ quốc"? | đất nước | quê nhà | xóm làng | thành phố
+? Từ nào trái nghĩa với "dũng cảm"? | hèn nhát | gan dạ | anh dũng | can đảm
++ "Bà như quả ngọt chín rồi" là câu có hình ảnh so sánh.
++ Câu khiến thường có các từ: hãy, đừng, chớ, nào, đi.
+- "Ông mặt trời mặc áo giáp đỏ" là câu so sánh.
+_ Công cha như núi [Thái Sơn], nghĩa mẹ như nước trong nguồn chảy ra.
+= So sánh = Trăng tròn như cái đĩa
+= Nhân hoá = Chị gió hát ru cây
+= Câu cảm = Ôi, đẹp quá!
+= Câu khiến = Hãy giữ gìn vệ sinh!
+# Từ chỉ sự vật: dòng sông, ngọn núi, cánh đồng
+# Từ chỉ đặc điểm: trong xanh, sừng sững, mênh mông`, 2: `? Câu "Chú gà trống đứng gáy oai vệ như một vị tướng." có mấy biện pháp tu từ? | 2 (nhân hoá và so sánh) | 1 | 0 | 3
+? "Thương người như thể thương thân" khuyên ta: | Yêu thương người khác như yêu bản thân | Chỉ thương bản thân | Không cần quan tâm ai | Chăm lo sức khoẻ
+? "Tốt gỗ hơn tốt nước sơn" ý nói: | Phẩm chất bên trong quan trọng hơn vẻ ngoài | Gỗ tốt hơn sơn | Nên sơn đồ gỗ | Mua đồ gỗ tốt
+? Bộ phận trả lời câu hỏi "Để làm gì?" trong câu "Em chăm chỉ học tập để trở thành người có ích." là: | để trở thành người có ích | Em | chăm chỉ học tập | người có ích
+? Bộ phận trả lời câu hỏi "Bằng gì?" trong câu "Ngôi nhà được dựng bằng gỗ lim." là: | bằng gỗ lim | Ngôi nhà | được dựng | gỗ
+? Dấu gạch ngang trong đoạn hội thoại dùng để: | Đánh dấu lời nói của nhân vật | Liệt kê | Kết thúc câu | Ngăn cách các vế
+? Từ nào viết đúng chính tả? | dịu dàng | rịu ràng | dịu ràng | giịu dàng
++ "Một cây làm chẳng nên non / Ba cây chụm lại nên hòn núi cao" khuyên ta đoàn kết.
++ Câu hỏi "Khi nào?" dùng để hỏi về thời gian.
+- "Ăn vóc học hay" chỉ khuyên chúng ta ăn thật nhiều.
+_ Không thầy đố mày làm [nên].
+_ Học thầy không tày học [bạn].
+= Ở đâu? = Chỉ địa điểm
+= Khi nào? = Chỉ thời gian
+= Vì sao? = Chỉ nguyên nhân
+= Để làm gì? = Chỉ mục đích` },  id: 'tieng-viet-3', lop: 3, gens: G, essays: ESSAY, topics: [
     { hk: 1, ten: "Những trải nghiệm thú vị", skills: ["ct1", "tuloai", "kieucau", "dochieu"],
       lt: LT(["Từ chỉ sự vật, hoạt động, đặc điểm; câu giới thiệu, câu nêu hoạt động, câu nêu đặc điểm.", "Viết tin nhắn; viết đoạn văn kể lại hoạt động đã làm cùng người thân.", "Chính tả: c/k, g/gh, ng/ngh, ch/tr, v/d."]),
       bai: ["Ngày gặp lại", "Về thăm quê", "Cánh rừng trong nắng", "Lần đầu ra biển", "Nhật kí tập bơi", "Tập nấu ăn", "Mùa hè lấp lánh", "Tạm biệt mùa hè"] },

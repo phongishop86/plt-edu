@@ -1,5 +1,39 @@
 /* Tiếng Anh 4 – Global Success (2 tập, 20 Unit). Câu hỏi do PLT-Edu soạn theo chủ đề, từ vựng, mẫu câu của từng Unit. */
 PLT.KB.eng({
+  nc: { 1: `? Choose the correct answer: "Where are you from?" | I'm from Viet Nam. | I'm Vietnamese from. | I'm ten. | I'm fine.
+? Choose the correct answer: "What nationality are you?" | I'm Vietnamese. | I'm Viet Nam. | I'm from. | Yes, I am.
+? Choose the correct word: "I go to school ___ Monday." | on | in | at | to
+? Choose the correct word: "My birthday is ___ June." | in | on | at | to
+? Choose the correct word: "She ___ English on Tuesday." | has | have | is | are
+? Choose the correct answer: "What can you do?" | I can play the piano. | I can't. | I like music. | Yes, I can.
+? Choose the correct word: "What day ___ it today?" | is | are | do | does
+? Odd one out: | October | Tuesday | Friday | Sunday
++ "The first of May" is a date.
+- We say "in Monday".
+= Japan = Japanese
+= England = English
+= Australia = Australian
+= Viet Nam = Vietnamese
+_ My birthday is on the [fifth|5th] of March. (mùng 5)
+_ He [can] swim but he can't ride a horse.
+> When > is > your > birthday
+> I > can > play > the > guitar`, 2: `? Choose the correct answer: "What did you do yesterday?" | I watered the flowers. | I water the flowers. | I'm watering the flowers. | I will water the flowers.
+? Choose the correct past form of "go": | went | goed | goes | going
+? Choose the correct past form of "play": | played | plaid | playing | plays
+? Choose the correct word: "Where ___ you yesterday?" | were | was | are | did
+? Choose the correct word: "It ___ hot yesterday." | was | were | is | are
+? Choose the correct word: "Mai ___ in the library yesterday." | was | were | is | did
+? Choose the correct answer: "What time is it?" | It's seven o'clock. | It's Monday. | It's sunny. | It's seven years.
+? Choose the correct word: "My father is ___ engineer." | an | a | the | two
++ "Yesterday" is used with the past simple tense.
+- The past form of "have" is "haved".
+= go = went
+= have = had
+= eat = ate
+= see = saw
+_ Yesterday I [watched] TV in the evening. (watch)
+_ What did you [do] last weekend?
+> She > went > to > the > zoo > yesterday` },
   id: 'tieng-anh-4', lop: 4,
   units: [
     { ten: 'My friends', v: 'America=nước Mỹ; Australia=nước Úc; Britain=nước Anh; Japan=Nhật Bản; Malaysia=Ma-lai-xi-a; Singapore=Xinh-ga-po; Thailand=Thái Lan; Viet Nam=Việt Nam', s: ['Where are you from?', 'I\'m from [Viet Nam].', 'What nationality are you?', 'I\'m Vietnamese.'], q: ['? "Where are you from?" có nghĩa là: | Bạn đến từ đâu? | Bạn bao nhiêu tuổi? | Bạn tên gì? | Bạn khoẻ không?'] },
