@@ -1,5 +1,29 @@
 /* Khoa học tự nhiên 8 – KNTT. Chương, bài theo chương trình SGK; câu hỏi do PLT-Edu soạn. */
 PLT.KB.build({
+  nc: { 1: `? Cho 6,5 g Zn (Zn = 65) tác dụng với HCl dư. Thể tích H₂ thu được ở điều kiện chuẩn (24,79 L/mol) là: | 2,479 L | 24,79 L | 1,2395 L | 4,958 L
+? Số mol của 11,2 g Fe (Fe = 56) là: | 0,2 mol | 0,5 mol | 2 mol | 0,1 mol
+? Nồng độ phần trăm của dung dịch chứa 20 g muối trong 180 g nước là: | 10% | 11,1% | 20% | 9%
+? Dung dịch có pH = 3 có môi trường: | Acid | Base | Trung tính | Không xác định
+? Chất làm quỳ tím chuyển xanh là: | NaOH | HCl | NaCl | H₂O
+? Phản ứng giữa acid và base tạo muối và nước gọi là phản ứng: | Trung hoà | Phân huỷ | Thế | Oxi hoá
++ Tăng nhiệt độ thường làm tăng tốc độ phản ứng.
+- Chất xúc tác bị tiêu hao hoàn toàn sau phản ứng.
+= Acid = Làm quỳ tím hoá đỏ
+= Base = Làm quỳ tím hoá xanh
+= Muối = NaCl, CaCO₃
+= Oxide = CO₂, CaO
+_ Nồng độ mol: C<sub>M</sub> = n : [V] (V tính bằng lít)`, 2: `? Áp suất được tính bằng công thức: | p = F/S | p = F·S | p = S/F | p = m·g
+? Một người nặng 500 N đứng trên diện tích tiếp xúc 0,02 m². Áp suất là: | 25 000 Pa | 10 Pa | 1 000 Pa | 2 500 Pa
+? Càng xuống sâu trong nước, áp suất chất lỏng: | Càng tăng | Càng giảm | Không đổi | Bằng 0
+? Đòn bẩy có điểm tựa O, lực tác dụng cách O 2 m, vật cách O 0,5 m. Lực cần dùng so với trọng lượng vật: | Bằng 1/4 | Bằng 4 lần | Bằng nhau | Bằng 1/2
+? Điện trở 10 Ω, hiệu điện thế 5 V thì cường độ dòng điện là: | 0,5 A | 2 A | 50 A | 15 A
+? Hệ cơ quan nào giúp đưa oxygen vào cơ thể? | Hô hấp | Tiêu hoá | Bài tiết | Thần kinh
++ Lực đẩy Archimedes có độ lớn bằng trọng lượng phần chất lỏng bị vật chiếm chỗ.
+- Vật nổi khi lực đẩy Archimedes nhỏ hơn trọng lượng vật.
+= Hồng cầu = Vận chuyển khí
+= Bạch cầu = Bảo vệ cơ thể
+= Tiểu cầu = Đông máu
+_ Định luật Ohm: I = U : [R]` },
   id: 'khtn-8', lop: 8, mon: 'Khoa học tự nhiên', icon: '🔬', nhan: 'Chương', so: false,
   topics: [
     { hk: 1, nhan: 'Mở đầu – Chương I', ten: 'Phản ứng hoá học', bai: ['Bài 1. Sử dụng một số hoá chất, thiết bị cơ bản trong phòng thí nghiệm', 'Bài 2. Phản ứng hoá học', 'Bài 3. Mol và tỉ khối chất khí', 'Bài 4. Dung dịch và nồng độ', 'Bài 5. Định luật bảo toàn khối lượng và phương trình hoá học', 'Bài 6. Tính theo phương trình hoá học', 'Bài 7. Tốc độ phản ứng và chất xúc tác'],

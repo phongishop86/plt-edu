@@ -2,6 +2,34 @@
 (function () {
   const TV = PLT.TV;
   PLT.KB.build({
+  nc: { 1: `? Thơ Đường luật thất ngôn bát cú gồm: | 8 câu, mỗi câu 7 chữ | 4 câu, mỗi câu 7 chữ | 8 câu, mỗi câu 5 chữ | Không giới hạn
+? Phần "đề" trong bài thơ thất ngôn bát cú gồm: | Câu 1 và 2 | Câu 3 và 4 | Câu 5 và 6 | Câu 7 và 8
+? Hai câu thực và hai câu luận trong thơ thất ngôn bát cú thường: | Đối nhau | Gieo vần trắc | Không có quy định | Là câu hỏi
+? Từ tượng hình là từ: | Gợi tả hình ảnh, dáng vẻ, trạng thái | Mô phỏng âm thanh | Chỉ số lượng | Chỉ thời gian
+? Từ "lom khom" là: | Từ tượng hình | Từ tượng thanh | Từ Hán Việt | Số từ
+? Biện pháp đảo ngữ trong "Lom khom dưới núi tiều vài chú" có tác dụng: | Nhấn mạnh dáng vẻ, gợi sự thưa thớt, vắng vẻ | Gây cười | Liệt kê | So sánh
+? Trợ từ trong câu "Chính bạn ấy đã giúp tôi." là: | Chính | bạn ấy | đã | giúp
++ Thán từ là những từ dùng để bộc lộ cảm xúc hoặc gọi đáp.
++ Truyện cười dùng tiếng cười để phê phán thói hư tật xấu.
+- Câu thực và câu luận trong thơ Đường không cần đối.
+= Đề = Câu 1, 2
+= Thực = Câu 3, 4
+= Luận = Câu 5, 6
+= Kết = Câu 7, 8
+# Từ tượng thanh: róc rách, ầm ầm, lộp độp
+# Từ tượng hình: lom khom, lác đác, gập ghềnh`, 2: `? Câu "Bạn có thể đóng cửa giúp mình được không?" là câu nghi vấn dùng để: | Cầu khiến (nhờ vả) | Hỏi thông tin | Phủ định | Bộc lộ cảm xúc
+? Nghĩa tường minh là: | Nghĩa được diễn đạt trực tiếp bằng từ ngữ trong câu | Nghĩa được suy ra | Nghĩa bóng | Nghĩa chuyển
+? Hàm ý là: | Phần thông báo không được nói trực tiếp mà người nghe phải suy ra | Nghĩa của từ trong từ điển | Lời nói trực tiếp | Lời dẫn gián tiếp
+? Đoạn văn diễn dịch là đoạn: | Câu chủ đề đứng đầu đoạn | Câu chủ đề đứng cuối đoạn | Không có câu chủ đề | Câu chủ đề ở giữa
+? Đoạn văn quy nạp là đoạn: | Câu chủ đề đứng cuối đoạn | Câu chủ đề đứng đầu đoạn | Không có câu chủ đề | Mọi câu đều là câu chủ đề
+? Biện pháp tu từ trong "Thuyền về có nhớ bến chăng / Bến thì một dạ khăng khăng đợi thuyền" là: | Ẩn dụ | Hoán dụ | So sánh | Nói quá
++ Câu phủ định có các từ: không, chẳng, chưa, đâu có.
+- Đoạn văn song song là đoạn có câu chủ đề ở đầu và cuối.
+= Câu nghi vấn = Dùng để hỏi
+= Câu cầu khiến = Ra lệnh, đề nghị
+= Câu cảm thán = Bộc lộ cảm xúc
+= Câu kể = Kể, thông báo, nhận định
+_ Đoạn văn có câu chủ đề ở cả đầu và cuối đoạn gọi là đoạn văn [phối hợp|tổng – phân – hợp].` },
     id: 'ngu-van-8', lop: 8, mon: 'Ngữ văn', icon: '📖', nhan: 'Bài', so: false, essayMax: 2,
     topics: [
       { hk: 1, ten: 'Câu chuyện của lịch sử', bai: ['Lá cờ thêu sáu chữ vàng (Nguyễn Huy Tưởng)', 'Quang Trung đại phá quân Thanh (trích Hoàng Lê nhất thống chí – Ngô gia văn phái)', 'Ta đi tới (Tố Hữu)', 'Thực hành tiếng Việt: Từ tượng hình, từ tượng thanh', 'Viết: Kể lại một chuyến đi tham quan di tích lịch sử, văn hoá', 'Nói và nghe: Giới thiệu một cuốn truyện lịch sử'],

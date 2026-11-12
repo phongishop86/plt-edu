@@ -1,5 +1,30 @@
 /* Tiếng Anh 11 – Global Success (10 Unit). Từ vựng, ngữ pháp theo Book map SGK; câu hỏi do PLT-Edu soạn. */
 PLT.KB.eng({
+  nc: { 1: `? Choose the correct word: "Young people ___ to live longer today than 100 years ago." | are expected | expect | are expecting | expected to
+? Choose the correct word: "I can't stand ___ in a long queue." | waiting | to waiting | wait | waited
+? Choose the correct word: "There is a big ___ gap between parents and teenagers." | generation | generate | generous | general
+? Choose the correct word: "He is the person ___ I told you about." | who | which | whose | where
+? Choose the correct word: "Having finished his homework, ___." | he went out | went out | his mother let him go out | going out
++ A participle clause should have the same subject as the main clause.
+- "Can't stand" is followed by "to + V" only.
+= generation gap = khoảng cách thế hệ
+= life expectancy = tuổi thọ trung bình
+= healthy lifestyle = lối sống lành mạnh
+= cities of the future = thành phố tương lai
+_ It is important [to] eat healthily.
+> She > avoided > answering > the > question`, 2: `? Choose the correct word: "If I had studied harder, I ___ the exam." | would have passed | would pass | passed | will pass
+? Choose the correct word: "The heritage site ___ by UNESCO in 1993." | was recognised | recognised | has recognised | is recognising
+? Choose the correct word: "She denied ___ the vase." | breaking | to break | break | broke
+? Choose the correct word: "It is the first time I ___ such a beautiful place." | have seen | saw | see | had see
+? Choose the correct word: "Global warming is caused ___ greenhouse gases." | by | from | of | with
++ The third conditional talks about unreal situations in the past.
+- "Deny" is followed by "to + V".
+= global warming = nóng lên toàn cầu
+= heritage = di sản
+= greenhouse gas = khí nhà kính
+= renewable = tái tạo
+_ If it [had] not rained, we would have gone out.
+> Hue > Monuments > were > recognised > by > UNESCO` },
   id: 'tieng-anh-11', lop: 11,
   units: [
     { ten: 'A long and healthy life', v: 'life expectancy=tuổi thọ trung bình; balanced diet=chế độ ăn cân bằng; work out=tập thể dục; immune system=hệ miễn dịch; nutrient=chất dinh dưỡng; disease=bệnh tật; fitness=sự khoẻ mạnh; longevity=sự trường thọ', s: ['I [have exercised] (exercise) every day since last month.', 'She [started] (start) jogging two years ago.', 'He [has never smoked] (never smoke).'],

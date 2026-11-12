@@ -197,10 +197,10 @@
   }
 
   /* ---------------- Nâng cao* (bồi dưỡng học sinh giỏi) ---------------- */
-  const NC_MON = ['Toán', 'Tiếng Việt', 'Tiếng Anh'];
+  const NC_MON = ['Toán', 'Tiếng Việt', 'Ngữ văn', 'Tiếng Anh', 'Khoa học tự nhiên', 'Vật lí', 'Hoá học', 'Sinh học'];
   function advanced(S) {
     const sid = S.id, h1 = ncGens(S, 1).length, h2 = ncGens(S, 2).length;
-    if (!h1 && !h2) { app.innerHTML = crumb(S, 'Nâng cao*') + `<div class="card">Môn này chưa có phần nâng cao. Hiện đã có cho: ${NC_MON.join(', ')} (tiểu học) và Toán các lớp.</div>`; return; }
+    if (!h1 && !h2) { app.innerHTML = crumb(S, 'Nâng cao*') + `<div class="card">Môn này chưa có phần nâng cao. Hiện đã có cho: ${NC_MON.join(', ')}.</div>`; return; }
     const n = S.lop <= 2 ? 10 : 15, min = S.lop <= 2 ? 30 : S.lop <= 5 ? 45 : 60;
     const best = (id) => { const r = PLT.data.tests.filter((x) => x.id === id); return r.length ? `<span class="pill">Cao nhất ${String(Math.max(...r.map((x) => x.diem))).replace('.', ',')}đ</span>` : ''; };
     const de = [1, 2, 3, 4, 5, 6, 7, 8, 9].filter((k) => (k <= 3 ? h1 : k <= 6 ? h2 : 1)).map((k) => `<a class="tcard ncard" href="#/thi/${sid}/nc${k}"><b>⭐ Đề nâng cao* số ${k}</b><span class="muted small">${k <= 3 ? 'Kiến thức học kì 1' : k <= 6 ? 'Kiến thức học kì 2' : 'Kiến thức cả năm'} · toàn câu suy luận, nâng cao</span><span class="meta">${n} câu · ${min} phút ${best(sid + ':nc' + k)}</span></a>`).join('');
@@ -248,7 +248,7 @@
 
   /* ---------------- Chọn môn (khi chưa chọn môn cho lớp) ---------------- */
   function subjGrid(l, mode) {
-    const list = mode === 'nang-cao' ? BOOKS[l].filter((m) => (l <= 5 ? NC_MON : ['Toán']).includes(m)) : BOOKS[l];
+    const list = mode === 'nang-cao' ? BOOKS[l].filter((m) => NC_MON.includes(m)) : BOOKS[l];
     return `<div class="subjects">${list.map((m) => { const cid = cidOf(l, m), has = !!cid; return `<${has ? `a href="#/${mode}/${cid}"` : 'div'} class="subj${has ? '' : ' soon'}"><div class="si">${ICON[m] || '📘'}</div><b>${m} ${l}</b><span class="muted small">${has ? { hoc: 'Học bài, lý thuyết, bài tập', 'on-tap': 'Ôn tập câu hỏi ngẫu nhiên', 'kiem-tra': 'Đề tuần, tháng, học kì', 'nang-cao': 'Bài khó, đề nâng cao, bồi dưỡng HSG' }[mode] : 'Đang biên soạn – sắp có'}</span></${has ? 'a' : 'div'}>`; }).join('')}</div>`;
   }
   function pickSubject(mode) {

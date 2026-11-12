@@ -2,6 +2,30 @@
 (function () {
   const TV = PLT.TV;
   PLT.KB.build({
+  nc: { 1: `? Truyện truyền kì có đặc điểm nổi bật: | Kết hợp yếu tố hiện thực và yếu tố kì ảo | Hoàn toàn hiện thực | Chỉ có yếu tố hài hước | Viết bằng thơ
+? "Chuyện người con gái Nam Xương" của Nguyễn Dữ trích từ tác phẩm: | Truyền kì mạn lục | Hoàng Lê nhất thống chí | Truyện Kiều | Lục Vân Tiên
+? Truyện thơ Nôm "Truyện Kiều" được viết theo thể: | Lục bát | Thất ngôn bát cú | Song thất lục bát | Tự do
+? Điển cố là: | Sự việc, câu chữ trong sách xưa được dẫn ra để nói điều tương tự | Từ mới | Từ địa phương | Thành ngữ hiện đại
+? Câu "Làn thu thuỷ, nét xuân sơn" (Truyện Kiều) miêu tả: | Đôi mắt và lông mày của Thuý Kiều | Phong cảnh mùa thu | Mùa xuân | Dòng sông
+? Thành phần biệt lập phụ chú dùng để: | Bổ sung, giải thích cho một bộ phận trong câu | Gọi đáp | Thể hiện thái độ | Bộc lộ cảm xúc
++ Bút pháp ước lệ tượng trưng thường dùng hình ảnh thiên nhiên để tả vẻ đẹp con người trong văn học trung đại.
++ Nghị luận về một tác phẩm truyện cần phân tích chủ đề và những nét đặc sắc nghệ thuật.
+- "Truyện Kiều" là sáng tác của Nguyễn Đình Chiểu.
+= Nguyễn Du = Truyện Kiều
+= Nguyễn Dữ = Truyền kì mạn lục
+= Nguyễn Đình Chiểu = Lục Vân Tiên
+_ Trăm năm trong cõi người ta / Chữ tài chữ [mệnh] khéo là ghét nhau.`, 2: `? Câu ghép "Nếu trời mưa thì chúng tôi sẽ hoãn chuyến đi." có quan hệ: | Điều kiện – kết quả | Tương phản | Nguyên nhân – kết quả | Tăng tiến
+? Câu "Tuy nhà xa nhưng Lan không bao giờ đi học muộn." có quan hệ: | Tương phản | Điều kiện | Nguyên nhân | Lựa chọn
+? Cách dẫn trực tiếp là: | Nhắc lại nguyên văn lời nói, đặt trong dấu ngoặc kép | Thuật lại có điều chỉnh | Tóm tắt ý | Bình luận
+? Văn bản nghị luận xã hội về một vấn đề cần giải quyết cần có: | Giải pháp khả thi, có lí lẽ và bằng chứng | Chỉ kể chuyện | Chỉ miêu tả | Chỉ nêu cảm xúc
+? Kịch khác truyện ở điểm: | Được viết để biểu diễn trên sân khấu, chủ yếu bằng lời thoại | Có nhân vật | Có cốt truyện | Có xung đột
+? Thơ song thất lục bát gồm: | Hai câu 7 chữ, một câu 6 chữ, một câu 8 chữ | Toàn câu 7 chữ | Toàn câu 8 chữ | Câu 6 và câu 8 xen kẽ
++ Lời dẫn gián tiếp không đặt trong dấu ngoặc kép.
+- Xung đột không phải yếu tố quan trọng của kịch.
+= Dẫn trực tiếp = Nguyên văn, có ngoặc kép
+= Dẫn gián tiếp = Thuật lại, không có ngoặc kép
+# Câu ghép đẳng lập: Trời mưa, đường trơn, Gió thổi và lá rơi
+# Câu ghép chính phụ: Vì trời mưa nên đường trơn, Nếu chăm học thì sẽ giỏi` },
     id: 'ngu-van-9', lop: 9, mon: 'Ngữ văn', icon: '📖', nhan: 'Bài', so: false, essayMax: 2,
     topics: [
       { hk: 1, ten: 'Thế giới kì ảo', bai: ['Chuyện người con gái Nam Xương (Nguyễn Dữ)', 'Dế chọi (Bồ Tùng Linh)', 'Sơn Tinh – Thuỷ Tinh (Nguyễn Nhược Pháp)', 'Thực hành tiếng Việt: Điển tích, điển cố; từ Hán Việt', 'Viết: Nghị luận về vấn đề cần giải quyết (con người với tự nhiên)', 'Nói và nghe: Ý kiến về sự việc có tính thời sự'],

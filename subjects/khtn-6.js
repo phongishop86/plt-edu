@@ -1,5 +1,30 @@
 /* Khoa học tự nhiên 6 – KNTT. Chương, bài theo mục lục SGK; câu hỏi do PLT-Edu soạn. */
 PLT.KB.build({
+  nc: { 1: `? Một bình chia độ chứa 50 ml nước. Thả một hòn đá vào, mực nước dâng lên 72 ml. Thể tích hòn đá là: | 22 cm³ | 72 cm³ | 50 cm³ | 122 cm³
+? Khối lượng riêng của nước khoảng 1 g/ml. 250 ml nước có khối lượng: | 250 g | 25 g | 2,5 kg | 2 500 g
+? Quá trình nào là sự chuyển thể từ lỏng sang khí? | Nước trong cốc cạn dần khi để ngoài nắng | Nước đá tan | Sương đọng trên lá | Nến chảy lỏng
+? Để tách muối ăn khỏi nước muối, ta dùng phương pháp: | Cô cạn | Lọc | Chiết | Dùng nam châm
+? Để tách cát khỏi hỗn hợp cát và nước, ta dùng phương pháp: | Lọc | Cô cạn | Chưng cất | Nam châm
+? Hỗn hợp nào là dung dịch? | Nước muối | Nước phù sa | Dầu ăn và nước | Sữa lắc có bọt
+? Thiết bị dùng để quan sát tế bào thực vật là: | Kính hiển vi quang học | Kính lúp cầm tay đơn giản | Ống nhòm | Kính thiên văn
++ Oxygen duy trì sự cháy và sự sống.
+- Dầu ăn tan tốt trong nước tạo thành dung dịch.
+= Lọc = Tách chất rắn không tan khỏi chất lỏng
+= Cô cạn = Tách chất rắn hoà tan khỏi dung dịch
+= Chiết = Tách hai chất lỏng không hoà tan
+# Vật thể tự nhiên: cây cối, núi đá, con sông
+# Vật thể nhân tạo: cái bàn, ô tô, quyển sách`, 2: `? Một vật nặng 2 kg có trọng lượng khoảng: | 20 N | 2 N | 200 N | 0,2 N
+? Lực ma sát nào có lợi? | Ma sát giữa đế giày và mặt đường giúp ta đi lại | Ma sát làm mòn lốp xe | Ma sát làm nóng máy | Ma sát cản trở chuyển động của xe
+? Lò xo dài 10 cm, treo vật 100 g dãn thêm 2 cm. Treo vật 300 g (trong giới hạn đàn hồi) thì lò xo dài: | 16 cm | 12 cm | 30 cm | 6 cm
+? Năng lượng tái tạo là: | Năng lượng mặt trời, gió, nước | Than đá | Dầu mỏ | Khí đốt tự nhiên
+? Pha Mặt Trăng ta thấy toàn bộ phần sáng gọi là: | Trăng tròn | Trăng non | Trăng khuyết | Trăng lưỡi liềm
+? Sinh vật nào thuộc giới Nấm? | Nấm men | Rêu | Trùng roi | Vi khuẩn lam
++ Thực vật có vai trò điều hoà khí hậu và cung cấp oxygen.
+- Năng lượng không thể chuyển hoá từ dạng này sang dạng khác.
+= Ngành Rêu = Chưa có mạch dẫn
+= Ngành Dương xỉ = Có mạch dẫn, sinh sản bằng bào tử
+= Ngành Hạt kín = Có hoa, hạt nằm trong quả
+_ Trọng lượng P = 10 × [m] (m tính bằng kg).` },
   id: 'khtn-6', lop: 6, mon: 'Khoa học tự nhiên', icon: '🔬', nhan: 'Chương',
   topics: [
     { hk: 1, ten: 'Mở đầu về Khoa học tự nhiên', bai: ['Giới thiệu về Khoa học tự nhiên', 'An toàn trong phòng thực hành', 'Sử dụng kính lúp', 'Sử dụng kính hiển vi quang học', 'Đo chiều dài', 'Đo khối lượng', 'Đo thời gian', 'Đo nhiệt độ'],

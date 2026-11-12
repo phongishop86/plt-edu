@@ -1,5 +1,32 @@
 /* Tiếng Anh 9 – Global Success (12 Unit). Từ vựng, ngữ pháp theo Book map SGK; câu hỏi do PLT-Edu soạn. */
 PLT.KB.eng({
+  nc: { 1: `? Choose the correct word: "I wish I ___ speak English fluently." | could | can | will | am able
+? Choose the correct word: "This is the man ___ helped me yesterday." | who | which | whose | whom he
+? Choose the correct word: "The city ___ I was born is very beautiful." | where | which | who | when
+? Choose the correct word: "She suggested ___ to the museum." | going | to go | go | went
+? Choose the correct word: "Hoi An, ___ is in Quang Nam, is famous for its old town." | which | that | who | where
+? Choose the correct word: "If you study hard, you ___ the exam." | will pass | would pass | passed | pass would
++ We use "wish + past simple" to talk about unreal situations in the present.
+- "That" can be used in non-defining relative clauses after a comma.
+= craft village = làng nghề
+= artisan = nghệ nhân
+= heritage = di sản
+= landmark = địa danh
+_ I wish I [had] more free time. (have)
+> The > girl > who > sings > well > is > my > sister`, 2: `? Choose the correct word: "He asked me where I ___." | lived | live | do live | am living
+? Choose the correct word: "It's time we ___ home." | went | go | going | will go
+? Choose the correct word: "She has worked here ___ 2020." | since | for | in | at
+? Choose the correct word: "Not only ___ English, but she also speaks French." | does she speak | she speaks | she speak | speaks she
+? Choose the correct word: "The more you read, the ___ you know." | more | most | much | many
+? Choose the correct word: "Space exploration is ___ expensive than people think." | more | most | much more of | many
++ "Since" is followed by a point of time; "for" is followed by a period of time.
+- In reported questions we keep the question word order: "He asked where did I live."
+= astronaut = phi hành gia
+= career = nghề nghiệp
+= qualification = bằng cấp
+= skill = kĩ năng
+_ They have lived here [for] ten years.
+> She > asked > me > if > I > liked > music` },
   id: 'tieng-anh-9', lop: 9,
   units: [
     { ten: 'Local community', v: 'community helper=người phục vụ cộng đồng; delivery person=người giao hàng; firefighter=lính cứu hoả; handicraft=đồ thủ công; artisan=nghệ nhân; pottery=đồ gốm; weave=dệt; set up=thành lập', s: ['I don\'t know [what] to do.', 'Can you tell me [how] to get to the craft village?', 'They [set up] (thành lập) a new club last year.'],

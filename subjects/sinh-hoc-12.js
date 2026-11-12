@@ -1,5 +1,21 @@
 /* Sinh học 12 – KNTT. Phần, chương, bài theo mục lục SGK; câu hỏi do PLT-Edu soạn. */
 PLT.KB.build({
+  nc: { 1: `? Một đoạn mạch gốc 3'-TAX-5' phiên mã tạo codon trên mRNA là: | 5'-AUG-3' | 5'-UAX-3' | 5'-ATG-3' | 5'-GUA-3'
+? Phép lai AaBb × AaBb (trội hoàn toàn, phân li độc lập) cho tỉ lệ kiểu hình: | 9 : 3 : 3 : 1 | 3 : 1 | 1 : 1 : 1 : 1 | 1 : 2 : 1
+? Cơ thể AaBbDd giảm phân bình thường tạo số loại giao tử tối đa là: | 8 | 6 | 4 | 3
+? Phép lai AaBb × aabb cho tỉ lệ kiểu hình: | 1 : 1 : 1 : 1 | 9 : 3 : 3 : 1 | 3 : 1 | 1 : 2 : 1
+? Bệnh máu khó đông ở người do gene lặn nằm trên: | NST X | NST Y | NST thường | Ti thể
+? Tần số hoán vị gene không vượt quá: | 50% | 25% | 100% | 75%
++ Thể đa bội thường gặp ở thực vật.
+- Gene trên NST Y có alen tương ứng trên X.
+_ Số loại giao tử của cơ thể có n cặp gene dị hợp phân li độc lập: [2]ⁿ`, 2: `? Quần thể 0,25AA : 0,5Aa : 0,25aa có tần số allele A là: | 0,5 | 0,25 | 0,75 | 0,4
+? Quần thể cân bằng Hardy – Weinberg có q(a) = 0,3. Tỉ lệ kiểu gene Aa là: | 0,42 | 0,49 | 0,09 | 0,3
+? Nhân tố tiến hoá làm thay đổi tần số allele theo một hướng xác định là: | Chọn lọc tự nhiên | Đột biến | Giao phối ngẫu nhiên | Phiêu bạt di truyền
+? Trong chuỗi thức ăn, hiệu suất sinh thái giữa hai bậc dinh dưỡng thường khoảng: | 10% | 50% | 90% | 1%
+? Mối quan hệ giữa cây tầm gửi và cây chủ là: | Kí sinh (bán kí sinh) | Cộng sinh | Hội sinh | Hợp tác
++ Cách li sinh sản là tiêu chuẩn quan trọng để phân biệt hai loài.
+- Năng lượng trong hệ sinh thái được tuần hoàn khép kín.
+_ Cấu trúc di truyền cân bằng: p²AA + 2pqAa + [q²]aa = 1` },
   id: 'sinh-hoc-12', lop: 12, mon: 'Sinh học', icon: '🧬', nhan: 'Chương', so: false,
   topics: [
     { hk: 1, nhan: 'Chương 1', ten: 'Di truyền phân tử', bai: ['Bài 1. DNA và cơ chế tái bản DNA', 'Bài 2. Gene, quá trình truyền đạt thông tin di truyền và hệ gene', 'Bài 3. Điều hoà biểu hiện gene', 'Bài 4. Đột biến gene', 'Bài 5. Công nghệ gene', 'Bài 6. Thực hành: Tách chiết DNA'],

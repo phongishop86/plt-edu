@@ -2,6 +2,28 @@
 (function () {
   const TV = PLT.TV;
   PLT.KB.build({
+  nc: { 1: `? Sử thi thường xây dựng nhân vật: | Người anh hùng đại diện cho sức mạnh cộng đồng | Nhân vật bi kịch cá nhân | Nhân vật trào phúng | Nhân vật bình thường
+? Ngôn ngữ của chèo có đặc điểm: | Kết hợp lời nói và hát, giàu tính dân gian | Hoàn toàn bằng văn xuôi hiện đại | Chỉ dùng từ Hán Việt | Không có lời thoại
+? "Bình Ngô đại cáo" được viết theo thể văn: | Cáo, văn biền ngẫu | Hịch | Chiếu | Tấu
+? Tư tưởng cốt lõi của "Bình Ngô đại cáo" là: | Nhân nghĩa gắn với yên dân, trừ bạo | Trung quân ái quốc tuyệt đối | Thoát li thực tại | Ca ngợi thiên nhiên
+? Lỗi trong câu "Qua tác phẩm cho thấy tình yêu quê hương." là: | Thiếu chủ ngữ | Thiếu vị ngữ | Thừa từ | Sai dấu câu
+? Cách sửa đúng câu "Qua tác phẩm cho thấy tình yêu quê hương." là: | Tác phẩm cho thấy tình yêu quê hương. | Qua tác phẩm, cho thấy tình yêu quê hương. | Qua tác phẩm cho thấy, tình yêu quê hương. | Giữ nguyên
++ Văn bản nghị luận văn học cần phân tích, đánh giá nội dung và nghệ thuật của tác phẩm.
+- Thơ Đường luật không có quy định về niêm, luật, vần, đối.
+= Sử thi = Đăm Săn, Ô-đi-xê
+= Chèo = Quan Âm Thị Kính
+= Cáo = Bình Ngô đại cáo
+_ "Việc nhân nghĩa cốt ở [yên dân], quân điếu phạt trước lo trừ bạo." (Nguyễn Trãi)`, 2: `? Người kể chuyện toàn tri là người kể: | Biết hết mọi chuyện, kể cả suy nghĩ của các nhân vật | Chỉ kể những gì mình thấy | Là nhân vật chính xưng "tôi" | Không biết gì về nhân vật
+? Điểm nhìn trong truyện kể là: | Vị trí người kể quan sát, cảm nhận câu chuyện | Tên tác giả | Bối cảnh | Kết thúc truyện
+? Văn bản thông tin tổng hợp thường kết hợp: | Nhiều phương thức biểu đạt và phương tiện phi ngôn ngữ | Chỉ tự sự | Chỉ biểu cảm | Chỉ một đoạn văn
+? Biện pháp chêm xen có tác dụng: | Bổ sung thông tin, bộc lộ thái độ người viết | Kết thúc câu | Tạo vần | Liệt kê
+? Báo cáo nghiên cứu cần trình bày: | Vấn đề, phương pháp, kết quả, kết luận, tài liệu tham khảo | Chỉ cảm nghĩ | Chỉ kết luận | Chỉ trích dẫn
++ Trích dẫn tài liệu cần ghi rõ nguồn để tôn trọng bản quyền.
+- Phương tiện phi ngôn ngữ (hình ảnh, biểu đồ) làm giảm hiệu quả văn bản thông tin.
+= Điểm nhìn bên trong = Từ nội tâm nhân vật
+= Điểm nhìn bên ngoài = Quan sát từ bên ngoài
+# Phương tiện ngôn ngữ: câu chữ, đoạn văn
+# Phương tiện phi ngôn ngữ: biểu đồ, hình ảnh, sơ đồ` },
     id: 'ngu-van-10', lop: 10, mon: 'Ngữ văn', icon: '📖', nhan: 'Bài', so: false, essayMax: 2,
     topics: [
       { hk: 1, ten: 'Sức hấp dẫn của truyện kể', bai: ['Truyện về các vị thần sáng tạo thế giới (Thần thoại Việt Nam)', 'Tản Viên từ Phán sự lục (Nguyễn Dữ)', 'Chữ người tử tù (Nguyễn Tuân)', 'Thực hành tiếng Việt: Sử dụng từ Hán Việt', 'Viết: Nghị luận phân tích, đánh giá một tác phẩm truyện', 'Nói và nghe: Giới thiệu, đánh giá nội dung và nghệ thuật của một tác phẩm truyện'],

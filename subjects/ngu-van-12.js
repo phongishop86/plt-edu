@@ -2,6 +2,29 @@
 (function () {
   const TV = PLT.TV;
   PLT.KB.build({
+  nc: { 1: `? "Số đỏ" của Vũ Trọng Phụng thuộc thể loại: | Tiểu thuyết trào phúng | Truyện ngắn lãng mạn | Kí | Thơ
+? Bút pháp chủ đạo của bài "Tây Tiến" là: | Lãng mạn kết hợp hiện thực | Trào phúng | Tượng trưng thuần tuý | Hiện thực phê phán
+? Câu thơ "Áo bào thay chiếu anh về đất" sử dụng biện pháp: | Nói giảm nói tránh | Nói quá | Hoán dụ | Chơi chữ
+? Nghịch ngữ là biện pháp: | Kết hợp các từ ngữ có nghĩa trái ngược để tạo hiệu quả bất ngờ | Lặp lại từ ngữ | So sánh hai sự vật | Gọi tên sự vật bằng tên khác
+? Lỗi logic trong lập luận là: | Mâu thuẫn, kết luận không có căn cứ | Sai chính tả | Thiếu dấu câu | Câu quá dài
+? Thao tác bác bỏ dùng để: | Chỉ ra cái sai của ý kiến khác bằng lí lẽ, bằng chứng | Giải thích khái niệm | Kể chuyện | Liệt kê
++ Tiểu thuyết có dung lượng lớn, phản ánh đời sống rộng lớn với nhiều nhân vật.
+- Nói giảm nói tránh làm tăng mức độ đau thương của sự việc.
+= Quang Dũng = Tây Tiến
+= Vũ Trọng Phụng = Số đỏ
+= Thanh Thảo = Đàn ghi ta của Lor-ca
+# Thao tác lập luận: giải thích, chứng minh, bác bỏ
+# Phương thức biểu đạt: tự sự, miêu tả, biểu cảm`, 2: `? "Tuyên ngôn Độc lập" mở đầu bằng việc trích dẫn: | Tuyên ngôn của Mỹ và Pháp | Hiến pháp Việt Nam | Bình Ngô đại cáo | Hịch tướng sĩ
+? Mục đích trích dẫn Tuyên ngôn của Mỹ và Pháp trong "Tuyên ngôn Độc lập" là: | Tạo cơ sở pháp lí vững chắc, khéo léo "gậy ông đập lưng ông" | Ca ngợi nước Mỹ | Kể lại lịch sử | Gây cười
+? Phóng sự là thể loại: | Ghi chép người thật việc thật có tính thời sự, phê phán | Thơ trữ tình | Kịch | Truyện cổ tích
+? Ngôn ngữ trang trọng thường dùng trong: | Văn bản hành chính, lễ nghi | Trò chuyện với bạn thân | Tin nhắn gia đình | Nói đùa
+? Hồi kí khác tiểu thuyết ở chỗ: | Kể lại sự việc có thật mà tác giả đã trải qua | Hoàn toàn hư cấu | Không có nhân vật | Không có sự việc
++ "Nhật kí trong tù" được Hồ Chí Minh viết bằng chữ Hán.
+- "Tuyên ngôn Độc lập" được đọc ngày 19/8/1945.
+= Tuyên ngôn Độc lập = 2/9/1945
+= Nhật kí trong tù = Thơ chữ Hán
+= Việc làng = Phóng sự
+_ "Tất cả mọi người đều sinh ra có quyền [bình đẳng]." ` },
     id: 'ngu-van-12', lop: 12, mon: 'Ngữ văn', icon: '📖', nhan: 'Bài', so: false, essayMax: 2,
     topics: [
       { hk: 1, ten: 'Khả năng lớn lao của tiểu thuyết', bai: ['Xuân Tóc Đỏ cứu quốc (trích Số đỏ – Vũ Trọng Phụng)', 'Mùa lá rụng trong vườn (trích – Ma Văn Kháng)', 'Thực hành tiếng Việt: Biện pháp tu từ nói mỉa, nghịch ngữ', 'Viết: Nghị luận so sánh, đánh giá hai tác phẩm truyện', 'Nói và nghe: Trình bày kết quả so sánh, đánh giá hai tác phẩm truyện', 'Thực hành đọc: Trên xuồng cứu nạn (trích Cuộc đời của Pi – Y-an Mác-tên)'],

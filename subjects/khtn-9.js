@@ -1,5 +1,28 @@
 /* Khoa học tự nhiên 9 – KNTT. Chương, bài theo mục lục SGK; câu hỏi do PLT-Edu soạn. */
 PLT.KB.build({
+  nc: { 1: `? Một vật 2 kg chuyển động với tốc độ 5 m/s có động năng: | 25 J | 10 J | 50 J | 5 J
+? Công suất của máy thực hiện công 1 200 J trong 1 phút là: | 20 W | 1 200 W | 72 000 W | 60 W
+? Thấu kính hội tụ có tiêu cự 10 cm. Vật đặt cách thấu kính 20 cm cho ảnh: | Thật, ngược chiều, bằng vật | Ảo, cùng chiều, lớn hơn | Thật, nhỏ hơn vật | Không có ảnh
+? Hai điện trở 6 Ω mắc song song. Điện trở tương đương là: | 3 Ω | 12 Ω | 6 Ω | 36 Ω
+? Kim loại nào phản ứng mạnh với nước ở nhiệt độ thường? | Natri | Đồng | Sắt | Bạc
+? Dãy kim loại sắp xếp theo mức độ hoạt động hoá học giảm dần là: | K, Na, Mg, Al, Fe, Cu | Cu, Fe, Al, Na | Fe, Cu, K, Na | Al, Cu, Mg, K
++ Sắt bị gỉ trong không khí ẩm.
+- Thấu kính phân kì luôn cho ảnh thật.
+= Ethanol = C₂H₅OH
+= Acetic acid = CH₃COOH
+= Methane = CH₄
+= Ethylene = C₂H₄
+_ Công thức tính công suất: P = A : [t]`, 2: `? Ở người, cặp nhiễm sắc thể giới tính của nam là: | XY | XX | XO | YY
+? Phép lai Aa × Aa (trội hoàn toàn) cho tỉ lệ kiểu hình: | 3 : 1 | 1 : 1 | 1 : 2 : 1 | 9 : 3 : 3 : 1
+? Phép lai Aa × aa cho tỉ lệ kiểu gene: | 1 Aa : 1 aa | 3 : 1 | 1 : 2 : 1 | 100% Aa
+? Đột biến gene là những biến đổi trong: | Cấu trúc của gene | Kiểu hình do môi trường | Số lượng NST | Môi trường sống
+? Hội chứng Down ở người có: | 3 nhiễm sắc thể số 21 | 3 NST giới tính X | Thiếu 1 NST X | 2 NST số 21
+? Nguồn năng lượng không gây ô nhiễm môi trường khi sử dụng là: | Năng lượng mặt trời | Than đá | Dầu mỏ | Khí đốt
++ Mendel tiến hành thí nghiệm trên cây đậu Hà Lan.
+- Thường biến di truyền được cho thế hệ sau.
+> DNA > (phiên mã) mRNA > (dịch mã) Protein > Tính trạng
+= Kiểu gene đồng hợp = AA, aa
+= Kiểu gene dị hợp = Aa` },
   id: 'khtn-9', lop: 9, mon: 'Khoa học tự nhiên', icon: '🔬', nhan: 'Chương', so: false,
   topics: [
     { hk: 1, nhan: 'Mở đầu – Chương I', ten: 'Năng lượng cơ học', bai: ['Bài 1. Nhận biết một số dụng cụ, hoá chất. Thuyết trình một vấn đề khoa học', 'Bài 2. Động năng. Thế năng', 'Bài 3. Cơ năng', 'Bài 4. Công và công suất'],

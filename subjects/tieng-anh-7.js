@@ -1,5 +1,33 @@
 /* Tiếng Anh 7 – Global Success (12 Unit). Từ vựng, ngữ pháp theo chủ đề Unit; câu hỏi do PLT-Edu soạn. */
 PLT.KB.eng({
+  nc: { 1: `? Choose the correct word: "I enjoy ___ in my free time." | gardening | garden | to gardening | gardened
+? Choose the correct word: "She ___ English for three years." | has learnt | learns | learnt | is learning
+? Choose the correct word: "How much sugar ___ we need?" | do | does | are | is
+? Choose the correct word: "There isn't ___ butter left." | much | many | a few | a
+? Choose the correct word: "I ___ my homework yesterday evening." | did | do | have done | doing
+? Choose the correct word: "He is used to ___ up early." | getting | get | got | gets
+? Choose the correct answer: "How often do you go to the gym?" | Twice a week. | Two hours. | By bus. | At the gym.
++ "Some" is usually used in positive sentences; "any" in negative sentences and questions.
+- "How many water do you drink a day?" is correct.
+= healthy = khoẻ mạnh
+= community service = hoạt động cộng đồng
+= volunteer = tình nguyện viên
+= donate = quyên góp
+_ How [many] apples do you need? – Four.
+> I > have > never > been > to > Ha Long Bay`, 2: `? Choose the correct word: "The film was ___ boring that I fell asleep." | so | such | too | very
+? Choose the correct word: "___ it was raining, they still played football." | Although | Because | So | But
+? Choose the correct word: "My father used ___ in a factory." | to work | working | work | worked
+? Choose the correct word: "Traffic jams are a big ___ in big cities." | problem | solve | problems are | solution
+? Choose the correct word: "It is about 20 kilometres ___ my house to the beach." | from | to | at | in
+? Choose the correct word: "We should use ___ energy to protect the environment." | renewable | renew | renewed | renewing
++ "Although" is followed by a clause (subject + verb).
+- "Used to" is used to talk about habits in the future.
+= solar energy = năng lượng mặt trời
+= wind energy = năng lượng gió
+= traffic jam = tắc đường
+= pollution = ô nhiễm
+_ It [takes] about 30 minutes to get to school by bike.
+> Although > it > was > cold > we > went > out` },
   id: 'tieng-anh-7', lop: 7,
   units: [
     { ten: 'Hobbies', v: 'gardening=làm vườn; horse riding=cưỡi ngựa; making models=làm mô hình; collecting dolls=sưu tầm búp bê; jogging=chạy bộ; unusual=khác thường; share=chia sẻ; patient=kiên nhẫn', s: ['I [love] (yêu thích) making models.', 'She [enjoys] (enjoy) gardening.', 'My brother doesn\'t like [jogging] (chạy bộ).'],

@@ -1,5 +1,29 @@
 /* Khoa học tự nhiên 7 – KNTT. Chương, bài theo mục lục SGK; câu hỏi do PLT-Edu soạn. */
 PLT.KB.build({
+  nc: { 1: `? Nguyên tử X có 11 proton. X là nguyên tố: | Sodium (Na) | Magnesium (Mg) | Neon (Ne) | Chlorine (Cl)
+? Khối lượng phân tử của H₂O (H = 1, O = 16) là: | 18 amu | 17 amu | 16 amu | 34 amu
+? Phần trăm khối lượng của C trong CO₂ (C = 12, O = 16) là khoảng: | 27,3% | 72,7% | 50% | 12%
+? Hoá trị của S trong SO₂ (O hoá trị II) là: | IV | II | VI | III
+? Một ô tô đi 120 km trong 2 giờ 30 phút. Tốc độ trung bình là: | 48 km/h | 60 km/h | 50 km/h | 40 km/h
+? Âm phản xạ trở lại sau 1 giây, tốc độ âm trong không khí 340 m/s. Khoảng cách từ người đến vách đá là: | 170 m | 340 m | 680 m | 85 m
+? Âm có tần số 20 000 Hz trở lên gọi là: | Siêu âm | Hạ âm | Âm nghe được | Tiếng vang
++ Liên kết ion được hình thành giữa kim loại điển hình và phi kim điển hình.
+- Góc phản xạ luôn lớn hơn góc tới.
+= Đơn chất = O₂, N₂, Fe
+= Hợp chất = H₂O, NaCl, CO₂
+= Liên kết ion = NaCl
+= Liên kết cộng hoá trị = H₂O
+_ Theo định luật phản xạ ánh sáng: góc phản xạ [bằng] góc tới.`, 2: `? Nam châm hút mạnh nhất ở: | Hai cực | Chính giữa | Mọi chỗ như nhau | Không hút
+? Quá trình quang hợp tạo ra: | Glucose và oxygen | Carbon dioxide và nước | Protein | Năng lượng nhiệt
+? Hô hấp tế bào diễn ra chủ yếu ở bào quan: | Ti thể | Lục lạp | Nhân | Không bào
+? Yếu tố nào KHÔNG ảnh hưởng trực tiếp đến quang hợp? | Màu sắc chậu cây | Ánh sáng | Nồng độ CO₂ | Nhiệt độ
+? Sinh sản vô tính ở thực vật bằng cách giâm cành có ưu điểm: | Giữ nguyên đặc tính tốt của cây mẹ, nhanh cho thu hoạch | Tạo nhiều biến dị | Cần thụ phấn | Tạo hạt
+? Cây hướng ngọn về phía ánh sáng là hiện tượng: | Hướng sáng | Hướng nước | Hướng đất | Hướng tiếp xúc
++ Trái Đất có từ trường, kim la bàn chỉ hướng Bắc – Nam.
+- Hô hấp tế bào tạo ra oxygen.
+= Quang hợp = Hấp thụ CO₂, thải O₂
+= Hô hấp = Hấp thụ O₂, thải CO₂
+> Nước được hấp thụ ở lông hút > Vận chuyển qua mạch gỗ > Lên lá > Thoát hơi qua khí khổng` },
   id: 'khtn-7', lop: 7, mon: 'Khoa học tự nhiên', icon: '🔬', nhan: 'Chương',
   topics: [
     { hk: 1, ten: 'Mở đầu. Nguyên tử. Sơ lược về bảng tuần hoàn các nguyên tố hoá học', nhan: 'Mở đầu – Chương I', bai: ['Phương pháp và kĩ năng học tập môn Khoa học tự nhiên', 'Nguyên tử', 'Nguyên tố hoá học', 'Sơ lược về bảng tuần hoàn các nguyên tố hoá học'],

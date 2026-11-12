@@ -1,5 +1,22 @@
 /* Hoá học 10 – KNTT. Chương, bài theo mục lục SGK; câu hỏi do PLT-Edu soạn. */
 PLT.KB.build({
+  nc: { 1: `? Nguyên tử X có tổng số hạt là 40, số hạt mang điện nhiều hơn không mang điện 12. X là: | Al (Z = 13) | Mg (Z = 12) | Na (Z = 11) | Si (Z = 14)
+? Nguyên tố có cấu hình electron lớp ngoài cùng 3s²3p⁴ thuộc: | Chu kì 3, nhóm VIA | Chu kì 3, nhóm IVA | Chu kì 4, nhóm VIA | Chu kì 2, nhóm VIA
+? Nguyên tố X thuộc nhóm VIIA. Công thức hợp chất khí với hydrogen là: | HX | H₂X | XH₃ | XH₄
+? Oxide cao nhất của nguyên tố nhóm VA có công thức: | R₂O₅ | RO₂ | R₂O₃ | RO₃
+? Liên kết trong phân tử HCl là: | Cộng hoá trị phân cực | Ion | Cộng hoá trị không cực | Kim loại
+? Số electron độc thân của nguyên tử N (Z = 7) là: | 3 | 1 | 2 | 5
++ Bán kính nguyên tử giảm dần trong một chu kì theo chiều tăng điện tích hạt nhân.
+- Độ âm điện của F nhỏ hơn của Cl.
+_ Số khối A = Z + [N]`, 2: `? Trong phản ứng: MnO₂ + 4HCl → MnCl₂ + Cl₂ + 2H₂O, chất oxi hoá là: | MnO₂ | HCl | MnCl₂ | Cl₂
+? Hệ số cân bằng của Al trong phản ứng Al + O₂ → Al₂O₃ (hệ số tối giản) là: | 4 | 2 | 3 | 1
+? Phản ứng có ΔH = −286 kJ là phản ứng: | Toả nhiệt | Thu nhiệt | Không có năng lượng | Hạt nhân
+? Theo quy tắc Van't Hoff, nhiệt độ tăng 10 °C, tốc độ phản ứng tăng 2 lần. Tăng 30 °C thì tốc độ tăng: | 8 lần | 6 lần | 3 lần | 9 lần
+? Tính oxi hoá của các halogen giảm dần theo thứ tự: | F₂ > Cl₂ > Br₂ > I₂ | I₂ > Br₂ > Cl₂ > F₂ | Cl₂ > F₂ > Br₂ > I₂ | Br₂ > Cl₂ > F₂ > I₂
++ Trong phản ứng oxi hoá – khử, tổng số electron nhường bằng tổng số electron nhận.
+- HF là acid mạnh nhất trong các hydrohalic acid.
+= Chất khử = Nhường electron
+= Chất oxi hoá = Nhận electron` },
   id: 'hoa-hoc-10', lop: 10, mon: 'Hoá học', icon: '🧪', nhan: 'Chương', so: false,
   topics: [
     { hk: 1, nhan: 'Chương 1', ten: 'Cấu tạo nguyên tử', bai: ['Bài 1. Thành phần của nguyên tử', 'Bài 2. Nguyên tố hoá học', 'Bài 3. Cấu trúc lớp vỏ electron nguyên tử', '*Bài 4. Ôn tập chương 1'],

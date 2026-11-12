@@ -1,5 +1,32 @@
 /* Tiếng Anh 8 – Global Success (12 Unit). Từ vựng, ngữ pháp theo Book map SGK; câu hỏi do PLT-Edu soạn. */
 PLT.KB.eng({
+  nc: { 1: `? Choose the correct word: "Teenagers are ___ of using social media too much." | aware | care | worry | afraid to
+? Choose the correct word: "My mother asked me ___ the dishes." | to wash | wash | washing | washed
+? Choose the correct word: "Life in the countryside is ___ than life in the city." | more peaceful | peacefuller | most peaceful | peaceful
+? Choose the correct word: "The more you practise, the ___ you become." | better | good | best | well
+? Choose the correct word: "He prefers reading books ___ watching TV." | to | than | from | with
+? Choose the correct word: "I'm interested ___ learning about ethnic groups." | in | on | at | for
++ "Prefer A to B" means like A more than B.
+- "She is more taller than me." is correct.
+= ethnic group = dân tộc
+= custom = phong tục
+= tradition = truyền thống
+= harvest = thu hoạch
+_ My brother is keen [on] playing football.
+> I > prefer > swimming > to > running`, 2: `? Choose the correct word: "If I ___ a bird, I would fly around the world." | were | am | will be | have been
+? Choose the correct word: "The book ___ by millions of people." | has been read | has read | reads | is reading
+? Choose the correct word: "She said that she ___ tired." | was | is | will be | has been
+? Choose the correct word: "Natural disasters such as floods ___ damage to crops." | cause | causes | causing | caused by
+? Choose the correct word: "The new school ___ next year." | will be built | will build | builds | is building
+? Choose the correct word: "We are going ___ a science fair next month." | to have | have | having | had
++ In reported speech, "will" usually changes to "would".
+- The passive voice is formed with "be + V-ing".
+= earthquake = động đất
+= flood = lũ lụt
+= drought = hạn hán
+= volcano = núi lửa
+_ The house [was] destroyed by the storm last year.
+> The > letter > was > written > by > my > sister` },
   id: 'tieng-anh-8', lop: 8,
   units: [
     { ten: 'Leisure time', v: 'leisure=thời gian rảnh rỗi; hang out=đi chơi; DIY=tự làm; surf the net=lướt mạng; be keen on=say mê; be fond of=yêu thích; can\'t stand=không chịu được; detest=ghét', s: ['I [enjoy] (thích) doing DIY.', 'She can\'t stand [waiting] (wait) in line.', 'He prefers [to read|reading] (read) comics.'],

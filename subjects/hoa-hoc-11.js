@@ -1,5 +1,22 @@
 /* Hoá học 11 – KNTT. Chương, bài theo mục lục SGK; câu hỏi do PLT-Edu soạn. */
 PLT.KB.build({
+  nc: { 1: `? Cho cân bằng N₂ + 3H₂ ⇌ 2NH₃ (ΔH < 0). Để tăng hiệu suất tạo NH₃ cần: | Tăng áp suất, giảm nhiệt độ hợp lí | Giảm áp suất | Tăng nhiệt độ thật cao | Thêm NH₃
+? Dung dịch HCl 0,01 M có pH là: | 2 | 1 | 12 | 0,01
+? Dung dịch NaOH 0,001 M có pH là: | 11 | 3 | 10 | 13
+? Cho 0,1 mol Cu tác dụng với HNO₃ đặc, dư. Số mol NO₂ tạo thành là: | 0,2 mol | 0,1 mol | 0,3 mol | 0,4 mol
+? Khí gây mưa acid chủ yếu là: | SO₂ và NOₓ | CO₂ | O₂ | N₂
++ HNO₃ có tính oxi hoá mạnh, tác dụng được với cả Cu.
+- Dung dịch có pH = 9 là môi trường acid.
+_ Dung dịch có nồng độ ion H⁺ bằng 0,001 M thì pH = [3].`, 2: `? Đốt cháy hoàn toàn 0,1 mol CH₄ thu được số mol CO₂ là: | 0,1 mol | 0,2 mol | 0,05 mol | 0,4 mol
+? Số đồng phân cấu tạo mạch hở của C₄H₁₀ là: | 2 | 3 | 1 | 4
+? Chất phản ứng được với dung dịch AgNO₃/NH₃ tạo kết tủa bạc là: | CH₃CHO | CH₃COOH | C₂H₅OH | CH₄
+? Đun ethanol với H₂SO₄ đặc ở 170 °C thu được: | Ethylene | Ethane | Acetylene | Methane
+? Phenol tác dụng với nước bromine tạo kết tủa: | Trắng | Vàng | Đen | Xanh
++ Alkene làm mất màu nước bromine.
+- Ethanol tác dụng với NaOH tạo muối.
+= CₙH₂ₙ₊₂ = Alkane
+= CₙH₂ₙ = Alkene
+= CₙH₂ₙ₋₂ = Alkyne` },
   id: 'hoa-hoc-11', lop: 11, mon: 'Hoá học', icon: '🧪', nhan: 'Chương', so: false,
   topics: [
     { hk: 1, nhan: 'Chương 1', ten: 'Cân bằng hoá học', bai: ['Bài 1. Khái niệm về cân bằng hoá học', 'Bài 2. Cân bằng trong dung dịch nước', '*Bài 3. Ôn tập chương 1'],

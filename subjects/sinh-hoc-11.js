@@ -1,5 +1,24 @@
 /* Sinh học 11 – KNTT. Chương, bài theo mục lục SGK; câu hỏi do PLT-Edu soạn. */
 PLT.KB.build({
+  nc: { 1: `? Nguyên tố khoáng thiết yếu là thành phần của diệp lục là: | Mg | Fe | Zn | Cu
+? Cây hấp thụ nitrogen chủ yếu ở dạng: | NH₄⁺ và NO₃⁻ | N₂ | NO₂ | N₂O
+? Pha sáng của quang hợp diễn ra ở: | Màng thylakoid | Chất nền lục lạp | Ti thể | Nhân
+? Thực vật C4 khác C3 ở chỗ: | Có hiệu suất quang hợp cao hơn, ít hô hấp sáng | Không cần ánh sáng | Chỉ quang hợp ban đêm | Không cần CO₂
+? Ở người, nhịp tim trung bình khoảng 75 lần/phút thì chu kì tim kéo dài khoảng: | 0,8 s | 1 s | 0,5 s | 1,5 s
++ Hô hấp sáng làm giảm hiệu quả quang hợp ở thực vật C3.
+- Ở người, máu trong động mạch phổi giàu oxygen.
+= C3 = Lúa, đậu
+= C4 = Ngô, mía
+= CAM = Xương rồng, dứa`, 2: `? Hormone ethylene có tác dụng: | Thúc quả chín | Kéo dài thân | Kích thích ra rễ | Giữ lá xanh
+? Hormone auxin có tác dụng: | Kích thích kéo dài tế bào, ra rễ | Thúc quả chín | Gây rụng lá | Ức chế sinh trưởng
+? Điện thế nghỉ của neuron có đặc điểm: | Trong màng âm, ngoài màng dương | Trong dương, ngoài âm | Bằng 0 | Luôn thay đổi
+? Ở động vật, phát triển qua biến thái hoàn toàn gặp ở: | Bướm, ếch | Châu chấu | Người | Gà
++ Tập tính học được có thể thay đổi theo kinh nghiệm.
+- Gibberellin gây ức chế nảy mầm của hạt.
+= Auxin = Kéo dài tế bào, ra rễ
+= Gibberellin = Kéo dài thân, nảy mầm
+= Cytokinin = Phân chia tế bào
+= Abscisic acid = Ức chế, gây ngủ của hạt` },
   id: 'sinh-hoc-11', lop: 11, mon: 'Sinh học', icon: '🧬', nhan: 'Chương', so: false,
   topics: [
     { hk: 1, nhan: 'Chương 1', ten: 'Trao đổi chất và chuyển hoá năng lượng ở thực vật', bai: ['Bài 1. Khái quát về trao đổi chất và chuyển hoá năng lượng', 'Bài 2. Trao đổi nước và khoáng ở thực vật', 'Bài 3. Thực hành: Trao đổi nước và khoáng ở thực vật', 'Bài 4. Quang hợp ở thực vật', 'Bài 5. Thực hành: Quang hợp ở thực vật', 'Bài 6. Hô hấp ở thực vật', 'Bài 7. Thực hành: Hô hấp ở thực vật'],

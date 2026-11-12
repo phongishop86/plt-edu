@@ -2,6 +2,33 @@
 (function () {
   const TV = PLT.TV;
   PLT.KB.build({
+  nc: { 1: `? Trong câu "Mặt trời như quả cầu lửa khổng lồ.", từ "như" là: | Từ so sánh | Từ chỉ sự vật | Từ chỉ hoạt động | Từ láy
+? Từ "xanh xanh" trong câu "Cánh đồng xanh xanh trải dài." là từ láy biểu thị: | Mức độ nhẹ, giảm nhẹ | Mức độ mạnh | Âm thanh | Hình dáng
+? Truyền thuyết khác truyện cổ tích ở điểm: | Gắn với nhân vật, sự kiện lịch sử | Có yếu tố kì ảo | Có nhân vật | Kết thúc có hậu
+? Nhân vật Thánh Gióng tượng trưng cho: | Sức mạnh đoàn kết chống giặc của nhân dân | Người nông dân nghèo | Vị vua anh minh | Thần núi
+? Thể thơ lục bát có đặc điểm: | Câu 6 chữ và câu 8 chữ xen kẽ | Mỗi câu 7 chữ | Mỗi câu 5 chữ | Không có vần
+? Trong thơ lục bát, tiếng thứ 6 câu lục vần với tiếng thứ mấy của câu bát? | Tiếng thứ 6 | Tiếng thứ 8 | Tiếng thứ 4 | Tiếng thứ 2
+? Từ "đánh" trong "đánh răng", "đánh trống", "đánh cờ" là hiện tượng: | Từ đa nghĩa | Từ đồng âm | Từ trái nghĩa | Từ mượn
++ Ngôi kể thứ nhất giúp câu chuyện chân thực, người kể trực tiếp bộc lộ cảm xúc.
++ Hồi kí là thể loại kể lại những sự việc người viết đã trải qua.
+- Truyện đồng thoại chỉ kể về con người, không có loài vật.
+= Truyền thuyết = Gắn với lịch sử
+= Cổ tích = Ước mơ công bằng, cái thiện thắng cái ác
+= Đồng thoại = Loài vật được nhân hoá
+# Từ láy: lấp lánh, rì rào, xanh xanh
+# Từ ghép: sách vở, nhà cửa, hoa hồng`, 2: `? Văn bản nghị luận nêu ý kiến về một vấn đề cần có: | Ý kiến, lí lẽ và bằng chứng | Chỉ có cảm xúc | Chỉ kể chuyện | Chỉ miêu tả
+? Trạng ngữ trong câu "Để bảo vệ môi trường, chúng ta cần trồng nhiều cây xanh." chỉ: | Mục đích | Thời gian | Nơi chốn | Nguyên nhân
+? Từ Hán Việt "phi cơ" có nghĩa là: | Máy bay | Tàu thuỷ | Xe lửa | Ô tô
+? Từ "khán giả" có yếu tố "giả" nghĩa là: | Người | Không thật | Giá cả | Già
+? Dấu chấm phẩy dùng để: | Đánh dấu ranh giới giữa các vế của câu ghép phức tạp hoặc các bộ phận liệt kê | Kết thúc câu | Đánh dấu lời nói trực tiếp | Biểu thị cảm xúc
+? Văn bản thông tin thuật lại sự kiện thường trình bày theo trình tự: | Thời gian | Không theo trình tự | Ngẫu nhiên | Cảm xúc
++ Lựa chọn từ ngữ phù hợp làm cho câu văn chính xác, sinh động.
++ Mở rộng thành phần chính của câu bằng cụm từ giúp câu cung cấp nhiều thông tin hơn.
+- Bằng chứng trong văn nghị luận có thể bịa ra để thuyết phục.
+= Thiên nhiên = Tự nhiên, trời đất
+= Quốc gia = Nước, đất nước
+= Học giả = Người nghiên cứu, học vấn cao
+_ Gần mực thì đen, gần đèn thì [rạng|sáng].` },
     id: 'ngu-van-6', lop: 6, mon: 'Ngữ văn', icon: '📖', nhan: 'Bài', so: false, essayMax: 2,
     topics: [
       { hk: 1, ten: 'Tôi và các bạn', bai: ['Bài học đường đời đầu tiên (Tô Hoài)', 'Nếu cậu muốn có một người bạn… (Xanh-tơ Ê-xu-pe-ri)', 'Bắt nạt (Nguyễn Thế Hoàng Linh)', 'Thực hành tiếng Việt: Từ đơn, từ phức; biện pháp so sánh', 'Viết: Kể lại một trải nghiệm của em'],

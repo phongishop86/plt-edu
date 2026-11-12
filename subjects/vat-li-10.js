@@ -1,5 +1,24 @@
 /* Vật lí 10 – KNTT. Chương, bài theo mục lục SGK; câu hỏi do PLT-Edu soạn. */
 PLT.KB.build({
+  nc: { 1: `? Vật được ném thẳng đứng lên với v₀ = 20 m/s (g = 10 m/s²). Độ cao cực đại là: | 20 m | 40 m | 10 m | 2 m
+? Thời gian vật ném lên với v₀ = 20 m/s đạt độ cao cực đại (g = 10 m/s²) là: | 2 s | 4 s | 1 s | 20 s
+? Vật ném ngang từ độ cao 45 m (g = 10 m/s²). Thời gian rơi là: | 3 s | 4,5 s | 9 s | 2 s
+? Ô tô tăng tốc từ 10 m/s lên 20 m/s trong 5 s. Quãng đường đi được trong thời gian đó là: | 75 m | 50 m | 100 m | 150 m
+? Vật 2 kg trượt trên sàn với hệ số ma sát 0,2 (g = 10 m/s²). Lực ma sát là: | 4 N | 2 N | 20 N | 0,4 N
+? Kéo vật 5 kg trên sàn nằm ngang bằng lực 20 N, ma sát 5 N. Gia tốc của vật là: | 3 m/s² | 4 m/s² | 5 m/s² | 1 m/s²
++ Khi vật chuyển động thẳng đều, hợp lực tác dụng lên vật bằng 0.
+- Thời gian rơi của vật ném ngang phụ thuộc vào vận tốc ban đầu.
+_ Gia tốc a = (F − F<sub>ms</sub>) : [m]`, 2: `? Vật 1 kg rơi tự do từ độ cao 20 m (g = 10 m/s²). Vận tốc khi chạm đất là: | 20 m/s | 10 m/s | 200 m/s | 40 m/s
+? Một máy nâng vật 100 kg lên cao 10 m trong 20 s (g = 10 m/s²). Công suất có ích là: | 500 W | 10 000 W | 200 W | 50 W
+? Viên đạn 10 g bay với 400 m/s găm vào khối gỗ 990 g đứng yên (va chạm mềm). Vận tốc hệ sau va chạm là: | 4 m/s | 40 m/s | 0,4 m/s | 400 m/s
+? Vật quay tròn đều bán kính 2 m, tốc độ 4 m/s. Gia tốc hướng tâm là: | 8 m/s² | 2 m/s² | 16 m/s² | 4 m/s²
+? Lò xo k = 200 N/m dãn 5 cm có thế năng đàn hồi: | 0,25 J | 5 J | 10 J | 0,5 J
++ Trong va chạm mềm, động lượng của hệ được bảo toàn nhưng động năng không bảo toàn.
+- Hiệu suất của máy có thể lớn hơn 100%.
+= Động lượng = p = mv
+= Động năng = ½mv²
+= Thế năng đàn hồi = ½k(Δl)²
+_ Định luật bảo toàn cơ năng: W = W<sub>đ</sub> + W<sub>[t]</sub> = hằng số` },
   id: 'vat-li-10', lop: 10, mon: 'Vật lí', icon: '⚛️', nhan: 'Chương', so: false,
   topics: [
     { hk: 1, nhan: 'Chương I', ten: 'Mở đầu', bai: ['Bài 1. Làm quen với Vật lí', 'Bài 2. Các quy tắc an toàn trong phòng thực hành Vật lí', 'Bài 3. Thực hành tính sai số trong phép đo. Ghi kết quả đo'],

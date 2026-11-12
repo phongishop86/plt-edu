@@ -2,6 +2,27 @@
 (function () {
   const TV = PLT.TV;
   PLT.KB.build({
+  nc: { 1: `? "Chí Phèo" thể hiện bi kịch lớn nhất của nhân vật là: | Bị cự tuyệt quyền làm người | Nghèo đói | Không có việc làm | Bị bệnh
+? Chi tiết "bát cháo hành" trong "Chí Phèo" có ý nghĩa: | Đánh thức bản tính lương thiện của Chí | Thể hiện sự nghèo đói | Gây cười | Kết thúc truyện
+? Cấu tứ của bài thơ là: | Cách tổ chức, triển khai hình ảnh và ý thơ | Số câu thơ | Thể thơ | Tên bài
+? "Tràng giang" của Huy Cận mang vẻ đẹp: | Kết hợp cổ điển và hiện đại | Hoàn toàn hiện đại phương Tây | Trào phúng | Dân gian thuần tuý
+? Văn bản nghị luận có cấu trúc chặt chẽ khi: | Luận điểm, lí lẽ, bằng chứng liên kết logic | Có nhiều số liệu | Câu văn dài | Nhiều từ Hán Việt
+? Ngôn ngữ nói khác ngôn ngữ viết ở chỗ: | Có ngữ điệu, cử chỉ hỗ trợ, ít trau chuốt hơn | Luôn trang trọng hơn | Không dùng từ địa phương | Luôn dài hơn
++ "Vợ nhặt" của Kim Lân thể hiện khát vọng sống và tình người trong nạn đói 1945.
+- "Tràng giang" là bài thơ của Xuân Diệu.
+= Nam Cao = Chí Phèo
+= Kim Lân = Vợ nhặt
+= Huy Cận = Tràng giang
+= Ngô Thì Nhậm = Cầu hiền chiếu`, 2: `? "Trao duyên" là đoạn trích từ tác phẩm: | Truyện Kiều | Chinh phụ ngâm | Lục Vân Tiên | Cung oán ngâm khúc
+? Đặc trưng của thể kí là: | Ghi chép người thật, việc thật, kết hợp cảm xúc | Hoàn toàn hư cấu | Chỉ dùng thơ | Biểu diễn trên sân khấu
+? Biện pháp chơi chữ có tác dụng: | Tạo sắc thái dí dỏm, hài hước hoặc châm biếm | Liệt kê | Nhấn mạnh thời gian | Tạo vần
+? Nhân vật bi kịch thường: | Mang khát vọng lớn nhưng gặp xung đột không thể giải quyết | Luôn có kết thúc vui vẻ | Không có mâu thuẫn | Là nhân vật phụ
+? "Ai đã đặt tên cho dòng sông?" là bút kí viết về: | Sông Hương | Sông Hồng | Sông Đà | Sông Cửu Long
++ Biện pháp lặp cấu trúc tạo nhịp điệu và nhấn mạnh ý.
+- Trong bi kịch, xung đột luôn được giải quyết êm đẹp.
+= Nguyễn Du = Truyện Kiều
+= Hoàng Phủ Ngọc Tường = Ai đã đặt tên cho dòng sông?
+_ "Trăm năm trong cõi người ta, chữ [tài] chữ mệnh khéo là ghét nhau." ` },
     id: 'ngu-van-11', lop: 11, mon: 'Ngữ văn', icon: '📖', nhan: 'Bài', so: false, essayMax: 2,
     topics: [
       { hk: 1, ten: 'Câu chuyện và điểm nhìn trong truyện kể', bai: ['Vợ nhặt (Kim Lân)', 'Chí Phèo (Nam Cao)', 'Thực hành tiếng Việt: Đặc điểm cơ bản của ngôn ngữ nói và ngôn ngữ viết', 'Viết: Nghị luận về một tác phẩm truyện (đặc điểm trong cách kể)', 'Nói và nghe: Thuyết trình về nghệ thuật kể chuyện', 'Thực hành đọc: Cải ơi! (Nguyễn Ngọc Tư)'],

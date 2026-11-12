@@ -1,5 +1,25 @@
 /* Vật lí 12 – KNTT. Chương, bài theo mục lục SGK; câu hỏi do PLT-Edu soạn. */
 PLT.KB.build({
+  nc: { 1: `? Cần bao nhiêu nhiệt lượng để 1 kg nước đá ở 0 °C tan hoàn toàn (λ = 3,4·10⁵ J/kg)? | 3,4·10⁵ J | 3,4·10³ J | 4 200 J | 2,3·10⁶ J
+? Khí lí tưởng ở 27 °C được nung nóng đẳng tích đến 127 °C. Áp suất tăng: | 4/3 lần | 127/27 lần | 2 lần | 1,5 lần
+? Khí nhận nhiệt lượng 100 J và thực hiện công 40 J. Nội năng của khí: | Tăng 60 J | Tăng 140 J | Giảm 60 J | Giảm 140 J
+? Nén đẳng nhiệt khí từ 6 lít xuống 2 lít. Áp suất: | Tăng 3 lần | Giảm 3 lần | Tăng 2 lần | Không đổi
+? Động năng trung bình của phân tử khí tỉ lệ với: | Nhiệt độ tuyệt đối | Thể tích | Áp suất riêng | Khối lượng bình
++ Ở nhiệt độ không tuyệt đối (0 K), chuyển động nhiệt của phân tử gần như dừng lại.
+- Khi khí sinh công, nội năng của khí luôn tăng.
+= Đẳng nhiệt = pV = const
+= Đẳng tích = p/T = const
+= Đẳng áp = V/T = const`, 2: `? Dây dẫn dài 0,5 m mang dòng 2 A đặt vuông góc với từ trường 0,2 T. Lực từ là: | 0,2 N | 2 N | 0,02 N | 0,5 N
+? Khung dây 100 vòng, từ thông qua mỗi vòng giảm đều từ 0,02 Wb về 0 trong 0,1 s. Suất điện động cảm ứng là: | 20 V | 2 V | 0,2 V | 200 V
+? Chất phóng xạ có chu kì bán rã 8 ngày. Sau 24 ngày, lượng còn lại là: | 1/8 ban đầu | 1/3 ban đầu | 1/4 ban đầu | 1/24 ban đầu
+? Hạt nhân ¹⁴₆C có số neutron là: | 8 | 6 | 14 | 20
+? Năng lượng toả ra trong phản ứng hạt nhân bắt nguồn từ: | Độ hụt khối | Động năng electron | Phản ứng hoá học | Ma sát
++ Năng lượng liên kết riêng càng lớn thì hạt nhân càng bền vững.
+- Tia gamma bị lệch trong điện trường.
+_ Số hạt nhân còn lại: N = N₀ · 2<sup>−t/[T]</sup>
+= Tia α = Hạt nhân ⁴He
+= Tia β⁻ = Electron
+= Tia γ = Sóng điện từ năng lượng cao` },
   id: 'vat-li-12', lop: 12, mon: 'Vật lí', icon: '⚛️', nhan: 'Chương', so: false,
   topics: [
     { hk: 1, nhan: 'Chương I', ten: 'Vật lí nhiệt', bai: ['Bài 1. Cấu trúc của chất. Sự chuyển thể', 'Bài 2. Nội năng. Định luật I của nhiệt động lực học', 'Bài 3. Nhiệt độ. Thang nhiệt độ – nhiệt kế', 'Bài 4. Nhiệt dung riêng', 'Bài 5. Nhiệt nóng chảy riêng', 'Bài 6. Nhiệt hoá hơi riêng', 'Bài 7. Bài tập về vật lí nhiệt'],

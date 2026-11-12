@@ -1,5 +1,24 @@
 /* Vật lí 11 – KNTT. Chương, bài theo mục lục SGK; câu hỏi do PLT-Edu soạn. */
 PLT.KB.build({
+  nc: { 1: `? Con lắc lò xo k = 100 N/m, m = 1 kg. Tần số góc là: | 10 rad/s | 100 rad/s | 1 rad/s | 0,1 rad/s
+? Vật dao động điều hoà x = 4cos(2πt) cm. Biên độ và chu kì là: | 4 cm; 1 s | 2 cm; 4 s | 4 cm; 2 s | 2π cm; 1 s
+? Vận tốc cực đại của vật dao động x = 5cos(4t) cm là: | 20 cm/s | 5 cm/s | 4 cm/s | 1,25 cm/s
+? Sóng truyền với tốc độ 2 m/s, tần số 10 Hz. Hai điểm gần nhất dao động ngược pha cách nhau: | 0,1 m | 0,2 m | 0,05 m | 0,4 m
+? Trong giao thoa ánh sáng (Young), a = 1 mm, D = 2 m, λ = 0,5 µm. Khoảng vân là: | 1 mm | 0,5 mm | 2 mm | 0,25 mm
++ Cơ năng của con lắc lò xo tỉ lệ với bình phương biên độ.
+- Hai điểm dao động cùng pha gần nhau nhất cách nhau nửa bước sóng.
+= Chu kì con lắc lò xo = T = 2π√(m/k)
+= Chu kì con lắc đơn = T = 2π√(l/g)
+= Khoảng vân = i = λD/a`, 2: `? Hai điện tích q₁ = q₂ = 1 µC đặt cách nhau 0,3 m trong chân không (k = 9·10⁹). Lực tương tác là: | 0,1 N | 1 N | 0,01 N | 0,3 N
+? Tụ điện 10 µF nối với hiệu điện thế 20 V có năng lượng: | 2·10⁻³ J | 2·10⁻⁴ J | 200 J | 0,02 J
+? Nguồn có E = 12 V, r = 1 Ω, nối với R = 5 Ω. Cường độ dòng điện là: | 2 A | 12 A | 2,4 A | 1 A
+? Với nguồn E = 12 V, r = 1 Ω, R = 5 Ω, hiệu điện thế mạch ngoài là: | 10 V | 12 V | 2 V | 5 V
+? Ghép 3 điện trở 6 Ω song song rồi nối tiếp với 4 Ω. Điện trở tương đương là: | 6 Ω | 22 Ω | 10 Ω | 2 Ω
++ Công suất mạch ngoài cực đại khi R = r.
+- Điện trở của dây kim loại không phụ thuộc nhiệt độ.
+_ Định luật Ohm cho toàn mạch: I = E : (R + [r])
+= Điện năng = A = UIt
+= Công suất = P = UI` },
   id: 'vat-li-11', lop: 11, mon: 'Vật lí', icon: '⚛️', nhan: 'Chương', so: false,
   topics: [
     { hk: 1, nhan: 'Chương I', ten: 'Dao động', bai: ['Bài 1. Dao động điều hoà', 'Bài 2. Mô tả dao động điều hoà', 'Bài 3. Vận tốc, gia tốc trong dao động điều hoà', 'Bài 4. Bài tập về dao động điều hoà', 'Bài 5. Động năng. Thế năng. Sự chuyển hoá năng lượng trong dao động điều hoà', 'Bài 6. Dao động tắt dần. Dao động cưỡng bức. Hiện tượng cộng hưởng', 'Bài 7. Bài tập về sự chuyển hoá năng lượng trong dao động điều hoà'],

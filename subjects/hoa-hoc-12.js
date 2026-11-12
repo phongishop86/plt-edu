@@ -1,5 +1,22 @@
 /* Hoá học 12 – KNTT. Chương, bài theo mục lục SGK; câu hỏi do PLT-Edu soạn. */
 PLT.KB.build({
+  nc: { 1: `? Xà phòng hoá hoàn toàn 0,1 mol tristearin cần số mol NaOH là: | 0,3 mol | 0,1 mol | 0,2 mol | 0,6 mol
+? Thuỷ phân 1 mol saccharose thu được: | 1 mol glucose và 1 mol fructose | 2 mol glucose | 2 mol fructose | 1 mol glucose
+? Chất có phản ứng tráng bạc là: | Glucose | Saccharose | Tinh bột | Cellulose
+? Amino acid có tính chất: | Lưỡng tính | Chỉ có tính acid | Chỉ có tính base | Trung tính tuyệt đối
+? Polymer được điều chế bằng phản ứng trùng ngưng là: | Nylon-6,6 | Polyethylene | PVC | Polystyrene
++ Tinh bột và cellulose đều là polysaccharide.
+- Aniline làm quỳ tím chuyển xanh.
+= Glucose = C₆H₁₂O₆
+= Saccharose = C₁₂H₂₂O₁₁
+= Glycine = H₂N–CH₂–COOH`, 2: `? Điện phân nóng chảy NaCl thu được Na ở: | Cathode | Anode | Cả hai điện cực | Không thu được
+? Trong pin Zn – Cu, sức điện động chuẩn (E°Cu²⁺/Cu = +0,34 V; E°Zn²⁺/Zn = −0,76 V) là: | 1,10 V | 0,42 V | −1,10 V | 0,76 V
+? Cho 5,6 g Fe vào dung dịch CuSO₄ dư. Khối lượng Cu tạo thành (Cu = 64, Fe = 56) là: | 6,4 g | 5,6 g | 3,2 g | 12,8 g
+? Kim loại khử được ion Cu²⁺ trong dung dịch là: | Fe | Ag | Au | Pt
+? Nước cứng tạm thời có thể làm mềm bằng cách: | Đun sôi | Lọc | Thêm NaCl | Để lắng
++ Kim loại có thế điện cực chuẩn càng âm thì tính khử càng mạnh.
+- Ag khử được ion Fe²⁺ trong dung dịch.
+_ Sức điện động pin: E°pin = E°(cathode) − E°([anode])` },
   id: 'hoa-hoc-12', lop: 12, mon: 'Hoá học', icon: '🧪', nhan: 'Chương', so: false,
   topics: [
     { hk: 1, nhan: 'Chương 1, 2', ten: 'Ester – Lipid. Carbohydrate', bai: ['Bài 1. Ester – Lipid', 'Bài 2. Xà phòng và chất giặt rửa', 'Bài 4. Giới thiệu về carbohydrate. Glucose và fructose', 'Bài 5. Saccharose và maltose', 'Bài 6. Tinh bột và cellulose'],

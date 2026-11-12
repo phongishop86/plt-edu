@@ -2,6 +2,32 @@
 (function () {
   const TV = PLT.TV;
   PLT.KB.build({
+  nc: { 1: `? Nghĩa của từ "nhân hậu" là: | Thương người, ăn ở có tình nghĩa | Thông minh | Giàu có | Mạnh mẽ
+? Câu "Bà ơi, cháu nhớ bà lắm!" sử dụng: | Từ ngữ biểu cảm, câu cảm | Liệt kê | So sánh | Điệp ngữ
+? Biện pháp nói giảm nói tránh có tác dụng: | Giảm cảm giác đau buồn, thể hiện sự tế nhị | Phóng đại sự việc | Gây cười | Liệt kê
+? Câu "Bác đã đi rồi sao, Bác ơi!" sử dụng biện pháp: | Nói giảm nói tránh | Nói quá | So sánh | Nhân hoá
+? Thơ bốn chữ, năm chữ thường có cách gieo vần: | Vần chân, vần lưng linh hoạt | Không gieo vần | Chỉ vần chân câu cuối | Vần bằng – trắc cố định như thơ Đường
+? Tùy bút là thể loại: | Ghi chép, bộc lộ cảm xúc, suy nghĩ tự do của tác giả | Kể chuyện hư cấu | Kịch | Thơ lục bát
+? Số từ trong cụm từ "ba quyển sách" là: | ba | quyển | sách | ba quyển
++ Truyện khoa học viễn tưởng dựa trên tri thức khoa học để tưởng tượng.
++ Tục ngữ là câu nói ngắn gọn, đúc kết kinh nghiệm của nhân dân.
+- Nói quá là biện pháp làm giảm nhẹ mức độ sự việc.
+= Nói quá = Đẹp nghiêng nước nghiêng thành
+= Nói giảm nói tránh = Ông đã đi xa rồi
+= Liệt kê = Sách, vở, bút, thước…
+# Tục ngữ về thiên nhiên – lao động: Chuồn chuồn bay thấp thì mưa, Tấc đất tấc vàng
+# Tục ngữ về con người – xã hội: Người ta là hoa đất, Một mặt người bằng mười mặt của`, 2: `? Luận điểm trong văn nghị luận là: | Ý kiến, quan điểm chính người viết đưa ra | Câu chuyện minh hoạ | Số liệu | Lời trích dẫn
+? Thành phần biệt lập "có lẽ" trong câu "Có lẽ trời sắp mưa." là: | Thành phần tình thái | Thành phần cảm thán | Thành phần gọi đáp | Thành phần phụ chú
+? Liên kết câu bằng phép thế là: | Dùng từ ngữ thay thế từ ngữ đã có ở câu trước | Lặp lại từ ngữ | Dùng từ nối | Dùng dấu câu
+? Văn bản "Tinh thần yêu nước của nhân dân ta" là của: | Hồ Chí Minh | Phạm Văn Đồng | Đặng Thai Mai | Hoài Thanh
+? Câu đặc biệt là câu: | Không cấu tạo theo mô hình chủ ngữ – vị ngữ | Có đủ chủ ngữ và vị ngữ | Có hai vế | Có trạng ngữ
+? Dấu gạch ngang trong câu dùng để: | Đánh dấu bộ phận giải thích, chú thích | Kết thúc câu | Ngăn cách các vế ngang hàng | Biểu thị câu hỏi
++ Phép lặp là lặp lại từ ngữ ở câu trước để liên kết.
+- Lí lẽ và bằng chứng không cần phù hợp với luận điểm.
+= Phép lặp = Lặp từ ngữ đã có
+= Phép thế = Dùng đại từ, từ đồng nghĩa thay thế
+= Phép nối = Dùng từ nối: tuy nhiên, vì vậy
+_ Uống nước nhớ [nguồn].` },
     id: 'ngu-van-7', lop: 7, mon: 'Ngữ văn', icon: '📖', nhan: 'Bài', so: false, essayMax: 2,
     topics: [
       { hk: 1, ten: 'Bầu trời tuổi thơ', bai: ['Bầy chim chìa vôi (Nguyễn Quang Thiều)', 'Đi lấy mật (trích Đất rừng phương Nam – Đoàn Giỏi)', 'Ngàn sao làm việc (Võ Quảng)', 'Thực hành tiếng Việt: Mở rộng thành phần chính của câu bằng cụm từ; phó từ', 'Viết: Tóm tắt văn bản theo những yêu cầu khác nhau về độ dài', 'Nói và nghe: Trao đổi về một vấn đề mà em quan tâm'],

@@ -1,5 +1,31 @@
 /* Tiếng Anh 10 – Global Success (10 Unit). Từ vựng, ngữ pháp theo Book map SGK; câu hỏi do PLT-Edu soạn. */
 PLT.KB.eng({
+  nc: { 1: `? Choose the correct word: "Housework should be ___ equally among family members." | shared | share | sharing | to share
+? Choose the correct word: "I ___ dinner when the phone rang." | was cooking | cooked | am cooking | have cooked
+? Choose the correct word: "She has volunteered at the centre ___ two years." | for | since | in | at
+? Choose the correct word: "Many people ___ to the charity last year." | donated | donate | have donated since | donating
+? Choose the correct word: "The concert ___ by thousands of fans." | was attended | attended | was attending | has attend
+? Choose the correct word: "She sings ___ than her sister." | more beautifully | beautifuller | most beautifully | more beautiful
++ The past continuous is used for an action in progress interrupted by another action.
+- "Since" is used with a period of time, e.g. "since three years".
+= breadwinner = trụ cột gia đình
+= homemaker = người nội trợ
+= volunteer = tình nguyện
+= donate = quyên góp
+_ While I [was] studying, my brother was playing games.
+> The > charity > event > was > organised > by > students`, 2: `? Choose the correct word: "Gender equality means men and women ___ the same rights." | have | has | having | had
+? Choose the correct word: "The students ___ to the museum next week." | are going | went | have gone | go yesterday
+? Choose the correct word: "Viet Nam ___ ASEAN in 1995." | joined | has joined | joins | was joined
+? Choose the correct word: "We should protect the environment ___ future generations." | for | to | of | with
+? Choose the correct word: "If you want to save energy, you ___ turn off the lights." | should | would | shouldn't | wouldn't
++ "Should" is used to give advice.
+- Passive voice: "The bridge built in 2010." is correct.
+= gender equality = bình đẳng giới
+= ecotourism = du lịch sinh thái
+= sustainable = bền vững
+= biodiversity = đa dạng sinh học
+_ This bridge [was] built in 2010.
+> Gender > equality > is > important > for > development` },
   id: 'tieng-anh-10', lop: 10,
   units: [
     { ten: 'Family life', v: 'household chores=việc nhà; breadwinner=trụ cột kiếm tiền; homemaker=người nội trợ; do the laundry=giặt giũ; put out the rubbish=đổ rác; share=chia sẻ; responsibility=trách nhiệm; gratitude=lòng biết ơn', s: ['My mother usually [does] (do) the cooking.', 'Look! My brother [is washing] (wash) the dishes.', 'We [share] (share) the housework equally.'],

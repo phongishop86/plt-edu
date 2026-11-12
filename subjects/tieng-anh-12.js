@@ -1,5 +1,30 @@
 /* Tiếng Anh 12 – Global Success (10 Unit). Từ vựng, ngữ pháp theo Book map SGK; câu hỏi do PLT-Edu soạn. */
 PLT.KB.eng({
+  nc: { 1: `? Choose the correct word: "By the time we arrived, the film ___." | had started | started | has started | starts
+? Choose the correct word: "She is said ___ the best student in class." | to be | being | be | to being
+? Choose the correct word: "Artificial intelligence ___ many jobs in the future." | will replace | replaced | replaces yesterday | has replaced since
+? Choose the correct word: "___ he was tired, he kept working." | Although | Despite | Because of | In spite
+? Choose the correct word: "Despite ___ hard, he failed the test." | studying | he studied | study | studied
++ The past perfect is used for an action completed before another past action.
+- "Despite" is followed by a clause with subject and verb.
+= artificial intelligence = trí tuệ nhân tạo
+= urbanisation = đô thị hoá
+= green living = sống xanh
+= media literacy = hiểu biết truyền thông
+_ He had left [before] I came.
+> She > had > finished > her > work > before > noon`, 2: `? Choose the correct word: "Not until midnight ___ home." | did he come | he came | he did come | came he
+? Choose the correct word: "The more you practise, the ___ your English will be." | better | best | good | well
+? Choose the correct word: "Had I known about the meeting, I ___ it." | would have attended | would attend | attended | will attend
+? Choose the correct word: "He suggested that she ___ a doctor." | see | sees | saw | seeing
+? Choose the correct word: "Lifelong learning helps people ___ new skills." | acquire | acquiring | acquired | to acquiring
++ Inversion is used after negative adverbials such as "Not until", "Never", "Seldom".
+- "Had I known" is the inverted form of a first conditional.
+= lifelong learning = học tập suốt đời
+= career path = con đường sự nghiệp
+= wildlife = động vật hoang dã
+= endangered species = loài có nguy cơ tuyệt chủng
+_ Never [have] I seen such a beautiful sunset.
+> Seldom > does > he > go > to > the > cinema` },
   id: 'tieng-anh-12', lop: 12,
   units: [
     { ten: 'Life stories we admire', v: 'achievement=thành tựu; admire=ngưỡng mộ; biography=tiểu sử; dedicate=cống hiến; inspire=truyền cảm hứng; overcome=vượt qua; talented=tài năng; legacy=di sản để lại', s: ['When he [was working] (work) in Paris, he founded a newspaper.', 'She [won] (win) the prize in 2010.', 'They [were preparing] (prepare) the speech when the guests arrived.'],

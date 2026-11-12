@@ -1,5 +1,34 @@
 /* Tiếng Anh 6 – Global Success (12 Unit). Từ vựng, ngữ pháp theo chủ đề Unit; câu hỏi do PLT-Edu soạn. */
 PLT.KB.eng({
+  nc: { 1: `? Which word has the ending "-s/-es" pronounced /ɪz/? | watches | books | pens | cats
+? Choose the correct word: "My house is ___ the bakery and the cinema." | between | next | behind of | in front
+? Choose the correct word: "Look! The children ___ in the yard." | are playing | play | plays | played
+? Choose the correct word: "She ___ to school by bike every day." | goes | go | is going | went
+? Choose the correct word: "There ___ any milk in the fridge." | isn't | aren't | not | doesn't
+? Choose the correct word: "My best friend is very ___. She always helps other people." | kind | lazy | shy | boring
+? Choose the correct answer: "Would you like to come to my party?" | Yes, I'd love to. | Yes, I do. | No, I don't like. | Yes, I would like.
++ We use the present continuous for actions happening now.
+- "She don't have a cat." is grammatically correct.
+= kind = tốt bụng
+= creative = sáng tạo
+= confident = tự tin
+= hard-working = chăm chỉ
+_ I [am] reading a book now. (be)
+> My > brother > is > taller > than > me`, 2: `? Choose the correct word: "Ha Noi is ___ than Hai Phong." | bigger | big | biggest | more big
+? Choose the correct word: "This is the ___ city in Viet Nam." | largest | larger | large | most large
+? Choose the correct word: "You ___ litter in the park." | mustn't | must | should | can
+? Choose the correct word: "We ___ visit our grandparents next weekend." | will | did | are | was
+? Choose the correct word: "If we recycle more, we ___ less rubbish." | will produce | produced | produces | producing
+? Odd one out: | reduce | plastic | glass | paper
+? Choose the correct word: "Robots ___ do the housework in the future." | will | did | were | are going
++ "Reduce, reuse, recycle" are the three Rs to protect the environment.
+- "Most beautiful" is the comparative form of "beautiful".
+= reduce = giảm thiểu
+= reuse = tái sử dụng
+= recycle = tái chế
+= rubbish = rác thải
+_ If you [throw] rubbish in the river, the water will be polluted.
+> Viet Nam > has > many > beautiful > beaches` },
   id: 'tieng-anh-6', lop: 6,
   units: [
     { ten: 'My new school', v: 'compass=com-pa; calculator=máy tính bỏ túi; pencil sharpener=gọt bút chì; uniform=đồng phục; boarding school=trường nội trú; classmate=bạn cùng lớp; homework=bài tập về nhà', s: ['I [often] (thường xuyên) do my homework after dinner.', 'She [goes] (go) to school by bike.', 'We have a new [classmate].'],

@@ -1,5 +1,20 @@
 /* Sinh học 10 – KNTT. Phần, chương, bài theo mục lục SGK; câu hỏi do PLT-Edu soạn. */
 PLT.KB.build({
+  nc: { 1: `? Phân tử DNA có 3 000 nucleotide thì số chu kì xoắn là: | 150 | 300 | 1 500 | 3 000
+? Một gene có 600 A và 900 G. Tổng số nucleotide là: | 3 000 | 1 500 | 2 400 | 1 800
+? Một gene có A = 600, G = 900. Số liên kết hydrogen là: | 3 900 | 3 000 | 1 500 | 4 200
+? Tế bào nhân thực khác nhân sơ ở chỗ có: | Màng nhân và các bào quan có màng | Ribosome | Màng sinh chất | Vật chất di truyền
+? Bào quan có cấu trúc màng kép là: | Ti thể và lục lạp | Ribosome | Lưới nội chất | Không bào
++ Enzyme có tính đặc hiệu với cơ chất.
+- Vận chuyển chủ động không cần năng lượng ATP.
+_ Số liên kết hydrogen: H = 2A + [3]G`, 2: `? Một tế bào nguyên phân liên tiếp 3 lần tạo ra số tế bào con là: | 8 | 6 | 3 | 16
+? Tế bào ruồi giấm 2n = 8 ở kì giữa nguyên phân có số NST kép là: | 8 | 16 | 4 | 32
+? Một tế bào sinh tinh giảm phân tạo ra số tinh trùng là: | 4 | 2 | 1 | 8
+? Một tế bào sinh trứng giảm phân tạo ra số trứng là: | 1 | 4 | 2 | 3
+? Vi khuẩn phân chia 20 phút một lần. Từ 1 tế bào, sau 2 giờ (điều kiện lí tưởng) có số tế bào là: | 64 | 12 | 6 | 128
++ Trao đổi chéo xảy ra ở kì đầu giảm phân I.
+- Giảm phân tạo ra các tế bào con lưỡng bội.
+_ Số tế bào con sau k lần nguyên phân: N = [2]^k` },
   id: 'sinh-hoc-10', lop: 10, mon: 'Sinh học', icon: '🧬', nhan: 'Chương', so: false,
   topics: [
     { hk: 1, nhan: 'Mở đầu', ten: 'Giới thiệu Sinh học và các cấp độ tổ chức sống', bai: ['Bài 1. Giới thiệu khái quát môn Sinh học', 'Bài 2. Phương pháp nghiên cứu và học tập môn Sinh học', 'Bài 3. Các cấp độ tổ chức của thế giới sống'],
