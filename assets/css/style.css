@@ -194,3 +194,7 @@ sup{font-size:.7em}
 .nctag{display:inline-block;background:#fff4d6;color:#a15c00;border:1px solid #ffd27a;border-radius:999px;padding:1px 8px;font-size:.78em;font-weight:800;margin-right:4px;vertical-align:middle}
 .ncintro{background:#fff8e6;border:1px solid #ffd27a}
 .ncard{border:1px solid #ffd27a;background:#fffaf0}
+
+.nav a[data-r=""] span{display:none}
+/* Menu gọn: chỉ hiện chữ ở mục đang chọn, các mục khác chỉ biểu tượng (rê chuột để xem tên) */
+@media (min-width:1061px){.nav span{display:none}.nav a.on span{display:inline}.nav a{font-size:1.05rem}}

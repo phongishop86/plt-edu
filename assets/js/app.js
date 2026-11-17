@@ -104,13 +104,14 @@
           <a href="#/lop/${l <= 5 ? l : 1}"><b>Tiểu học</b><span>Lớp 1 – 5 · đủ 9–12 môn</span><i>→</i></a>
           <a href="#/lop/${l >= 6 && l <= 9 ? l : 6}"><b>Trung học cơ sở</b><span>Lớp 6 – 9 · đủ 12 môn</span><i>→</i></a>
           <a href="#/lop/${l >= 10 ? l : 10}"><b>Trung học phổ thông</b><span>Lớp 10 – 12 · đủ 16 môn</span><i>→</i></a>
+          <a href="#/chuyen-cap"><b>🎓 Thi chuyển cấp</b><span>Vào 6 · Vào 10 · Tốt nghiệp THPT · HSG</span><i>→</i></a>
           <a href="https://phongishop86.github.io/plt-aiedu/"><b>🤖 AI Edu</b><span>Học AI an toàn, miễn phí</span><i>→</i></a>
         </div>
         <div class="facts"><span><b>12</b> lớp</span><span><b>149</b> môn học</span><span><b>3 900+</b> bài học</span><span><b>Đề</b> tuần · tháng · kỳ</span><span><b>AI</b> chấm tự luận</span><span>Tiến độ lưu ngay trên máy</span></div>
       </div>
       <div class="hcard"><div class="hl"><img src="assets/img/logo-192.png" alt=""><div><b>Đang học: Lớp ${l}</b><span>Chọn lớp khác bên dưới hoặc trên thanh menu</span></div></div>
         <div class="lops">${Array.from({ length: 12 }, (_, i) => i + 1).map((x) => `<a href="#/lop/${x}" class="${x === l ? 'on' : ''}">${x}</a>`).join('')}</div>
-        <div class="qa"><a href="${modePath('hoc', l)}"><span>📚</span>Học bài</a><a href="${modePath('on-tap', l)}"><span>🎯</span>Ôn tập</a><a href="${modePath('kiem-tra', l)}"><span>📝</span>Kiểm tra</a></div></div>
+        <div class="qa"><a href="${modePath('hoc', l)}"><span>📚</span>Học bài</a><a href="${modePath('on-tap', l)}"><span>🎯</span>Ôn tập</a><a href="${modePath('kiem-tra', l)}"><span>📝</span>Kiểm tra</a><a href="#/chuyen-cap"><span>🎓</span>Chuyển cấp</a></div></div>
     </div></section>
       ${grades.map(([g, ls]) => `<h2>${g}</h2><div class="grades">${ls.map((x) => `<a class="grade${x === l ? ' cur' : ''}" href="#/lop/${x}"><span>Lớp</span><b>${x}</b><em>${BOOKS[x].length} môn</em></a>`).join('')}</div>`).join('')}
       <h2>Một buổi học có gì</h2><div class="feats">
@@ -194,6 +195,82 @@
     const backTo = cfg.nc ? 'nang-cao' : 'kiem-tra';
     app.innerHTML = crumb(S, `<a href="#/${backTo}/${sid}">${cfg.nc ? 'Nâng cao*' : 'Kiểm tra'}</a> › ${cfg.title}`) + `<h1>${cfg.title} <small class="muted">· ${S.mon} ${S.lop}</small></h1><div id="ebox"></div>`;
     active = PLT.Q.exam($('#ebox'), { id: sid + ':' + code, subject: S.id, title: `${cfg.title} – ${S.mon} ${S.lop}`, questions: qs, minutes: cfg.min, again: () => takeTest(S, code), back: () => (location.hash = `#/${backTo}/${sid}`) });
+  }
+
+  /* ---------------- Thi chuyển cấp (đề tổng hợp nhiều lớp) ---------------- */
+  // parts: [mã môn, tỉ lệ câu]; nc: số câu nâng cao; es: số câu tự luận (lấy từ môn đầu tiên)
+  const CC = [
+    { id: 'vao6', ten: 'Thi vào lớp 6', ic: '🎒', mo: 'Ôn thi vào lớp 6 (trường chất lượng cao): kiến thức lớp 3 – 5, trọng tâm lớp 5.', mons: [
+      { k: 'toan', mon: 'Toán', parts: [['toan-5', 0.6], ['toan-4', 0.25], ['toan-3', 0.15]], n: 25, nc: 5, es: 1, min: 60 },
+      { k: 'tv', mon: 'Tiếng Việt', parts: [['tieng-viet-5', 0.7], ['tieng-viet-4', 0.3]], n: 25, nc: 4, es: 1, min: 60 },
+      { k: 'ta', mon: 'Tiếng Anh', parts: [['tieng-anh-5', 0.7], ['tieng-anh-4', 0.3]], n: 30, nc: 5, es: 0, min: 45 }] },
+    { id: 'vao10', ten: 'Tuyển sinh vào lớp 10', ic: '🏫', mo: 'Ôn thi vào lớp 10: kiến thức THCS, trọng tâm lớp 9.', mons: [
+      { k: 'toan', mon: 'Toán', parts: [['toan-9', 0.65], ['toan-8', 0.2], ['toan-7', 0.15]], n: 25, nc: 5, es: 2, min: 90 },
+      { k: 'van', mon: 'Ngữ văn', parts: [['ngu-van-9', 0.7], ['ngu-van-8', 0.3]], n: 15, nc: 3, es: 2, min: 120 },
+      { k: 'ta', mon: 'Tiếng Anh', parts: [['tieng-anh-9', 0.7], ['tieng-anh-8', 0.2], ['tieng-anh-7', 0.1]], n: 40, nc: 6, es: 0, min: 60 }] },
+    { id: 'thpt', ten: 'Tốt nghiệp THPT', ic: '🎓', mo: 'Ôn thi tốt nghiệp THPT theo cấu trúc mới: phần trắc nghiệm, đúng/sai, trả lời ngắn; kiến thức lớp 10 – 12, trọng tâm lớp 12.', mons: [
+      { k: 'toan', mon: 'Toán', parts: [['toan-12', 0.55], ['toan-11', 0.3], ['toan-10', 0.15]], n: 22, nc: 4, es: 0, min: 90 },
+      { k: 'van', mon: 'Ngữ văn', parts: [['ngu-van-12', 0.7], ['ngu-van-11', 0.3]], n: 10, nc: 2, es: 2, min: 120 },
+      { k: 'ta', mon: 'Tiếng Anh', parts: [['tieng-anh-12', 0.6], ['tieng-anh-11', 0.25], ['tieng-anh-10', 0.15]], n: 40, nc: 6, es: 0, min: 50 },
+      { k: 'ly', mon: 'Vật lí', parts: [['vat-li-12', 0.6], ['vat-li-11', 0.3], ['vat-li-10', 0.1]], n: 28, nc: 4, es: 0, min: 50 },
+      { k: 'hoa', mon: 'Hoá học', parts: [['hoa-hoc-12', 0.6], ['hoa-hoc-11', 0.3], ['hoa-hoc-10', 0.1]], n: 28, nc: 4, es: 0, min: 50 },
+      { k: 'sinh', mon: 'Sinh học', parts: [['sinh-hoc-12', 0.6], ['sinh-hoc-11', 0.25], ['sinh-hoc-10', 0.15]], n: 28, nc: 4, es: 0, min: 50 },
+      { k: 'su', mon: 'Lịch sử', parts: [['lich-su-12', 0.6], ['lich-su-11', 0.25], ['lich-su-10', 0.15]], n: 28, nc: 0, es: 0, min: 50 },
+      { k: 'dia', mon: 'Địa lí', parts: [['dia-li-12', 0.6], ['dia-li-11', 0.25], ['dia-li-10', 0.15]], n: 28, nc: 0, es: 0, min: 50 },
+      { k: 'gdktpl', mon: 'Giáo dục kinh tế và pháp luật', parts: [['gdktpl-12', 0.6], ['gdktpl-11', 0.25], ['gdktpl-10', 0.15]], n: 28, nc: 0, es: 0, min: 50 }] },
+    { id: 'hsg', ten: 'Học sinh giỏi', ic: '🏆', mo: 'Đề toàn câu nâng cao, suy luận nhiều bước – bồi dưỡng học sinh giỏi các cấp.', mons: [
+      { k: 'toan5', mon: 'Toán 5', parts: [['toan-5', 0.7], ['toan-4', 0.3]], n: 15, nc: 15, es: 0, min: 60 },
+      { k: 'tv5', mon: 'Tiếng Việt 5', parts: [['tieng-viet-5', 0.7], ['tieng-viet-4', 0.3]], n: 15, nc: 15, es: 0, min: 60 },
+      { k: 'ta5', mon: 'Tiếng Anh 5', parts: [['tieng-anh-5', 0.7], ['tieng-anh-4', 0.3]], n: 15, nc: 15, es: 0, min: 45 },
+      { k: 'toan9', mon: 'Toán 9', parts: [['toan-9', 0.6], ['toan-8', 0.4]], n: 15, nc: 15, es: 0, min: 90 },
+      { k: 'van9', mon: 'Ngữ văn 9', parts: [['ngu-van-9', 0.7], ['ngu-van-8', 0.3]], n: 15, nc: 15, es: 0, min: 90 },
+      { k: 'ta9', mon: 'Tiếng Anh 9', parts: [['tieng-anh-9', 0.7], ['tieng-anh-8', 0.3]], n: 15, nc: 15, es: 0, min: 60 },
+      { k: 'khtn9', mon: 'KHTN 9', parts: [['khtn-9', 0.6], ['khtn-8', 0.4]], n: 15, nc: 15, es: 0, min: 90 },
+      { k: 'toan12', mon: 'Toán 12', parts: [['toan-12', 0.6], ['toan-11', 0.4]], n: 15, nc: 15, es: 0, min: 90 },
+      { k: 'ly12', mon: 'Vật lí 12', parts: [['vat-li-12', 0.6], ['vat-li-11', 0.4]], n: 15, nc: 15, es: 0, min: 90 },
+      { k: 'hoa12', mon: 'Hoá học 12', parts: [['hoa-hoc-12', 0.6], ['hoa-hoc-11', 0.4]], n: 15, nc: 15, es: 0, min: 90 },
+      { k: 'sinh12', mon: 'Sinh học 12', parts: [['sinh-hoc-12', 0.6], ['sinh-hoc-11', 0.4]], n: 15, nc: 15, es: 0, min: 90 },
+      { k: 'ta12', mon: 'Tiếng Anh 12', parts: [['tieng-anh-12', 0.6], ['tieng-anh-11', 0.4]], n: 15, nc: 15, es: 0, min: 60 }] }
+  ];
+  const CC_DE = 6;
+  const ccBest = (id) => { const r = PLT.data.tests.filter((x) => x.id === id); return r.length ? `<span class="pill">Cao nhất ${String(Math.max(...r.map((x) => x.diem))).replace('.', ',')}đ</span>` : ''; };
+  const ccMeta = (m) => `${m.nc >= m.n ? m.n + ' câu nâng cao' : m.n + ' câu' + (m.es ? ' + ' + m.es + ' tự luận' : '')} · ${m.min} phút`;
+  function ccHome() {
+    app.innerHTML = `<div class="crumb"><a href="#/">Trang chủ</a> › Thi chuyển cấp</div><h1>🎓 Thi chuyển cấp & đề tổng hợp</h1>
+      <p class="muted">Mỗi lần làm là một đề mới, lấy kiến thức nhiều lớp theo tỉ lệ (lớp cuối cấp nhiều nhất), có câu nâng cao ở cuối đề và lời giải chi tiết. Đề do PLT-Edu tự biên soạn, mang tính luyện tập.</p>
+      ${CC.map((e) => `<h2>${e.ic} ${e.ten}</h2><p class="muted small">${e.mo}</p><div class="subjects">${e.mons.map((m) => `<a class="subj" href="#/chuyen-cap/${e.id}/${m.k}"><div class="si">${e.ic}</div><b>${m.mon}</b><span class="muted small">${ccMeta(m)}</span></a>`).join('')}</div>`).join('')}`;
+    window.scrollTo(0, 0);
+  }
+  function ccList(e, m) {
+    const nm = `${e.ten} · ${m.mon}`;
+    const lops = m.parts.map(([sid, w]) => `${CATALOG[sid] ? CATALOG[sid].mon + ' ' + CATALOG[sid].lop : sid} (${Math.round(w * 100)}%)`).join(', ');
+    app.innerHTML = `<div class="crumb"><a href="#/">Trang chủ</a> › <a href="#/chuyen-cap">Thi chuyển cấp</a> › ${nm}</div><h1>${e.ic} ${nm}</h1>
+      <div class="card ncintro"><b>Phạm vi kiến thức:</b> ${lops}.${m.nc && m.nc < m.n ? ` Có ${m.nc} câu nâng cao cuối đề.` : ''}${e.id === 'thpt' ? ' Câu hỏi xếp theo thứ tự: trắc nghiệm nhiều lựa chọn → đúng/sai → trả lời ngắn.' : ''}</div>
+      <div class="tgrid">${Array.from({ length: CC_DE }, (_, i) => i + 1).map((k) => `<a class="tcard${m.nc >= m.n ? ' ncard' : ''}" href="#/chuyen-cap/${e.id}/${m.k}/${k}"><b>📝 Đề luyện số ${k}</b><span class="muted small">${m.mon}</span><span class="meta">${ccMeta(m)} ${ccBest(`cc:${e.id}:${m.k}:${k}`)}</span></a>`).join('')}</div>`;
+    window.scrollTo(0, 0);
+  }
+  async function ccTake(e, m, k, my) {
+    app.innerHTML = '<p class="muted">Đang tạo đề…</p>';
+    const Ss = []; for (const [sid] of m.parts) { const S = await ensure(sid); if (my !== seq) return; if (S) Ss.push(S); }
+    if (!Ss.length) { app.innerHTML = '<div class="card">Không tải được dữ liệu đề. Kiểm tra kết nối và tải lại trang.</div>'; return; }
+    const nNC = Math.min(m.nc, Ss.reduce((a, S) => a + (ncGens(S).length ? m.n : 0), 0)), nBase = m.n - nNC;
+    let base = [], left = nBase;
+    m.parts.forEach(([sid, w], i) => { const S = PLT.subjects[sid]; if (!S || !left) return; const c = i === m.parts.length - 1 ? left : Math.min(left, Math.round(nBase * w)); left -= c; if (c) base = base.concat(build(S, Object.keys(S.gens).filter((g) => !isNC(g)), c, 0, 0)); });
+    let adv = [], la = nNC; const withNC = Ss.filter((S) => ncGens(S).length);
+    withNC.forEach((S, i) => { if (!la) return; const c = i === withNC.length - 1 ? la : Math.max(1, Math.round(nNC * (m.parts.find((p) => p[0] === S.id) || [0, 0.5])[1])); const cc = Math.min(la, c); la -= cc; adv = adv.concat(build(S, [], cc, 0, cc, nNC >= m.n)); });
+    const grp = (q) => (q.type === 'mc' ? 0 : /^tf/.test(q.type) ? 1 : q.type === 'fill' ? 2 : 1);
+    base = e.id === 'thpt' ? base.sort((a, b) => grp(a) - grp(b)) : shuffle(base);
+    const S0 = Ss[0], pool = shuffle([].concat((S0.essays || {})[1] || [], (S0.essays || {})[2] || []));
+    const es = pool.slice(0, m.es).map((f) => f());
+    const title = `${e.ten} · ${m.mon} – Đề luyện số ${k}`;
+    app.innerHTML = `<div class="crumb"><a href="#/">Trang chủ</a> › <a href="#/chuyen-cap">Thi chuyển cấp</a> › <a href="#/chuyen-cap/${e.id}/${m.k}">${e.ten} · ${m.mon}</a> › Đề số ${k}</div><h1>${e.ic} ${title}</h1><div id="ebox"></div>`;
+    active = PLT.Q.exam($('#ebox'), { id: `cc:${e.id}:${m.k}:${k}`, subject: S0.id, title, questions: base.concat(adv, es), minutes: m.min, again: () => ccTake(e, m, k, seq), back: () => (location.hash = `#/chuyen-cap/${e.id}/${m.k}`) });
+  }
+  async function chuyenCap(p, my) {
+    const e = CC.find((x) => x.id === p[1]); if (!e) return ccHome();
+    const m = e.mons.find((x) => x.k === p[2]); if (!m) return ccHome();
+    if (p[3]) return ccTake(e, m, +p[3] || 1, my);
+    ccList(e, m);
   }
 
   /* ---------------- Nâng cao* (bồi dưỡng học sinh giỏi) ---------------- */
@@ -282,6 +359,7 @@
       case 'kiem-tra': testList(S, p[2]); break;
       case 'thi': takeTest(S, p[2]); break;
       case 'nang-cao': advanced(S); break;
+      case 'chuyen-cap': await chuyenCap(p, my); break;
       case 'tien-do': await progress(); break;
       default: home();
     }
@@ -294,7 +372,7 @@
   }
   function syncLop() {
     const l = curLop(), s = sidOf(l);
-    $('#nav').innerHTML = `<a href="#/" data-r="" title="Trang chủ">🏠 <span>Trang chủ</span></a><a href="${modePath('hoc', l)}" data-r="hoc" title="Học bài">📚 <span>Học bài</span></a><a href="${modePath('on-tap', l)}" data-r="on-tap" title="Ôn tập">🎯 <span>Ôn tập</span></a><a href="${modePath('kiem-tra', l)}" data-r="kiem-tra" title="Kiểm tra">📝 <span>Kiểm tra</span></a><a href="${modePath('nang-cao', l)}" data-r="nang-cao" title="Nâng cao* – bồi dưỡng học sinh giỏi">⭐ <span>Nâng cao*</span></a><a href="#/tien-do" data-r="tien-do" title="Tiến độ">📈 <span>Tiến độ</span></a>`;
+    $('#nav').innerHTML = `<a href="#/" data-r="" title="Trang chủ">🏠 <span>Trang chủ</span></a><a href="${modePath('hoc', l)}" data-r="hoc" title="Học bài">📚 <span>Học bài</span></a><a href="${modePath('on-tap', l)}" data-r="on-tap" title="Ôn tập">🎯 <span>Ôn tập</span></a><a href="${modePath('kiem-tra', l)}" data-r="kiem-tra" title="Kiểm tra">📝 <span>Kiểm tra</span></a><a href="${modePath('nang-cao', l)}" data-r="nang-cao" title="Nâng cao* – bồi dưỡng học sinh giỏi">⭐ <span>Nâng cao*</span></a><a href="#/chuyen-cap" data-r="chuyen-cap" title="Thi chuyển cấp: vào lớp 6, vào lớp 10, tốt nghiệp THPT, học sinh giỏi">🎓 <span>Chuyển cấp</span></a><a href="#/tien-do" data-r="tien-do" title="Tiến độ">📈 <span>Tiến độ</span></a>`;
     const sel = $('#lopSel'); if (sel) sel.value = l;
     const ic = $('#lopIc'); if (ic) ic.href = `#/lop/${l}`;
     markNav();
