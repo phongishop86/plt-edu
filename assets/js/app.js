@@ -102,9 +102,9 @@
 
   /* ---------------- Trang chủ: giới thiệu các khoá học ---------------- */
   const COURSES = [
-    { ic: '📚', ten: 'Chương trình phổ thông lớp 1–12', tag: 'Miễn phí', mo: 'Đủ 149 môn theo bộ SGK Kết nối tri thức: lý thuyết ngắn gọn, mô phỏng tương tác, ôn tập ngẫu nhiên, đề tuần – tháng – học kỳ, AI chấm tự luận.', meta: ['12 lớp', '149 môn', '3 900+ bài'], go: [['#/lop/1', 'Tiểu học'], ['#/lop/6', 'THCS'], ['#/lop/10', 'THPT']] },
-    { ic: '🎓', ten: 'Thi chuyển cấp', tag: 'Luyện đề', mo: 'Đề tổng hợp nhiều lớp theo tỉ lệ, có câu nâng cao và lời giải chi tiết: vào lớp 6, vào lớp 10, tốt nghiệp THPT, học sinh giỏi.', meta: ['Vào 6', 'Vào 10', 'Tốt nghiệp THPT'], go: [['#/chuyen-cap', 'Vào luyện đề']] },
-    { ic: '⭐', ten: 'Nâng cao* – bồi dưỡng HSG', tag: 'Khá giỏi', mo: 'Câu hỏi suy luận nhiều bước, bám đúng chương trình từng lớp; đề nâng cao theo học kì và cả năm.', meta: ['Toán', 'Tiếng Việt / Ngữ văn', 'Tiếng Anh', 'KHTN'], go: [['#/nang-cao', 'Chọn lớp & môn']] },
+    { ic: '📚', ten: 'Chương trình phổ thông lớp 1–12', tag: 'Miễn phí', wide: 1, mo: 'Đủ 149 môn theo bộ SGK Kết nối tri thức, từ Tiểu học đến THPT. Mỗi lớp có đủ các phần học dưới đây.', meta: ['12 lớp', '149 môn', '3 900+ bài', 'AI chấm tự luận'],
+      parts: [['📚', 'Học bài', 'Lý thuyết ngắn gọn, mô phỏng tương tác', '#/hoc'], ['🎯', 'Ôn tập', 'Câu hỏi ngẫu nhiên không giới hạn', '#/on-tap'], ['📝', 'Kiểm tra', 'Đề tuần, tháng, giữa kỳ, cuối kỳ', '#/kiem-tra'], ['⭐', 'Nâng cao*', 'Bồi dưỡng học sinh khá, giỏi', '#/nang-cao'], ['🎓', 'Thi chuyển cấp', 'Vào 6 · Vào 10 · Tốt nghiệp THPT · HSG', '#/chuyen-cap']],
+      go: [['#/lop/1', 'Tiểu học (lớp 1–5)'], ['#/lop/6', 'THCS (lớp 6–9)'], ['#/lop/10', 'THPT (lớp 10–12)']] },
     { ic: '🀄', ten: 'Tiếng Trung từ số 0', tag: 'Mới', mo: 'Lộ trình 30 ngày cho người Việt: Pinyin, 4 thanh điệu, từ vựng theo câu, hội thoại từng lượt với người bản xứ, có giọng đọc mẫu.', meta: ['30 ngày', '30–45 phút/ngày', 'Mọi lứa tuổi'], go: [['#/tieng-trung', 'Bắt đầu học']] },
     { ic: '🤖', ten: 'AI Edu', tag: 'Trang chị em', mo: 'Học cách dùng trí tuệ nhân tạo an toàn, hiệu quả cho học tập và cuộc sống, miễn phí.', meta: ['An toàn', 'Miễn phí'], go: [['https://phongishop86.github.io/plt-aiedu/', 'Mở AI Edu ↗']] }
   ];
@@ -119,18 +119,13 @@
         <h1>${name ? 'Chào ' + esc(name) + '! ' : ''}Một cổng học tập, <em>nhiều khoá học</em>.</h1>
         <p class="lead">Ôn luyện theo SGK lớp 1–12, luyện thi chuyển cấp, bồi dưỡng học sinh giỏi và học ngoại ngữ từ con số 0 — câu hỏi không giới hạn, đề có giờ làm bài, AI hỗ trợ chấm.</p>
         <div class="row"><a class="btn" href="#/khoa-hoc">🗂️ Xem các khoá học</a></div>
-        <div class="facts"><span><b>${COURSES.length}</b> khoá học</span><span><b>149</b> môn phổ thông</span><span><b>3 900+</b> bài học</span><span><b>AI</b> chấm tự luận</span><span>Tiến độ lưu ngay trên máy</span></div>
+        <div class="facts"><span><b>${COURSES.length}</b> khoá học</span><span><b>149</b> môn phổ thông</span><span>Thi chuyển cấp · Nâng cao*</span><span><b>3 900+</b> bài học</span><span><b>AI</b> chấm tự luận</span><span>Tiến độ lưu ngay trên máy</span></div>
       </div>
       <div class="hcard">${cont}</div>
     </div></section>
-      <h2 id="khoa-hoc">🗂️ Các khoá học</h2><div class="courses">${COURSES.map((c) => `<div class="course"><div class="ch"><span class="ci">${c.ic}</span><div><b>${c.ten}</b><em class="ctag${c.tag === 'Mới' ? ' new' : ''}">${c.tag}</em></div></div><p>${c.mo}</p><div class="cm">${c.meta.map((m) => `<span>${m}</span>`).join('')}</div><div class="cgo">${c.go.map(([h, t], i) => `<a class="btn${i ? ' ghost' : ''} small" href="${h}">${t}</a>`).join('')}</div></div>`).join('')}</div>
+      <h2 id="khoa-hoc">🗂️ Các khoá học</h2><div class="courses">${COURSES.map((c) => `<div class="course${c.wide ? ' wide' : ''}"><div class="ch"><span class="ci">${c.ic}</span><div><b>${c.ten}</b><em class="ctag${c.tag === 'Mới' ? ' new' : ''}">${c.tag}</em></div></div><p>${c.mo}</p><div class="cm">${c.meta.map((m) => `<span>${m}</span>`).join('')}</div>${c.parts ? `<div class="cparts">${c.parts.map(([i, t, d, h]) => `<a href="${h}"><span>${i}</span><b>${t}</b><small>${d}</small></a>`).join('')}</div>` : ''}<div class="cgo">${c.go.map(([h, t], i) => `<a class="btn${i ? ' ghost' : ''} small" href="${h}">${t}</a>`).join('')}</div></div>`).join('')}</div>
       <h2>📚 Chọn lớp (chương trình phổ thông)</h2>
-      ${grades.map(([g, ls]) => `<h3 class="gh">${g}</h3><div class="grades">${ls.map((x) => `<a class="grade${has && x === l ? ' cur' : ''}" href="#/lop/${x}"><span>Lớp</span><b>${x}</b><em>${BOOKS[x].length} môn</em></a>`).join('')}</div>`).join('')}
-      <h2>Một buổi học có gì</h2><div class="feats">
-        <div class="feat"><span>📚</span><b>Học bài</b><p>Lý thuyết ngắn gọn, mô phỏng tương tác, bài tập có lời giải.</p></div>
-        <div class="feat"><span>🎯</span><b>Ôn tập nhanh</b><p>Câu hỏi ngẫu nhiên không giới hạn, chấm ngay từng câu.</p></div>
-        <div class="feat"><span>📝</span><b>Kiểm tra</b><p>Đề theo tuần, tháng, giữa kỳ, cuối kỳ. Có giờ làm bài, AI chấm tự luận.</p></div>
-        <a class="feat" href="#/tien-do"><span>📈</span><b>Tiến độ</b><p>Xem sao đạt được ở từng chủ đề và lịch sử điểm kiểm tra.</p></a></div>`;
+      ${grades.map(([g, ls]) => `<h3 class="gh">${g}</h3><div class="grades">${ls.map((x) => `<a class="grade${has && x === l ? ' cur' : ''}" href="#/lop/${x}"><span>Lớp</span><b>${x}</b><em>${BOOKS[x].length} môn</em></a>`).join('')}</div>`).join('')}`;
   }
 
   /* ---------------- Trang lớp: menu các môn ---------------- */

@@ -260,3 +260,7 @@ sup{font-size:.7em}
 .hcard .pick a{background:var(--bg);border-color:var(--line);color:var(--ink)}.hcard .pick span{color:var(--muted)}
 h3.gh{margin:1em 0 .5em;color:var(--muted);font-size:1rem}
 button.grade{font:inherit;cursor:pointer;border:0}
+.course.wide{grid-column:1/-1}
+.cparts{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.cparts a{display:flex;flex-direction:column;gap:1px;background:var(--bg);border:2px solid var(--line);border-radius:14px;padding:10px 12px;color:var(--ink)}.cparts a:hover{border-color:var(--teal)}
+.cparts span{font-size:1.4rem}.cparts b{font-size:1rem}.cparts small{color:var(--muted);font-size:.8rem;line-height:1.35}
