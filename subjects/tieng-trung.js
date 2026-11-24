@@ -1,4 +1,4 @@
-/* PLT-Edu · Dữ liệu module "Tiếng Trung từ số 0" (giản thể, giọng phổ thông)
+/* PLT-Edu · Dữ liệu module "Tiếng Trung" (giản thể, giọng phổ thông)
    Mỗi ngày: ten, muc, hoc (HTML phần B), vocab [{h chữ Hán, p Pinyin, v nghĩa, use cách dùng, ex [Hán, Pinyin, nghĩa]}],
    qs (câu hỏi viết tay – cú pháp ở assets/js/zh.js › fromSpec), hoithoai (hội thoại từng lượt), tom/nguphap/phatam/loi/btvn (báo cáo).
    Thêm ngày mới: thêm một phần tử vào days là xong (lộ trình tự hiện). */
@@ -416,5 +416,10 @@
     btvn: ['Nếu dưới 7 điểm: làm lại bài kiểm tra sau khi ôn thẻ "Từ chưa nhớ"', 'Ghi âm đoạn tự giới thiệu 30 giây bằng tiếng Trung', 'Sẵn sàng cho Tuần 2: chào hỏi và giới thiệu bản thân']
   };
 
-  window.PLT_ZH = { plan, stages, pinyin, days: [d1, d2, d3, d4, d5, d6, d7] };
+  // Bộ trợ giúp dùng chung cho các file tieng-trung-2/3/4.js
+  const ex = (h, p, v) => `<li>${h} ${sp(h)}<br><span class="zh-wp">${p}</span> – ${v}</li>`;
+  const F = (parts) => `<div class="zh-formula small">${parts.map((x, i) => (x === '+' || x === '→' ? `<i>${x}</i>` : `<span>${x}</span>`)).join('')}</div>`;
+  const TT = (a, ok, ...bad) => ({ a: L(...a), o: [{ h: ok[0], p: ok[1], v: ok[2], ok: 1, f: ok[3] }].concat(bad.map((b) => ({ h: b[0], p: b[1], f: b[2] }))) });
+  const H = { w, L, T: TT, tbl, tip, row, sp, ex, F };
+  window.PLT_ZH = { plan, stages, pinyin, H, days: [d1, d2, d3, d4, d5, d6, d7] };
 })();

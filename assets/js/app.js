@@ -48,7 +48,7 @@
   let zhP = null;
   function zhLoad() {
     if (PLT.ZH && window.PLT_ZH) return Promise.resolve(true);
-    if (!zhP) zhP = ['assets/js/zh.js', 'subjects/tieng-trung.js'].reduce((pr, f) => pr.then(() => new Promise((ok) => { const s = document.createElement('script'); s.src = f + (window.PLT_VER ? '?v=' + window.PLT_VER : ''); s.onload = () => ok(true); s.onerror = () => ok(false); document.body.appendChild(s); })), Promise.resolve());
+    if (!zhP) zhP = ['assets/js/zh.js', 'subjects/tieng-trung.js', 'subjects/tieng-trung-2.js', 'subjects/tieng-trung-3.js', 'subjects/tieng-trung-4.js'].reduce((pr, f) => pr.then(() => new Promise((ok) => { const s = document.createElement('script'); s.src = f + (window.PLT_VER ? '?v=' + window.PLT_VER : ''); s.onload = () => ok(true); s.onerror = () => ok(false); document.body.appendChild(s); })), Promise.resolve());
     return zhP.then(() => !!(PLT.ZH && window.PLT_ZH));
   }
 
@@ -105,27 +105,24 @@
     { ic: '📚', ten: 'Chương trình phổ thông lớp 1–12', tag: 'Miễn phí', wide: 1, mo: 'Đủ 149 môn theo bộ SGK Kết nối tri thức, từ Tiểu học đến THPT. Mỗi lớp có đủ các phần học dưới đây.', meta: ['12 lớp', '149 môn', '3 900+ bài', 'AI chấm tự luận'],
       parts: [['📚', 'Học bài', 'Lý thuyết ngắn gọn, mô phỏng tương tác', '#/hoc'], ['🎯', 'Ôn tập', 'Câu hỏi ngẫu nhiên không giới hạn', '#/on-tap'], ['📝', 'Kiểm tra', 'Đề tuần, tháng, giữa kỳ, cuối kỳ', '#/kiem-tra'], ['⭐', 'Nâng cao*', 'Bồi dưỡng học sinh khá, giỏi', '#/nang-cao'], ['🎓', 'Thi chuyển cấp', 'Vào 6 · Vào 10 · Tốt nghiệp THPT · HSG', '#/chuyen-cap']],
       go: [['#/lop/1', 'Tiểu học (lớp 1–5)'], ['#/lop/6', 'THCS (lớp 6–9)'], ['#/lop/10', 'THPT (lớp 10–12)']] },
-    { ic: '🀄', ten: 'Tiếng Trung từ số 0', tag: 'Mới', mo: 'Lộ trình 30 ngày cho người Việt: Pinyin, 4 thanh điệu, từ vựng theo câu, hội thoại từng lượt với người bản xứ, có giọng đọc mẫu.', meta: ['30 ngày', '30–45 phút/ngày', 'Mọi lứa tuổi'], go: [['#/tieng-trung', 'Bắt đầu học']] },
+    { ic: '🀄', ten: 'Tiếng Trung', tag: 'Mới', mo: 'Lộ trình 30 ngày cho người Việt: Pinyin, 4 thanh điệu, từ vựng theo câu, hội thoại từng lượt với người bản xứ, có giọng đọc mẫu.', meta: ['30 ngày', '30–45 phút/ngày', 'Mọi lứa tuổi'], go: [['#/tieng-trung', 'Bắt đầu học']] },
     { ic: '🤖', ten: 'AI Edu', tag: 'Trang chị em', mo: 'Học cách dùng trí tuệ nhân tạo an toàn, hiệu quả cho học tập và cuộc sống, miễn phí.', meta: ['An toàn', 'Miễn phí'], go: [['https://phongishop86.github.io/plt-aiedu/', 'Mở AI Edu ↗']] }
   ];
   function home() {
     const name = PLT.data.settings.name, has = hasLop(), l = curLop();
     const zh = (PLT.data.zh && Object.keys(PLT.data.zh.days || {}).length) ? true : false;
-    const grades = [['Tiểu học', [1, 2, 3, 4, 5]], ['Trung học cơ sở', [6, 7, 8, 9]], ['Trung học phổ thông', [10, 11, 12]]];
     const cont = has || zh ? `<div class="hl"><img src="assets/img/logo-192.png" alt=""><div><b>Tiếp tục học</b><span>Chọn nhanh nơi em đang học dở</span></div></div><div class="pick pick1">${has ? `<a href="#/lop/${l}"><b>📚 Lớp ${l}</b><span>Học bài · Ôn tập · Kiểm tra</span><i>→</i></a>` : ''}${zh ? '<a href="#/tieng-trung"><b>🀄 Tiếng Trung</b><span>Học tiếp lộ trình 30 ngày</span><i>→</i></a>' : ''}</div>`
       : `<div class="hl"><img src="assets/img/logo-192.png" alt=""><div><b>Bắt đầu thế nào?</b><span>Chỉ 3 bước, không cần đăng ký</span></div></div><ol class="steps"><li><b>Chọn khoá học</b> phù hợp bên dưới.</li><li><b>Chọn lớp, môn</b> hoặc ngày học.</li><li><b>Học – ôn – kiểm tra</b>, tiến độ tự lưu trên máy.</li></ol>`;
     app.innerHTML = `<section class="hero2"><div class="hw"><div>
         <div class="eyebrow">Miễn phí · Cổng học tập & luyện thi</div>
         <h1>${name ? 'Chào ' + esc(name) + '! ' : ''}Một cổng học tập, <em>nhiều khoá học</em>.</h1>
-        <p class="lead">Ôn luyện theo SGK lớp 1–12, luyện thi chuyển cấp, bồi dưỡng học sinh giỏi và học ngoại ngữ từ con số 0 — câu hỏi không giới hạn, đề có giờ làm bài, AI hỗ trợ chấm.</p>
+        <p class="lead">Ôn luyện theo SGK lớp 1–12, luyện thi chuyển cấp, bồi dưỡng học sinh giỏi và học tiếng Trung giao tiếp — câu hỏi không giới hạn, đề có giờ làm bài, AI hỗ trợ chấm.</p>
         <div class="row"><a class="btn" href="#/khoa-hoc">🗂️ Xem các khoá học</a></div>
         <div class="facts"><span><b>${COURSES.length}</b> khoá học</span><span><b>149</b> môn phổ thông</span><span>Thi chuyển cấp · Nâng cao*</span><span><b>3 900+</b> bài học</span><span><b>AI</b> chấm tự luận</span><span>Tiến độ lưu ngay trên máy</span></div>
       </div>
       <div class="hcard">${cont}</div>
     </div></section>
-      <h2 id="khoa-hoc">🗂️ Các khoá học</h2><div class="courses">${COURSES.map((c) => `<div class="course${c.wide ? ' wide' : ''}"><div class="ch"><span class="ci">${c.ic}</span><div><b>${c.ten}</b><em class="ctag${c.tag === 'Mới' ? ' new' : ''}">${c.tag}</em></div></div><p>${c.mo}</p><div class="cm">${c.meta.map((m) => `<span>${m}</span>`).join('')}</div>${c.parts ? `<div class="cparts">${c.parts.map(([i, t, d, h]) => `<a href="${h}"><span>${i}</span><b>${t}</b><small>${d}</small></a>`).join('')}</div>` : ''}<div class="cgo">${c.go.map(([h, t], i) => `<a class="btn${i ? ' ghost' : ''} small" href="${h}">${t}</a>`).join('')}</div></div>`).join('')}</div>
-      <h2>📚 Chọn lớp (chương trình phổ thông)</h2>
-      ${grades.map(([g, ls]) => `<h3 class="gh">${g}</h3><div class="grades">${ls.map((x) => `<a class="grade${has && x === l ? ' cur' : ''}" href="#/lop/${x}"><span>Lớp</span><b>${x}</b><em>${BOOKS[x].length} môn</em></a>`).join('')}</div>`).join('')}`;
+      <h2 id="khoa-hoc">🗂️ Các khoá học</h2><div class="courses">${COURSES.map((c) => `<div class="course${c.wide ? ' wide' : ''}"><div class="ch"><span class="ci">${c.ic}</span><div><b>${c.ten}</b><em class="ctag${c.tag === 'Mới' ? ' new' : ''}">${c.tag}</em></div></div><p>${c.mo}</p><div class="cm">${c.meta.map((m) => `<span>${m}</span>`).join('')}</div>${c.parts ? `<div class="cparts">${c.parts.map(([i, t, d, h]) => `<a href="${h}"><span>${i}</span><b>${t}</b><small>${d}</small></a>`).join('')}</div>` : ''}<div class="cgo">${c.go.map(([h, t], i) => `<a class="btn${i ? ' ghost' : ''} small" href="${h}">${t}</a>`).join('')}</div></div>`).join('')}</div>`;
   }
 
   /* ---------------- Trang lớp: menu các môn ---------------- */
@@ -393,7 +390,7 @@
   }
   function syncLop() {
     const l = curLop(), s = sidOf(l);
-    $('#nav').innerHTML = `<a href="#/" data-r="" title="Trang chủ">🏠 <span>Trang chủ</span></a><a href="${modePath('hoc', l)}" data-r="hoc" title="Học bài">📚 <span>Học bài</span></a><a href="${modePath('on-tap', l)}" data-r="on-tap" title="Ôn tập">🎯 <span>Ôn tập</span></a><a href="${modePath('kiem-tra', l)}" data-r="kiem-tra" title="Kiểm tra">📝 <span>Kiểm tra</span></a><a href="${modePath('nang-cao', l)}" data-r="nang-cao" title="Nâng cao* – bồi dưỡng học sinh giỏi">⭐ <span>Nâng cao*</span></a><a href="#/chuyen-cap" data-r="chuyen-cap" title="Thi chuyển cấp: vào lớp 6, vào lớp 10, tốt nghiệp THPT, học sinh giỏi">🎓 <span>Chuyển cấp</span></a><a href="#/tieng-trung" data-r="tieng-trung" title="Tiếng Trung từ số 0 – 30 ngày">🀄 <span>Tiếng Trung</span></a><a href="#/tien-do" data-r="tien-do" title="Tiến độ">📈 <span>Tiến độ</span></a>`;
+    $('#nav').innerHTML = `<a href="#/" data-r="" title="Trang chủ">🏠 <span>Trang chủ</span></a><a href="${modePath('hoc', l)}" data-r="hoc" title="Học bài">📚 <span>Học bài</span></a><a href="${modePath('on-tap', l)}" data-r="on-tap" title="Ôn tập">🎯 <span>Ôn tập</span></a><a href="${modePath('kiem-tra', l)}" data-r="kiem-tra" title="Kiểm tra">📝 <span>Kiểm tra</span></a><a href="${modePath('nang-cao', l)}" data-r="nang-cao" title="Nâng cao* – bồi dưỡng học sinh giỏi">⭐ <span>Nâng cao*</span></a><a href="#/chuyen-cap" data-r="chuyen-cap" title="Thi chuyển cấp: vào lớp 6, vào lớp 10, tốt nghiệp THPT, học sinh giỏi">🎓 <span>Chuyển cấp</span></a><a href="#/tieng-trung" data-r="tieng-trung" title="Tiếng Trung – 30 ngày giao tiếp">🀄 <span>Tiếng Trung</span></a><a href="#/tien-do" data-r="tien-do" title="Tiến độ">📈 <span>Tiến độ</span></a>`;
     const sel = $('#lopSel'); if (sel) sel.value = hasLop() ? l : '';
     const ic = $('#lopIc'); if (ic) ic.href = hasLop() ? `#/lop/${l}` : '#/hoc';
     markNav();

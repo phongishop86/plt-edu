@@ -1,4 +1,4 @@
-/* PLT-Edu · Module "Tiếng Trung từ số 0" (30 ngày cho người Việt)
+/* PLT-Edu · Module "Tiếng Trung" (30 ngày cho người Việt)
    Nội dung bài học nằm ở subjects/tieng-trung.js (window.PLT_ZH). File này lo phần hiển thị:
    lộ trình, buổi học 5 phần A–E, luyện thanh điệu, bảng Pinyin, thẻ từ vựng, tiến độ, báo cáo.
    Giọng đọc: Web Speech API của trình duyệt (miễn phí, không cần máy chủ). */
@@ -156,7 +156,7 @@
     const nd = nextDay(), done = D().days.filter((d) => isDone(d.n)).length, words = vocabUpTo(nd).length;
     const stages = D().stages || [];
     app.innerHTML = `<section class="hero2 zh-hero"><div class="hw"><div><div class="eyebrow">Miễn phí · Cho người Việt mới bắt đầu · Chữ giản thể · Giọng phổ thông</div>
-        <h1>🀄 Tiếng Trung từ số 0 <em>trong 30 ngày</em></h1>
+        <h1>🀄 Tiếng Trung giao tiếp <em>trong 30 ngày</em></h1>
         <p class="lead">Mỗi ngày 30–45 phút: ôn bài cũ, học Pinyin và từ mới, luyện tập, <b>hội thoại với người bản xứ</b> và làm bài kiểm tra ngắn. Mục tiêu là <b>nghe hiểu, phát âm đúng, phản xạ và tự tin giao tiếp</b>, không phải học thuộc thật nhiều từ.</p>
         <div class="row"><a class="btn" href="${BASE}/ngay/${nd}">▶ Học hôm nay: Ngày ${nd}</a><a class="btn ghost" href="${BASE}/on-tap">🔁 Ôn tập</a></div>
         <div class="facts"><span><b>${done}</b>/30 ngày hoàn thành</span><span><b>${words}</b> từ đã mở</span><span>🔊 Có giọng đọc mẫu</span><span>Tiến độ lưu trên máy</span></div></div>
@@ -230,8 +230,9 @@
   }
   function startTest(n, big) {
     const d = dayOf(n); const pool = vocabUpTo(n);
-    const focus = n % 7 === 0 ? pool : d.vocab.concat(shuffle(vocabUpTo(n - 1)).slice(0, 3));
-    const specs = n % 7 === 0 ? D().days.filter((x) => x.n <= n).flatMap((x) => x.qs || []) : (d.qs || []).concat(d.qsKt || []);
+    const tong = d.tong || n % 7 === 0;
+    const focus = tong ? pool : d.vocab.concat(shuffle(vocabUpTo(n - 1)).slice(0, 3));
+    const specs = tong ? D().days.filter((x) => x.n <= n).flatMap((x) => x.qs || []) : (d.qs || []).concat(d.qsKt || []);
     const box = $('#ebox'); $('#zgo').closest('.card').hidden = true; document.body.classList.add('in-exam');
     cur = PLT.Q.exam(box, { id: 'zh:d' + n, subject: 'tieng-trung', title: `Kiểm tra Ngày ${n} – Tiếng Trung: ${d.ten}`, questions: makeQs({ n: big.n, pool, focus, kinds: d.kinds || ['meaning', 'listen', 'pinyin', 'hanzi'], specs, ratio: 0.5 }), minutes: big.min, again: () => startTest(n, big), back: () => { markPart(n, 'e'); location.hash = `${BASE}/ngay/${n}/bao-cao`; } });
     // Đổi chữ nút "Về danh sách đề" thành "Xem báo cáo" khi chấm xong
@@ -369,7 +370,7 @@
     const words = vocabUpTo(opened.length ? opened[opened.length - 1].n : 0);
     const weak = words.filter((w) => s.known[w.h] === 0).map((w) => w.h);
     const scores = D().days.map((d) => (bestOf(d.n) != null ? `N${d.n}: ${fmtD(bestOf(d.n))}` : null)).filter(Boolean);
-    return ['TÓM TẮT TIẾN ĐỘ – TIẾNG TRUNG TỪ SỐ 0 (PLT-Edu)',
+    return ['TÓM TẮT TIẾN ĐỘ – TIẾNG TRUNG (PLT-Edu)',
       `Hồ sơ: người Việt mới bắt đầu, chữ giản thể, giọng phổ thông, học 30–45 phút/ngày, mục tiêu giao tiếp.`,
       `Ngày học hiện tại: Ngày ${nextDay()}/30 · Đã hoàn thành: ${D().days.filter((d) => isDone(d.n)).map((d) => d.n).join(', ') || 'chưa có'}`,
       `Bài đã học: ${opened.map((d) => `N${d.n} ${d.ten}`).join('; ') || 'chưa có'}`,
