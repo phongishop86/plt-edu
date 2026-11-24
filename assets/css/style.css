@@ -198,3 +198,53 @@ sup{font-size:.7em}
 .nav a[data-r=""] span{display:none}
 /* Menu gọn: chỉ hiện chữ ở mục đang chọn, các mục khác chỉ biểu tượng (rê chuột để xem tên) */
 @media (min-width:1061px){.nav span{display:none}.nav a.on span{display:inline}.nav a{font-size:1.05rem}}
+/* ===== Module Tiếng Trung (assets/js/zh.js) ===== */
+.zh-say{display:inline-flex;align-items:center;gap:4px;border:2px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:3px 10px;font:inherit;font-size:.9rem;font-weight:700;cursor:pointer;vertical-align:middle;line-height:1.4}
+.zh-say:hover{border-color:var(--teal)}.zh-say.zh-on,.zh-tc.zh-on,.zh-pc.zh-on,.zh-rd.zh-on{background:var(--soft2);border-color:var(--teal)}
+.zh-hero .btn.ghost{background:transparent;color:var(--band-fg);border-color:rgba(255,255,255,.35);box-shadow:none}
+.zh-hero .hcard .zh-say{font-size:1rem}
+.zh-tsvg{width:100%;max-width:560px;height:auto;display:block;margin:6px auto}
+.zh-tools{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+.tcard.zh-done{border-color:#bfe6cf;background:#f4fbf7}.tcard.zh-soon{opacity:.55;box-shadow:none;border:2px dashed var(--line)}
+.zh-tabs{display:flex;gap:6px;overflow-x:auto;margin:12px 0;padding-bottom:4px;position:sticky;top:64px;z-index:5;background:var(--bg)}
+.zh-tabs a{flex:1 0 auto;display:flex;align-items:center;gap:8px;background:#fff;border:2px solid var(--line);border-radius:14px;padding:8px 12px;color:var(--ink);white-space:nowrap}
+.zh-tabs a b{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--soft);font-size:.9rem}
+.zh-tabs a span{display:flex;flex-direction:column;font-weight:700;line-height:1.2}.zh-tabs a small{font-weight:500;color:var(--muted);font-size:.75rem}
+.zh-tabs a.on{border-color:var(--pri);box-shadow:0 3px 0 var(--pri-d)}.zh-tabs a.ok b{background:#e6f7ee;color:var(--ok)}
+.zh-learn h4{margin:1.3em 0 .4em;font-size:1.1rem;color:var(--pri-d)}
+.zh-formula{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:10px 0;font-weight:800}
+.zh-formula span{background:var(--soft2);border-radius:12px;padding:8px 14px;font-size:1.5rem;text-align:center}.zh-formula.small span{font-size:1.1rem}
+.zh-formula span small{display:block;font-size:.72rem;font-weight:600;color:var(--muted);line-height:1.25}
+.zh-formula span.r{background:var(--soft);color:var(--pri-d)}.zh-formula i{font-style:normal;color:var(--muted)}
+.zh-tip{background:#fff8e8;border-left:4px solid var(--yellow);border-radius:10px;padding:10px 14px;margin:12px 0}
+.zh-scroll{overflow-x:auto}.zh-tb td{text-align:left;vertical-align:middle}
+.zh-hz{font-size:1.5rem;font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif}
+.zh-big2{font-size:1.7rem;font-weight:800;margin:6px 0}
+.zh-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-size:.9rem;margin:8px 0}.zh-bar input{vertical-align:middle;width:110px}
+.zh-vt{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.zh-w{background:#fff;border:2px solid var(--line);border-radius:14px;padding:12px}
+.zh-wh{display:flex;align-items:center;gap:8px}.zh-wh .zh-hz{font-size:1.9rem}.zh-n{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--soft);font-size:.78rem;font-weight:800}
+.zh-wp{color:var(--teal);font-weight:800;font-size:1.05rem}.zh-wv{font-weight:700}.zh-wu{font-size:.88rem;color:var(--muted);margin-top:4px}
+.zh-ex{margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);font-size:.92rem}
+.zh-qh{font-size:1.7rem;font-weight:800;font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif}.zh-qp{color:var(--teal);font-weight:800}.zh-lg{font-size:1.6rem}
+.zh-chat{display:flex;flex-direction:column;gap:10px;margin:12px 0;max-height:460px;overflow-y:auto;padding:6px}
+.zh-b{max-width:82%;border-radius:16px;padding:10px 14px;background:#fff;border:2px solid var(--line)}.zh-b.u{align-self:flex-end;background:#eef3ff;border-color:#cfdcfb}
+.zh-who{font-size:.78rem;font-weight:800;color:var(--muted)}.zh-l{font-size:1.35rem;font-weight:700}.zh-py{color:var(--teal);font-weight:700}.zh-vi{color:var(--muted);font-size:.92rem}
+.zh-chat.nopy .zh-py,.zh-chat.novi .zh-vi{display:none}
+.zh-oh{font-size:1.2rem}.zh-op{color:var(--teal);font-weight:600}
+.zh-rep{white-space:pre-wrap;background:#fff;border:2px solid var(--line);border-radius:12px;padding:12px;font:13.5px/1.55 ui-monospace,Consolas,monospace;max-height:420px;overflow:auto}
+.zh-sets{display:grid;gap:10px}.zh-set{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.zh-ss{min-width:52px;font-size:1.1rem}
+.zh-tc,.zh-pc,.zh-rd{display:flex;flex-direction:column;align-items:center;gap:1px;border:2px solid var(--line);background:#fff;border-radius:12px;padding:6px 12px;font:inherit;cursor:pointer;color:var(--ink);min-width:74px}
+.zh-tc span{font-size:1.4rem}.zh-tc b{font-size:1rem}.zh-tc small{font-size:.72rem;color:var(--muted)}
+.zh-tc.t1 b{color:#3B6FE0}.zh-tc.t2 b{color:#1f9d63}.zh-tc.t3 b{color:#D9661F}.zh-tc.t4 b{color:#d93f45}
+.zh-pt{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+.zh-pc b{font-size:1.5rem;color:var(--pri-d)}.zh-pc span{font-weight:700}.zh-pc small{font-size:.75rem;color:var(--muted);text-align:center}
+.zh-read{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin:8px 0}
+.zh-rd b{color:var(--teal);font-size:1.05rem}.zh-rd span{font-size:1.2rem}.zh-rd small{color:var(--muted);font-size:.8rem;text-align:center}
+.zh-tc:hover,.zh-pc:hover,.zh-rd:hover{border-color:var(--teal)}
+.zh-fc{position:relative;max-width:460px;min-height:300px;margin:12px auto;perspective:1000px;cursor:pointer}
+.zh-front,.zh-back{position:absolute;inset:0;background:#fff;border-radius:20px;box-shadow:var(--sh);border:2px solid var(--line);padding:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;backface-visibility:hidden;transition:transform .45s}
+.zh-back{transform:rotateY(180deg);justify-content:flex-start;overflow-y:auto}.zh-fc.flip .zh-front{transform:rotateY(180deg)}.zh-fc.flip .zh-back{transform:rotateY(360deg)}
+.zh-big{font-size:4.2rem;font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif}
+.zh-c{text-align:center}.zh-facts{color:var(--muted)}.zh-facts b{color:var(--ink)}
+@media (max-width:600px){.zh-tabs{top:104px}.zh-tabs a span small{display:none}.zh-b{max-width:94%}.zh-l{font-size:1.2rem}}

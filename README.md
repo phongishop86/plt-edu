@@ -10,6 +10,7 @@ Web tĩnh (HTML/CSS/JS thuần, không cần build), chạy được bằng GitH
   Dạng câu: trắc nghiệm, đúng/sai, điền số/điền từ, nối, sắp xếp, xếp nhóm, so sánh >, <, =, câu có hình, tự luận/viết đoạn.
 - **AI chấm tự luận**: Gemini API (người dùng nhập khóa trong ⚙️ Cài đặt). Không có khóa → chấm sơ bộ theo đáp số.
 - **Tiến độ**: sao theo chủ đề, lịch sử điểm (lưu trên trình duyệt).
+- **🀄 Tiếng Trung từ số 0** (`#/tieng-trung`): lộ trình 30 ngày cho người Việt (đã có Ngày 1–7: Pinyin, thanh điệu, biến điệu). Mỗi ngày 5 phần A Ôn tập · B Kiến thức mới · C Luyện tập · D Hội thoại từng lượt · E Kiểm tra, kèm báo cáo cuối buổi. Có trang luyện 4 thanh, bảng Pinyin, thẻ từ vựng, tóm tắt tiến độ để chép sang gia sư AI. Giọng đọc dùng Web Speech API của trình duyệt (miễn phí; Edge/Chrome có giọng zh-CN).
 
 ## Cấu trúc
 ```
@@ -26,6 +27,8 @@ assets/js/tvlib.js      bộ sinh câu hỏi Tiếng Việt / Ngữ văn (biện
 assets/js/kblib.js      dựng môn từ ngân hàng câu hỏi (trắc nghiệm, đúng/sai, nối, điền từ, sắp xếp, xếp nhóm, tự luận)
 assets/js/avail.js      danh sách môn dùng ngân hàng câu hỏi
 assets/js/eco.js        liên kết qua lại với AI Edu, nút đăng nhập
+assets/js/zh.js         module Tiếng Trung: giọng đọc, bộ sinh câu hỏi, buổi học A–E, hội thoại, thẻ từ, tiến độ
+subjects/tieng-trung.js nội dung Tiếng Trung (lộ trình 30 ngày, bảng Pinyin, bài từng ngày) – thêm ngày mới vào mảng days
 tools/bump-version.sh   đổi ?v= để trình duyệt tải bản mới (chạy trước mỗi lần commit)
 ```
 

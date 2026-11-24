@@ -43,6 +43,14 @@
     return loading[sid];
   }
 
+  // Module Tiếng Trung: nạp engine + dữ liệu khi người dùng mở lần đầu
+  let zhP = null;
+  function zhLoad() {
+    if (PLT.ZH && window.PLT_ZH) return Promise.resolve(true);
+    if (!zhP) zhP = ['assets/js/zh.js', 'subjects/tieng-trung.js'].reduce((pr, f) => pr.then(() => new Promise((ok) => { const s = document.createElement('script'); s.src = f + (window.PLT_VER ? '?v=' + window.PLT_VER : ''); s.onload = () => ok(true); s.onerror = () => ok(false); document.body.appendChild(s); })), Promise.resolve());
+    return zhP.then(() => !!(PLT.ZH && window.PLT_ZH));
+  }
+
   // Lấy n câu hỏi xoay vòng qua các dạng
   const keyOf = (q) => q.q + '|' + (q.choices ? q.choices[q.ai] : JSON.stringify(q.blanks || (q.items || []).map((x) => (typeof x === 'string' ? x : x.l || x.t)).sort()));
   /* Tạo bộ câu hỏi:
@@ -105,6 +113,7 @@
           <a href="#/lop/${l >= 6 && l <= 9 ? l : 6}"><b>Trung học cơ sở</b><span>Lớp 6 – 9 · đủ 12 môn</span><i>→</i></a>
           <a href="#/lop/${l >= 10 ? l : 10}"><b>Trung học phổ thông</b><span>Lớp 10 – 12 · đủ 16 môn</span><i>→</i></a>
           <a href="#/chuyen-cap"><b>🎓 Thi chuyển cấp</b><span>Vào 6 · Vào 10 · Tốt nghiệp THPT · HSG</span><i>→</i></a>
+          <a href="#/tieng-trung"><b>🀄 Tiếng Trung từ số 0</b><span>30 ngày · Pinyin · giao tiếp</span><i>→</i></a>
           <a href="https://phongishop86.github.io/plt-aiedu/"><b>🤖 AI Edu</b><span>Học AI an toàn, miễn phí</span><i>→</i></a>
         </div>
         <div class="facts"><span><b>12</b> lớp</span><span><b>149</b> môn học</span><span><b>3 900+</b> bài học</span><span><b>Đề</b> tuần · tháng · kỳ</span><span><b>AI</b> chấm tự luận</span><span>Tiến độ lưu ngay trên máy</span></div>
@@ -338,6 +347,7 @@
   let seq = 0;
   async function route() {
     if (active) { active.stop(); active = null; }
+    if (PLT.ZH) PLT.ZH.stop();
     const my = ++seq;
     const p = (location.hash.replace(/^#\/?/, '') || '').split('/').map(decodeURIComponent);
     const lb = $('.lopbox'); if (lb) lb.classList.toggle('on', p[0] === 'lop');
@@ -361,6 +371,12 @@
       case 'nang-cao': advanced(S); break;
       case 'chuyen-cap': await chuyenCap(p, my); break;
       case 'tien-do': await progress(); break;
+      case 'tieng-trung': {
+        app.innerHTML = '<p class="muted">Đang tải bài học tiếng Trung…</p>';
+        const ok = await zhLoad(); if (my !== seq) return;
+        if (!ok) { app.innerHTML = '<div class="card">Không tải được module Tiếng Trung. Kiểm tra kết nối và tải lại trang.</div>'; break; }
+        PLT.ZH.route(app, p); break;
+      }
       default: home();
     }
     window.scrollTo(0, 0);
@@ -372,7 +388,7 @@
   }
   function syncLop() {
     const l = curLop(), s = sidOf(l);
-    $('#nav').innerHTML = `<a href="#/" data-r="" title="Trang chủ">🏠 <span>Trang chủ</span></a><a href="${modePath('hoc', l)}" data-r="hoc" title="Học bài">📚 <span>Học bài</span></a><a href="${modePath('on-tap', l)}" data-r="on-tap" title="Ôn tập">🎯 <span>Ôn tập</span></a><a href="${modePath('kiem-tra', l)}" data-r="kiem-tra" title="Kiểm tra">📝 <span>Kiểm tra</span></a><a href="${modePath('nang-cao', l)}" data-r="nang-cao" title="Nâng cao* – bồi dưỡng học sinh giỏi">⭐ <span>Nâng cao*</span></a><a href="#/chuyen-cap" data-r="chuyen-cap" title="Thi chuyển cấp: vào lớp 6, vào lớp 10, tốt nghiệp THPT, học sinh giỏi">🎓 <span>Chuyển cấp</span></a><a href="#/tien-do" data-r="tien-do" title="Tiến độ">📈 <span>Tiến độ</span></a>`;
+    $('#nav').innerHTML = `<a href="#/" data-r="" title="Trang chủ">🏠 <span>Trang chủ</span></a><a href="${modePath('hoc', l)}" data-r="hoc" title="Học bài">📚 <span>Học bài</span></a><a href="${modePath('on-tap', l)}" data-r="on-tap" title="Ôn tập">🎯 <span>Ôn tập</span></a><a href="${modePath('kiem-tra', l)}" data-r="kiem-tra" title="Kiểm tra">📝 <span>Kiểm tra</span></a><a href="${modePath('nang-cao', l)}" data-r="nang-cao" title="Nâng cao* – bồi dưỡng học sinh giỏi">⭐ <span>Nâng cao*</span></a><a href="#/chuyen-cap" data-r="chuyen-cap" title="Thi chuyển cấp: vào lớp 6, vào lớp 10, tốt nghiệp THPT, học sinh giỏi">🎓 <span>Chuyển cấp</span></a><a href="#/tieng-trung" data-r="tieng-trung" title="Tiếng Trung từ số 0 – 30 ngày">🀄 <span>Tiếng Trung</span></a><a href="#/tien-do" data-r="tien-do" title="Tiến độ">📈 <span>Tiến độ</span></a>`;
     const sel = $('#lopSel'); if (sel) sel.value = l;
     const ic = $('#lopIc'); if (ic) ic.href = `#/lop/${l}`;
     markNav();
