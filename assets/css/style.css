@@ -248,3 +248,15 @@ sup{font-size:.7em}
 .zh-big{font-size:4.2rem;font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif}
 .zh-c{text-align:center}.zh-facts{color:var(--muted)}.zh-facts b{color:var(--ink)}
 @media (max-width:600px){.zh-tabs{top:104px}.zh-tabs a span small{display:none}.zh-b{max-width:94%}.zh-l{font-size:1.2rem}}
+/* ===== Trang chủ: danh sách khoá học ===== */
+.courses{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.course{background:#fff;border-radius:18px;box-shadow:var(--sh);padding:18px;display:flex;flex-direction:column;gap:10px;border:2px solid transparent;transition:.15s}.course:hover{border-color:var(--pri)}
+.course .ch{display:flex;gap:12px;align-items:center}.course .ci{display:grid;place-items:center;width:52px;height:52px;border-radius:14px;background:var(--soft);font-size:1.8rem;flex:none}
+.course .ch b{display:block;font-size:1.15rem;line-height:1.3}.course p{margin:0;color:var(--muted);font-size:.95rem}
+.ctag{display:inline-block;font-style:normal;font-size:.75rem;font-weight:800;color:var(--teal);background:var(--soft2);border-radius:999px;padding:1px 9px;margin-top:3px}.ctag.new{color:#fff;background:var(--pri)}
+.course .cm{display:flex;flex-wrap:wrap;gap:6px}.course .cm span{font-size:.8rem;font-weight:700;background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:1px 9px}
+.course .cgo{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
+.hcard .steps{margin:0;padding-left:20px;display:grid;gap:8px}.pick.pick1{grid-template-columns:1fr}
+.hcard .pick a{background:var(--bg);border-color:var(--line);color:var(--ink)}.hcard .pick span{color:var(--muted)}
+h3.gh{margin:1em 0 .5em;color:var(--muted);font-size:1rem}
+button.grade{font:inherit;cursor:pointer;border:0}

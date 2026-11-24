@@ -26,7 +26,8 @@
   const ICON = { 'Toán': '🔢', 'Tiếng Việt': '📖', 'Ngữ văn': '📖', 'Tiếng Anh': '🔤', 'Đạo đức': '🤝', 'Tự nhiên và Xã hội': '🌳', 'Tin học': '💻', 'Công nghệ': '🛠️', 'Âm nhạc': '🎵', 'Mĩ thuật': '🎨', 'Giáo dục thể chất': '⚽', 'Hoạt động trải nghiệm': '🧭', 'Hoạt động trải nghiệm, hướng nghiệp': '🧭', 'Khoa học': '🔬', 'Khoa học tự nhiên': '🔬', 'Lịch sử và Địa lí': '🗺️', 'Lịch sử': '🏛️', 'Địa lí': '🌏', 'Giáo dục công dân': '⚖️', 'Giáo dục kinh tế và pháp luật': '⚖️', 'Vật lí': '⚛️', 'Hoá học': '🧪', 'Sinh học': '🧬', 'Giáo dục quốc phòng và an ninh': '🎖️' };
   const CAP = (l) => (l <= 5 ? 'Tiểu học' : l <= 9 ? 'THCS' : 'THPT');
 
-  const curLop = () => { const l = +PLT.data.settings.lop; return l >= 1 && l <= 12 ? l : 3; };
+  const hasLop = () => { const l = +PLT.data.settings.lop; return l >= 1 && l <= 12; };
+  const curLop = () => (hasLop() ? +PLT.data.settings.lop : 1); // chưa chọn lớp: hiện ô chọn lớp, không mặc định lớp nào
   const setLop = (l) => { PLT.data.settings.lop = +l; PLT.save(); };
   // Môn đang học của từng lớp (nhớ môn chọn gần nhất); chưa chọn thì để trống → hiện danh sách môn
   const lastSid = (l) => ((PLT.data.settings.last || {})[l] || '');
@@ -99,34 +100,36 @@
   const tname = (S, t) => (t.nhan || (S.lop >= 6 ? 'Chương' : 'Chủ đề') + ' ' + t.id);
   const crumb = (S, extra) => `<div class="crumb"><a href="#/">Trang chủ</a> › <a href="#/lop/${S.lop}">Lớp ${S.lop}</a> › ${extra || S.mon + ' ' + S.lop}</div>`;
 
-  /* ---------------- Trang chủ ---------------- */
+  /* ---------------- Trang chủ: giới thiệu các khoá học ---------------- */
+  const COURSES = [
+    { ic: '📚', ten: 'Chương trình phổ thông lớp 1–12', tag: 'Miễn phí', mo: 'Đủ 149 môn theo bộ SGK Kết nối tri thức: lý thuyết ngắn gọn, mô phỏng tương tác, ôn tập ngẫu nhiên, đề tuần – tháng – học kỳ, AI chấm tự luận.', meta: ['12 lớp', '149 môn', '3 900+ bài'], go: [['#/lop/1', 'Tiểu học'], ['#/lop/6', 'THCS'], ['#/lop/10', 'THPT']] },
+    { ic: '🎓', ten: 'Thi chuyển cấp', tag: 'Luyện đề', mo: 'Đề tổng hợp nhiều lớp theo tỉ lệ, có câu nâng cao và lời giải chi tiết: vào lớp 6, vào lớp 10, tốt nghiệp THPT, học sinh giỏi.', meta: ['Vào 6', 'Vào 10', 'Tốt nghiệp THPT'], go: [['#/chuyen-cap', 'Vào luyện đề']] },
+    { ic: '⭐', ten: 'Nâng cao* – bồi dưỡng HSG', tag: 'Khá giỏi', mo: 'Câu hỏi suy luận nhiều bước, bám đúng chương trình từng lớp; đề nâng cao theo học kì và cả năm.', meta: ['Toán', 'Tiếng Việt / Ngữ văn', 'Tiếng Anh', 'KHTN'], go: [['#/nang-cao', 'Chọn lớp & môn']] },
+    { ic: '🀄', ten: 'Tiếng Trung từ số 0', tag: 'Mới', mo: 'Lộ trình 30 ngày cho người Việt: Pinyin, 4 thanh điệu, từ vựng theo câu, hội thoại từng lượt với người bản xứ, có giọng đọc mẫu.', meta: ['30 ngày', '30–45 phút/ngày', 'Mọi lứa tuổi'], go: [['#/tieng-trung', 'Bắt đầu học']] },
+    { ic: '🤖', ten: 'AI Edu', tag: 'Trang chị em', mo: 'Học cách dùng trí tuệ nhân tạo an toàn, hiệu quả cho học tập và cuộc sống, miễn phí.', meta: ['An toàn', 'Miễn phí'], go: [['https://phongishop86.github.io/plt-aiedu/', 'Mở AI Edu ↗']] }
+  ];
   function home() {
-    const name = PLT.data.settings.name, l = curLop(), s = sidOf(l);
+    const name = PLT.data.settings.name, has = hasLop(), l = curLop();
+    const zh = (PLT.data.zh && Object.keys(PLT.data.zh.days || {}).length) ? true : false;
     const grades = [['Tiểu học', [1, 2, 3, 4, 5]], ['Trung học cơ sở', [6, 7, 8, 9]], ['Trung học phổ thông', [10, 11, 12]]];
+    const cont = has || zh ? `<div class="hl"><img src="assets/img/logo-192.png" alt=""><div><b>Tiếp tục học</b><span>Chọn nhanh nơi em đang học dở</span></div></div><div class="pick pick1">${has ? `<a href="#/lop/${l}"><b>📚 Lớp ${l}</b><span>Học bài · Ôn tập · Kiểm tra</span><i>→</i></a>` : ''}${zh ? '<a href="#/tieng-trung"><b>🀄 Tiếng Trung</b><span>Học tiếp lộ trình 30 ngày</span><i>→</i></a>' : ''}</div>`
+      : `<div class="hl"><img src="assets/img/logo-192.png" alt=""><div><b>Bắt đầu thế nào?</b><span>Chỉ 3 bước, không cần đăng ký</span></div></div><ol class="steps"><li><b>Chọn khoá học</b> phù hợp bên dưới.</li><li><b>Chọn lớp, môn</b> hoặc ngày học.</li><li><b>Học – ôn – kiểm tra</b>, tiến độ tự lưu trên máy.</li></ol>`;
     app.innerHTML = `<section class="hero2"><div class="hw"><div>
-        <div class="eyebrow">Miễn phí · Bám sát SGK Kết nối tri thức · Lớp 1–12</div>
-        <h1>${name ? 'Chào ' + esc(name) + '! ' : ''}Học chắc, ôn nhanh, <em>kiểm tra tự tin</em>.</h1>
-        <p class="lead">Lý thuyết ngắn gọn, mô phỏng tương tác, câu hỏi ngẫu nhiên không giới hạn và đề kiểm tra theo tuần, tháng, học kỳ — có AI chấm tự luận.</p>
-        <p class="pick-q">Em đang học…</p>
-        <div class="pick">
-          <a href="#/lop/${l <= 5 ? l : 1}"><b>Tiểu học</b><span>Lớp 1 – 5 · đủ 9–12 môn</span><i>→</i></a>
-          <a href="#/lop/${l >= 6 && l <= 9 ? l : 6}"><b>Trung học cơ sở</b><span>Lớp 6 – 9 · đủ 12 môn</span><i>→</i></a>
-          <a href="#/lop/${l >= 10 ? l : 10}"><b>Trung học phổ thông</b><span>Lớp 10 – 12 · đủ 16 môn</span><i>→</i></a>
-          <a href="#/chuyen-cap"><b>🎓 Thi chuyển cấp</b><span>Vào 6 · Vào 10 · Tốt nghiệp THPT · HSG</span><i>→</i></a>
-          <a href="#/tieng-trung"><b>🀄 Tiếng Trung từ số 0</b><span>30 ngày · Pinyin · giao tiếp</span><i>→</i></a>
-          <a href="https://phongishop86.github.io/plt-aiedu/"><b>🤖 AI Edu</b><span>Học AI an toàn, miễn phí</span><i>→</i></a>
-        </div>
-        <div class="facts"><span><b>12</b> lớp</span><span><b>149</b> môn học</span><span><b>3 900+</b> bài học</span><span><b>Đề</b> tuần · tháng · kỳ</span><span><b>AI</b> chấm tự luận</span><span>Tiến độ lưu ngay trên máy</span></div>
+        <div class="eyebrow">Miễn phí · Cổng học tập & luyện thi</div>
+        <h1>${name ? 'Chào ' + esc(name) + '! ' : ''}Một cổng học tập, <em>nhiều khoá học</em>.</h1>
+        <p class="lead">Ôn luyện theo SGK lớp 1–12, luyện thi chuyển cấp, bồi dưỡng học sinh giỏi và học ngoại ngữ từ con số 0 — câu hỏi không giới hạn, đề có giờ làm bài, AI hỗ trợ chấm.</p>
+        <div class="row"><a class="btn" href="#/khoa-hoc">🗂️ Xem các khoá học</a></div>
+        <div class="facts"><span><b>${COURSES.length}</b> khoá học</span><span><b>149</b> môn phổ thông</span><span><b>3 900+</b> bài học</span><span><b>AI</b> chấm tự luận</span><span>Tiến độ lưu ngay trên máy</span></div>
       </div>
-      <div class="hcard"><div class="hl"><img src="assets/img/logo-192.png" alt=""><div><b>Đang học: Lớp ${l}</b><span>Chọn lớp khác bên dưới hoặc trên thanh menu</span></div></div>
-        <div class="lops">${Array.from({ length: 12 }, (_, i) => i + 1).map((x) => `<a href="#/lop/${x}" class="${x === l ? 'on' : ''}">${x}</a>`).join('')}</div>
-        <div class="qa"><a href="${modePath('hoc', l)}"><span>📚</span>Học bài</a><a href="${modePath('on-tap', l)}"><span>🎯</span>Ôn tập</a><a href="${modePath('kiem-tra', l)}"><span>📝</span>Kiểm tra</a><a href="#/chuyen-cap"><span>🎓</span>Chuyển cấp</a></div></div>
+      <div class="hcard">${cont}</div>
     </div></section>
-      ${grades.map(([g, ls]) => `<h2>${g}</h2><div class="grades">${ls.map((x) => `<a class="grade${x === l ? ' cur' : ''}" href="#/lop/${x}"><span>Lớp</span><b>${x}</b><em>${BOOKS[x].length} môn</em></a>`).join('')}</div>`).join('')}
+      <h2 id="khoa-hoc">🗂️ Các khoá học</h2><div class="courses">${COURSES.map((c) => `<div class="course"><div class="ch"><span class="ci">${c.ic}</span><div><b>${c.ten}</b><em class="ctag${c.tag === 'Mới' ? ' new' : ''}">${c.tag}</em></div></div><p>${c.mo}</p><div class="cm">${c.meta.map((m) => `<span>${m}</span>`).join('')}</div><div class="cgo">${c.go.map(([h, t], i) => `<a class="btn${i ? ' ghost' : ''} small" href="${h}">${t}</a>`).join('')}</div></div>`).join('')}</div>
+      <h2>📚 Chọn lớp (chương trình phổ thông)</h2>
+      ${grades.map(([g, ls]) => `<h3 class="gh">${g}</h3><div class="grades">${ls.map((x) => `<a class="grade${has && x === l ? ' cur' : ''}" href="#/lop/${x}"><span>Lớp</span><b>${x}</b><em>${BOOKS[x].length} môn</em></a>`).join('')}</div>`).join('')}
       <h2>Một buổi học có gì</h2><div class="feats">
-        <a class="feat" href="${modePath('hoc', l)}"><span>📚</span><b>Học bài</b><p>Lý thuyết ngắn gọn, mô phỏng tương tác, bài tập có lời giải.</p></a>
-        <a class="feat" href="${modePath('on-tap', l)}"><span>🎯</span><b>Ôn tập nhanh</b><p>Câu hỏi ngẫu nhiên không giới hạn, chấm ngay từng câu.</p></a>
-        <a class="feat" href="${modePath('kiem-tra', l)}"><span>📝</span><b>Kiểm tra</b><p>Đề theo tuần, tháng, giữa kỳ, cuối kỳ. Có giờ làm bài, AI chấm tự luận.</p></a>
+        <div class="feat"><span>📚</span><b>Học bài</b><p>Lý thuyết ngắn gọn, mô phỏng tương tác, bài tập có lời giải.</p></div>
+        <div class="feat"><span>🎯</span><b>Ôn tập nhanh</b><p>Câu hỏi ngẫu nhiên không giới hạn, chấm ngay từng câu.</p></div>
+        <div class="feat"><span>📝</span><b>Kiểm tra</b><p>Đề theo tuần, tháng, giữa kỳ, cuối kỳ. Có giờ làm bài, AI chấm tự luận.</p></div>
         <a class="feat" href="#/tien-do"><span>📈</span><b>Tiến độ</b><p>Xem sao đạt được ở từng chủ đề và lịch sử điểm kiểm tra.</p></a></div>`;
   }
 
@@ -338,6 +341,12 @@
     return `<div class="subjects">${list.map((m) => { const cid = cidOf(l, m), has = !!cid; return `<${has ? `a href="#/${mode}/${cid}"` : 'div'} class="subj${has ? '' : ' soon'}"><div class="si">${ICON[m] || '📘'}</div><b>${m} ${l}</b><span class="muted small">${has ? { hoc: 'Học bài, lý thuyết, bài tập', 'on-tap': 'Ôn tập câu hỏi ngẫu nhiên', 'kiem-tra': 'Đề tuần, tháng, học kì', 'nang-cao': 'Bài khó, đề nâng cao, bồi dưỡng HSG' }[mode] : 'Đang biên soạn – sắp có'}</span></${has ? 'a' : 'div'}>`; }).join('')}</div>`;
   }
   function pickSubject(mode) {
+    if (!hasLop()) {
+      const t0 = { hoc: '📚 Học bài', 'on-tap': '🎯 Ôn tập', 'kiem-tra': '📝 Kiểm tra', 'nang-cao': '⭐ Nâng cao*' }[mode];
+      app.innerHTML = `<div class="crumb"><a href="#/">Trang chủ</a> › ${t0.slice(2)}</div><h1>${t0}</h1><p class="muted">Em đang học lớp mấy?</p><div class="grades">${Array.from({ length: 12 }, (_, i) => `<button class="grade" data-l="${i + 1}"><span>Lớp</span><b>${i + 1}</b><em>${BOOKS[i + 1].length} môn</em></button>`).join('')}</div>`;
+      app.querySelectorAll('[data-l]').forEach((b) => (b.onclick = () => { setLop(b.dataset.l); syncLop(); pickSubject(mode); }));
+      window.scrollTo(0, 0); return;
+    }
     const l = curLop(), t = { hoc: '📚 Học bài', 'on-tap': '🎯 Ôn tập', 'kiem-tra': '📝 Kiểm tra', 'nang-cao': '⭐ Nâng cao*' }[mode];
     app.innerHTML = `<div class="crumb"><a href="#/">Trang chủ</a> › <a href="#/lop/${l}">Lớp ${l}</a> › ${t.slice(2)}</div><h1>${t} · Lớp ${l}</h1><p class="muted">Chọn môn học:</p>${subjGrid(l, mode)}`;
     window.scrollTo(0, 0);
@@ -360,7 +369,7 @@
       app.innerHTML = '<p class="muted">Đang tải bài học…</p>';
       S = await ensure(sid); if (my !== seq) return;
       if (!S) { app.innerHTML = '<div class="card">Không tải được môn học này. Kiểm tra lại kết nối hoặc tải lại trang.</div>'; return; }
-      setLast(S); if (S.lop !== curLop()) setLop(S.lop); syncLop();
+      setLast(S); if (!hasLop() || S.lop !== curLop()) setLop(S.lop); syncLop();
     }
     switch (p[0]) {
       case 'lop': await grade(p[1]); break;
@@ -377,6 +386,7 @@
         if (!ok) { app.innerHTML = '<div class="card">Không tải được module Tiếng Trung. Kiểm tra kết nối và tải lại trang.</div>'; break; }
         PLT.ZH.route(app, p); break;
       }
+      case 'khoa-hoc': home(); { const k = $('#khoa-hoc'); if (k) setTimeout(() => k.scrollIntoView({ behavior: 'smooth' }), 50); } return;
       default: home();
     }
     window.scrollTo(0, 0);
@@ -389,15 +399,15 @@
   function syncLop() {
     const l = curLop(), s = sidOf(l);
     $('#nav').innerHTML = `<a href="#/" data-r="" title="Trang chủ">🏠 <span>Trang chủ</span></a><a href="${modePath('hoc', l)}" data-r="hoc" title="Học bài">📚 <span>Học bài</span></a><a href="${modePath('on-tap', l)}" data-r="on-tap" title="Ôn tập">🎯 <span>Ôn tập</span></a><a href="${modePath('kiem-tra', l)}" data-r="kiem-tra" title="Kiểm tra">📝 <span>Kiểm tra</span></a><a href="${modePath('nang-cao', l)}" data-r="nang-cao" title="Nâng cao* – bồi dưỡng học sinh giỏi">⭐ <span>Nâng cao*</span></a><a href="#/chuyen-cap" data-r="chuyen-cap" title="Thi chuyển cấp: vào lớp 6, vào lớp 10, tốt nghiệp THPT, học sinh giỏi">🎓 <span>Chuyển cấp</span></a><a href="#/tieng-trung" data-r="tieng-trung" title="Tiếng Trung từ số 0 – 30 ngày">🀄 <span>Tiếng Trung</span></a><a href="#/tien-do" data-r="tien-do" title="Tiến độ">📈 <span>Tiến độ</span></a>`;
-    const sel = $('#lopSel'); if (sel) sel.value = l;
-    const ic = $('#lopIc'); if (ic) ic.href = `#/lop/${l}`;
+    const sel = $('#lopSel'); if (sel) sel.value = hasLop() ? l : '';
+    const ic = $('#lopIc'); if (ic) ic.href = hasLop() ? `#/lop/${l}` : '#/hoc';
     markNav();
   }
   function nav() {
     const top = $('.top .in');
     // Một ô chọn lớp duy nhất: bấm biểu tượng 🏫 để mở trang lớp, chọn lớp khác thì chuyển ngay
     const box = document.createElement('div'); box.className = 'lopbox';
-    box.innerHTML = `<a id="lopIc" class="lopic" href="#/lop/${curLop()}" title="Mở trang lớp">🏫</a><select id="lopSel" class="lopsel" title="Chọn lớp" aria-label="Chọn lớp">${Array.from({ length: 12 }, (_, i) => `<option value="${i + 1}">Lớp ${i + 1}</option>`).join('')}</select>`;
+    box.innerHTML = `<a id="lopIc" class="lopic" href="${hasLop() ? '#/lop/' + curLop() : '#/hoc'}" title="Mở trang lớp">🏫</a><select id="lopSel" class="lopsel" title="Chọn lớp" aria-label="Chọn lớp"><option value="" disabled hidden>Chọn lớp</option>${Array.from({ length: 12 }, (_, i) => `<option value="${i + 1}">Lớp ${i + 1}</option>`).join('')}</select>`;
     top.insertBefore(box, $('#nav')); const sel = $('#lopSel');
     sel.onchange = () => { setLop(sel.value); syncLop(); location.hash = `#/lop/${sel.value}`; };
     $('#gear').onclick = settings; syncLop();
