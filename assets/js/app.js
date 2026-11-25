@@ -44,12 +44,12 @@
     return loading[sid];
   }
 
-  // Module Tiếng Trung: nạp engine + dữ liệu khi người dùng mở lần đầu
-  let zhP = null;
-  function zhLoad() {
-    if (PLT.ZH && window.PLT_ZH) return Promise.resolve(true);
-    if (!zhP) zhP = ['assets/js/zh.js', 'subjects/tieng-trung.js', 'subjects/tieng-trung-2.js', 'subjects/tieng-trung-3.js', 'subjects/tieng-trung-4.js'].reduce((pr, f) => pr.then(() => new Promise((ok) => { const s = document.createElement('script'); s.src = f + (window.PLT_VER ? '?v=' + window.PLT_VER : ''); s.onload = () => ok(true); s.onerror = () => ok(false); document.body.appendChild(s); })), Promise.resolve());
-    return zhP.then(() => !!(PLT.ZH && window.PLT_ZH));
+  // Module Ngoại ngữ (Trung · Anh · Hàn): nạp engine khi người dùng mở lần đầu; dữ liệu từng thứ tiếng do engine tự nạp
+  let langP = null;
+  function langLoad() {
+    if (PLT.LANG) return Promise.resolve(true);
+    if (!langP) langP = new Promise((ok) => { const s = document.createElement('script'); s.src = 'assets/js/lang.js' + (window.PLT_VER ? '?v=' + window.PLT_VER : ''); s.onload = () => ok(true); s.onerror = () => ok(false); document.body.appendChild(s); });
+    return langP.then(() => !!PLT.LANG);
   }
 
   // Lấy n câu hỏi xoay vòng qua các dạng
@@ -105,18 +105,20 @@
     { ic: '📚', ten: 'Chương trình phổ thông lớp 1–12', tag: 'Miễn phí', wide: 1, mo: 'Đủ 149 môn theo bộ SGK Kết nối tri thức, từ Tiểu học đến THPT. Mỗi lớp có đủ các phần học dưới đây.', meta: ['12 lớp', '149 môn', '3 900+ bài', 'AI chấm tự luận'],
       parts: [['📚', 'Học bài', 'Lý thuyết ngắn gọn, mô phỏng tương tác', '#/hoc'], ['🎯', 'Ôn tập', 'Câu hỏi ngẫu nhiên không giới hạn', '#/on-tap'], ['📝', 'Kiểm tra', 'Đề tuần, tháng, giữa kỳ, cuối kỳ', '#/kiem-tra'], ['⭐', 'Nâng cao*', 'Bồi dưỡng học sinh khá, giỏi', '#/nang-cao'], ['🎓', 'Thi chuyển cấp', 'Vào 6 · Vào 10 · Tốt nghiệp THPT · HSG', '#/chuyen-cap']],
       go: [['#/lop/1', 'Tiểu học (lớp 1–5)'], ['#/lop/6', 'THCS (lớp 6–9)'], ['#/lop/10', 'THPT (lớp 10–12)']] },
-    { ic: '🀄', ten: 'Tiếng Trung', tag: 'Mới', mo: 'Lộ trình 30 ngày cho người Việt: Pinyin, 4 thanh điệu, từ vựng theo câu, hội thoại từng lượt với người bản xứ, có giọng đọc mẫu.', meta: ['30 ngày', '30–45 phút/ngày', 'Mọi lứa tuổi'], go: [['#/tieng-trung', 'Bắt đầu học']] },
+    { ic: '🌏', ten: 'Ngoại ngữ: Trung · Anh · Hàn', tag: 'Mới', wide: 1, mo: 'Lộ trình tự học từ cơ bản đến nâng cao, mỗi thứ tiếng 5 cấp bám theo HSK, CEFR/IELTS, TOPIK. Cấp 1 gồm 30 ngày: kiến thức mới, luyện tập, hội thoại tình huống, có giọng đọc mẫu.', meta: ['3 thứ tiếng', '5 cấp độ', '30 ngày/cấp 1', 'Mọi lứa tuổi'],
+      parts: [['🀄', 'Tiếng Trung', 'Pinyin, 4 thanh, giao tiếp · hướng tới HSK', '#/tieng-trung'], ['🇬🇧', 'Tiếng Anh', 'Phát âm IPA, giao tiếp A1 · khung CEFR', '#/tieng-anh'], ['🇰🇷', 'Tiếng Hàn', 'Bảng chữ Hangul, giao tiếp · hướng tới TOPIK', '#/tieng-han']],
+      go: [['#/ngoai-ngu', 'Xem lộ trình 5 cấp']] },
     { ic: '🤖', ten: 'AI Edu', tag: 'Trang chị em', mo: 'Học cách dùng trí tuệ nhân tạo an toàn, hiệu quả cho học tập và cuộc sống, miễn phí.', meta: ['An toàn', 'Miễn phí'], go: [['https://phongishop86.github.io/plt-aiedu/', 'Mở AI Edu ↗']] }
   ];
   function home() {
     const name = PLT.data.settings.name, has = hasLop(), l = curLop();
-    const zh = (PLT.data.zh && Object.keys(PLT.data.zh.days || {}).length) ? true : false;
-    const cont = has || zh ? `<div class="hl"><img src="assets/img/logo-192.png" alt=""><div><b>Tiếp tục học</b><span>Chọn nhanh nơi em đang học dở</span></div></div><div class="pick pick1">${has ? `<a href="#/lop/${l}"><b>📚 Lớp ${l}</b><span>Học bài · Ôn tập · Kiểm tra</span><i>→</i></a>` : ''}${zh ? '<a href="#/tieng-trung"><b>🀄 Tiếng Trung</b><span>Học tiếp lộ trình 30 ngày</span><i>→</i></a>' : ''}</div>`
+    const LG = [['zh', 'tieng-trung', '🀄 Tiếng Trung'], ['en', 'tieng-anh', '🇬🇧 Tiếng Anh'], ['ko', 'tieng-han', '🇰🇷 Tiếng Hàn']].filter(([k]) => PLT.data[k] && Object.keys(PLT.data[k].days || {}).length); const zh = LG.length > 0;
+    const cont = has || zh ? `<div class="hl"><img src="assets/img/logo-192.png" alt=""><div><b>Tiếp tục học</b><span>Chọn nhanh nơi em đang học dở</span></div></div><div class="pick pick1">${has ? `<a href="#/lop/${l}"><b>📚 Lớp ${l}</b><span>Học bài · Ôn tập · Kiểm tra</span><i>→</i></a>` : ''}${LG.map(([, r, t]) => `<a href="#/${r}"><b>${t}</b><span>Học tiếp lộ trình 30 ngày</span><i>→</i></a>`).join('')}</div>`
       : `<div class="hl"><img src="assets/img/logo-192.png" alt=""><div><b>Bắt đầu thế nào?</b><span>Chỉ 3 bước, không cần đăng ký</span></div></div><ol class="steps"><li><b>Chọn khoá học</b> phù hợp bên dưới.</li><li><b>Chọn lớp, môn</b> hoặc ngày học.</li><li><b>Học – ôn – kiểm tra</b>, tiến độ tự lưu trên máy.</li></ol>`;
     app.innerHTML = `<section class="hero2"><div class="hw"><div>
         <div class="eyebrow">Miễn phí · Cổng học tập & luyện thi</div>
         <h1>${name ? 'Chào ' + esc(name) + '! ' : ''}Một cổng học tập, <em>nhiều khoá học</em>.</h1>
-        <p class="lead">Ôn luyện theo SGK lớp 1–12, luyện thi chuyển cấp, bồi dưỡng học sinh giỏi và học tiếng Trung giao tiếp — câu hỏi không giới hạn, đề có giờ làm bài, AI hỗ trợ chấm.</p>
+        <p class="lead">Ôn luyện theo SGK lớp 1–12, luyện thi chuyển cấp, bồi dưỡng học sinh giỏi và tự học ngoại ngữ Trung · Anh · Hàn — câu hỏi không giới hạn, đề có giờ làm bài, AI hỗ trợ chấm.</p>
         <div class="row"><a class="btn" href="#/khoa-hoc">🗂️ Xem các khoá học</a></div>
         <div class="facts"><span><b>${COURSES.length}</b> khoá học</span><span><b>149</b> môn phổ thông</span><span>Thi chuyển cấp · Nâng cao*</span><span><b>3 900+</b> bài học</span><span><b>AI</b> chấm tự luận</span><span>Tiến độ lưu ngay trên máy</span></div>
       </div>
@@ -348,7 +350,7 @@
   let seq = 0;
   async function route() {
     if (active) { active.stop(); active = null; }
-    if (PLT.ZH) PLT.ZH.stop();
+    if (PLT.LANG) PLT.LANG.stop();
     const my = ++seq;
     const p = (location.hash.replace(/^#\/?/, '') || '').split('/').map(decodeURIComponent);
     const lb = $('.lopbox'); if (lb) lb.classList.toggle('on', p[0] === 'lop');
@@ -372,11 +374,11 @@
       case 'nang-cao': advanced(S); break;
       case 'chuyen-cap': await chuyenCap(p, my); break;
       case 'tien-do': await progress(); break;
-      case 'tieng-trung': {
-        app.innerHTML = '<p class="muted">Đang tải bài học tiếng Trung…</p>';
-        const ok = await zhLoad(); if (my !== seq) return;
-        if (!ok) { app.innerHTML = '<div class="card">Không tải được module Tiếng Trung. Kiểm tra kết nối và tải lại trang.</div>'; break; }
-        PLT.ZH.route(app, p); break;
+      case 'ngoai-ngu': case 'tieng-trung': case 'tieng-anh': case 'tieng-han': {
+        app.innerHTML = '<p class="muted">Đang tải bài học ngoại ngữ…</p>';
+        const ok = await langLoad(); if (my !== seq) return;
+        if (!ok) { app.innerHTML = '<div class="card">Không tải được module Ngoại ngữ. Kiểm tra kết nối và tải lại trang.</div>'; break; }
+        await PLT.LANG.route(app, p); if (my !== seq) return; break;
       }
       case 'khoa-hoc': home(); { const k = $('#khoa-hoc'); if (k) setTimeout(() => k.scrollIntoView({ behavior: 'smooth' }), 50); } return;
       default: home();
@@ -385,12 +387,12 @@
   }
   function markNav() {
     const p = (location.hash.replace(/^#\/?/, '') || '').split('/');
-    const r = p[0] === 'thi' ? (/^nc/.test(p[2] || '') ? 'nang-cao' : 'kiem-tra') : p[0] || '';
+    const r = p[0] === 'thi' ? (/^nc/.test(p[2] || '') ? 'nang-cao' : 'kiem-tra') : /^tieng-(trung|anh|han)$/.test(p[0]) ? 'ngoai-ngu' : p[0] || '';
     document.querySelectorAll('.nav a').forEach((a) => a.classList.toggle('on', (a.dataset.r || '') === r));
   }
   function syncLop() {
     const l = curLop(), s = sidOf(l);
-    $('#nav').innerHTML = `<a href="#/" data-r="" title="Trang chủ">🏠 <span>Trang chủ</span></a><a href="${modePath('hoc', l)}" data-r="hoc" title="Học bài">📚 <span>Học bài</span></a><a href="${modePath('on-tap', l)}" data-r="on-tap" title="Ôn tập">🎯 <span>Ôn tập</span></a><a href="${modePath('kiem-tra', l)}" data-r="kiem-tra" title="Kiểm tra">📝 <span>Kiểm tra</span></a><a href="${modePath('nang-cao', l)}" data-r="nang-cao" title="Nâng cao* – bồi dưỡng học sinh giỏi">⭐ <span>Nâng cao*</span></a><a href="#/chuyen-cap" data-r="chuyen-cap" title="Thi chuyển cấp: vào lớp 6, vào lớp 10, tốt nghiệp THPT, học sinh giỏi">🎓 <span>Chuyển cấp</span></a><a href="#/tieng-trung" data-r="tieng-trung" title="Tiếng Trung – 30 ngày giao tiếp">🀄 <span>Tiếng Trung</span></a><a href="#/tien-do" data-r="tien-do" title="Tiến độ">📈 <span>Tiến độ</span></a>`;
+    $('#nav').innerHTML = `<a href="#/" data-r="" title="Trang chủ">🏠 <span>Trang chủ</span></a><a href="${modePath('hoc', l)}" data-r="hoc" title="Học bài">📚 <span>Học bài</span></a><a href="${modePath('on-tap', l)}" data-r="on-tap" title="Ôn tập">🎯 <span>Ôn tập</span></a><a href="${modePath('kiem-tra', l)}" data-r="kiem-tra" title="Kiểm tra">📝 <span>Kiểm tra</span></a><a href="${modePath('nang-cao', l)}" data-r="nang-cao" title="Nâng cao* – bồi dưỡng học sinh giỏi">⭐ <span>Nâng cao*</span></a><a href="#/chuyen-cap" data-r="chuyen-cap" title="Thi chuyển cấp: vào lớp 6, vào lớp 10, tốt nghiệp THPT, học sinh giỏi">🎓 <span>Chuyển cấp</span></a><a href="#/ngoai-ngu" data-r="ngoai-ngu" title="Ngoại ngữ: Trung · Anh · Hàn">🌏 <span>Ngoại ngữ</span></a><a href="#/tien-do" data-r="tien-do" title="Tiến độ">📈 <span>Tiến độ</span></a>`;
     const sel = $('#lopSel'); if (sel) sel.value = hasLop() ? l : '';
     const ic = $('#lopIc'); if (ic) ic.href = hasLop() ? `#/lop/${l}` : '#/hoc';
     markNav();

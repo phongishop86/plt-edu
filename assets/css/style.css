@@ -264,3 +264,13 @@ button.grade{font:inherit;cursor:pointer;border:0}
 .cparts{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
 .cparts a{display:flex;flex-direction:column;gap:1px;background:var(--bg);border:2px solid var(--line);border-radius:14px;padding:10px 12px;color:var(--ink)}.cparts a:hover{border-color:var(--teal)}
 .cparts span{font-size:1.4rem}.cparts b{font-size:1rem}.cparts small{color:var(--muted);font-size:.8rem;line-height:1.35}
+/* ===== Ngoại ngữ: trang lộ trình 5 cấp ===== */
+.zh-levels{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin-bottom:8px}
+.zh-lv{display:flex;flex-direction:column;gap:8px;background:#fff;border-radius:16px;padding:14px;border:2px dashed var(--line);color:var(--ink)}
+.zh-lv.open{border:2px solid var(--pri);box-shadow:var(--sh)}.zh-lv.open:hover{transform:translateY(-2px)}
+.zh-lvh{display:flex;gap:10px;align-items:center}.zh-lvh b{display:block;line-height:1.25}.zh-lvh em{font-style:normal;font-size:.78rem;font-weight:800;color:var(--teal)}
+.zh-lvn{display:grid;place-items:center;flex:none;width:34px;height:34px;border-radius:50%;background:var(--soft);font-weight:800;color:var(--pri-d)}
+.zh-lv.open .zh-lvn{background:var(--pri);color:#fff}
+.zh-lv p{margin:0;font-size:.88rem;color:var(--muted)}.zh-lvf{display:flex;justify-content:space-between;gap:6px;font-size:.78rem;font-weight:700;margin-top:auto}
+.zh-lv:not(.open) .zh-lvf span:last-child{color:var(--muted)}.zh-lv.open .zh-lvf span:last-child{color:var(--pri-d)}
+.zh-big.zh-long{font-size:2.6rem;font-family:inherit}
