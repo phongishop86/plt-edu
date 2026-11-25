@@ -46,9 +46,10 @@
 
   // Module Tiếng Trung: nạp engine + dữ liệu khi người dùng mở lần đầu
   let zhP = null;
+  const ZH_FILES = ['assets/js/zh.js', 'subjects/tieng-trung.js', 'subjects/tieng-trung-2.js', 'subjects/tieng-trung-3.js', 'subjects/tieng-trung-4.js'];
   function zhLoad() {
     if (PLT.ZH && window.PLT_ZH) return Promise.resolve(true);
-    if (!zhP) zhP = ['assets/js/zh.js', 'subjects/tieng-trung.js', 'subjects/tieng-trung-2.js', 'subjects/tieng-trung-3.js', 'subjects/tieng-trung-4.js'].reduce((pr, f) => pr.then(() => new Promise((ok) => { const s = document.createElement('script'); s.src = f + (window.PLT_VER ? '?v=' + window.PLT_VER : ''); s.onload = () => ok(true); s.onerror = () => ok(false); document.body.appendChild(s); })), Promise.resolve());
+    if (!zhP) zhP = ZH_FILES.reduce((pr, f) => pr.then(() => new Promise((ok) => { const s = document.createElement('script'); s.src = f + (window.PLT_VER ? '?v=' + window.PLT_VER : ''); s.onload = () => ok(true); s.onerror = () => ok(false); document.body.appendChild(s); })), Promise.resolve());
     return zhP.then(() => !!(PLT.ZH && window.PLT_ZH));
   }
 
@@ -312,6 +313,9 @@
       <p class="muted small">Lấy khóa miễn phí tại aistudio.google.com → Get API key. Khóa chỉ lưu trên trình duyệt máy này. Không có khóa thì tự luận được chấm sơ bộ theo đáp số.</p>
       <label>Mô hình AI<input class="inp" id="smodel" value="${esc(S.model)}"></label>
       <div class="row"><button class="btn" id="ssave">Lưu</button><button class="btn ghost" id="stest">Thử kết nối AI</button><button class="btn ghost" id="sclose">Đóng</button></div><div id="smsg" class="small"></div>
+      <hr><h3>📲 Học không cần mạng</h3>
+      <p class="muted small">Môn nào đã mở sẽ tự lưu vào máy để học khi mất mạng. Bấm nút dưới để tải sẵn tất cả môn (khoảng 3 MB). Cài lên màn hình chính: iPhone mở bằng Safari → nút Chia sẻ → “Thêm vào MH chính”; Android mở bằng Chrome → menu ⋮ → “Cài đặt ứng dụng”.</p>
+      <div class="row"><button class="btn ghost" id="soff">⬇️ Tải tất cả môn</button>${window.PLT_INSTALL ? '<button class="btn ghost" id="sinst">📲 Cài app</button>' : ''}</div><div id="soffmsg" class="small"></div>
       <hr><button class="btn ghost small" id="sreset">Xóa toàn bộ tiến độ trên máy này</button></div>`;
     document.body.appendChild(d);
     const read = () => { S.name = $('#sname', d).value.trim(); S.apiKey = $('#skey', d).value.trim(); S.model = $('#smodel', d).value.trim() || 'gemini-2.5-flash'; setLop($('#slop', d).value); PLT.save(); };
@@ -324,6 +328,18 @@
       const g = await PLT.Q.aiGrade([{ q, resp: '25 + 17 = 42' }]);
       $('#smsg', d).innerHTML = g[0].src === 'ai' ? `<span class="ok">✔ Kết nối AI thành công (${g[0].diem}/1 điểm: ${esc(g[0].nhan_xet)})</span>` : `<span class="bad">✘ Chưa kết nối được AI. ${esc(g[0].nhan_xet)}</span>`;
     };
+    $('#soff', d).onclick = async () => {
+      const msg = $('#soffmsg', d), btn = $('#soff', d);
+      if (!('serviceWorker' in navigator) || !navigator.serviceWorker.controller) { msg.innerHTML = '<span class="bad">Chưa bật được chế độ offline. Hãy mở web qua địa chỉ https (edu.phatloctech.vn), tải lại trang 1 lần rồi bấm lại.</span>'; return; }
+      const files = [...new Set(Object.values(CATALOG).map((c) => c.file).concat(ZH_FILES))].map((f) => f + '?v=' + window.PLT_VER);
+      let done = 0, fail = 0, i = 0; btn.disabled = true;
+      const worker = async () => { while (i < files.length) { const f = files[i++]; try { const r = await fetch(f); if (!r.ok) fail++; } catch (e) { fail++; } done++; msg.textContent = `Đang tải ${done}/${files.length}…`; } };
+      await Promise.all([1, 2, 3, 4].map(worker));
+      btn.disabled = false;
+      msg.innerHTML = fail ? `<span class="bad">Đã tải ${done - fail}/${files.length} tệp, ${fail} tệp lỗi. Kiểm tra mạng rồi bấm lại.</span>` : `<span class="ok">✔ Đã tải xong toàn bộ (${files.length} tệp). Giờ có thể học khi không có mạng.</span>`;
+    };
+    const inst = $('#sinst', d);
+    if (inst) inst.onclick = async () => { const p = window.PLT_INSTALL; window.PLT_INSTALL = null; inst.remove(); p.prompt(); try { await p.userChoice; } catch (e) { /* bỏ qua */ } };
     $('#sreset', d).onclick = () => { if (confirm('Xóa toàn bộ tiến độ và lịch sử kiểm tra?')) { PLT.data.prog = {}; PLT.data.tests = []; PLT.save(); d.remove(); route(); } };
   }
 

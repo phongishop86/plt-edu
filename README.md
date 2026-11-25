@@ -10,6 +10,7 @@ Web tĩnh (HTML/CSS/JS thuần, không cần build), chạy được bằng GitH
   Dạng câu: trắc nghiệm, đúng/sai, điền số/điền từ, nối, sắp xếp, xếp nhóm, so sánh >, <, =, câu có hình, tự luận/viết đoạn.
 - **AI chấm tự luận**: Gemini API (người dùng nhập khóa trong ⚙️ Cài đặt). Không có khóa → chấm sơ bộ theo đáp số.
 - **Tiến độ**: sao theo chủ đề, lịch sử điểm (lưu trên trình duyệt).
+- **Học offline (PWA)**: môn đã mở tự lưu vào máy; ⚙️ Cài đặt → “Tải tất cả môn” để tải sẵn toàn bộ. Cài được lên màn hình chính như app (iPhone: Safari → Chia sẻ → Thêm vào MH chính; Android: Chrome → Cài đặt ứng dụng). Chỉ chạy khi mở qua https.
 - **🀄 Tiếng Trung** (`#/tieng-trung`): lộ trình 30 ngày cho người Việt, đủ Ngày 1–30 (Pinyin → câu cơ bản → giao tiếp đời sống → phản xạ, kiểm tra cuối khoá). Mỗi ngày 5 phần A Ôn tập · B Kiến thức mới · C Luyện tập · D Hội thoại từng lượt · E Kiểm tra, kèm báo cáo cuối buổi. Có trang luyện 4 thanh, bảng Pinyin, thẻ từ vựng, tóm tắt tiến độ để chép sang gia sư AI. Giọng đọc dùng Web Speech API của trình duyệt (miễn phí; Edge/Chrome có giọng zh-CN).
 
 ## Cấu trúc
@@ -29,7 +30,9 @@ assets/js/avail.js      danh sách môn dùng ngân hàng câu hỏi
 assets/js/eco.js        liên kết qua lại với AI Edu, nút đăng nhập
 assets/js/zh.js         module Tiếng Trung: giọng đọc, bộ sinh câu hỏi, buổi học A–E, hội thoại, thẻ từ, tiến độ
 subjects/tieng-trung*.js nội dung Tiếng Trung: tieng-trung.js (lộ trình, bảng Pinyin, Ngày 1–7), -2 (Ngày 8–14), -3 (15–21), -4 (22–30)
-tools/bump-version.sh   đổi ?v= để trình duyệt tải bản mới (chạy trước mỗi lần commit)
+tools/bump-version.sh   đổi ?v= và VER trong sw.js để máy học sinh tải bản mới (BẮT BUỘC chạy trước mỗi lần commit)
+sw.js                   service worker: lưu trang/môn học để dùng offline
+manifest.webmanifest    thông tin app khi cài lên màn hình chính
 ```
 
 ## Thêm môn / lớp mới
@@ -39,5 +42,6 @@ tools/bump-version.sh   đổi ?v= để trình duyệt tải bản mới (chạ
 3. Chạy `tools/bump-version.sh` rồi commit.
 
 ## Lưu ý
+- Quên chạy `tools/bump-version.sh` trước khi commit thì máy đã cài offline sẽ vẫn dùng file cũ.
 - Khóa Gemini nhập trên trình duyệt chỉ phù hợp dùng cá nhân/thử nghiệm. Khi mở cho nhiều học sinh, nên chuyển sang gọi qua một máy chủ trung gian (Vercel/Cloudflare Worker) để giấu khóa.
 - Không đưa file PDF SGK lên repo (bản quyền NXB Giáo dục Việt Nam); nội dung lý thuyết được tóm tắt lại bằng lời mới.

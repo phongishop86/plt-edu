@@ -6,9 +6,11 @@
 <title>PLT-Edu – Học tập & Luyện thi</title>
 <meta name="description" content="PLT-Edu: học bài, ôn tập, kiểm tra theo tuần – tháng – học kỳ theo chương trình SGK, có AI chấm bài.">
 <link rel="icon" type="image/png" href="assets/img/favicon-32.png"><link rel="apple-touch-icon" href="assets/img/logo-192.png">
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#1B2A4A">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="PLT-Edu"><meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=202611242230">
+<link rel="stylesheet" href="assets/css/style.css?v=202611251415">
 </head>
 <body>
 <header class="top"><div class="in">
@@ -19,16 +21,22 @@
 <main id="app"></main>
 <!-- Khi publish chính thức: thêm lại " · Phát Lộc Tech" sau "PLT-Edu" -->
 <footer>PLT-Edu · Nội dung bám theo chương trình SGK hiện hành, câu hỏi được tạo tự động để ôn luyện.</footer>
-<script>window.PLT_VER = '202611242230'; window.PLT_ECO = { current: 'edu', base: '', loginBefore: '#gear' };</script>
-<script src="assets/js/eco.js?v=202611242230"></script>
-<script src="assets/js/core.js?v=202611242230"></script>
-<script src="assets/js/widgets.js?v=202611242230"></script>
-<script src="assets/js/engine.js?v=202611242230"></script>
-<script src="assets/js/mathlib.js?v=202611242230"></script>
-<script src="assets/js/tvlib.js?v=202611242230"></script>
-<script src="assets/js/kblib.js?v=202611242230"></script>
+<script>window.PLT_VER = '202611251415'; window.PLT_ECO = { current: 'edu', base: '', loginBefore: '#gear' };</script>
+<script src="assets/js/eco.js?v=202611251415"></script>
+<script src="assets/js/core.js?v=202611251415"></script>
+<script src="assets/js/widgets.js?v=202611251415"></script>
+<script src="assets/js/engine.js?v=202611251415"></script>
+<script src="assets/js/mathlib.js?v=202611251415"></script>
+<script src="assets/js/tvlib.js?v=202611251415"></script>
+<script src="assets/js/kblib.js?v=202611251415"></script>
 <!-- Môn học được nạp khi cần: khai báo danh mục trong assets/js/app.js (CATALOG) -->
-<script src="assets/js/avail.js?v=202611242230"></script>
-<script src="assets/js/app.js?v=202611242230"></script>
+<script src="assets/js/avail.js?v=202611251415"></script>
+<script src="assets/js/app.js?v=202611251415"></script>
+<script>/* PWA: học khi không có mạng + cài lên màn hình chính (chỉ chạy khi mở qua https) */
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+  addEventListener('load', function () { navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).catch(function () {}); });
+}
+addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); window.PLT_INSTALL = e; });
+</script>
 </body>
 </html>
