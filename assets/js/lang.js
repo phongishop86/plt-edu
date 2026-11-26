@@ -186,7 +186,7 @@
   /* ---------- Lưu trữ (mỗi thứ tiếng một ngăn) ---------- */
   const st = () => { const d = PLT.data, k = C.id; d[k] = Object.assign({ days: {}, known: {}, rate: 0.8, py: true, vi: true }, d[k] || {}); d[k].days = d[k].days || {}; d[k].known = d[k].known || {}; return d[k]; };
   const dayState = (n) => { const s = st(); s.days[n] = s.days[n] || { parts: {} }; return s.days[n]; };
-  const markPart = (n, p) => { const d = dayState(n); if (!d.parts[p]) { d.parts[p] = 1; d.last = new Date().toISOString(); PLT.save(); if (typeof addXP === 'function') addXP(p === 'd' ? 10 : 5, p === 'd' ? 'Hội thoại' : 'Hoàn thành phần ' + p.toUpperCase()); } };
+  const markPart = (n, p) => { const d = dayState(n); if (!d.parts[p]) { d.parts[p] = 1; d.last = new Date().toISOString(); bump('part'); PLT.save(); if (typeof addXP === 'function') addXP(p === 'd' ? 10 : 5, p === 'd' ? 'Hội thoại' : 'Hoàn thành phần ' + p.toUpperCase()); } };
   const testsOf = (n) => PLT.data.tests.filter((x) => x.id === C.id + ':d' + n);
   const bestOf = (n) => { const r = testsOf(n); return r.length ? Math.max(...r.map((x) => x.diem)) : null; };
   const PASS = 7;
@@ -246,7 +246,7 @@
   function micStat(score) {
     const s = st(); s.mic = s.mic || { n: 0, sum: 0 }; s.mic.n++; s.mic.sum += score;
     if (curDay) { const d = dayState(curDay); d.mic = d.mic || [0, 0]; d.mic[0] += score; d.mic[1]++; }
-    PLT.save(); if (score >= 80) { SND.ok(); addXP(3, '🎤 Nói tốt'); } else SND.bad();
+    PLT.save(); if (score >= 80) { SND.ok(); bump('mic'); addXP(3, '🎤 Nói tốt'); } else SND.bad();
   }
   function gradeSpeech(target, alts, out) {
     const T = toks(target); let best = null;
@@ -292,7 +292,7 @@
   /* ---------- Tương tác kiểu Duolingo: XP, chuỗi ngày, mục tiêu ngày, âm thanh, pháo hoa ---------- */
   const today = () => { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
   const dayDiff = (a, b) => Math.round((new Date(b + 'T00:00:00') - new Date(a + 'T00:00:00')) / 864e5);
-  const gam = () => { const d = PLT.data; d.gam = Object.assign({ xp: 0, days: {}, streak: 0, best: 0, last: '', goal: 20, sound: true }, d.gam || {}); d.gam.days = d.gam.days || {}; return d.gam; };
+  const gam = () => { const d = PLT.data; d.gam = Object.assign({ xp: 0, days: {}, streak: 0, best: 0, last: '', goal: 20, sound: true }, d.gam || {}); const g = d.gam; g.days = g.days || {}; g.by = g.by || {}; g.c = Object.assign({ ans: 0, part: 0, mic: 0, quick: 0, pass: 0, perfect: 0, goalHit: 0, final: 0, nd: 0 }, g.c || {}); g.badges = g.badges || {}; if (!g.q || g.q.d !== today()) g.q = { d: today(), ans: 0, part: 0, got: {} }; return g; };
   const streakNow = () => { const g = gam(); return g.last && dayDiff(g.last, today()) <= 1 ? g.streak : 0; };
   let AC = null;
   function tone(seq) {
@@ -316,29 +316,91 @@
   function addXP(n, why) {
     if (!n) return; const g = gam(), t = today(), before = g.days[t] || 0;
     if (g.last !== t) { const dd = g.last ? dayDiff(g.last, t) : 99; g.streak = dd === 1 ? g.streak + 1 : 1; g.last = t; g.best = Math.max(g.best, g.streak); if (g.streak > 1) setTimeout(() => toast(`🔥 Chuỗi <b>${g.streak}</b> ngày học liên tiếp!`, 'fire'), 500); }
+    if (!before) g.c.nd++;
     g.xp += n; g.days[t] = before + n;
+    const lk = C && (C.parent || C.key); if (lk) g.by[lk] = (g.by[lk] || 0) + n;
+    if (before < g.goal && g.days[t] >= g.goal) g.c.goalHit++;
     Object.keys(g.days).forEach((k) => { if (dayDiff(k, t) > 60) delete g.days[k]; });
     PLT.save(); toast(`+${n} XP${why ? ' · ' + why : ''}`, 'xp');
     if (before < g.goal && g.days[t] >= g.goal) setTimeout(() => { SND.win(); confetti(); toast(`🎯 Đạt mục tiêu hôm nay: <b>${g.goal} XP</b>!`, 'goal'); }, 600);
     document.querySelectorAll('.zh-gbar').forEach((b) => (b.outerHTML = gbar()));
+    afterXP();
   }
   function gbar() {
     const g = gam(), t = g.days[today()] || 0, s = streakNow(), pct = Math.min(100, Math.round((t / g.goal) * 100));
-    return `<div class="zh-gbar"><span class="zh-st${s ? ' on' : ''}" title="Chuỗi ngày học liên tiếp">🔥 <b>${s}</b> ngày</span><span class="zh-goal" title="Mục tiêu XP hôm nay"><i style="width:${pct}%"></i><em>⚡ ${t}/${g.goal} XP hôm nay</em></span><span title="Tổng XP">💎 <b>${g.xp}</b> XP</span><button type="button" class="zh-snd" data-snd title="Bật/tắt âm thanh">${g.sound ? '🔔' : '🔕'}</button></div>`;
+    return `<div class="zh-gbar"><span class="zh-st${s ? ' on' : ''}" title="Chuỗi ngày học liên tiếp">🔥 <b>${s}</b> ngày</span><span class="zh-goal" title="Mục tiêu XP hôm nay"><i style="width:${pct}%"></i><em>⚡ ${t}/${g.goal} XP hôm nay</em></span><span title="Tổng XP">💎 <b>${g.xp}</b> XP</span><a class="zh-rk" href="#/ngoai-ngu/thanh-tich" title="Thành tích, huy hiệu, nhiệm vụ">${rank(g.xp).i} ${rank(g.xp).t} · 🏆 ${Object.keys(g.badges).length}/${BADGES.length}</a><button type="button" class="zh-snd" data-snd title="Bật/tắt âm thanh">${g.sound ? '🔔' : '🔕'}</button></div>`;
   }
   document.addEventListener('click', (e) => { const b = e.target.closest && e.target.closest('[data-snd]'); if (!b) return; const g = gam(); g.sound = !g.sound; PLT.save(); b.textContent = g.sound ? '🔔' : '🔕'; }, true);
   // Luyện tập có XP, âm thanh, chuỗi câu đúng
   function play(box, qs, opt) {
     opt = opt || {}; let combo = 0;
     return PLT.Q.practice(box, qs, Object.assign({}, opt, {
-      onAnswer: (r) => { if (r) { combo++; SND.ok(); addXP(2); if ([3, 5, 10].includes(combo)) setTimeout(() => toast(`🔥 ${combo} câu đúng liên tiếp!`, 'fire'), 300); } else { combo = 0; SND.bad(); } },
-      onDone: (ok, n) => { if (ok === n && n >= 5) { SND.win(); confetti(); addXP(5, 'Không sai câu nào'); } if (opt.onDone) opt.onDone(ok, n); }
+      onAnswer: (r) => { if (r) { combo++; SND.ok(); bump('ans'); addXP(2); if ([3, 5, 10].includes(combo)) setTimeout(() => toast(`🔥 ${combo} câu đúng liên tiếp!`, 'fire'), 300); } else { combo = 0; SND.bad(); } },
+      onDone: (ok, n) => { if (ok === n && n >= 5) { SND.win(); confetti(); bump('perfect'); addXP(5, 'Không sai câu nào'); } if (opt.onDone) opt.onDone(ok, n); }
     }));
   }
   // Thưởng XP cho bài kiểm tra / đề thi khi có kết quả
   function rewardTest(id) {
     const r = PLT.data.tests.find((x) => x.id === id); if (!r) return;
-    if (r.diem >= 7) { SND.win(); confetti(); addXP(20 + (r.diem >= 9.5 ? 10 : 0), 'Đạt bài kiểm tra'); } else addXP(5, 'Đã làm bài');
+    if (r.diem >= 7) { SND.win(); confetti(); bump('pass'); if (/:d30$/.test(id)) bump('final'); addXP(20 + (r.diem >= 9.5 ? 10 : 0), 'Đạt bài kiểm tra'); } else addXP(5, 'Đã làm bài');
+  }
+
+  /* ---------- Thành tích chung: hạng, huy hiệu, nhiệm vụ ngày (lưu trên máy này) ---------- */
+  const RANKS = [[0, '🥉', 'Đồng'], [200, '🥈', 'Bạc'], [600, '🥇', 'Vàng'], [1500, '💠', 'Bạch kim'], [3000, '💎', 'Kim cương'], [6000, '👑', 'Huyền thoại']];
+  function rank(xp) { let i = 0; RANKS.forEach((r, k) => { if (xp >= r[0]) i = k; }); const nx = RANKS[i + 1]; return { i: RANKS[i][1], t: RANKS[i][2], k: i, from: RANKS[i][0], to: nx ? nx[0] : 0, next: nx ? nx[2] : '' }; }
+  const LANGS = [['tieng-trung', '🇨🇳', 'Tiếng Trung'], ['tieng-anh', '🇬🇧', 'Tiếng Anh'], ['tieng-han', '🇰🇷', 'Tiếng Hàn']];
+  const BADGES = [
+    ['first', '🌱', 'Khởi đầu', 'Nhận XP đầu tiên', (g) => g.xp > 0],
+    ['s3', '🔥', 'Bén lửa', 'Chuỗi 3 ngày học liên tiếp', (g) => g.best >= 3],
+    ['s7', '🔥', 'Một tuần bền bỉ', 'Chuỗi 7 ngày', (g) => g.best >= 7],
+    ['s30', '☄️', 'Không bỏ cuộc', 'Chuỗi 30 ngày', (g) => g.best >= 30],
+    ['xp100', '💎', 'Trăm XP', 'Đạt 100 XP', (g) => g.xp >= 100],
+    ['xp1k', '💠', 'Nghìn XP', 'Đạt 1.000 XP', (g) => g.xp >= 1000],
+    ['xp5k', '👑', 'Cao thủ', 'Đạt 5.000 XP', (g) => g.xp >= 5000],
+    ['goal7', '🎯', 'Đúng hẹn', 'Đạt mục tiêu ngày 7 lần', (g) => g.c.goalHit >= 7],
+    ['perfect', '✨', 'Hoàn hảo', 'Một bài luyện không sai câu nào', (g) => g.c.perfect >= 1],
+    ['ans500', '✅', 'Năm trăm câu đúng', 'Trả lời đúng 500 câu', (g) => g.c.ans >= 500],
+    ['mic20', '🎤', 'Dám nói', 'Nói tốt (≥ 80 điểm) 20 lần', (g) => g.c.mic >= 20],
+    ['quick10', '⚡', 'Tia chớp', 'Xong 10 bài luyện nhanh', (g) => g.c.quick >= 10],
+    ['pass1', '📝', 'Qua bài đầu', 'Đạt bài kiểm tra đầu tiên (≥ 7 điểm)', (g) => g.c.pass >= 1],
+    ['pass10', '🏅', 'Mười bài đạt', 'Đạt 10 bài kiểm tra', (g) => g.c.pass >= 10],
+    ['final', '🎓', 'Tốt nghiệp cấp', 'Đạt bài kiểm tra cuối khoá (Ngày 30) của một cấp', (g) => g.c.final >= 1],
+    ['poly', '🌏', 'Đa ngôn ngữ', 'Mỗi thứ tiếng Trung, Anh, Hàn đều có ≥ 20 XP', (g) => LANGS.every(([k]) => (g.by[k] || 0) >= 20)]
+  ];
+  const QUESTS = [['ans', '✅', 'Trả lời đúng 10 câu', 10], ['part', '📘', 'Hoàn thành 2 phần học', 2], ['goal', '🎯', 'Đạt mục tiêu XP hôm nay', 0]];
+  function bump(k) { const g = gam(); g.c[k] = (g.c[k] || 0) + 1; if (k === 'ans' || k === 'part') g.q[k]++; }
+  const qVal = (g, q) => (q[0] === 'goal' ? [g.days[today()] || 0, g.goal] : [g.q[q[0]], q[3]]);
+  let inAfter = false;
+  function afterXP() {
+    if (inAfter) return; inAfter = true;
+    try {
+      const g = gam(); let d = 400;
+      for (let pass = 0; pass < 2; pass++) QUESTS.forEach((q) => { const [v, m] = qVal(g, q); if (v >= m && !g.q.got[q[0]]) { g.q.got[q[0]] = 1; const t = d; d += 900; setTimeout(() => toast(`${q[1]} Xong nhiệm vụ: <b>${q[2]}</b> · +10 XP`, 'goal'), t); addXP(10); } });
+      if (Object.keys(g.q.got).length === QUESTS.length && !g.q.all) { g.q.all = 1; setTimeout(() => { SND.win(); confetti(); toast('🏆 Hoàn thành cả 3 nhiệm vụ hôm nay!', 'goal'); }, d); d += 900; }
+      const rk = rank(g.xp).k; if (g.rk === undefined) g.rk = rk; else if (rk > g.rk) { g.rk = rk; const r = rank(g.xp); setTimeout(() => { SND.win(); confetti(); toast(`${r.i} Lên hạng <b>${r.t}</b>!`, 'goal'); }, d); d += 900; }
+      BADGES.forEach((b) => { if (!g.badges[b[0]] && b[4](g)) { g.badges[b[0]] = today(); const t = d; d += 900; setTimeout(() => { SND.win(); toast(`${b[1]} Huy hiệu mới: <b>${b[2]}</b>`, 'fire'); }, t); } });
+      PLT.save();
+    } finally { inAfter = false; }
+  }
+  function questsCard() {
+    const g = gam();
+    return `<div class="card zh-quests"><h3>📋 Nhiệm vụ hôm nay <small class="muted">· mỗi nhiệm vụ +10 XP, đổi mới mỗi ngày</small></h3>${QUESTS.map((q) => { const [v, m] = qVal(g, q), pct = Math.min(100, Math.round((v / m) * 100)); return `<div class="zh-q${v >= m ? ' ok' : ''}"><span>${q[1]}</span><div><b>${q[2]}</b><div class="zh-qbar"><i style="width:${pct}%"></i></div></div><em>${v >= m ? '✓' : Math.min(v, m) + '/' + m}</em></div>`; }).join('')}</div>`;
+  }
+  function achievements(app) {
+    const g = gam(), r = rank(g.xp), got = Object.keys(g.badges).length, pct = r.to ? Math.round(((g.xp - r.from) / (r.to - r.from)) * 100) : 100;
+    const mx = Math.max(1, ...LANGS.map(([k]) => g.by[k] || 0));
+    app.innerHTML = `<div class="crumb"><a href="#/ngoai-ngu">🌏 Ngoại ngữ</a> › Thành tích</div>${gbar()}
+      <h1>🏆 Thành tích của em</h1><p class="muted">Tính chung cho cả 3 thứ tiếng. Dữ liệu lưu trên trình duyệt của máy này (đổi máy hoặc xoá dữ liệu trình duyệt sẽ mất).</p>
+      <div class="zh-achtop">
+        <div class="card zh-rank"><div class="zh-rbig">${r.i}</div><div><b>Hạng ${r.t}</b><p class="small muted">${r.to ? `Còn <b>${r.to - g.xp}</b> XP để lên hạng ${r.next}` : 'Hạng cao nhất – tuyệt vời!'}</p><div class="zh-qbar"><i style="width:${pct}%"></i></div></div></div>
+        <div class="card zh-stats"><div><b>${streakNow()}</b><small>🔥 Chuỗi hiện tại</small></div><div><b>${g.best}</b><small>📅 Chuỗi dài nhất</small></div><div><b>${g.xp}</b><small>💎 Tổng XP</small></div><div><b>${g.c.nd}</b><small>📚 Ngày đã học</small></div><div><b>${g.c.ans}</b><small>✅ Câu đúng</small></div><div><b>${g.c.pass}</b><small>📝 Bài kiểm tra đạt</small></div></div>
+      </div>
+      ${questsCard()}
+      <div class="card"><h3>🌏 XP theo thứ tiếng</h3>${LANGS.map(([k, i, t]) => `<a class="zh-lang" href="#/${k}"><span>${i} ${t}</span><div class="zh-qbar"><i style="width:${Math.round(((g.by[k] || 0) / mx) * 100)}%"></i></div><b>${g.by[k] || 0} XP</b></a>`).join('')}<p class="small muted">XP trước khi có bảng này được tính vào tổng nhưng chưa chia theo thứ tiếng.</p></div>
+      ${xpWeek()}
+      <h2>🎖️ Huy hiệu <small class="muted">${got}/${BADGES.length}</small></h2>
+      <div class="zh-badges">${BADGES.map((b) => { const on = g.badges[b[0]]; return `<div class="zh-bd${on ? ' on' : ''}" title="${b[3]}"><span>${on ? b[1] : '🔒'}</span><b>${b[2]}</b><small>${b[3]}${on ? `<br>✓ ${on.split('-').reverse().join('/')}` : ''}</small></div>`; }).join('')}</div>
+      <div class="row center"><a class="btn" href="#/ngoai-ngu">▶ Chọn bài học tiếp</a></div>`;
   }
 
   function voiceNote() {
@@ -448,9 +510,9 @@
     app.innerHTML = `<section class="hero2 zh-hero"><div class="hw"><div><div class="eyebrow">Miễn phí · Tự học · Từ cơ bản đến nâng cao</div>
         <h1>🌏 Ngoại ngữ: <em>Trung · Anh · Hàn</em></h1>
         <p class="lead">Mỗi thứ tiếng có <b>5 cấp độ</b> bám theo khung chứng chỉ quốc tế (HSK, CEFR/IELTS, TOPIK). Mỗi cấp gồm 30 ngày học, mỗi ngày 30–45 phút: kiến thức mới, luyện tập, hội thoại tình huống, kiểm tra và báo cáo tiến độ.</p>
-        <div class="row">${Object.values(COURSES).filter((c) => !c.parent).map((c) => `<a class="btn${c.key === 'tieng-trung' ? '' : ' ghost'}" href="#/${c.key}">${c.icon} ${c.ten}</a>`).join('')}</div></div>
+        <div class="row">${Object.values(COURSES).filter((c) => !c.parent).map((c) => `<a class="btn${c.key === 'tieng-trung' ? '' : ' ghost'}" href="#/${c.key}">${c.icon} ${c.ten}</a>`).join('')}<a class="btn ghost" href="#/ngoai-ngu/thanh-tich">🏆 Thành tích</a></div></div>
         <div class="hcard"><b>Cách tự học hiệu quả</b><ol class="steps"><li>Chọn <b>một</b> thứ tiếng, học đều mỗi ngày, đừng học dồn.</li><li>Luôn <b>bấm loa nghe mẫu</b> và đọc to theo, tự ghi âm để so sánh.</li><li>Đạt <b>≥ 7 điểm</b> bài kiểm tra mới sang ngày mới.</li><li>Cuối tuần ôn <b>thẻ từ chưa nhớ</b>.</li><li>Giữ <b>chuỗi ngày 🔥</b>: mỗi ngày chỉ cần đạt mục tiêu XP.</li></ol></div></div></section>
-      ${gbar()}
+      ${gbar()}${questsCard()}
       ${Object.values(COURSES).filter((c) => !c.parent).map((c) => { const L = LEVELS[c.key]; const opened = (id) => { const s = PLT.data[id]; return s && s.days ? Object.keys(s.days).filter((k) => Object.keys(s.days[k].parts || {}).length).length : 0; };
         return `<h2>${c.icon} ${c.ten} <small class="muted">· lộ trình 5 cấp</small></h2><p class="muted small">${L.chung}</p>
         <div class="zh-levels">${L.cap.map((x, i) => { const n = opened(i ? c.id + (i + 1) : c.id); return `<${x.co ? `a href="#/${c.key}${i ? '/c' + (i + 1) : ''}"` : 'div'} class="zh-lv${x.co ? ' open' : ''}"><div class="zh-lvh"><span class="zh-lvn">${i + 1}</span><div><b>${x.ten}</b><em>${x.moc}</em></div></div><p>${x.muc}</p><div class="zh-lvf"><span>⏱ ${x.tg}</span><span>${x.co ? (n ? `▶ Đang học · ${n} ngày đã mở` : '▶ Bắt đầu học') : '🔒 Sắp có'}</span></div></${x.co ? 'a' : 'div'}>`; }).join('')}</div>`; }).join('')}
@@ -685,7 +747,7 @@
     const pool = vocabUpTo(Math.max(last, 1)), weak = pool.filter((w) => st().known[w.h] === 0);
     app.innerHTML = crumb('Luyện nhanh') + gbar() + `<h1>⚡ Luyện nhanh 5 phút</h1><p class="muted">8 câu trộn: nghe, nghĩa, ghép cặp, sắp xếp câu – lấy từ những bài em đã học${weak.length ? ', ưu tiên từ chưa nhớ' : ''}. Mỗi câu đúng +2 XP, không sai câu nào +5 XP.</p>${voiceNote()}<div class="card zh-quick"><div id="pbox"></div></div>`;
     const specs = D().days.filter((d) => d.n <= last).flatMap((d) => d.qs || []).filter((q) => Array.isArray(q) && (q[0] === 'order' || q[0] === 'hear'));
-    const go = () => play($('#pbox'), makeQs({ n: 8, pool, focus: weak.length >= 3 ? weak.concat(shuffle(pool).slice(0, 5)) : pool, kinds: C.kinds, specs, ratio: 0.35 }), { again: go, onDone: (ok, n) => { addXP(5, 'Xong bài luyện nhanh'); const g = gam(); $('#pbox').insertAdjacentHTML('beforeend', `<div class="row center"><a class="btn" href="${base()}/ngay/${nextDay()}">▶ Học tiếp Ngày ${nextDay()}</a><span class="muted small">Hôm nay: ${g.days[today()] || 0}/${g.goal} XP</span></div>`); } });
+    const go = () => play($('#pbox'), makeQs({ n: 8, pool, focus: weak.length >= 3 ? weak.concat(shuffle(pool).slice(0, 5)) : pool, kinds: C.kinds, specs, ratio: 0.35 }), { again: go, onDone: (ok, n) => { bump('quick'); addXP(5, 'Xong bài luyện nhanh'); const g = gam(); $('#pbox').insertAdjacentHTML('beforeend', `<div class="row center"><a class="btn" href="${base()}/ngay/${nextDay()}">▶ Học tiếp Ngày ${nextDay()}</a><span class="muted small">Hôm nay: ${g.days[today()] || 0}/${g.goal} XP</span></div>`); } });
     go();
   }
   function xpWeek() {
@@ -865,6 +927,7 @@
   async function route(app, p) {
     stop();
     const tok = ++rt;
+    if (p[0] === 'ngoai-ngu' && p[1] === 'thanh-tich') { afterXP(); return achievements(app); }
     if (p[0] === 'ngoai-ngu' || !COURSES[p[0]]) return hub(app);
     if (/^c[2-5]$/.test(p[1] || '')) { if (!COURSES[p[0] + '-' + p[1]]) { C = COURSES[p[0]]; return hub(app); } p = [p[0] + '-' + p[1]].concat(p.slice(2)); }
     C = COURSES[p[0]];
@@ -895,6 +958,6 @@
     return home(app);
   }
   function stop() { curDay = 0; if (rec) { try { rec.abort(); } catch (e) { /* bỏ qua */ } rec = null; } if (talk) { talk.stop(); talk = null; } if (cur) { cur.stop(); cur = null; } if (TTS) speechSynthesis.cancel(); document.body.classList.remove('in-exam'); }
-  PLT.LANG = { route, stop, say, toneSVG, SETS, sp, into, plain, mic, sayRow, COURSES, LEVELS };
+  PLT.LANG = { route, stop, say, toneSVG, SETS, sp, into, plain, mic, sayRow, COURSES, LEVELS, addXP, bump };
   PLT.ZH = PLT.LANG; // tương thích với file dữ liệu tiếng Trung
 })();

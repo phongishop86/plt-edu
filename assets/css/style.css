@@ -323,3 +323,20 @@ button.grade{font:inherit;cursor:pointer;border:0}
 .zh-week i{display:block;width:70%;border-radius:8px 8px 3px 3px;background:#c9cedb}.zh-week .hit i{background:linear-gradient(#F2C94C,#F2994A)}
 .zh-week b{font-size:.78rem}.zh-week small{color:var(--muted);font-size:.75rem}
 @media(max-width:600px){.zh-pn{transform:translateX(calc(var(--x)*.6))}}
+/* Thành tích chung ngoại ngữ */
+.zh-gbar .zh-rk{margin-left:auto;background:#FFF4E6;color:#B85C12;border-radius:999px;padding:4px 12px;font-weight:700;text-decoration:none}
+.zh-gbar .zh-rk:hover{background:#FFE6C7}
+.zh-quests h3{margin-top:0}
+.zh-q{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;padding:8px 0;border-top:1px dashed #e3e7ef}
+.zh-q:first-of-type{border-top:0}.zh-q>span{font-size:1.4rem;text-align:center}.zh-q em{font-style:normal;font-weight:700;color:var(--muted)}
+.zh-q.ok em{color:#1f9d63}.zh-q.ok b{text-decoration:line-through;color:var(--muted)}
+.zh-qbar{height:10px;background:#eef1f6;border-radius:99px;overflow:hidden;margin-top:5px}.zh-qbar i{display:block;height:100%;background:linear-gradient(90deg,#F2C94C,#F2994A);border-radius:99px;transition:width .5s}
+.zh-q.ok .zh-qbar i{background:#1f9d63}
+.zh-achtop{display:grid;grid-template-columns:minmax(240px,1fr) 2fr;gap:14px}
+@media(max-width:760px){.zh-achtop{grid-template-columns:1fr}}
+.zh-rank{display:flex;gap:14px;align-items:center}.zh-rbig{font-size:3.2rem;line-height:1}.zh-rank b{font-size:1.2rem}
+.zh-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center}.zh-stats b{display:block;font-size:1.5rem;color:#23314d}.zh-stats small{color:var(--muted)}
+.zh-lang{display:grid;grid-template-columns:130px 1fr 80px;gap:10px;align-items:center;padding:6px 0;color:inherit;text-decoration:none}.zh-lang b{text-align:right}
+.zh-badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin:10px 0 18px}
+.zh-bd{background:#fff;border-radius:16px;padding:14px 10px;text-align:center;box-shadow:var(--sh);opacity:.55;filter:grayscale(1)}
+.zh-bd.on{opacity:1;filter:none;border:2px solid #F2C94C}.zh-bd span{display:block;font-size:2.2rem}.zh-bd b{display:block;margin:4px 0}.zh-bd small{color:var(--muted);font-size:.78rem}
