@@ -28,7 +28,7 @@
         { ten: 'Cấp 1 – Khởi đầu', moc: 'A1', tg: '30 ngày', muc: 'Phát âm chuẩn, ~300 từ, tự giới thiệu, hỏi đáp đời sống hằng ngày.', co: 1 },
         { ten: 'Cấp 2 – Sơ cấp', moc: 'A2 · TOEIC ~225+', tg: '30 ngày', muc: 'Kể chuyện quá khứ, so sánh, kế hoạch, tình huống du lịch – ngân hàng – công việc; viết email ngắn.', co: 1 },
         { ten: 'Cấp 3 – Trung cấp', moc: 'B1 · TOEIC 550+ · IELTS 4.0–5.0', tg: '30 ngày', muc: 'HTHT, điều kiện, bị động, tường thuật; họp, thuyết trình, email, thương lượng; mô phỏng thi nói.', co: 1 },
-        { ten: 'Cấp 4 – Trung cao', moc: 'B2 · IELTS 5.5–6.5', tg: '6 tháng', muc: 'Họp, thuyết trình, đọc tài liệu chuyên ngành, viết báo cáo.' },
+        { ten: 'Cấp 4 – Trung cao', moc: 'B2 · TOEIC 785+ · IELTS 5.5–6.5', tg: '30 ngày', muc: 'Ngữ pháp nâng cao, IELTS Writing – Reading – Speaking, báo cáo, đàm phán, tài chính, CNTT.', co: 1 },
         { ten: 'Cấp 5 – Cao cấp', moc: 'C1–C2 · IELTS 7.0+', tg: '6–12 tháng', muc: 'Dùng tiếng Anh linh hoạt trong học thuật, đàm phán, nghiên cứu.' }
       ]
     },
@@ -101,6 +101,12 @@
     lead: '30 ngày với <b>HTHT, câu điều kiện, bị động, mệnh đề quan hệ, tường thuật</b> và tiếng Anh công sở: họp, thuyết trình, email, khiếu nại, thương lượng. Kết thúc bằng <b>mô phỏng thi nói IELTS</b>.',
     card: () => `<b>Nghe và nói thử</b><p class="zh-srt">${into("If I *were* you, → I'd *ask* for a pay *rise*. ↘")} ${sp(plain("If I were you, I'd ask for a pay rise."))}</p>${mic("If I were you, I'd ask for a pay rise.")}<p class="small muted">→ là chỗ ngắt nhóm ý, ↘ xuống giọng cuối câu.</p>`,
     profile: 'người Việt đã xong A2, giọng Mỹ, học 30–45 phút/ngày, mục tiêu B1, TOEIC 550+ / IELTS 4.0–5.0 và tiếng Anh công sở.'
+  });
+  COURSES['tieng-anh-c4'] = enLv(4, 'B2', ['subjects/nn/en-b2.js', 'subjects/nn/en-b2-2.js'], {
+    data: () => window.PLT_EN4, eyebrow: 'Cấp 4/5 · Trung cao B2 · Hướng tới TOEIC 785+ / IELTS 5.5–6.5 / VSTEP bậc 4', h1: '🇬🇧 Tiếng Anh B2: <em>học thuật, chuyên môn, IELTS 6.5</em>',
+    lead: '30 ngày với <b>ngữ pháp nâng cao, collocation, IELTS Writing – Reading – Speaking</b> và tiếng Anh chuyên sâu: báo cáo, đàm phán, góp ý, tài chính – ngân hàng, CNTT – an ninh mạng.',
+    card: () => `<b>Nghe và nói thử</b><p class="zh-srt">${into("*Admittedly*, → it may not suit every *industry*. ↘")} ${sp(plain('Admittedly, it may not suit every industry.'))}</p>${mic('Admittedly, it may not suit every industry.')}<p class="small muted">Nói nhượng bộ trước khi phản biện, giọng hạ ở cuối câu.</p>`,
+    profile: 'người Việt đã xong B1, giọng Mỹ, học 30–45 phút/ngày, mục tiêu B2, IELTS 6.5 / TOEIC 785+ và tiếng Anh chuyên môn ngân hàng – CNTT.'
   });
   let C = COURSES['tieng-trung'];
   const D = () => C.data() || { plan: [], days: [] };

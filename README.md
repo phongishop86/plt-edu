@@ -34,6 +34,7 @@ subjects/nn/            nội dung khoá ngoại ngữ (tách riêng để khôn
   en-a1.js, en-a1-2.js   Tiếng Anh Cấp 1 A1 (bảng IPA, Ngày 1–14 / 15–30)
   en-a2.js, en-a2-2.js   Tiếng Anh Cấp 2 A2 (Ngày 1–14 / 15–30)
   en-b1.js, en-b1-2.js   Tiếng Anh Cấp 3 B1 (Ngày 1–14 / 15–30)
+  en-b2.js, en-b2-2.js   Tiếng Anh Cấp 4 B2 (Ngày 1–14 / 15–30)
   en-gram.js             Sổ tay ngữ pháp A1 → C1 (41 chủ điểm)
   en-noi.js              Phát âm và ngữ điệu (12 bài, nói theo có chấm)
   en-exam.js             Luyện đề: TOEIC / IELTS / A2 Key mini, luyện viết, luyện nói
