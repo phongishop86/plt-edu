@@ -108,7 +108,7 @@
     { ic: '🌏', ten: 'Ngoại ngữ: Trung · Anh · Hàn', tag: 'Mới', wide: 1, mo: 'Lộ trình tự học từ cơ bản đến nâng cao, mỗi thứ tiếng 5 cấp bám theo HSK, CEFR/IELTS, TOPIK. Cấp 1 gồm 30 ngày: kiến thức mới, luyện tập, hội thoại tình huống, có giọng đọc mẫu.', meta: ['3 thứ tiếng', '5 cấp độ', '30 ngày/cấp 1', 'Mọi lứa tuổi'],
       parts: [['🀄', 'Tiếng Trung', 'Pinyin, 4 thanh, giao tiếp · hướng tới HSK', '#/tieng-trung'], ['🇬🇧', 'Tiếng Anh', 'A1 → C1 · phát âm, ngữ pháp, luyện đề TOEIC/IELTS', '#/tieng-anh'], ['🇰🇷', 'Tiếng Hàn', 'Bảng chữ Hangul, giao tiếp · hướng tới TOPIK', '#/tieng-han']],
       go: [['#/ngoai-ngu', 'Xem lộ trình 5 cấp']] },
-    { ic: '🤖', ten: 'AI Edu', tag: 'Trang chị em', mo: 'Học cách dùng trí tuệ nhân tạo an toàn, hiệu quả cho học tập và cuộc sống, miễn phí.', meta: ['An toàn', 'Miễn phí'], go: [['https://phongishop86.github.io/plt-aiedu/', 'Mở AI Edu ↗']] }
+    { ic: '🤖', ten: 'AI Edu', tag: 'Học AI', mo: 'Học cách dùng trí tuệ nhân tạo an toàn, hiệu quả cho học tập và cuộc sống: 4 cấp Tiểu học, THCS, THPT, Người đi làm – 60 buổi, miễn phí.', meta: ['An toàn', 'Miễn phí'], go: [['ai/', 'Mở AI Edu']] }
   ];
   function home() {
     const name = PLT.data.settings.name, has = hasLop(), l = curLop();
@@ -389,10 +389,15 @@
     const p = (location.hash.replace(/^#\/?/, '') || '').split('/');
     const r = p[0] === 'thi' ? (/^nc/.test(p[2] || '') ? 'nang-cao' : 'kiem-tra') : /^tieng-(trung|anh|han)$/.test(p[0]) ? 'ngoai-ngu' : p[0] || '';
     document.querySelectorAll('.nav a').forEach((a) => a.classList.toggle('on', (a.dataset.r || '') === r));
+    const dd = $('#ddHoc'); if (dd) dd.classList.toggle('on', ['hoc', 'on-tap', 'kiem-tra', 'nang-cao', 'chuyen-cap'].includes(r));
   }
   function syncLop() {
     const l = curLop(), s = sidOf(l);
-    $('#nav').innerHTML = `<a href="#/" data-r="" title="Trang chủ">🏠 <span>Trang chủ</span></a><a href="${modePath('hoc', l)}" data-r="hoc" title="Học bài">📚 <span>Học bài</span></a><a href="${modePath('on-tap', l)}" data-r="on-tap" title="Ôn tập">🎯 <span>Ôn tập</span></a><a href="${modePath('kiem-tra', l)}" data-r="kiem-tra" title="Kiểm tra">📝 <span>Kiểm tra</span></a><a href="${modePath('nang-cao', l)}" data-r="nang-cao" title="Nâng cao* – bồi dưỡng học sinh giỏi">⭐ <span>Nâng cao*</span></a><a href="#/chuyen-cap" data-r="chuyen-cap" title="Thi chuyển cấp: vào lớp 6, vào lớp 10, tốt nghiệp THPT, học sinh giỏi">🎓 <span>Chuyển cấp</span></a><a href="#/ngoai-ngu" data-r="ngoai-ngu" title="Ngoại ngữ: Trung · Anh · Hàn">🌏 <span>Ngoại ngữ</span></a><a href="#/tien-do" data-r="tien-do" title="Tiến độ">📈 <span>Tiến độ</span></a>`;
+    const G = [['hoc', '📚', 'Học bài', 'Lý thuyết ngắn gọn theo SGK'], ['on-tap', '🎯', 'Ôn tập', 'Câu hỏi ngẫu nhiên không giới hạn'], ['kiem-tra', '📝', 'Kiểm tra', 'Đề tuần, tháng, giữa kỳ, cuối kỳ'], ['nang-cao', '⭐', 'Nâng cao*', 'Bồi dưỡng học sinh giỏi'], ['chuyen-cap', '🎓', 'Chuyển cấp', 'Vào lớp 6, lớp 10, tốt nghiệp THPT']];
+    $('#nav').innerHTML = `<a href="#/" data-r="" title="Trang chủ">🏠 <span>Trang chủ</span></a><div class="dd" id="ddHoc"><button type="button" class="ddb" aria-haspopup="true" aria-expanded="false" title="Học tập lớp 1–12">📚 <span>Học tập</span><b>▾</b></button><div class="ddm" role="menu">${G.map(([r, i, t, d]) => `<a role="menuitem" href="${r === 'chuyen-cap' ? '#/chuyen-cap' : modePath(r, l)}" data-r="${r}"><em>${i}</em><span><b>${t}</b><small>${d}</small></span></a>`).join('')}</div></div><a href="#/ngoai-ngu" data-r="ngoai-ngu" title="Ngoại ngữ: Trung · Anh · Hàn">🌏 <span>Ngoại ngữ</span></a><a href="ai/" data-r="ai" title="AI Edu: học dùng trí tuệ nhân tạo an toàn">🤖 <span>AI Edu</span></a><a href="#/tien-do" data-r="tien-do" title="Tiến độ học tập">📈 <span>Tiến độ</span></a>`;
+    const dd = $('#ddHoc'), db = dd.querySelector('.ddb');
+    db.onclick = (e) => { e.stopPropagation(); const o = !dd.classList.contains('open'); dd.classList.toggle('open', o); db.setAttribute('aria-expanded', o); };
+    dd.querySelectorAll('.ddm a').forEach((a) => a.addEventListener('click', () => { dd.classList.remove('open'); db.setAttribute('aria-expanded', 'false'); }));
     const sel = $('#lopSel'); if (sel) sel.value = hasLop() ? l : '';
     const ic = $('#lopIc'); if (ic) ic.href = hasLop() ? `#/lop/${l}` : '#/hoc';
     markNav();
@@ -402,7 +407,8 @@
     // Một ô chọn lớp duy nhất: bấm biểu tượng 🏫 để mở trang lớp, chọn lớp khác thì chuyển ngay
     const box = document.createElement('div'); box.className = 'lopbox';
     box.innerHTML = `<a id="lopIc" class="lopic" href="${hasLop() ? '#/lop/' + curLop() : '#/hoc'}" title="Mở trang lớp">🏫</a><select id="lopSel" class="lopsel" title="Chọn lớp" aria-label="Chọn lớp"><option value="" disabled hidden>Chọn lớp</option>${Array.from({ length: 12 }, (_, i) => `<option value="${i + 1}">Lớp ${i + 1}</option>`).join('')}</select>`;
-    top.insertBefore(box, $('#nav')); const sel = $('#lopSel');
+    top.insertBefore(box, $('#nav').nextSibling); const sel = $('#lopSel');
+    document.addEventListener('click', (e) => { const d = $('#ddHoc'); if (d && !d.contains(e.target)) { d.classList.remove('open'); d.querySelector('.ddb').setAttribute('aria-expanded', 'false'); } });
     sel.onchange = () => { setLop(sel.value); syncLop(); location.hash = `#/lop/${sel.value}`; };
     $('#gear').onclick = settings; syncLop();
   }

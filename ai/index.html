@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI Edu · PLT-Edu — Học AI miễn phí</title>
+<meta name="description" content="Học AI miễn phí cho học sinh và người đi làm: dùng AI để học giỏi hơn, an toàn, trung thực. Đã mở đủ 4 cấp: Tiểu học, THCS, THPT, Người đi làm.">
+<meta property="og:title" content="AI Edu · PLT-Edu — Dùng AI để học giỏi hơn, không để chép bài">
+<meta property="og:description" content="Khóa học AI miễn phí 4 cấp, 60 buổi: bài giảng sinh động, quiz, phòng tập prompt, trò chơi.">
+<meta property="og:image" content="https://edu.phatloctech.vn/ai/assets/img/hero.jpg">
+<meta property="og:image:alt" content="Cả nhà học AI: bé tiểu học, học sinh THCS, THPT và người đi làm quây quần quanh màn hình cùng Rô-bi">
+<link rel="icon" type="image/png" href="../assets/img/favicon-32.png"><link rel="apple-touch-icon" href="../assets/img/logo-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/common.js?v=3"></script>
+<style>
+header.top{position:sticky;top:0;z-index:20;background:var(--band);color:var(--band-fg);padding-top:env(safe-area-inset-top,0px)}
+header.top .wrap{display:flex;align-items:center;gap:20px;padding-block:12px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;text-decoration:none;font-size:18px}
+.logo i{width:30px;height:30px;border-radius:9px;background:var(--band-accent);display:block;position:relative}
+.logo i::after{content:"";position:absolute;inset:9px 7px auto;height:6px;background:radial-gradient(circle at 3px 3px,#1B2A4A 0 3px,transparent 3.5px) 0 0/10px 6px repeat-x}
+.menu{display:flex;gap:18px;margin-left:auto;font-size:14.5px}
+.menu a{text-decoration:none;color:var(--band-muted)}
+.menu a:hover{color:var(--band-fg)}
+.hero{background:var(--band);color:var(--band-fg);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center;padding-block:clamp(20px,4vh,40px) clamp(24px,5vh,48px)}
+.hero .eyebrow{color:var(--band-accent)}
+.hero h1{font-size:clamp(28px,3.6vw,46px);font-weight:800;margin:10px 0 12px;letter-spacing:-.01em}
+.hero h1 em{font-style:normal;color:var(--band-accent)}
+.hero p.lead{font-size:clamp(15px,1.4vw,17px);color:var(--band-muted);max-width:56ch;margin:0 0 16px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.hero .btn.ghost{color:var(--band-fg)}
+.facts{display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:14px;font-size:13.5px;color:var(--band-muted)}
+.facts b{color:var(--band-fg)}
+.pick-q{margin:0 0 8px;font-weight:700;font-size:14.5px}
+.pick{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.pick a{position:relative;display:flex;flex-direction:column;gap:2px;padding:10px 34px 10px 14px;border-radius:14px;text-decoration:none;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);transition:border-color .15s,background .15s,transform .15s}
+.pick a:hover{border-color:var(--band-accent);background:rgba(255,255,255,.11);transform:translateY(-1px)}
+.pick b{font-size:15px;line-height:1.3}
+.pick span{font-size:12.5px;color:var(--band-muted)}
+.pick em{font-style:normal}
+.pick i{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-style:normal;font-weight:800;color:var(--band-accent)}
+.teach{margin:10px 0 0;font-size:13.5px;color:var(--band-muted)}
+.teach a{color:var(--band-fg);font-weight:600}
+.demo{background:var(--surface);color:var(--ink);border-radius:22px;padding:16px 18px;box-shadow:0 24px 48px rgba(0,0,0,.35);display:flex;flex-direction:column;gap:10px;min-width:0}
+.demo-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.demo-head b{font-size:16px}
+.demo-head span{font-size:12px;color:var(--muted)}
+.demo-tabs{display:flex;gap:6px;flex-wrap:wrap}
+.demo-tabs button{font:inherit;font-size:13.5px;font-weight:600;padding:6px 13px;border-radius:99px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
+.demo-tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chat{display:flex;flex-direction:column;gap:8px;min-height:210px}
+.chat p{margin:0;padding:9px 13px;border-radius:14px;font-size:14px;line-height:1.45;max-width:94%}
+.chat .me{align-self:flex-end;background:var(--accent-soft);border-bottom-right-radius:4px}
+.chat .ai{align-self:flex-start;background:var(--teal-soft);border-bottom-left-radius:4px}
+.chat small{display:block;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.demo-foot{font-size:13.5px;font-weight:600;color:var(--accent);text-decoration:none;border-top:1px solid var(--line);padding-top:10px}
+.demo-foot:hover{text-decoration:underline}
+section.block{padding-block:72px}
+section.block.alt{background:var(--surface);border-block:1px solid var(--line)}
+.head{margin-bottom:28px}
+.head p{max-width:70ch}
+.head h2{font-size:clamp(23px,2.6vw,32px);font-weight:800;margin:8px 0 10px;text-wrap:balance}
+.head p{color:var(--muted);margin:0}
+.head .eyebrow{color:var(--accent)}
+.levels{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.level{background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
+.level .pic{aspect-ratio:16/9;background:var(--line)}
+.level .pic img,.level .pic .ph{width:100%;height:100%;object-fit:cover}
+.level .body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
+.level h3{font-size:20px;font-weight:800}
+.level p{margin:0;color:var(--muted);font-size:15px}
+.level .foot{margin-top:auto;padding-top:10px}
+.status{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.status.open{color:var(--good)} .status.soon{color:var(--muted)}
+.level.on{border:2px solid var(--accent)}
+.features{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.feat h3{font-size:18px;margin:12px 0 6px}
+.feat p{margin:0;color:var(--muted);font-size:15px}
+.feat .ico{width:48px;height:48px;border-radius:14px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-weight:800}
+.aud{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.aud article{background:var(--bg);border-radius:20px;padding:24px}
+.aud h3{font-size:20px;margin:6px 0 12px}
+.aud .pain{color:var(--muted);font-size:15px;margin:0 0 12px}
+.aud .gain{margin:0;font-weight:600}
+.safe{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.rules{display:grid;gap:12px}
+.rule{display:grid;grid-template-columns:44px 1fr;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.rule b.n{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--bg);font-size:18px}
+.rule h3{font-size:17px;margin:2px 0 4px}
+.rule p{margin:0;color:var(--muted);font-size:15px}
+table.age{width:100%;border-collapse:collapse;background:var(--surface);border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+table.age th,table.age td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);font-size:15px}
+table.age th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.road{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.road .col h3{font-size:15px;margin:0 0 10px}
+.road ol{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.road a{display:grid;grid-template-columns:32px 1fr;gap:8px;text-decoration:none;padding:9px 10px;border-radius:10px;background:var(--surface);border:1px solid var(--line);font-size:15px}
+.road a:hover{border-color:var(--accent)}
+.road a b{color:var(--muted);font-variant-numeric:tabular-nums}
+.faq{display:grid;gap:10px;max-width:780px}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 18px}
+.faq summary{cursor:pointer;font-weight:700}
+.faq p{margin:10px 0 0;color:var(--muted)}
+.final{background:var(--band);color:var(--band-fg);text-align:left}
+.final .wrap{padding-block:56px;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between}
+.final h2{font-size:clamp(22px,2.6vw,30px);font-weight:800;text-wrap:balance}
+@media (max-width:900px){
+  .hero .wrap,.safe{grid-template-columns:1fr}
+  .levels,.features,.road{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .aud{grid-template-columns:1fr}
+  .menu{display:none}
+}
+@media (max-width:520px){.levels,.features,.road{grid-template-columns:1fr}}
+@media (max-width:900px){.demo{display:none}.hero .wrap{padding-block:18px 24px}}
+@media (max-width:330px){.pick{grid-template-columns:1fr}}
+@media (max-width:520px){.hm{display:none}header.top .btn{margin-left:auto}}
+.logo,header.top .btn{white-space:nowrap}@media (max-width:420px){.logo .aie{display:none}header.top .btn{padding:10px 14px}}
+@media (max-width:520px){.hero h1{font-size:27px}.hero p.lead{font-size:14.5px;margin-bottom:12px}.hero .eyebrow{font-size:11px;letter-spacing:.1em}.pick a{padding:9px 28px 9px 12px}.pick b{font-size:14px}.pick span{font-size:12px}.pick i{right:10px}.facts{font-size:12.5px;gap:4px 14px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="../#/" title="Về trang chủ PLT-Edu"><img src="../assets/img/logo-96.png" alt="PLT-Edu" width="36" height="36" style="border-radius:50%">PLT-Edu <span class="aie" style="color:var(--band-accent);font-weight:700">· AI Edu</span></a>
+    <nav class="menu" aria-label="Mục trang">
+      <a href="#cap-hoc">Cấp học</a>
+      <a href="#cho-ai">Dành cho ai</a>
+      <a href="#an-toan">An toàn</a>
+      <a href="#lo-trinh">Lộ trình THCS</a>
+      <a href="#hoi-dap">Hỏi đáp</a>
+    </nav>
+    <a class="btn" href="#bat-dau">Học ngay</a>
+  </div>
+</header>
+
+<section class="hero" id="bat-dau">
+  <div class="wrap">
+    <div class="hero-txt">
+      <div class="eyebrow">Miễn phí · Không cần tài khoản<span class="hm"> · Học trên điện thoại</span></div>
+      <h1>AI dễ hiểu, dùng được ngay, <em>cho cả nhà</em>.</h1>
+      <p class="lead">Bài học ngắn bằng tiếng Việt, ví dụ đời thường: ôn bài, soạn email, làm bảng tính, nhận ra lừa đảo. Mỗi buổi có slide, quiz và bài thực hành.</p>
+      <p class="pick-q">Bạn đang là…</p>
+      <div class="pick">
+        <a href="tieu-hoc/"><b>Phụ huynh tiểu học</b><span>6–11 tuổi<em class="hm"> · học cùng người lớn</em></span><i aria-hidden="true">→</i></a>
+        <a href="thcs/"><b>Học sinh THCS</b><span>12–15 tuổi<em class="hm"> · 12 buổi</em></span><i aria-hidden="true">→</i></a>
+        <a href="thpt/"><b>Học sinh THPT</b><span>16–18 tuổi<em class="hm"> · ôn thi, Python</em></span><i aria-hidden="true">→</i></a>
+        <a href="di-lam/"><b>Người đi làm</b><span>Email, Excel<em class="hm">, tự động hóa</em></span><i aria-hidden="true">→</i></a>
+      </div>
+      <p class="teach">Thầy cô cần giáo án? <a href="#cho-ai">Xem tài liệu cho người dạy</a></p>
+      <p class="teach">Cần ôn bài trên lớp? <a href="../#/">Học Toán lớp 1–12 theo SGK trên PLT-Edu</a></p>
+      <div class="facts"><span><b>60</b> buổi học</span><span><b>180</b> câu quiz</span><span><b>0đ</b> học phí</span><span>Tiến độ lưu ngay trên máy bạn</span></div>
+    </div>
+    <div class="demo" aria-label="Ví dụ AI giúp được gì">
+      <div class="demo-head"><b>AI giúp được gì?</b><span>Ví dụ minh họa</span></div>
+      <div class="demo-tabs" role="tablist">
+        <button type="button" role="tab" aria-selected="true" data-d="0">Ôn bài</button>
+        <button type="button" role="tab" aria-selected="false" data-d="1">Công việc</button>
+        <button type="button" role="tab" aria-selected="false" data-d="2">Cảnh giác</button>
+      </div>
+      <div class="chat" id="demoChat" aria-live="polite"></div>
+      <a class="demo-foot" id="demoFoot" href="thcs/#bai-5"></a>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="cap-hoc">
+  <div class="wrap">
+    <div class="head"><div class="eyebrow">4 cấp học</div><h2>Mỗi lứa tuổi một lộ trình riêng</h2><p>Cùng một mục tiêu: hiểu AI, dùng AI an toàn và áp dụng được vào việc học, việc làm.</p></div>
+    <div class="levels">
+      <article class="level on">
+        <div class="pic"><img src="assets/img/cap-tieu-hoc.jpg" alt="Ba học sinh tiểu học ngạc nhiên nhìn bộ não phát sáng trên máy tính bảng cùng Rô-bi" onerror="AIPH(this)"></div>
+        <div class="body"><span class="status open">Đang mở · 16 buổi</span><h3>Tiểu học · 6–11 tuổi</h3><p>Máy biết học, tư duy như máy tính, trò chuyện với AI an toàn, sáng tạo cùng AI. Có thầy cô hoặc cha mẹ đi cùng.</p><div class="foot"><a class="btn dark" href="tieu-hoc/">Vào học</a></div></div>
+      </article>
+      <article class="level on">
+        <div class="pic"><img src="assets/img/cap-thcs.jpg" alt="Học sinh THCS cầm cây bút chì lớn, thanh tiến độ phát sáng, Rô-bi reo vui" onerror="AIPH(this)"></div>
+        <div class="body"><span class="status open">Đang mở · 12 buổi</span><h3>THCS · 12–15 tuổi</h3><p>Hiểu AI, viết prompt, AI làm gia sư, kiểm chứng tin, Scratch và Google Sheets.</p><div class="foot"><a class="btn dark" href="thcs/">Vào học</a></div></div>
+      </article>
+      <article class="level on">
+        <div class="pic"><img src="assets/img/cap-thpt.jpg" alt="Học sinh THPT học trên laptop, biểu đồ dữ liệu bay lên quanh màn hình" onerror="AIPH(this)"></div>
+        <div class="body"><span class="status open">Đang mở · 16 buổi</span><h3>THPT · 16–18 tuổi</h3><p>Hiểu AI tận gốc, học và ôn thi với AI, Python phân tích dữ liệu và huấn luyện mô hình, AI có trách nhiệm.</p><div class="foot"><a class="btn dark" href="thpt/">Vào học</a></div></div>
+      </article>
+      <article class="level on">
+        <div class="pic"><img src="assets/img/cap-di-lam.jpg" alt="Nhân viên văn phòng làm việc cùng trợ lý AI và Rô-bi trong văn phòng hiện đại" onerror="AIPH(this)"></div>
+        <div class="body"><span class="status open">Đang mở · 16 buổi</span><h3>Người đi làm</h3><p>Email, báo cáo, Excel, họp; AI cho nghiệp vụ chuyên môn, bán hàng online, video ngắn; tự động hóa bằng Python và Apps Script.</p><div class="foot"><a class="btn dark" href="di-lam/">Vào học</a></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block alt">
+  <div class="wrap">
+    <div class="head"><div class="eyebrow">Một buổi học có gì</div><h2>Học bằng mắt, tay và trò chơi</h2></div>
+    <div class="features">
+      <div class="feat"><div class="ico">1</div><h3>Bài giảng slide</h3><p>Hình ảnh sinh động, mỗi slide một ý, xem toàn màn hình hoặc trên điện thoại.</p></div>
+      <div class="feat"><div class="ico">2</div><h3>Quiz 3 câu</h3><p>Trả lời đúng cả 3 câu là bài tự được đánh dấu hoàn thành.</p></div>
+      <div class="feat"><div class="ico">3</div><h3>Phòng tập prompt</h3><p>Gõ prompt, máy chấm ngay theo công thức 5 ngón tay và cảnh báo nếu lộ thông tin cá nhân.</p></div>
+      <div class="feat"><div class="ico">4</div><h3>Trò chơi</h3><p>“AI hay không AI?” và “Đèn giao thông dữ liệu” để nhớ bài lâu hơn.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="cho-ai">
+  <div class="wrap">
+    <div class="head"><div class="eyebrow">Dành cho ai</div><h2>Phụ huynh yên tâm, thầy cô dạy ngay</h2></div>
+    <div class="aud">
+      <article><span class="tag p2">Phụ huynh</span><h3>Con dùng AI đúng cách</h3><p class="pain">Lo con dùng AI chép bài, gặp nội dung xấu, lộ thông tin cá nhân.</p><p class="gain">Con học cách dùng AI như gia sư, biết giữ an toàn và trung thực.</p></article>
+      <article><span class="tag p1">Thầy cô</span><h3>Giáo án có sẵn, dạy ngay</h3><p class="pain">Muốn dạy AI nhưng chưa có giáo án phù hợp lứa tuổi.</p><p class="gain">Đủ giáo trình cho 4 cấp, slide có ghi chú người dạy, phiếu bài tập có đáp án, hoạt động bấm giờ.</p></article>
+      <article><span class="tag p3">Học sinh</span><h3>Học cái mới, làm được thật</h3><p class="pain">Thấy AI hay nhưng không biết bắt đầu từ đâu.</p><p class="gain">Tự huấn luyện AI, làm chatbot Scratch, poster và dự án cho lớp mình.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="an-toan">
+  <div class="wrap safe">
+    <div>
+      <div class="head"><div class="eyebrow">An toàn trước tiên</div><h2>3 quy tắc vàng khi học với AI</h2></div>
+      <div class="rules">
+        <div class="rule"><b class="n">1</b><div><h3>An toàn</h3><p>Không đưa họ tên, địa chỉ, số điện thoại, ảnh mặt cho AI.</p></div></div>
+        <div class="rule"><b class="n">2</b><div><h3>Kiểm chứng</h3><p>AI có thể sai mà vẫn nói rất chắc chắn. Luôn kiểm tra lại.</p></div></div>
+        <div class="rule"><b class="n">3</b><div><h3>Trung thực</h3><p>AI giúp em học, không làm bài hộ em.</p></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="head"><div class="eyebrow">Theo quy định của nhà cung cấp</div><h2>Độ tuổi dùng chatbot</h2></div>
+      <div style="overflow-x:auto">
+      <table class="age">
+        <tr><th>Công cụ</th><th>Điều kiện</th></tr>
+        <tr><td>ChatGPT</td><td>Từ 13 tuổi, cần phụ huynh đồng ý</td></tr>
+        <tr><td>Gemini</td><td>Từ 13 tuổi</td></tr>
+        <tr><td>Claude</td><td>Từ 18 tuổi</td></tr>
+      </table>
+      </div>
+      <p class="muted" style="font-size:14.5px">Web học này không cần tài khoản. Khi dùng chatbot, học sinh dưới tuổi quy định học cùng thầy cô hoặc cha mẹ.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="lo-trinh">
+  <div class="wrap">
+    <div class="head"><div class="eyebrow">Lộ trình THCS</div><h2>12 buổi, 4 phần</h2><p>Bấm vào buổi bất kỳ để xem bài giảng.</p></div>
+    <div class="road" id="road"></div>
+  </div>
+</section>
+
+<section class="block alt" id="hoi-dap">
+  <div class="wrap">
+    <div class="head"><div class="eyebrow">Hỏi đáp</div><h2>Câu hỏi thường gặp</h2></div>
+    <div class="faq">
+      <details><summary>Khóa học có mất phí không?</summary><p>Không. Toàn bộ bài giảng, quiz và trò chơi đều miễn phí, không cần đăng ký.</p></details>
+      <details><summary>Con tôi cần tài khoản ChatGPT hay Gemini không?</summary><p>Không bắt buộc. Web học dùng được ngay. Các bài thực hành với chatbot nên làm cùng thầy cô hoặc cha mẹ, theo đúng độ tuổi quy định.</p></details>
+      <details><summary>Tiến độ học được lưu ở đâu?</summary><p>Ngay trên trình duyệt của máy đang học. Đổi máy hoặc xóa dữ liệu trình duyệt thì tiến độ bắt đầu lại.</p></details>
+      <details><summary>Thầy cô muốn bộ giáo án đầy đủ để dạy?</summary><p>Mỗi cấp có giáo trình theo từng buổi, slide có ghi chú người giảng và phiếu bài tập có đáp án. Liên hệ qua phatloctech.vn để nhận miễn phí.</p></details>
+      <details><summary>Người đi làm không biết lập trình có học được không?</summary><p>Được. 12 buổi đầu chỉ cần biết dùng trình duyệt và Excel. 4 buổi tự động hóa dùng Google Colab và Apps Script chạy trên trình duyệt, AI viết code, bạn học cách chạy thử an toàn và đọc kết quả.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Buổi 1 chỉ mất 15 phút. Bắt đầu ngay hôm nay.</h2>
+    <a class="btn" href="thcs/">Vào học khóa THCS</a>
+  </div>
+</section>
+
+<!-- Khi publish chính thức: đổi lại "© 2026 Phát Lộc Tech · PLT AIEdu" và thêm "<span>Liên hệ: phatloctech.vn</span>" -->
+<footer class="site"><div class="wrap"><span>© 2026 PLT-Edu · AI Edu</span></div></footer>
+
+<script src="assets/js/lessons-thcs.js"></script>
+<script>
+(function(){
+  var D=window.AIEDU_THCS, html="", groups={};
+  D.lessons.forEach(function(l,i){(groups[l.p]=groups[l.p]||[]).push([i,l]);});
+  Object.keys(groups).forEach(function(p){
+    html+='<div class="col"><h3><span class="tag '+D.parts[p].cls+'">'+D.parts[p].name+'</span></h3><ol>';
+    groups[p].forEach(function(x){html+='<li><a href="thcs/bai-giang.html?b='+(x[0]+1)+'"><b>'+String(x[0]+1).padStart(2,"0")+'</b><span>'+x[1].t+'</span></a></li>';});
+    html+='</ol></div>';
+  });
+  document.getElementById("road").innerHTML=html;
+})();
+</script>
+<script>
+(function(){
+  var D=[
+    {me:"Đừng cho mình đáp án. Gợi ý từng bước giải 3x + 7 = 22 nhé.",ai:"Được! Bước 1: muốn vế trái chỉ còn 3x, em làm gì với số 7? Thử trừ cả hai vế cho 7 xem được bao nhiêu, rồi nói mình nghe.",f:"Dùng AI làm gia sư, không chép bài · THCS Buổi 5 →",h:"thcs/#bai-5"},
+    {me:"Bạn là trợ lý văn phòng. Viết email dưới 80 chữ hẹn họp 9h thứ Năm, nhờ mọi người mang số liệu tháng 10.",ai:"Tiêu đề: Họp giao ban 9h thứ Năm, mang số liệu tháng 10. Chào cả nhóm, mình hẹn họp lúc 9h sáng thứ Năm tại [phòng họp]. Mọi người mang theo số liệu tháng 10 giúp mình để tổng hợp nhanh. Ai bận, nhắn mình trước thứ Tư nhé. Cảm ơn cả nhà!",f:"Viết yêu cầu đủ 6 thành phần · Người đi làm Buổi 2 →",h:"di-lam/#bai-2"},
+    {me:"Có người gọi video giống hệt sếp, nhờ mình chuyển gấp 50 triệu cho đối tác. Mình nên làm gì?",ai:"Dừng lại, chưa chuyển. Cúp máy, gọi lại sếp qua số bạn đã lưu sẵn. Chuyển tiền phải theo quy trình duyệt, dù “gấp” đến đâu. Đây là kiểu lừa đảo giả mặt, giả giọng (deepfake).",f:"Phòng chống lừa đảo bằng AI · Người đi làm Buổi 10 →",h:"di-lam/#bai-10"}
+  ];
+  var chat=document.getElementById("demoChat"),foot=document.getElementById("demoFoot"),tabs=document.querySelectorAll(".demo-tabs button");
+  function esc(s){return s.replace(/[&<>]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;"}[c]})}
+  function show(k){
+    var d=D[k];
+    chat.innerHTML='<p class="me"><small>Bạn hỏi</small>'+esc(d.me)+'</p><p class="ai"><small>AI trả lời</small>'+esc(d.ai)+'</p>';
+    foot.textContent=d.f; foot.href=d.h;
+    tabs.forEach(function(b){b.setAttribute("aria-selected",String(+b.dataset.d===k))});
+  }
+  tabs.forEach(function(b){b.addEventListener("click",function(){show(+b.dataset.d)})});
+  show(0);
+})();
+</script>
+</body>
+</html>

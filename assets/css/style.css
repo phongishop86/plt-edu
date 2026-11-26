@@ -176,13 +176,10 @@ sup{font-size:.7em}
 .emo{font-size:1.5rem;letter-spacing:2px;margin:8px 0;line-height:1.5}.emo.big2{font-size:2.2rem}
 .passage{background:#fffdf6;border-left:4px solid var(--teal);border-radius:10px;padding:10px 14px;margin:8px 0 12px;font-size:1.02rem;line-height:1.7}
 .sys{display:inline-block;margin:6px 0;padding-left:6px;border-left:3px solid var(--ink);font-weight:700;line-height:1.8}
-/* Điện thoại: hàng 1 = logo, AI Edu, chọn lớp, đăng nhập, cài đặt; hàng 2 = menu chức năng (cuộn ngang) */
+/* Điện thoại: hàng 1 = logo, chọn lớp, tài khoản, cài đặt; hàng 2 = menu chức năng */
 @media (max-width:600px){.top .in{flex-wrap:wrap;row-gap:6px}.top .in .nav{order:9;flex-basis:100%;justify-content:space-between}.nav a{flex:1;text-align:center}.lopbox{margin-left:auto}}
 /* Menu co giãn tự nhiên, không thanh cuộn: hẹp dần thì thu nhỏ chữ, hẹp nữa thì chỉ còn biểu tượng */
-@media (max-width:1180px){.eco-sis small{display:none}.eco-lg span{display:none}.eco-lg{padding:8px 10px}}
-@media (min-width:1181px){.eco-lg span{display:inline}.eco-lg{padding:9px 14px}}
 @media (max-width:1060px){.nav span{display:none}.nav a{font-size:1.15rem;padding:7px 10px}.logo small{display:none}}
-@media (max-width:760px){.eco-sis b{display:none}.eco-sis{padding:3px;margin-left:4px}.nav a{padding:6px 8px}}
 @media (max-width:680px) and (min-width:601px){.logo span{display:none}}
 /* Bong bóng quay lại */
 .backfab{position:fixed;right:18px;bottom:18px;z-index:40;width:58px;height:58px;border-radius:50%;border:3px solid var(--band-accent,#F4A261);background:#1B2A4A;padding:0;cursor:pointer;box-shadow:0 8px 22px rgba(12,19,34,.35);display:grid;place-items:center;transition:transform .15s}
@@ -195,9 +192,6 @@ sup{font-size:.7em}
 .ncintro{background:#fff8e6;border:1px solid #ffd27a}
 .ncard{border:1px solid #ffd27a;background:#fffaf0}
 
-.nav a[data-r=""] span{display:none}
-/* Menu gọn: chỉ hiện chữ ở mục đang chọn, các mục khác chỉ biểu tượng (rê chuột để xem tên) */
-@media (min-width:1061px){.nav span{display:none}.nav a.on span{display:inline}.nav a{font-size:1.05rem}}
 /* ===== Module Tiếng Trung (assets/js/zh.js) ===== */
 .zh-say{display:inline-flex;align-items:center;gap:4px;border:2px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:3px 10px;font:inherit;font-size:.9rem;font-weight:700;cursor:pointer;vertical-align:middle;line-height:1.4}
 .zh-say:hover{border-color:var(--teal)}.zh-say.zh-on,.zh-tc.zh-on,.zh-pc.zh-on,.zh-rd.zh-on{background:var(--soft2);border-color:var(--teal)}
@@ -340,3 +334,22 @@ button.grade{font:inherit;cursor:pointer;border:0}
 .zh-badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin:10px 0 18px}
 .zh-bd{background:#fff;border-radius:16px;padding:14px 10px;text-align:center;box-shadow:var(--sh);opacity:.55;filter:grayscale(1)}
 .zh-bd.on{opacity:1;filter:none;border:2px solid #F2C94C}.zh-bd span{display:block;font-size:2.2rem}.zh-bd b{display:block;margin:4px 0}.zh-bd small{color:var(--muted);font-size:.78rem}
+
+/* ===== Menu chính gọn: Trang chủ · Học tập ▾ · Ngoại ngữ · AI Edu · Tiến độ ===== */
+.nav{margin-left:auto;align-items:center}
+.nav a,.nav .ddb{display:inline-flex;align-items:center;gap:6px}
+.nav .dd{position:relative}
+.nav .ddb{font:inherit;font-weight:700;font-size:clamp(.86rem,.62rem + .38vw,1rem);color:var(--band-muted);background:none;border:0;border-radius:999px;padding:8px clamp(7px,.8vw,12px);cursor:pointer;white-space:nowrap}
+.nav .ddb b{font-size:.75em;opacity:.8}
+.nav .dd.on .ddb,.nav .ddb:hover,.nav .dd.open .ddb{background:rgba(255,255,255,.1);color:var(--band-fg)}
+.nav .ddm{display:none;position:absolute;left:0;top:calc(100% + 8px);min-width:290px;background:#fff;border-radius:16px;box-shadow:0 16px 40px rgba(12,19,34,.28);padding:8px;z-index:50}
+.nav .dd.open .ddm{display:block}
+.nav .ddm a{display:flex;gap:10px;align-items:center;text-align:left;padding:8px 10px;border-radius:12px;color:var(--ink);white-space:normal;font-size:.95rem}
+.nav .ddm a:hover,.nav .ddm a.on{background:var(--soft)}.nav .ddm a em{font-style:normal;font-size:1.3rem;width:30px;text-align:center}
+.nav .ddm a span{display:flex!important;flex-direction:column}.nav .ddm a small{color:var(--muted);font-weight:500;font-size:.8rem;line-height:1.3}
+.nav a span{display:inline}
+.lopbox{margin-left:6px}
+@media (max-width:1180px){.nav a[data-r=""] span{display:none}}
+@media (max-width:980px){.nav>a span,.nav .ddb span{display:none}.nav>a,.nav .ddb{font-size:1.15rem;padding:7px 10px}}
+@media (max-width:600px){.top .in .nav{order:9;flex-basis:100%;justify-content:space-between;margin-left:0}.nav>a,.nav .dd{flex:1;text-align:center;justify-content:center}.nav .ddb{width:100%;justify-content:center}
+  .nav .dd{position:static}.nav .ddm{left:8px;right:8px;min-width:0}.lopbox{margin-left:auto}}
