@@ -18,7 +18,7 @@
         { ten: 'Cấp 1 – Nhập môn', moc: 'HSK 1–2', tg: '30 ngày', muc: 'Pinyin, 4 thanh, ~300 từ, giao tiếp sinh hoạt cơ bản.', co: 1 },
         { ten: 'Cấp 2 – Sơ cấp', moc: 'HSK 3', muc: 'Bổ ngữ, câu 把 – 被, so sánh, liên từ; thuê nhà, ngân hàng, du lịch, phỏng vấn, mua sắm online.', tg: '30 ngày', co: 1 },
         { ten: 'Cấp 3 – Trung cấp', moc: 'HSK 4', tg: '30 ngày', muc: 'Câu phức 连…都, 即使, 无论; văn viết, email; họp, đàm phán, số liệu; nghe – viết dạng HSK 4.', co: 1 },
-        { ten: 'Cấp 4 – Trung cao', moc: 'HSK 5–6', tg: '6 tháng', muc: 'Đọc báo, xem phim, thuyết trình, viết email công việc.' },
+        { ten: 'Cấp 4 – Trung cao', moc: 'HSK 5–6', tg: '30 ngày', muc: 'Thành ngữ, văn viết, đọc báo, thuyết trình, hợp đồng, tranh luận, khủng hoảng truyền thông; viết 缩写.', co: 1 },
         { ten: 'Cấp 5 – Cao cấp', moc: 'HSK 7–9', tg: '6–12 tháng', muc: 'Biên – phiên dịch, học thuật, đàm phán chuyên sâu.' }
       ]
     },
@@ -132,6 +132,12 @@
     lead: '30 ngày với <b>连…都, 即使…也, 无论…都, 不是…而是, liên từ văn viết, trạng từ thái độ</b>, rồi họp, khiếu nại, email, tài chính, số liệu, đàm phán. Kết thúc bằng <b>luyện nghe – viết dạng HSK 4</b>.',
     card: () => zhCard('即使下雨，我们也按时出发。', 'Jíshǐ xià yǔ, wǒmen yě ànshí chūfā.', 'Dù mưa, chúng ta vẫn xuất phát đúng giờ.'),
     profile: 'người Việt đã xong HSK 3, chữ giản thể, học 30–45 phút/ngày, mục tiêu HSK 4 và tiếng Trung công sở.'
+  });
+  COURSES['tieng-trung-c4'] = lvl('tieng-trung', 4, 'HSK 5–6', LV_FILES('zh', 4), {
+    data: () => window.PLT_ZH4, tools: ZH_TOOLS, kinds: ZK, eyebrow: 'Cấp 4/5 · Trung cao · Hướng tới HSK 5–6 (~2500–5000 từ)', h1: '🀄 Tiếng Trung HSK 5–6: <em>thành ngữ, văn viết, thuyết trình, đàm phán</em>',
+    lead: '30 ngày với <b>thành ngữ, hư từ văn ngôn, câu lựa chọn và điều kiện chặt</b>, đọc báo kinh tế, thuyết trình, nghị luận, hợp đồng, thông cáo, tranh luận và khủng hoảng truyền thông. Kết thúc bằng <b>luyện viết tóm tắt 缩写</b>.',
+    card: () => zhCard('与其抱怨，不如行动。', 'Yǔqí bàoyuàn, bùrú xíngdòng.', 'Thay vì than phiền, chẳng bằng hành động.'),
+    profile: 'người Việt đã xong HSK 4, chữ giản thể, học 30–45 phút/ngày, mục tiêu HSK 5–6 và tiếng Trung chuyên môn.'
   });
   let C = COURSES['tieng-trung'];
   const D = () => C.data() || { plan: [], days: [] };
