@@ -27,7 +27,7 @@
       cap: [
         { ten: 'Cấp 1 – Khởi đầu', moc: 'A1', tg: '30 ngày', muc: 'Phát âm chuẩn, ~300 từ, tự giới thiệu, hỏi đáp đời sống hằng ngày.', co: 1 },
         { ten: 'Cấp 2 – Sơ cấp', moc: 'A2 · TOEIC ~225+', tg: '30 ngày', muc: 'Kể chuyện quá khứ, so sánh, kế hoạch, tình huống du lịch – ngân hàng – công việc; viết email ngắn.', co: 1 },
-        { ten: 'Cấp 3 – Trung cấp', moc: 'B1 · IELTS 4.0–5.0', tg: '3–4 tháng', muc: 'Xử lý tình huống du lịch, công việc; nêu ý kiến, viết email.' },
+        { ten: 'Cấp 3 – Trung cấp', moc: 'B1 · TOEIC 550+ · IELTS 4.0–5.0', tg: '30 ngày', muc: 'HTHT, điều kiện, bị động, tường thuật; họp, thuyết trình, email, thương lượng; mô phỏng thi nói.', co: 1 },
         { ten: 'Cấp 4 – Trung cao', moc: 'B2 · IELTS 5.5–6.5', tg: '6 tháng', muc: 'Họp, thuyết trình, đọc tài liệu chuyên ngành, viết báo cáo.' },
         { ten: 'Cấp 5 – Cao cấp', moc: 'C1–C2 · IELTS 7.0+', tg: '6–12 tháng', muc: 'Dùng tiếng Anh linh hoạt trong học thuật, đàm phán, nghiên cứu.' }
       ]
@@ -95,6 +95,12 @@
     lead: '30 ngày nắm chắc <b>quá khứ đơn, tương lai, so sánh, động từ khuyết thiếu</b> và các tình huống du lịch – công việc. Mỗi ngày có phần <b>🎤 nói theo để máy chấm</b> và luyện ngữ điệu.',
     card: () => `<b>Nghe và nói thử</b><p class="zh-srt">${into('I *went* to Da *Nang* last *summer*. ↘')} ${sp(plain('I went to Da Nang last summer.'))}</p>${mic('I went to Da Nang last summer.')}<p class="small muted">Chữ in đậm là từ nhấn mạnh, ↘ là xuống giọng cuối câu.</p>`,
     profile: 'người Việt đã xong A1, giọng Mỹ, học 30–45 phút/ngày, mục tiêu giao tiếp A2 và TOEIC 225+.'
+  });
+  COURSES['tieng-anh-c3'] = enLv(3, 'B1', ['subjects/nn/en-b1.js', 'subjects/nn/en-b1-2.js'], {
+    data: () => window.PLT_EN3, eyebrow: 'Cấp 3/5 · Trung cấp B1 · Hướng tới TOEIC 550+ / IELTS 4.0–5.0 / VSTEP bậc 3', h1: '🇬🇧 Tiếng Anh B1: <em>nêu ý kiến, làm việc, thi chứng chỉ</em>',
+    lead: '30 ngày với <b>HTHT, câu điều kiện, bị động, mệnh đề quan hệ, tường thuật</b> và tiếng Anh công sở: họp, thuyết trình, email, khiếu nại, thương lượng. Kết thúc bằng <b>mô phỏng thi nói IELTS</b>.',
+    card: () => `<b>Nghe và nói thử</b><p class="zh-srt">${into("If I *were* you, → I'd *ask* for a pay *rise*. ↘")} ${sp(plain("If I were you, I'd ask for a pay rise."))}</p>${mic("If I were you, I'd ask for a pay rise.")}<p class="small muted">→ là chỗ ngắt nhóm ý, ↘ xuống giọng cuối câu.</p>`,
+    profile: 'người Việt đã xong A2, giọng Mỹ, học 30–45 phút/ngày, mục tiêu B1, TOEIC 550+ / IELTS 4.0–5.0 và tiếng Anh công sở.'
   });
   let C = COURSES['tieng-trung'];
   const D = () => C.data() || { plan: [], days: [] };
