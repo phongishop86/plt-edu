@@ -11,7 +11,7 @@ Web tĩnh (HTML/CSS/JS thuần, không cần build), chạy được bằng GitH
 - **AI chấm tự luận**: Gemini API (người dùng nhập khóa trong ⚙️ Cài đặt). Không có khóa → chấm sơ bộ theo đáp số.
 - **Tiến độ**: sao theo chủ đề, lịch sử điểm (lưu trên trình duyệt).
 - **🀄 Tiếng Trung** (`#/tieng-trung`): lộ trình 30 ngày cho người Việt, đủ Ngày 1–30 (Pinyin → câu cơ bản → giao tiếp đời sống → phản xạ, kiểm tra cuối khoá). Mỗi ngày 5 phần A Ôn tập · B Kiến thức mới · C Luyện tập · D Hội thoại từng lượt · E Kiểm tra, kèm báo cáo cuối buổi. Có trang luyện 4 thanh, bảng Pinyin, thẻ từ vựng, tóm tắt tiến độ để chép sang gia sư AI. Giọng đọc dùng Web Speech API của trình duyệt (miễn phí; Edge/Chrome có giọng zh-CN).
-- **🌏 Ngoại ngữ** (`#/ngoai-ngu`): trang lộ trình tự học **Tiếng Trung · Tiếng Anh · Tiếng Hàn**, mỗi thứ tiếng 5 cấp từ cơ bản đến nâng cao (Trung: HSK 1–2 → HSK 7–9; Anh: CEFR A1 → C1–C2/IELTS 7.0+; Hàn: TOPIK 1 → TOPIK 5–6). Cấp 1 của cả 3 thứ tiếng đã mở đủ 30 ngày (`#/tieng-anh` có bảng IPA, `#/tieng-han` có bảng chữ Hangul). Tiếng Anh mở tiếp các cấp theo `#/tieng-anh/c2` … `c5`, kèm 3 công cụ dùng chung: **Sổ tay ngữ pháp** (`#/tieng-anh/ngu-phap`), **Phát âm & ngữ điệu** (`#/tieng-anh/luyen-noi`) và **Luyện đề chứng chỉ** (`#/tieng-anh/luyen-de`). Nút 🎤 dùng Web Speech Recognition (Chrome/Edge, miễn phí) để so câu người học nói với câu mẫu.
+- **🌏 Ngoại ngữ** (`#/ngoai-ngu`): trang lộ trình tự học **Tiếng Trung · Tiếng Anh · Tiếng Hàn**, mỗi thứ tiếng 5 cấp từ cơ bản đến nâng cao (Trung: HSK 1–2 → HSK 7–9; Anh: CEFR A1 → C1–C2/IELTS 7.0+; Hàn: TOPIK 1 → TOPIK 5–6). Cấp 1 của cả 3 thứ tiếng đã mở đủ 30 ngày (`#/tieng-anh` có bảng IPA, `#/tieng-han` có bảng chữ Hangul). Tiếng Anh đã mở đủ 5 cấp A1 → C1 (150 ngày học): `#/tieng-anh`, `#/tieng-anh/c2` … `c5`, kèm 3 công cụ dùng chung: **Sổ tay ngữ pháp** (`#/tieng-anh/ngu-phap`), **Phát âm & ngữ điệu** (`#/tieng-anh/luyen-noi`) và **Luyện đề chứng chỉ** (`#/tieng-anh/luyen-de`). Nút 🎤 dùng Web Speech Recognition (Chrome/Edge, miễn phí) để so câu người học nói với câu mẫu.
 
 ## Cấu trúc
 ```
@@ -35,6 +35,7 @@ subjects/nn/            nội dung khoá ngoại ngữ (tách riêng để khôn
   en-a2.js, en-a2-2.js   Tiếng Anh Cấp 2 A2 (Ngày 1–14 / 15–30)
   en-b1.js, en-b1-2.js   Tiếng Anh Cấp 3 B1 (Ngày 1–14 / 15–30)
   en-b2.js, en-b2-2.js   Tiếng Anh Cấp 4 B2 (Ngày 1–14 / 15–30)
+  en-c1.js, en-c1-2.js   Tiếng Anh Cấp 5 C1 (Ngày 1–14 / 15–30)
   en-gram.js             Sổ tay ngữ pháp A1 → C1 (41 chủ điểm)
   en-noi.js              Phát âm và ngữ điệu (12 bài, nói theo có chấm)
   en-exam.js             Luyện đề: TOEIC / IELTS / A2 Key mini, luyện viết, luyện nói

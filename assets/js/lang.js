@@ -29,7 +29,7 @@
         { ten: 'Cấp 2 – Sơ cấp', moc: 'A2 · TOEIC ~225+', tg: '30 ngày', muc: 'Kể chuyện quá khứ, so sánh, kế hoạch, tình huống du lịch – ngân hàng – công việc; viết email ngắn.', co: 1 },
         { ten: 'Cấp 3 – Trung cấp', moc: 'B1 · TOEIC 550+ · IELTS 4.0–5.0', tg: '30 ngày', muc: 'HTHT, điều kiện, bị động, tường thuật; họp, thuyết trình, email, thương lượng; mô phỏng thi nói.', co: 1 },
         { ten: 'Cấp 4 – Trung cao', moc: 'B2 · TOEIC 785+ · IELTS 5.5–6.5', tg: '30 ngày', muc: 'Ngữ pháp nâng cao, IELTS Writing – Reading – Speaking, báo cáo, đàm phán, tài chính, CNTT.', co: 1 },
-        { ten: 'Cấp 5 – Cao cấp', moc: 'C1–C2 · IELTS 7.0+', tg: '6–12 tháng', muc: 'Dùng tiếng Anh linh hoạt trong học thuật, đàm phán, nghiên cứu.' }
+        { ten: 'Cấp 5 – Cao cấp', moc: 'C1 · TOEIC 945+ · IELTS 7.0+', tg: '30 ngày', muc: 'Cấu trúc và từ vựng tinh tế, lãnh đạo, đàm phán cấp cao, khủng hoảng, IELTS 7+, tự học suốt đời.', co: 1 }
       ]
     },
     'tieng-han': {
@@ -107,6 +107,12 @@
     lead: '30 ngày với <b>ngữ pháp nâng cao, collocation, IELTS Writing – Reading – Speaking</b> và tiếng Anh chuyên sâu: báo cáo, đàm phán, góp ý, tài chính – ngân hàng, CNTT – an ninh mạng.',
     card: () => `<b>Nghe và nói thử</b><p class="zh-srt">${into("*Admittedly*, → it may not suit every *industry*. ↘")} ${sp(plain('Admittedly, it may not suit every industry.'))}</p>${mic('Admittedly, it may not suit every industry.')}<p class="small muted">Nói nhượng bộ trước khi phản biện, giọng hạ ở cuối câu.</p>`,
     profile: 'người Việt đã xong B1, giọng Mỹ, học 30–45 phút/ngày, mục tiêu B2, IELTS 6.5 / TOEIC 785+ và tiếng Anh chuyên môn ngân hàng – CNTT.'
+  });
+  COURSES['tieng-anh-c5'] = enLv(5, 'C1', ['subjects/nn/en-c1.js', 'subjects/nn/en-c1-2.js'], {
+    data: () => window.PLT_EN5, eyebrow: 'Cấp 5/5 · Cao cấp C1 · Hướng tới IELTS 7.0+ / TOEIC 945+ / VSTEP bậc 5', h1: '🇬🇧 Tiếng Anh C1: <em>thành thạo, lãnh đạo, IELTS 7+</em>',
+    lead: '30 ngày với <b>đảo ngữ, câu chẻ, giả định, danh từ hoá, rào đón</b>, từ vựng tinh tế và tiếng Anh lãnh đạo: hội đồng, đàm phán cấp cao, khủng hoảng. Kết thúc bằng <b>IELTS 7+</b> và kế hoạch tự học suốt đời.',
+    card: () => `<b>Nghe và nói thử</b><p class="zh-srt">${into('*Rarely* have we seen → such *rapid* *growth*. ↘')} ${sp(plain('Rarely have we seen such rapid growth.'))}</p>${mic('Rarely have we seen such rapid growth.')}<p class="small muted">Đảo ngữ nhấn mạnh – nhấn từ đầu câu.</p>`,
+    profile: 'người Việt đã xong B2, học 30–45 phút/ngày, mục tiêu C1, IELTS 7.0+ / TOEIC 945+ và tiếng Anh lãnh đạo, chuyên môn.'
   });
   let C = COURSES['tieng-trung'];
   const D = () => C.data() || { plan: [], days: [] };
