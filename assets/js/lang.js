@@ -39,7 +39,7 @@
         { ten: 'Cấp 2 – Sơ cấp', moc: 'TOPIK I · cấp 2', tg: '30 ngày', muc: 'Kính ngữ, bất quy tắc, tương lai, nối câu; bệnh viện, ngân hàng, thuê nhà, công sở; luyện đọc – nghe TOPIK I.', co: 1 },
         { ten: 'Cấp 3 – Trung cấp 1', moc: 'TOPIK II · cấp 3', tg: '30 ngày', muc: '-는데, gián tiếp, phỏng đoán, bị động; tin tức, môi trường, văn hoá; viết câu 51–53, thuyết trình, phỏng vấn.', co: 1 },
         { ten: 'Cấp 4 – Trung cấp 2', moc: 'TOPIK II · cấp 4', tg: '30 ngày', muc: 'Văn viết, Hán Hàn, quán dụng ngữ, tục ngữ; viết câu 54; kinh tế – xã hội, đàm phán, tranh luận.', co: 1 },
-        { ten: 'Cấp 5 – Cao cấp', moc: 'TOPIK II · cấp 5–6', tg: '6–12 tháng', muc: 'Học thuật, biên – phiên dịch, viết luận.' }
+        { ten: 'Cấp 5 – Cao cấp', moc: 'TOPIK II · cấp 5–6', tg: '30 ngày', muc: 'Ngữ pháp cao cấp, 사자성어, văn học thuật; biên – phiên dịch ngân hàng, pháp lý; diễn văn, hội thảo.', co: 1 }
       ]
     }
   };
@@ -163,6 +163,12 @@
     lead: '30 ngày với <b>불구하고, 바람에, 마련이다, -다 보니, danh từ hoá</b>, từ Hán Hàn, quán dụng ngữ, tục ngữ, <b>viết câu 54</b>, kinh tế – xã hội, văn hoá doanh nghiệp, đàm phán, tranh luận và phản đối khéo với cấp trên.',
     card: () => koCard('처음에는 누구나 실수하기 마련이에요.', 'cheoeumeneun nuguna silsuhagi maryeonieyo', 'Lúc đầu ai cũng mắc lỗi thôi.'),
     profile: 'người Việt đã xong tiếng Hàn cấp 3, học 30–45 phút/ngày, mục tiêu TOPIK II cấp 4 và làm việc trong công ty Hàn.'
+  });
+  COURSES['tieng-han-c5'] = lvl('tieng-han', 5, 'TOPIK II · cấp 5–6', LV_FILES('ko', 5), {
+    data: () => window.PLT_KO5, tools: KO_TOOLS, eyebrow: 'Cấp 5/5 · Cao cấp · Hướng tới TOPIK II cấp 5–6', h1: '🇰🇷 Tiếng Hàn cấp 5: <em>học thuật, biên – phiên dịch, diễn văn</em>',
+    lead: '30 ngày với <b>-거니와, -(으)ㄹ지언정, -는 한, -는 셈, -(으)ㄴ 나머지</b>, văn báo chí và học thuật, <b>사자성어</b>, viết câu 54 điểm cao, kính ngữ nghi lễ, <b>biên – phiên dịch</b> ngân hàng – pháp lý, thời điệu cổ điển, hội thảo và bảo vệ đề tài.',
+    card: () => koCard('고진감래라고 끝까지 포기하지 맙시다.', 'gojingamnaerago kkeutkkaji pogihaji mapsida', 'Khổ tận cam lai, đừng bỏ cuộc đến cùng.'),
+    profile: 'người Việt đã xong tiếng Hàn cấp 4, học 45–60 phút/ngày, mục tiêu TOPIK II cấp 5–6, làm biên – phiên dịch hoặc học sau đại học tại Hàn.'
   });
   let C = COURSES['tieng-trung'];
   const D = () => C.data() || { plan: [], days: [] };
