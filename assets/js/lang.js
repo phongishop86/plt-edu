@@ -37,7 +37,7 @@
       cap: [
         { ten: 'Cấp 1 – Nhập môn', moc: 'TOPIK I · cấp 1', tg: '30 ngày', muc: 'Đọc – viết Hangul, ~300 từ, giao tiếp sinh hoạt cơ bản.', co: 1 },
         { ten: 'Cấp 2 – Sơ cấp', moc: 'TOPIK I · cấp 2', tg: '30 ngày', muc: 'Kính ngữ, bất quy tắc, tương lai, nối câu; bệnh viện, ngân hàng, thuê nhà, công sở; luyện đọc – nghe TOPIK I.', co: 1 },
-        { ten: 'Cấp 3 – Trung cấp 1', moc: 'TOPIK II · cấp 3', tg: '3–4 tháng', muc: 'Diễn đạt lý do, điều kiện; đọc thông báo, tin tức đơn giản; viết đoạn văn ngắn.' },
+        { ten: 'Cấp 3 – Trung cấp 1', moc: 'TOPIK II · cấp 3', tg: '30 ngày', muc: '-는데, gián tiếp, phỏng đoán, bị động; tin tức, môi trường, văn hoá; viết câu 51–53, thuyết trình, phỏng vấn.', co: 1 },
         { ten: 'Cấp 4 – Trung cấp 2', moc: 'TOPIK II · cấp 4', tg: '6 tháng', muc: 'Làm việc trong môi trường Hàn Quốc, thuyết trình, đọc báo.' },
         { ten: 'Cấp 5 – Cao cấp', moc: 'TOPIK II · cấp 5–6', tg: '6–12 tháng', muc: 'Học thuật, biên – phiên dịch, viết luận.' }
       ]
@@ -151,6 +151,12 @@
     lead: '30 ngày với <b>kính ngữ, động từ bất quy tắc, tương lai, nối câu, muốn – có thể – phải – cấm</b>, rồi bệnh viện, ngân hàng, thuê nhà, công sở, lễ tết. Kết thúc bằng <b>luyện đọc – nghe dạng TOPIK I</b>.',
     card: () => koCard('맛있게 드세요.', 'masitge deuseyo', 'Chúc ngon miệng (kính ngữ).'),
     profile: 'người Việt đã xong tiếng Hàn cấp 1, học 30–45 phút/ngày, mục tiêu TOPIK I cấp 2 và giao tiếp công sở.'
+  });
+  COURSES['tieng-han-c3'] = lvl('tieng-han', 3, 'TOPIK II · cấp 3', LV_FILES('ko', 3), {
+    data: () => window.PLT_KO3, tools: KO_TOOLS, eyebrow: 'Cấp 3/5 · Trung cấp 1 · Hướng tới TOPIK II cấp 3', h1: '🇰🇷 Tiếng Hàn cấp 3: <em>gián tiếp, phỏng đoán, viết TOPIK II</em>',
+    lead: '30 ngày với <b>-는데, câu gián tiếp, phỏng đoán, bị động, -게 되다</b>, rồi tin tức, môi trường, văn hoá, giáo dục, công nghệ. Luyện <b>viết câu 51–53, đọc – nghe TOPIK II</b>, thuyết trình và phỏng vấn.',
+    card: () => koCard('부탁이 있는데요.', 'butagi inneundeyo', 'Tôi có việc muốn nhờ ạ.'),
+    profile: 'người Việt đã xong tiếng Hàn cấp 2 (TOPIK I), học 30–45 phút/ngày, mục tiêu TOPIK II cấp 3 và giao tiếp công sở.'
   });
   let C = COURSES['tieng-trung'];
   const D = () => C.data() || { plan: [], days: [] };
