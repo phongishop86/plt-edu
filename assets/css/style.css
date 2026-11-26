@@ -274,3 +274,19 @@ button.grade{font:inherit;cursor:pointer;border:0}
 .zh-lv p{margin:0;font-size:.88rem;color:var(--muted)}.zh-lvf{display:flex;justify-content:space-between;gap:6px;font-size:.78rem;font-weight:700;margin-top:auto}
 .zh-lv:not(.open) .zh-lvf span:last-child{color:var(--muted)}.zh-lv.open .zh-lvf span:last-child{color:var(--pri-d)}
 .zh-big.zh-long{font-size:2.6rem;font-family:inherit}
+/* ===== Nói theo, ngữ điệu, luyện đề ===== */
+.zh-sr{display:grid;gap:4px;padding:10px 0;border-bottom:1px dashed var(--line)}.zh-sr:last-child{border-bottom:0}
+.zh-srt{font-size:1.12rem;line-height:1.7}.zh-st{color:var(--pri-d);text-decoration:underline 2px;text-underline-offset:3px}
+.zh-up,.zh-dn,.zh-lvl{font-style:normal;font-weight:800;margin-left:2px}.zh-up{color:#1f9d63}.zh-dn{color:#d93f45}.zh-lvl{color:#3B6FE0}.zh-lk{font-style:normal;color:var(--teal);font-weight:800}
+.zh-micw{display:inline-flex;flex-wrap:wrap;align-items:flex-start;gap:8px}.zh-micr{flex:1;min-width:200px}
+.zh-mic{border:2px solid var(--teal);background:#fff;color:var(--teal);border-radius:999px;padding:4px 12px;font-weight:800;cursor:pointer;font:inherit;font-weight:800}
+.zh-mic:hover{background:var(--teal);color:#fff}.zh-mic.rec,.btn.rec{background:#d93f45;border-color:#d93f45;color:#fff;animation:zhp 1s infinite}
+@keyframes zhp{50%{box-shadow:0 0 0 6px rgba(217,63,69,.2)}}
+.zh-score{display:grid;gap:4px;border-radius:12px;padding:8px 12px;background:var(--soft)}.zh-score>b{font-size:1.3rem}
+.zh-score.good>b{color:#1f9d63}.zh-score.mid>b{color:#D9661F}.zh-score.low>b{color:#d93f45}
+.zh-score i{font-style:normal;font-weight:700;padding:0 2px;border-radius:4px}.zh-score i.ok{color:#1f9d63}.zh-score i.no{color:#d93f45;background:#fde8e8}
+.zh-pairs{display:grid;gap:8px}.zh-pair{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:8px;border-radius:12px;background:var(--soft)}
+.zh-pass{background:var(--soft);border-radius:12px;padding:12px 14px;margin:6px 0;line-height:1.65}details.zh-pass summary{cursor:pointer;font-weight:700}
+.zh-ta{width:100%;font:inherit;padding:12px;border-radius:12px;border:1px solid var(--line);line-height:1.6}
+.zh-talk{background:var(--soft);border-radius:12px;padding:10px 14px;margin-top:8px}.zh-est{font-weight:800;color:var(--teal);margin-top:4px}
+@media(max-width:600px){.zh-pair{grid-template-columns:1fr}}

@@ -23,10 +23,10 @@
       ]
     },
     'tieng-anh': {
-      chung: 'Khung tham chiếu châu Âu CEFR (A1 → C2), quy đổi gần đúng sang IELTS / TOEIC.',
+      chung: 'Khung tham chiếu châu Âu CEFR (A1 → C2), quy đổi gần đúng sang IELTS / TOEIC. Dùng chung cho mọi cấp: <a href="#/tieng-anh/ngu-phap">📐 Sổ tay ngữ pháp</a> · <a href="#/tieng-anh/luyen-noi">🎤 Phát âm & ngữ điệu</a> · <a href="#/tieng-anh/luyen-de">🏅 Luyện đề</a>.',
       cap: [
         { ten: 'Cấp 1 – Khởi đầu', moc: 'A1', tg: '30 ngày', muc: 'Phát âm chuẩn, ~300 từ, tự giới thiệu, hỏi đáp đời sống hằng ngày.', co: 1 },
-        { ten: 'Cấp 2 – Sơ cấp', moc: 'A2 · TOEIC ~225+', tg: '2–3 tháng', muc: 'Kể việc đã làm, so sánh, mô tả người – nơi chốn; viết tin nhắn ngắn.' },
+        { ten: 'Cấp 2 – Sơ cấp', moc: 'A2 · TOEIC ~225+', tg: '30 ngày', muc: 'Kể chuyện quá khứ, so sánh, kế hoạch, tình huống du lịch – ngân hàng – công việc; viết email ngắn.', co: 1 },
         { ten: 'Cấp 3 – Trung cấp', moc: 'B1 · IELTS 4.0–5.0', tg: '3–4 tháng', muc: 'Xử lý tình huống du lịch, công việc; nêu ý kiến, viết email.' },
         { ten: 'Cấp 4 – Trung cao', moc: 'B2 · IELTS 5.5–6.5', tg: '6 tháng', muc: 'Họp, thuyết trình, đọc tài liệu chuyên ngành, viết báo cáo.' },
         { ten: 'Cấp 5 – Cao cấp', moc: 'C1–C2 · IELTS 7.0+', tg: '6–12 tháng', muc: 'Dùng tiếng Anh linh hoạt trong học thuật, đàm phán, nghiên cứu.' }
@@ -61,7 +61,7 @@
     },
     'tieng-anh': {
       key: 'tieng-anh', id: 'en', ten: 'Tiếng Anh', icon: '🇬🇧', lang: 'en-US', data: () => window.PLT_EN,
-      files: ['subjects/tieng-anh.js', 'subjects/tieng-anh-2.js'],
+      files: ['subjects/nn/en-a1.js', 'subjects/nn/en-a1-2.js'],
       pLbl: 'phiên âm', rep: 'ENGLISH LEARNING REPORT', sample: 'Hello! Nice to meet you.',
       voiceHelp: 'dùng <b>Microsoft Edge</b> (giọng Aria, Jenny rất tự nhiên) hoặc <b>Chrome</b>; trên Windows vào <i>Cài đặt → Thời gian và ngôn ngữ → Giọng nói</i> và thêm giọng "English (United States)".',
       pick: (vs) => { const en = vs.filter((v) => /^en[-_](US|GB)/i.test(v.lang)); return en.find((v) => /Aria|Jenny|Guy|Ava|Andrew/i.test(v.name)) || en.find((v) => /natural|online/i.test(v.name)) || en.find((v) => /Google US/i.test(v.name)) || en.find((v) => /^en[-_]US/i.test(v.lang)) || en[0] || vs.find((v) => /^en/i.test(v.lang)); },
@@ -74,7 +74,7 @@
     },
     'tieng-han': {
       key: 'tieng-han', id: 'ko', ten: 'Tiếng Hàn', icon: '🇰🇷', lang: 'ko-KR', data: () => window.PLT_KO,
-      files: ['subjects/tieng-han.js', 'subjects/tieng-han-2.js'],
+      files: ['subjects/nn/ko-1.js', 'subjects/nn/ko-1-2.js'],
       pLbl: 'phiên âm', rep: 'KOREAN LEARNING REPORT', sample: '안녕하세요! 감사합니다!',
       voiceHelp: 'dùng <b>Microsoft Edge</b> (giọng SunHi, InJoon) hoặc <b>Chrome</b>; trên Windows vào <i>Cài đặt → Thời gian và ngôn ngữ → Giọng nói</i> và thêm giọng "Korean".',
       pick: (vs) => { const ko = vs.filter((v) => /^ko/i.test(v.lang)); return ko.find((v) => /SunHi|InJoon|Hyunsu/i.test(v.name)) || ko.find((v) => /natural|online/i.test(v.name)) || ko.find((v) => /Google/i.test(v.name)) || ko[0]; },
@@ -86,9 +86,20 @@
       kinds: ['meaning', 'listen', 'listenWord', 'hanzi', 'pinyin', 'match']
     }
   };
+  /* ---------- Các cấp sau của tiếng Anh: mỗi cấp là một khoá con #/tieng-anh/cN ---------- */
+  const EN_TOOLS = [['#/tieng-anh/ngu-phap', '📐', 'Sổ tay ngữ pháp', 'Ngữ pháp A1 → C1, ví dụ có giọng đọc và bài tập nhanh.'], ['#/tieng-anh/luyen-noi', '🎤', 'Phát âm & ngữ điệu', 'Nói theo, máy chấm từng từ; nhấn âm, lên – xuống giọng, nối âm.'], ['#/tieng-anh/luyen-de', '🏅', 'Luyện đề chứng chỉ', 'Đề mô phỏng TOEIC, IELTS; viết, nói; quy đổi điểm tham khảo.']];
+  COURSES['tieng-anh'].tools = COURSES['tieng-anh'].tools.concat(EN_TOOLS);
+  const enLv = (n, moc, files, o) => Object.assign({}, COURSES['tieng-anh'], { key: 'tieng-anh-c' + n, path: 'tieng-anh/c' + n, parent: 'tieng-anh', lvl: n, moc, id: 'en' + n, files, rep: 'ENGLISH LEARNING REPORT – ' + moc, tools: [['#/tieng-anh/bang-am', '🔤', 'Bảng âm IPA', 'Ôn lại nguyên âm, phụ âm, bấm để nghe.']].concat(EN_TOOLS) }, o);
+  COURSES['tieng-anh-c2'] = enLv(2, 'A2', ['subjects/nn/en-a2.js', 'subjects/nn/en-a2-2.js'], {
+    data: () => window.PLT_EN2, eyebrow: 'Cấp 2/5 · Sơ cấp A2 · Hướng tới TOEIC 225+ / KET', h1: '🇬🇧 Tiếng Anh A2: <em>kể chuyện, so sánh, xử lý tình huống</em>',
+    lead: '30 ngày nắm chắc <b>quá khứ đơn, tương lai, so sánh, động từ khuyết thiếu</b> và các tình huống du lịch – công việc. Mỗi ngày có phần <b>🎤 nói theo để máy chấm</b> và luyện ngữ điệu.',
+    card: () => `<b>Nghe và nói thử</b><p class="zh-srt">${into('I *went* to Da *Nang* last *summer*. ↘')} ${sp(plain('I went to Da Nang last summer.'))}</p>${mic('I went to Da Nang last summer.')}<p class="small muted">Chữ in đậm là từ nhấn mạnh, ↘ là xuống giọng cuối câu.</p>`,
+    profile: 'người Việt đã xong A1, giọng Mỹ, học 30–45 phút/ngày, mục tiêu giao tiếp A2 và TOEIC 225+.'
+  });
   let C = COURSES['tieng-trung'];
   const D = () => C.data() || { plan: [], days: [] };
-  const base = () => '#/' + C.key;
+  const base = () => '#/' + (C.path || C.key);
+  const LV = () => C.lvl || 1;
 
   /* ---------- Tải dữ liệu khoá học (lần đầu) ---------- */
   const loaded = {};
@@ -132,6 +143,78 @@
     b.classList.add('zh-on'); setTimeout(() => b.classList.remove('zh-on'), 600);
   }, true);
   const sp = (t, lbl) => `<button type="button" class="zh-say" data-say="${esc(t)}" title="Nghe đọc" aria-label="Nghe đọc">🔊${lbl ? ' ' + lbl : ''}</button>`;
+  /* ---------- Nói theo và chấm phát âm (nhận dạng giọng nói của trình duyệt, miễn phí) ---------- */
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  let rec = null, curDay = 0;
+  // Ký hiệu ngữ điệu trong dữ liệu: *từ nhấn*, ↗ lên giọng, ↘ xuống giọng, → giữ giọng, ‿ nối âm
+  const plain = (s) => String(s).replace(/<[^>]+>/g, '').replace(/[*↗↘→]/g, '').replace(/‿/g, ' ').replace(/\s+/g, ' ').trim();
+  const stx = (h) => String(h).replace(/\*([^*<\n]+)\*/g, '<b class="zh-st">$1</b>');
+  const into = (s) => esc(s).replace(/\*([^*]+)\*/g, '<b class="zh-st">$1</b>').replace(/‿/g, '<i class="zh-lk">‿</i>').replace(/↗/g, '<i class="zh-up">↗</i>').replace(/↘/g, '<i class="zh-dn">↘</i>').replace(/→/g, '<i class="zh-lvl">→</i>');
+  const mic = (t) => `<span class="zh-micw"><button type="button" class="zh-mic" data-mic="${esc(plain(t))}">🎤 Nói</button><span class="zh-micr"></span></span>`;
+  const sayRow = (r) => { const s = Array.isArray(r) ? r : [r]; return `<div class="zh-sr"><div class="zh-srt">${into(s[0])} ${sp(plain(s[0]))}</div>${s[1] ? `<div class="muted small">${s[1]}</div>` : ''}${mic(s[0])}</div>`; };
+  const micNote = () => (SR ? '' : '<div class="fb warn">⚠️ Trình duyệt này chưa nhận được giọng nói nên nút 🎤 không chạy. Hãy dùng <b>Chrome</b> hoặc <b>Edge</b> trên máy tính / Android (iPhone dùng Safari bản mới).</div>');
+  const NUM = 'zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen'.split(' '), TENS = 'twenty thirty forty fifty sixty seventy eighty ninety'.split(' ');
+  const n2w = (n) => (n < 20 ? NUM[n] : n < 100 ? TENS[Math.floor(n / 10) - 2] + (n % 10 ? ' ' + NUM[n % 10] : '') : String(n));
+  const CONTR = { "i'm": 'i am', "you're": 'you are', "we're": 'we are', "they're": 'they are', "he's": 'he is', "she's": 'she is', "it's": 'it is', "that's": 'that is', "what's": 'what is', "there's": 'there is', "isn't": 'is not', "aren't": 'are not', "wasn't": 'was not', "weren't": 'were not', "don't": 'do not', "doesn't": 'does not', "didn't": 'did not', "can't": 'cannot', "couldn't": 'could not', "won't": 'will not', "wouldn't": 'would not', "shouldn't": 'should not', "haven't": 'have not', "hasn't": 'has not', "i've": 'i have', "i'll": 'i will', "you'll": 'you will', "we'll": 'we will', "i'd": 'i would', "let's": 'let us', "can not": 'cannot', ok: 'okay', 'o.k.': 'okay' };
+  function toks(s) {
+    s = plain(s).toLowerCase().replace(/[’‘]/g, "'");
+    if (/^zh/.test(C.lang)) return [...s.replace(/[^一-鿿0-9a-z]/g, '')];
+    if (/^en/.test(C.lang)) { s = s.replace(/(\d+):(\d\d)/g, (m, h, mm) => h + ' ' + (mm === '00' ? "o'clock" : mm)).replace(/\b\d{1,2}\b/g, (m) => n2w(+m)).replace(/%/g, ' percent'); Object.keys(CONTR).forEach((k) => { s = s.split(k).join(CONTR[k]); }); }
+    return s.replace(/[^\p{L}\p{N}' ]/gu, ' ').split(/\s+/).filter(Boolean);
+  }
+  function lcsHit(a, b) {
+    const m = a.length, n = b.length, L = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
+    for (let i = m - 1; i >= 0; i--) for (let j = n - 1; j >= 0; j--) L[i][j] = a[i] === b[j] ? L[i + 1][j + 1] + 1 : Math.max(L[i + 1][j], L[i][j + 1]);
+    const hit = new Array(m).fill(false); let i = 0, j = 0;
+    while (i < m && j < n) { if (a[i] === b[j]) { hit[i] = true; i++; j++; } else if (L[i + 1][j] >= L[i][j + 1]) i++; else j++; }
+    return hit;
+  }
+  function micStat(score) {
+    const s = st(); s.mic = s.mic || { n: 0, sum: 0 }; s.mic.n++; s.mic.sum += score;
+    if (curDay) { const d = dayState(curDay); d.mic = d.mic || [0, 0]; d.mic[0] += score; d.mic[1]++; }
+    PLT.save();
+  }
+  function gradeSpeech(target, alts, out) {
+    const T = toks(target); let best = null;
+    alts.forEach((a) => { const hit = lcsHit(T, toks(a)), sc = T.length ? Math.round((hit.filter(Boolean).length / T.length) * 100) : 0; if (!best || sc > best.sc) best = { a, hit, sc }; });
+    const sc = best.sc, tier = sc >= 90 ? ['good', '🏆 Rất tốt! Máy nghe rõ gần như toàn bộ câu.'] : sc >= 70 ? ['mid', '👍 Khá tốt. Luyện thêm các từ màu đỏ.'] : ['low', '💪 Nghe mẫu lại, nói chậm và rõ từng từ, chú ý âm cuối.'];
+    out.innerHTML = `<div class="zh-score ${tier[0]}"><b>${sc}%</b><span>${T.map((t, i) => `<i class="${best.hit[i] ? 'ok' : 'no'}">${esc(t)}</i>`).join(' ')}</span><div class="small">${tier[1]}</div><div class="small muted">Máy nghe được: “${esc(best.a)}”</div></div>`;
+    micStat(sc);
+  }
+  function micErr(e) {
+    return ({ 'not-allowed': 'Em chưa cho phép dùng micro. Bấm biểu tượng 🔒 cạnh địa chỉ trang → Micro → Cho phép, rồi thử lại.', 'service-not-allowed': 'Trình duyệt chặn nhận giọng nói. Hãy dùng Chrome hoặc Edge.', 'no-speech': 'Máy chưa nghe thấy tiếng. Nói to hơn, gần micro hơn.', 'audio-capture': 'Không tìm thấy micro. Kiểm tra tai nghe/micro.', network: 'Nhận giọng nói cần kết nối Internet. Kiểm tra mạng rồi thử lại.' })[e] || 'Chưa nhận được giọng nói (' + e + '). Thử lại nhé.';
+  }
+  function listen(target, out, btn) {
+    if (!SR) { out.innerHTML = micNote(); return; }
+    if (rec) { const same = rec.btn === btn; try { rec.stop(); } catch (e) { /* bỏ qua */ } if (same) return; }
+    if (TTS) speechSynthesis.cancel();
+    const r = new SR(); rec = r; r.btn = btn; r.lang = C.lang; r.interimResults = false; r.maxAlternatives = 5; r.continuous = false;
+    let got = false, err = false; const lbl = btn.textContent;
+    btn.classList.add('rec'); btn.textContent = '🔴 Đang nghe…'; out.innerHTML = '<span class="small muted">Nói ngay bây giờ…</span>';
+    r.onresult = (e) => { got = true; gradeSpeech(target, [...e.results[0]].map((x) => x.transcript), out); };
+    r.onerror = (e) => { err = true; out.innerHTML = `<div class="fb warn">🎤 ${micErr(e.error)}</div>`; };
+    r.onend = () => { btn.classList.remove('rec'); btn.textContent = lbl; if (!got && !err) out.innerHTML = `<div class="fb warn">🎤 ${micErr('no-speech')}</div>`; if (rec === r) rec = null; };
+    try { r.start(); } catch (e) { r.onend(); }
+  }
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest && e.target.closest('[data-mic]'); if (!b) return;
+    e.preventDefault(); e.stopPropagation(); listen(b.dataset.mic, b.nextElementSibling, b);
+  }, true);
+  // Nói tự do (luyện nói IELTS): ghi lại toàn bộ lời nói, đếm từ và tốc độ
+  function freeTalk(out, btn, secs, onEnd) {
+    if (!SR) { out.innerHTML = micNote(); return null; }
+    if (TTS) speechSynthesis.cancel();
+    let text = '', alive = true, t0 = Date.now(); const r = new SR(); r.lang = C.lang; r.continuous = true; r.interimResults = true;
+    const show = (tmp) => { const sec = Math.round((Date.now() - t0) / 1000), wc = text.split(/\s+/).filter(Boolean).length; out.innerHTML = `<div class="zh-talk"><div class="row small"><b>⏱ ${sec}/${secs} giây</b><span>📝 ${wc} từ</span></div><p>${esc(text)} <span class="muted">${esc(tmp || '')}</span></p></div>`; };
+    r.onresult = (e) => { let tmp = ''; for (let i = e.resultIndex; i < e.results.length; i++) { if (e.results[i].isFinal) text += ' ' + e.results[i][0].transcript; else tmp += e.results[i][0].transcript; } show(tmp); };
+    r.onerror = (e) => { if (e.error !== 'no-speech' && e.error !== 'aborted') { alive = false; out.insertAdjacentHTML('beforeend', `<div class="fb warn">🎤 ${micErr(e.error)}</div>`); } };
+    r.onend = () => { if (alive && Date.now() - t0 < secs * 1000) { try { r.start(); } catch (e) { /* bỏ qua */ } return; } done(); };
+    const tick = setInterval(() => { if (Date.now() - t0 >= secs * 1000) stopIt(); else show(); }, 1000);
+    function stopIt() { alive = false; try { r.stop(); } catch (e) { done(); } }
+    let fin = false; function done() { if (fin) return; fin = true; clearInterval(tick); const sec = Math.max(1, Math.round((Date.now() - t0) / 1000)), wc = text.split(/\s+/).filter(Boolean).length; onEnd && onEnd(text.trim(), wc, Math.round((wc / sec) * 60)); }
+    r.start(); show(); return { stop: stopIt };
+  }
+
   function voiceNote() {
     const id = 'vn' + Math.random().toString(36).slice(2, 7);
     setTimeout(() => {
@@ -221,7 +304,7 @@
   const kindsOf = (d) => d.kinds || C.kinds;
 
   /* ---------- Thành phần giao diện ---------- */
-  const crumb = (x) => `<div class="crumb"><a href="#/">Trang chủ</a> › <a href="#/ngoai-ngu">Ngoại ngữ</a> › <a href="${base()}">${C.ten}</a>${x ? ' › ' + x : ''}</div>`;
+  const crumb = (x) => `<div class="crumb"><a href="#/">Trang chủ</a> › <a href="#/ngoai-ngu">Ngoại ngữ</a> › <a href="${base()}">${C.ten}${C.lvl ? ' ' + C.moc : ''}</a>${x ? ' › ' + x : ''}</div>`;
   function vocabTable(ws) {
     return `<div class="zh-vt">${ws.map((w, i) => `<div class="zh-w"><div class="zh-wh"><span class="zh-n">${i + 1}</span><b class="zh-hz">${w.h}</b>${sp(w.h)}</div><div class="zh-wp">${w.p}</div><div class="zh-wv">${w.v}</div>${w.use ? `<div class="zh-wu">💬 ${w.use}</div>` : ''}${w.ex ? `<div class="zh-ex"><div>${w.ex[0]} ${sp(w.ex[0])}</div><div class="zh-wp">${w.ex[1]}</div><div class="muted">${w.ex[2]}</div></div>` : ''}</div>`).join('')}</div>`;
   }
@@ -238,12 +321,12 @@
   function hub(app) {
     app.innerHTML = `<section class="hero2 zh-hero"><div class="hw"><div><div class="eyebrow">Miễn phí · Tự học · Từ cơ bản đến nâng cao</div>
         <h1>🌏 Ngoại ngữ: <em>Trung · Anh · Hàn</em></h1>
-        <p class="lead">Mỗi thứ tiếng có <b>5 cấp độ</b> bám theo khung chứng chỉ quốc tế (HSK, CEFR/IELTS, TOPIK). Cấp 1 gồm 30 ngày học, mỗi ngày 30–45 phút: kiến thức mới, luyện tập, hội thoại tình huống, kiểm tra và báo cáo tiến độ.</p>
-        <div class="row">${Object.values(COURSES).map((c) => `<a class="btn${c.key === 'tieng-trung' ? '' : ' ghost'}" href="#/${c.key}">${c.icon} ${c.ten}</a>`).join('')}</div></div>
+        <p class="lead">Mỗi thứ tiếng có <b>5 cấp độ</b> bám theo khung chứng chỉ quốc tế (HSK, CEFR/IELTS, TOPIK). Mỗi cấp gồm 30 ngày học, mỗi ngày 30–45 phút: kiến thức mới, luyện tập, hội thoại tình huống, kiểm tra và báo cáo tiến độ.</p>
+        <div class="row">${Object.values(COURSES).filter((c) => !c.parent).map((c) => `<a class="btn${c.key === 'tieng-trung' ? '' : ' ghost'}" href="#/${c.key}">${c.icon} ${c.ten}</a>`).join('')}</div></div>
         <div class="hcard"><b>Cách tự học hiệu quả</b><ol class="steps"><li>Chọn <b>một</b> thứ tiếng, học đều mỗi ngày, đừng học dồn.</li><li>Luôn <b>bấm loa nghe mẫu</b> và đọc to theo, tự ghi âm để so sánh.</li><li>Đạt <b>≥ 7 điểm</b> bài kiểm tra mới sang ngày mới.</li><li>Cuối tuần ôn <b>thẻ từ chưa nhớ</b>.</li></ol></div></div></section>
-      ${Object.values(COURSES).map((c) => { const L = LEVELS[c.key]; const s = PLT.data[c.id]; const n = s && s.days ? Object.keys(s.days).filter((k) => Object.keys(s.days[k].parts || {}).length).length : 0;
+      ${Object.values(COURSES).filter((c) => !c.parent).map((c) => { const L = LEVELS[c.key]; const opened = (id) => { const s = PLT.data[id]; return s && s.days ? Object.keys(s.days).filter((k) => Object.keys(s.days[k].parts || {}).length).length : 0; };
         return `<h2>${c.icon} ${c.ten} <small class="muted">· lộ trình 5 cấp</small></h2><p class="muted small">${L.chung}</p>
-        <div class="zh-levels">${L.cap.map((x, i) => `<${x.co ? `a href="#/${c.key}"` : 'div'} class="zh-lv${x.co ? ' open' : ''}"><div class="zh-lvh"><span class="zh-lvn">${i + 1}</span><div><b>${x.ten}</b><em>${x.moc}</em></div></div><p>${x.muc}</p><div class="zh-lvf"><span>⏱ ${x.tg}</span><span>${x.co ? (n ? `▶ Đang học · ${n} ngày đã mở` : '▶ Bắt đầu học') : '🔒 Sắp có'}</span></div></${x.co ? 'a' : 'div'}>`).join('')}</div>`; }).join('')}
+        <div class="zh-levels">${L.cap.map((x, i) => { const n = opened(i ? c.id + (i + 1) : c.id); return `<${x.co ? `a href="#/${c.key}${i ? '/c' + (i + 1) : ''}"` : 'div'} class="zh-lv${x.co ? ' open' : ''}"><div class="zh-lvh"><span class="zh-lvn">${i + 1}</span><div><b>${x.ten}</b><em>${x.moc}</em></div></div><p>${x.muc}</p><div class="zh-lvf"><span>⏱ ${x.tg}</span><span>${x.co ? (n ? `▶ Đang học · ${n} ngày đã mở` : '▶ Bắt đầu học') : '🔒 Sắp có'}</span></div></${x.co ? 'a' : 'div'}>`; }).join('')}</div>`; }).join('')}
       <p class="muted small">Thời gian mỗi cấp là gợi ý cho người học 30–45 phút/ngày. Quy đổi chứng chỉ chỉ mang tính tham khảo; hãy kiểm tra quy định của kỳ thi tại thời điểm đăng ký.</p>`;
   }
 
@@ -256,12 +339,12 @@
     app.innerHTML = `<section class="hero2 zh-hero"><div class="hw"><div><div class="eyebrow">${C.eyebrow}</div>
         <h1>${C.h1}</h1><p class="lead">${C.lead}</p>
         <div class="row"><a class="btn" href="${base()}/ngay/${nd}">▶ Học hôm nay: Ngày ${nd}</a><a class="btn ghost" href="${base()}/on-tap">🔁 Ôn tập</a></div>
-        <div class="facts"><span><b>${done}</b>/30 ngày hoàn thành</span><span><b>${words}</b> từ đã mở</span><span>🔊 Có giọng đọc mẫu</span><a href="#/ngoai-ngu" style="color:inherit">📶 Cấp 1/5 · Xem lộ trình đầy đủ</a></div></div>
+        <div class="facts"><span><b>${done}</b>/30 ngày hoàn thành</span><span><b>${words}</b> từ đã mở</span><span>🔊 Có giọng đọc mẫu</span><a href="#/ngoai-ngu" style="color:inherit">📶 Cấp ${LV()}/5 · Xem lộ trình đầy đủ</a></div></div>
         <div class="hcard">${C.card()}</div></div></section>
       ${voiceNote()}
-      <h2>Công cụ luyện tập</h2><div class="feats zh-tools">${tools.map(([r, i, t, m]) => `<a class="feat" href="${base()}/${r}"><span>${i}</span><b>${t}</b><p>${m}</p></a>`).join('')}</div>
+      <h2>Công cụ luyện tập</h2><div class="feats zh-tools">${tools.map(([r, i, t, m]) => `<a class="feat" href="${r[0] === '#' ? r : base() + '/' + r}"><span>${i}</span><b>${t}</b><p>${m}</p></a>`).join('')}</div>
       ${stages.map((g) => `<h2>${g.ten} <small class="muted">· Ngày ${g.tu}–${g.den}</small></h2><div class="tgrid">${D().plan.filter((p) => p.n >= g.tu && p.n <= g.den).map((p) => dayCard(p)).join('')}</div>`).join('')}
-      <p class="muted small">⚠️ Lộ trình 30 ngày giúp xây nền tảng, không cam kết nói thành thạo sau 30 ngày. Chưa hiểu bài thì cứ học lại, không cần chạy theo lịch. Hệ thống chưa chấm được phát âm thật của em; hãy nghe mẫu, đọc theo và tự ghi âm để so sánh.</p>`;
+      <p class="muted small">⚠️ Lộ trình 30 ngày giúp xây nền tảng, không cam kết nói thành thạo sau 30 ngày. Chưa hiểu bài thì cứ học lại, không cần chạy theo lịch. Nút 🎤 dùng nhận dạng giọng nói miễn phí của Chrome/Edge (cần mạng) để so câu em nói với câu mẫu; đây là chấm tham khảo, nên kết hợp tự ghi âm để nghe lại ngữ điệu.</p>`;
   }
   function dayCard(p) {
     const has = !!dayOf(p.n), b = bestOf(p.n), ds = st().days[p.n], np = ds ? Object.keys(ds.parts).length : 0;
@@ -273,7 +356,7 @@
   /* ---------- Buổi học: 5 phần A–E ---------- */
   const PARTS = [['a', 'A', 'Ôn tập', '5 phút'], ['b', 'B', 'Kiến thức mới', '10 phút'], ['c', 'C', 'Luyện tập', '10 phút'], ['d', 'D', 'Hội thoại', '5–10 phút'], ['e', 'E', 'Kiểm tra', '5–10 phút']];
   function lesson(app, n, part) {
-    const d = dayOf(n), B = base();
+    const d = dayOf(n), B = base(); curDay = d ? n : 0;
     if (!d) { app.innerHTML = crumb(`Ngày ${n}`) + `<div class="card">📦 Bài Ngày ${n} đang được biên soạn. Trong lúc chờ, em hãy <a href="${B}/on-tap">ôn tập</a>.</div>`; return; }
     part = part || (dayState(n).parts.a ? (PARTS.find(([k]) => !dayState(n).parts[k]) || ['b'])[0] : 'a');
     const ds = dayState(n), prevWarn = n > 1 && dayOf(n - 1) && !isDone(n - 1) ? `<div class="fb warn">💡 Em chưa đạt ${PASS} điểm bài kiểm tra Ngày ${n - 1}. Nên <a href="${B}/ngay/${n - 1}/e">làm lại Ngày ${n - 1}</a> trước khi học bài mới.</div>` : '';
@@ -296,7 +379,7 @@
     if (part === 'b') {
       box.innerHTML = `<div class="card zh-learn"><h3>📘 Phần B – Kiến thức mới</h3>${voiceNote()}${settingsBar()}${d.hoc}</div>
         ${d.vocab.length ? `<div class="card"><h3>📒 Từ vựng hôm nay (${d.vocab.length} từ)</h3><p class="muted small">Bấm 🔊 để nghe, đọc theo 3–5 lần. Học theo cả câu ví dụ, không học từ đơn lẻ.</p>${vocabTable(d.vocab)}</div>` : ''}
-        <div class="row center"><button class="btn" id="zbok">✔ Em đã đọc và nghe hết phần này</button></div>`;
+        ${noiCard(d)}<div class="row center"><button class="btn" id="zbok">✔ Em đã đọc và nghe hết phần này</button></div>`;
       bindBar();
       $('#zbok').onclick = () => { markPart(n, 'b'); location.hash = `${B}/ngay/${n}/c`; };
       return;
@@ -315,7 +398,7 @@
     if (part === 'e') {
       const big = d.kt || { n: 10, min: 10 };
       const b = bestOf(n);
-      box.innerHTML = `<div class="card"><h3>📝 Phần E – Kiểm tra cuối buổi</h3><p>${big.n} câu · ${big.min} phút · đạt từ <b>${PASS} điểm</b> là hoàn thành ngày học. ${b != null ? `<span class="pill">Cao nhất ${fmtD(b)}đ</span>` : ''}</p><p class="muted small">Không có đáp án trước khi nộp bài. Phần phát âm thật chưa được chấm vì hệ thống chưa nghe được giọng em.</p><div class="row"><button class="btn" id="zgo">▶ Bắt đầu làm bài</button></div></div><div id="ebox"></div>`;
+      box.innerHTML = `<div class="card"><h3>📝 Phần E – Kiểm tra cuối buổi</h3><p>${big.n} câu · ${big.min} phút · đạt từ <b>${PASS} điểm</b> là hoàn thành ngày học. ${b != null ? `<span class="pill">Cao nhất ${fmtD(b)}đ</span>` : ''}</p><p class="muted small">Không có đáp án trước khi nộp bài. Phần nói được luyện ở Phần B (🎤) và Phần D, không tính vào điểm bài này.</p><div class="row"><button class="btn" id="zgo">▶ Bắt đầu làm bài</button></div></div><div id="ebox"></div>`;
       $('#zgo').onclick = () => startTest(n, big);
       return;
     }
@@ -353,7 +436,7 @@
         const o = t.o[+b.dataset.k], fb = $('#zfb', op);
         if (o.ok) {
           op.querySelectorAll('[data-k]').forEach((x) => (x.disabled = true)); b.classList.add('right');
-          bubble('u', o); fb.innerHTML = `<div class="fb good">✔ ${o.f || 'Chính xác!'}</div><div class="row"><button class="btn small" id="znt">Tiếp tục ▶</button></div>`;
+          bubble('u', o); fb.innerHTML = `<div class="fb good">✔ ${o.f || 'Chính xác!'}</div><div class="small">Đọc to câu này cho máy chấm: ${mic(o.h)}</div><div class="row"><button class="btn small" id="znt">Tiếp tục ▶</button></div>`;
           $('#znt', op).onclick = () => { i++; turn(); };
         } else { b.classList.add('wrong'); b.disabled = true; fb.innerHTML = `<div class="fb badf">✘ ${o.f || 'Chưa phù hợp, thử lại nhé.'}</div>`; }
       }));
@@ -367,12 +450,12 @@
     const done = D().days.filter((x) => isDone(x.n)).length;
     return [
       C.rep,
-      `Khoá: ${C.ten} – Cấp 1 · Ngày học: Ngày ${n}/30${ds.last ? ' (' + new Date(ds.last).toLocaleDateString('vi-VN') + ')' : ''}`,
+      `Khoá: ${C.ten} – Cấp ${LV()}${C.lvl ? ' (' + C.moc + ')' : ''} · Ngày học: Ngày ${n}/30${ds.last ? ' (' + new Date(ds.last).toLocaleDateString('vi-VN') + ')' : ''}`,
       `Chủ đề: ${d.ten}`,
       `Kiến thức mới: ${(d.tom || []).join('; ')}`,
       `Từ vựng: ${d.vocab.length ? d.vocab.map((w) => `${w.h} (${w.p}) ${w.v}`).join(', ') : 'ôn tập, không có từ mới'}`,
       `Ngữ pháp: ${d.nguphap || 'chưa học'}`,
-      `Phát âm: ${d.phatam || '—'} (chưa chấm phát âm thật vì chưa có âm thanh đầu vào)`,
+      `Phát âm: ${d.phatam || '—'}${ds.mic && ds.mic[1] ? ` · điểm nói trung bình ${Math.round(ds.mic[0] / ds.mic[1])}% (${ds.mic[1]} lượt, máy nhận giọng chấm tham khảo)` : ' · chưa luyện nói bằng micro'}`,
       `Điểm kiểm tra: ${b != null ? fmtD(b) + '/10 (' + testsOf(n).length + ' lượt)' : 'chưa làm'}`,
       `Phần đã xong: ${PARTS.filter(([k]) => ds.parts[k]).map((x) => x[1]).join(', ') || 'chưa có'}`,
       `Lỗi cần khắc phục: ${(d.loi || []).join('; ')}${weak.length ? '; từ chưa nhớ: ' + weak.join(', ') : ''}`,
@@ -467,28 +550,160 @@
     const words = vocabUpTo(opened.length ? opened[opened.length - 1].n : 0);
     const weak = words.filter((w) => s.known[w.h] === 0).map((w) => w.h);
     const scores = D().days.map((d) => (bestOf(d.n) != null ? `N${d.n}: ${fmtD(bestOf(d.n))}` : null)).filter(Boolean);
-    return [`TÓM TẮT TIẾN ĐỘ – ${C.ten.toUpperCase()} CẤP 1 (PLT-Edu)`,
+    return [`TÓM TẮT TIẾN ĐỘ – ${C.ten.toUpperCase()} CẤP ${LV()}${C.lvl ? ' ' + C.moc : ''} (PLT-Edu)`,
       `Hồ sơ: ${C.profile}`,
       `Ngày học hiện tại: Ngày ${nextDay()}/30 · Đã hoàn thành: ${D().days.filter((d) => isDone(d.n)).map((d) => d.n).join(', ') || 'chưa có'}`,
       `Bài đã học: ${opened.map((d) => `N${d.n} ${d.ten}`).join('; ') || 'chưa có'}`,
       `Từ vựng đã học (${words.length}): ${words.map((w) => `${w.h}(${w.p})`).join(', ')}`,
       `Ngữ pháp đã học: ${opened.map((d) => d.nguphap).filter(Boolean).join('; ') || 'chưa có'}`,
-      `Phát âm đã luyện: ${opened.map((d) => d.phatam).filter(Boolean).join('; ') || 'chưa có'}`,
+      `Phát âm đã luyện: ${opened.map((d) => d.phatam).filter(Boolean).join('; ') || 'chưa có'}${s.mic && s.mic.n ? ` · điểm nói trung bình ${Math.round(s.mic.sum / s.mic.n)}% (${s.mic.n} lượt)` : ''}`,
       `Điểm kiểm tra: ${scores.join(', ') || 'chưa có'}`,
       `Từ chưa nhớ: ${weak.join(', ') || 'không có'}`,
       `Lỗi thường gặp cần ôn: ${opened.flatMap((d) => (d.loi || []).slice(0, 1)).join('; ') || 'chưa có'}`].join('\n');
   }
   function progress(app) {
-    const re = new RegExp('^' + C.id + ':');
+    const re = new RegExp('^' + C.id + ':d');
     const t = PLT.data.tests.filter((x) => re.test(x.id));
     const all = vocabUpTo(99), nk = all.filter((w) => st().known[w.h] === 1).length;
     app.innerHTML = crumb('Tiến độ') + `<h1>📈 Tiến độ học ${C.ten.toLowerCase()}</h1>
-      <div class="facts zh-facts"><span><b>${D().days.filter((d) => isDone(d.n)).length}</b>/30 ngày hoàn thành</span><span><b>${nk}</b>/${all.length} từ đã nhớ</span><span><b>${t.length}</b> lượt kiểm tra</span></div>
-      <div class="card"><h3>Lộ trình Cấp 1</h3><table class="dtable full"><tr><th>Ngày</th><th>Nội dung</th><th>Phần đã xong</th><th>Điểm cao nhất</th></tr>${D().plan.map((p) => { const ds = st().days[p.n], b = bestOf(p.n), has = !!dayOf(p.n); return `<tr><td>${p.n}</td><td>${has ? `<a href="${base()}/ngay/${p.n}">${p.ten}</a>` : `<span class="muted">${p.ten} (sắp có)</span>`}</td><td>${ds ? PARTS.filter(([k]) => ds.parts[k]).map((x) => x[1]).join(' ') : ''}</td><td>${b != null ? `${b >= PASS ? '✅' : '🟡'} ${fmtD(b)}` : ''}</td></tr>`; }).join('')}</table></div>
+      <div class="facts zh-facts"><span><b>${D().days.filter((d) => isDone(d.n)).length}</b>/30 ngày hoàn thành</span><span><b>${nk}</b>/${all.length} từ đã nhớ</span><span><b>${t.length}</b> lượt kiểm tra</span>${st().mic && st().mic.n ? `<span>🎤 Nói trung bình <b>${Math.round(st().mic.sum / st().mic.n)}%</b></span>` : ''}</div>
+      <div class="card"><h3>Lộ trình Cấp ${LV()}</h3><table class="dtable full"><tr><th>Ngày</th><th>Nội dung</th><th>Phần đã xong</th><th>Điểm cao nhất</th></tr>${D().plan.map((p) => { const ds = st().days[p.n], b = bestOf(p.n), has = !!dayOf(p.n); return `<tr><td>${p.n}</td><td>${has ? `<a href="${base()}/ngay/${p.n}">${p.ten}</a>` : `<span class="muted">${p.ten} (sắp có)</span>`}</td><td>${ds ? PARTS.filter(([k]) => ds.parts[k]).map((x) => x[1]).join(' ') : ''}</td><td>${b != null ? `${b >= PASS ? '✅' : '🟡'} ${fmtD(b)}` : ''}</td></tr>`; }).join('')}</table></div>
       <div class="card"><h3>🧾 Tóm tắt tiến độ (chép sang cuộc trò chuyện với gia sư AI)</h3><p class="muted small">Dán đoạn này vào Claude/Gemini để gia sư AI biết em đang học tới đâu, rồi luyện nói thêm.</p><pre class="zh-rep">${esc(summary())}</pre><div class="row"><button class="btn ghost small" id="zcp">📋 Sao chép</button><button class="btn ghost small" id="zrs">🗑️ Xóa tiến độ ${C.ten.toLowerCase()}</button></div></div>
       <p class="muted small">Dữ liệu lưu trên trình duyệt của máy này.</p>`;
     $('#zcp').onclick = (e) => copy(summary(), e.target);
     $('#zrs').onclick = () => { if (confirm(`Xóa toàn bộ tiến độ và điểm kiểm tra ${C.ten.toLowerCase()} trên máy này?`)) { delete PLT.data[C.id]; PLT.data.tests = PLT.data.tests.filter((x) => !re.test(x.id)); PLT.save(); progress(app); } };
+  }
+
+  /* ---------- Thẻ luyện nói trong Phần B ---------- */
+  function noiCard(d) {
+    const noi = d.noi || d.vocab.filter((w) => w.ex).slice(0, 6).map((w) => [w.ex[0], w.ex[2]]);
+    if (!noi.length) return '';
+    return `<div class="card"><h3>🎤 Luyện nói${d.noi ? ' và ngữ điệu' : ''}</h3><p class="muted small">Bấm 🔊 nghe mẫu, rồi bấm 🎤 và đọc to cả câu. Máy so câu em nói với câu mẫu: <b style="color:#1f9d63">xanh</b> là máy nghe đúng, <b style="color:#d93f45">đỏ</b> là chưa nghe ra.${d.noi ? ' Chữ <b>in đậm</b> là từ được nhấn mạnh; ↗ lên giọng, ↘ xuống giọng, ‿ nối âm.' : ''}</p>${micNote()}${noi.map(sayRow).join('')}</div>`;
+  }
+
+  /* ---------- Tải dữ liệu phụ (ngữ pháp, phát âm, đề thi) ---------- */
+  const extra = {};
+  const need = (f, g) => { if (g()) return Promise.resolve(true); if (!extra[f]) extra[f] = loadScript(f).then(() => !!g()); return extra[f]; };
+  const EN = (x) => `<a href="#/tieng-anh">Tiếng Anh</a>${x ? ' › ' + x : ''}`;
+  const enCrumb = (x) => `<div class="crumb"><a href="#/">Trang chủ</a> › <a href="#/ngoai-ngu">Ngoại ngữ</a> › ${EN(x)}</div>`;
+  const LVS = ['A1', 'A2', 'B1', 'B2', 'C1'];
+  const best = (k, id) => { const s = st(); return (s[k] || {})[id]; };
+  const setBest = (k, id, v) => { const s = st(); s[k] = s[k] || {}; if (!(s[k][id] >= v)) { s[k][id] = v; PLT.save(); } };
+
+  /* ---------- Sổ tay ngữ pháp #/tieng-anh/ngu-phap ---------- */
+  function grammar(app, id) {
+    const GR = window.PLT_EN_GRAM || [];
+    const t = id && GR.find((x) => x.id === id);
+    if (!t) {
+      app.innerHTML = enCrumb('Sổ tay ngữ pháp') + `<h1>📐 Sổ tay ngữ pháp tiếng Anh</h1><p class="muted">${GR.length} chủ điểm từ A1 đến C1. Mỗi chủ điểm: công thức, cách dùng, ví dụ có giọng đọc, lỗi người Việt hay mắc và 6 câu luyện nhanh.</p>
+        <div class="row"><input class="sel" id="gq" placeholder="🔎 Tìm chủ điểm (ví dụ: present perfect, câu bị động)…" style="flex:1;min-width:240px"></div><div id="gl"></div>`;
+      const draw = (q) => { q = (q || '').toLowerCase(); $('#gl').innerHTML = LVS.map((lv) => { const xs = GR.filter((x) => x.lv === lv && (!q || (x.ten + ' ' + x.en).toLowerCase().includes(q))); return xs.length ? `<h2>${lv} <small class="muted">· ${xs.length} chủ điểm</small></h2><div class="tgrid">${xs.map((x) => { const b = best('gram', x.id); return `<a class="tcard${b >= 80 ? ' zh-done' : ''}" href="#/tieng-anh/ngu-phap/${x.id}"><b>${x.ten}</b><span class="muted small">${x.en}</span><span class="meta">${b != null ? `${b >= 80 ? '✅' : '🟡'} Luyện tập ${b}%` : 'Chưa luyện'}</span></a>`; }).join('')}</div>` : ''; }).join('') || '<div class="card">Không tìm thấy chủ điểm phù hợp.</div>'; };
+      draw(); $('#gq').oninput = (e) => draw(e.target.value); return;
+    }
+    const i = GR.indexOf(t), pv = GR[i - 1], nx = GR[i + 1];
+    app.innerHTML = enCrumb(`<a href="#/tieng-anh/ngu-phap">Ngữ pháp</a> › ${t.ten}`) + `<h1>${t.ten} <small class="muted">${t.en} · ${t.lv}</small></h1>${settingsBar()}
+      <div class="card zh-learn">${stx(t.y)}</div>${t.noi ? `<div class="card"><h3>🎤 Nói theo</h3>${micNote()}${t.noi.map(sayRow).join('')}</div>` : ''}
+      <div class="card"><h3>✍️ Luyện nhanh</h3><div id="pbox"></div></div>
+      <div class="row center">${pv ? `<a class="btn ghost" href="#/tieng-anh/ngu-phap/${pv.id}">◀ ${pv.ten}</a>` : ''}<a class="btn ghost" href="#/tieng-anh/ngu-phap">☰ Danh sách</a>${nx ? `<a class="btn ghost" href="#/tieng-anh/ngu-phap/${nx.id}">${nx.ten} ▶</a>` : ''}</div>`;
+    bindBar();
+    const go = () => PLT.Q.practice($('#pbox'), shuffle(t.qs.map(fromSpec).filter(Boolean)), { again: go, onDone: (ok, n) => setBest('gram', t.id, Math.round((ok / n) * 100)) });
+    go();
+  }
+
+  /* ---------- Phát âm và ngữ điệu #/tieng-anh/luyen-noi ---------- */
+  function speakLab(app, sec) {
+    const N = window.PLT_EN_NOI || { phan: [] }, s = st();
+    const x = sec && N.phan.find((y) => y.id === sec);
+    const avg = s.mic && s.mic.n ? `<span>🎤 Đã nói <b>${s.mic.n}</b> lượt · trung bình <b>${Math.round(s.mic.sum / s.mic.n)}%</b></span>` : '<span>🎤 Chưa có lượt nói nào</span>';
+    if (!x) {
+      app.innerHTML = enCrumb('Phát âm & ngữ điệu') + `<h1>🎤 Phát âm và ngữ điệu</h1><p class="muted">Nghe mẫu – nói theo – máy chấm từng từ. Đi theo thứ tự từ âm đơn lẻ đến ngữ điệu cả câu.</p>${micNote()}${voiceNote()}<div class="facts zh-facts">${avg}</div>
+        <div class="tgrid">${N.phan.map((y, k) => `<a class="tcard" href="#/tieng-anh/luyen-noi/${y.id}"><b>${y.icon} ${k + 1}. ${y.ten}</b><span class="muted small">${y.tom}</span><span class="meta">${y.cap ? y.cap.length + ' cặp âm' : y.cau.length + ' câu'}</span></a>`).join('')}</div>
+        <div class="card small"><b>Mẹo:</b> đeo tai nghe có micro, nói ở nơi yên tĩnh, nói <b>cả câu liền mạch</b> như nói chuyện. Máy nhận giọng chỉ biết em nói <b>đúng từ</b> hay không, chưa chấm được ngữ điệu, nên hãy <b>tự ghi âm</b> rồi so với mẫu phần lên – xuống giọng.</div>`;
+      return;
+    }
+    const k = N.phan.indexOf(x), nx = N.phan[k + 1];
+    app.innerHTML = enCrumb(`<a href="#/tieng-anh/luyen-noi">Phát âm & ngữ điệu</a> › ${x.ten}`) + `<h1>${x.icon} ${x.ten}</h1>${micNote()}${voiceNote()}${settingsBar()}<div class="card zh-learn">${stx(x.mo)}</div>
+      ${x.cap ? `<div class="card"><h3>👂 Cặp âm dễ nhầm</h3><p class="muted small">Nghe từng từ, rồi nói. Máy nghe ra đúng từ em định nói mới tính đúng.</p><div class="zh-pairs">${x.cap.map(([a, b, ga, gb]) => `<div class="zh-pair"><div>${sp(a)} <b>${a}</b> <small class="muted">${ga || ''}</small> ${mic(a)}</div><div>${sp(b)} <b>${b}</b> <small class="muted">${gb || ''}</small> ${mic(b)}</div></div>`).join('')}</div></div>
+        <div class="card"><h3>🎧 Trò chơi: nghe và chọn từ đúng (10 câu)</h3><div id="pbox"></div></div>` : ''}
+      ${x.cau && x.cau.length ? `<div class="card"><h3>🗣️ Nói theo câu mẫu</h3>${x.cau.map(sayRow).join('')}</div>` : ''}
+      <div class="row center"><a class="btn ghost" href="#/tieng-anh/luyen-noi">☰ Danh sách bài</a>${nx ? `<a class="btn" href="#/tieng-anh/luyen-noi/${nx.id}">${nx.ten} ▶</a>` : ''}</div>`;
+    bindBar();
+    if (x.cap) { const go = () => PLT.Q.practice($('#pbox'), shuffle(x.cap).concat(shuffle(x.cap)).slice(0, 10).map(([a, b]) => { const t = Math.random() < 0.5 ? a : b; return Object.assign(PLT.U.mc(`${sp(t, 'Nghe')} Em nghe thấy từ nào?`, t, [t === a ? b : a], `Vừa nghe: ${t}.`), { lbl: '🎧 Nghe phân biệt' }); }), { again: go }); go(); }
+  }
+
+  /* ---------- Luyện đề chứng chỉ #/tieng-anh/luyen-de ---------- */
+  const IELTS = [[9.4, 8.5], [8.7, 8], [8, 7.5], [7.2, 7], [6.5, 6.5], [5.7, 6], [5, 5.5], [4.2, 5], [3.4, 4.5], [2.6, 4], [0, 3.5]];
+  const estimate = (loai, d) => (loai === 'toeic' ? `≈ ${Math.max(10, Math.round((d * 99) / 5) * 5)}/990 TOEIC` : loai === 'ielts' ? `≈ IELTS band ${IELTS.find(([m]) => d >= m)[1]}` : `${Math.round(d * 10)}% · ${d >= 7 ? 'đạt mốc ' : 'chưa đạt mốc '}${loai.toUpperCase()} (cần ≥ 70%)`);
+  function expand(spec, tag) {
+    if (spec[0] === 'read') { const [, pass, items] = spec; return items.map(([q, a, dis, e], k) => Object.assign(PLT.U.mc(`<details class="zh-pass"${k ? '' : ' open'}><summary>📄 Bài đọc${k ? ' (giống câu trên)' : ''}</summary>${pass}</details>${q}`, a, dis, e), { lbl: tag })); }
+    if (spec[0] === 'talk') { const [, lines, items] = spec, t = lines.map(plain).join('|'); return items.map(([q, a, dis, e], k) => Object.assign(PLT.U.mc(`${sp(t, k ? 'Nghe lại đoạn hội thoại' : 'Nghe đoạn hội thoại')} ${q}`, a, dis, e + `<details><summary>Lời thoại</summary>${lines.map(esc).join('<br>')}</details>`), { lbl: tag })); }
+    const q = fromSpec(spec); return q ? [Object.assign(q, { lbl: tag })] : [];
+  }
+  function exams(app, a, b) {
+    const X = window.PLT_EN_EXAM || { gioi: '', de: [], viet: [], noi: [] };
+    if (a === 'de' && b) return examRun(app, X.de.find((x) => x.id === b));
+    if (a === 'viet' && b) return writeTask(app, X.viet.find((x) => x.id === b));
+    if (a === 'noi' && b) return talkTask(app, X.noi.find((x) => x.id === b));
+    const sc = (id) => { const r = PLT.data.tests.filter((t) => t.id === 'en-de:' + id); return r.length ? Math.max(...r.map((t) => t.diem)) : null; };
+    app.innerHTML = enCrumb('Luyện đề chứng chỉ') + `<h1>🏅 Luyện đề chứng chỉ tiếng Anh</h1><div class="card zh-learn">${X.gioi}</div>
+      <h2>📝 Đề nghe – đọc mô phỏng</h2><div class="tgrid">${X.de.map((x) => { const s = sc(x.id); return `<a class="tcard${s != null && s >= 7 ? ' zh-done' : ''}" href="#/tieng-anh/luyen-de/de/${x.id}"><b>${x.ten}</b><span class="muted small">${x.lv} · ${x.min} phút · ${x.mo}</span><span class="meta">${s != null ? `Cao nhất ${fmtD(s)}/10 · ${estimate(x.loai, s)}` : 'Chưa làm'}</span></a>`; }).join('')}</div>
+      <h2>✍️ Luyện viết</h2><div class="tgrid">${X.viet.map((x) => `<a class="tcard" href="#/tieng-anh/luyen-de/viet/${x.id}"><b>${x.ten}</b><span class="muted small">${x.lv} · ${x.min} phút · từ ${x.tu} từ</span><span class="meta">${best('viet', x.id) ? '✔ Đã viết ' + best('viet', x.id) + ' từ' : 'Chưa viết'}</span></a>`).join('')}</div>
+      <h2>🗣️ Luyện nói (thi nói IELTS / VSTEP)</h2><div class="tgrid">${X.noi.map((x) => `<a class="tcard" href="#/tieng-anh/luyen-de/noi/${x.id}"><b>${x.ten}</b><span class="muted small">${x.lv} · nói ${x.sec} giây</span><span class="meta">${best('noi', x.id) ? '✔ Đã nói ' + best('noi', x.id) + ' từ' : 'Chưa luyện'}</span></a>`).join('')}</div>
+      <p class="muted small">⚠️ Đề do PLT-Edu biên soạn theo <b>dạng bài</b> của kỳ thi thật, không phải đề chính thức. Điểm quy đổi chỉ để tham khảo xu hướng; muốn biết điểm chính xác hãy thi thử tại trung tâm được cấp phép.</p>`;
+  }
+  function examRun(app, x) {
+    if (!x) { app.innerHTML = enCrumb('Luyện đề') + '<div class="card">Không tìm thấy đề này.</div>'; return; }
+    app.innerHTML = enCrumb(`<a href="#/tieng-anh/luyen-de">Luyện đề</a> › ${x.ten}`) + `<h1>${x.ten}</h1><div class="card"><p>${x.mo} · <b>${x.min} phút</b></p>${x.phan.map((p) => `<p class="small"><b>${p.ten}:</b> ${p.mo}</p>`).join('')}<p class="muted small">Phần nghe dùng giọng đọc của trình duyệt; mỗi đoạn được nghe lại tối đa 2 lần như thi thật (tự giữ kỷ luật nhé).</p>${voiceNote()}<button class="btn" id="zgo">▶ Bắt đầu làm bài</button></div><div id="ebox"></div>`;
+    $('#zgo').onclick = () => {
+      $('#zgo').closest('.card').hidden = true; document.body.classList.add('in-exam');
+      const qs = x.phan.flatMap((p) => p.items.flatMap((s) => expand(s, p.ten)));
+      cur = PLT.Q.exam($('#ebox'), { id: 'en-de:' + x.id, subject: 'tieng-anh', title: 'Luyện đề: ' + x.ten, questions: qs, minutes: x.min, again: () => examRun(app, x), back: () => { location.hash = '#/tieng-anh/luyen-de'; } });
+      const mo = new MutationObserver(() => { const r = $('.rscore'); if (r && !$('.zh-est')) { const d = parseFloat(r.textContent.replace(',', '.')); r.insertAdjacentHTML('afterend', `<div class="zh-est">${estimate(x.loai, d)} <small>(quy đổi tham khảo)</small></div>`); mo.disconnect(); } });
+      mo.observe($('#ebox'), { childList: true, subtree: true });
+    };
+  }
+  function writeTask(app, x) {
+    if (!x) { app.innerHTML = enCrumb('Luyện viết') + '<div class="card">Không tìm thấy đề này.</div>'; return; }
+    const key = 'vb:' + x.id, s = st(); s.draft = s.draft || {};
+    app.innerHTML = enCrumb(`<a href="#/tieng-anh/luyen-de">Luyện đề</a> › ${x.ten}`) + `<h1>✍️ ${x.ten}</h1><div class="card"><p class="small muted">${x.lv} · ${x.min} phút · tối thiểu ${x.tu} từ</p><div class="zh-pass">${x.de}</div><details><summary>💡 Gợi ý dàn ý</summary><ul>${x.goi.map((g) => `<li>${g}</li>`).join('')}</ul></details></div>
+      <div class="card"><textarea class="zh-ta" id="wta" rows="12" placeholder="Viết bài bằng tiếng Anh ở đây…">${esc(s.draft[key] || '')}</textarea><div class="row small"><b id="wwc">0 từ</b><span id="wtm"></span></div>
+      <h3>✅ Tự kiểm tra trước khi nộp</h3><ul class="small">${['Đủ số từ yêu cầu', 'Trả lời đủ mọi ý của đề', 'Có mở bài – thân bài – kết bài, mỗi đoạn một ý', 'Dùng từ nối (firstly, however, as a result…)', 'Chia thì đúng, có chủ ngữ – động từ trong mỗi câu', 'Kiểm tra chính tả, dấu câu, chữ hoa'].map((c) => `<li><label><input type="checkbox"> ${c}</label></li>`).join('')}</ul>
+      <div class="row"><button class="btn" id="wai">🤖 Nhận xét bài viết</button><button class="btn ghost" id="wcp">📋 Sao chép đề + bài để nhờ gia sư AI chấm</button></div><div id="wfb"></div>
+      <details><summary>📖 Xem bài mẫu tham khảo</summary><div class="zh-pass">${x.mau}</div></details></div>`;
+    const ta = $('#wta'), wc = () => ta.value.split(/\s+/).filter(Boolean).length; let t0 = Date.now();
+    const up = () => { const n = wc(); $('#wwc').textContent = `${n} từ${n < x.tu ? ` (cần thêm ${x.tu - n})` : ' ✔'}`; s.draft[key] = ta.value; PLT.save(); };
+    ta.oninput = up; up();
+    const tm = setInterval(() => { const el = $('#wtm'); if (!el) return clearInterval(tm); const m = Math.floor((Date.now() - t0) / 60000); el.textContent = `⏱ ${m}/${x.min} phút`; }, 5000);
+    const prompt = () => `Bạn là giám khảo ${x.lv}. Chấm bài viết sau theo 4 tiêu chí (Task response, Coherence & cohesion, Lexical resource, Grammar), cho band ước lượng, chỉ ra 5 lỗi sai kèm cách sửa và viết lại 2 câu hay hơn. Giải thích bằng tiếng Việt.\n\nĐỀ: ${plain(x.de)}\n\nBÀI VIẾT (${wc()} từ):\n${ta.value}`;
+    $('#wcp').onclick = (e) => copy(prompt(), e.target);
+    $('#wai').onclick = async () => {
+      const n = wc(); if (n < 20) { $('#wfb').innerHTML = '<div class="fb warn">Em viết thêm đã nhé (ít nhất 20 từ).</div>'; return; }
+      setBest('viet', x.id, n);
+      const q = Object.assign(PLT.U.essay(plain(x.de), 10, plain(x.mau), []), { kw: x.keys || [], minCau: Math.ceil(x.tu / 15) });
+      $('#wfb').innerHTML = '<p class="muted">Đang nhận xét…</p>';
+      const r = PLT.data.settings && PLT.data.settings.apiKey ? (await PLT.Q.aiGrade([{ q, resp: ta.value }]))[0] : PLT.Q.heuristic(q, ta.value);
+      $('#wfb').innerHTML = `<div class="fb ${r.diem >= 6.5 ? 'good' : 'warn'}"><b>${fmtD(r.diem)}/10</b> ${r.src === 'ai' ? '(AI nhận xét)' : '(chấm sơ bộ theo độ dài và từ khoá – chưa có khoá AI trong Cài đặt)'}${r.nhan_xet ? '<br>' + esc(r.nhan_xet) : ''}<br><span class="small">Muốn nhận xét chi tiết miễn phí: bấm "Sao chép đề + bài" rồi dán vào Claude/Gemini.</span></div>`;
+    };
+  }
+  let talk = null;
+  function talkTask(app, x) {
+    if (!x) { app.innerHTML = enCrumb('Luyện nói') + '<div class="card">Không tìm thấy đề này.</div>'; return; }
+    app.innerHTML = enCrumb(`<a href="#/tieng-anh/luyen-de">Luyện đề</a> › ${x.ten}`) + `<h1>🗣️ ${x.ten}</h1>${micNote()}<div class="card"><p class="small muted">${x.lv} · chuẩn bị 1 phút · nói ${x.sec} giây</p><div class="zh-pass">${x.cue} ${sp(plain(x.cue))}</div><details><summary>💡 Gợi ý ý tưởng và cụm từ</summary><ul>${x.goi.map((g) => `<li>${g}</li>`).join('')}</ul></details>
+      <div class="row"><button class="btn ghost" id="tprep">⏳ Chuẩn bị 60 giây</button><button class="btn" id="tgo">🎤 Bắt đầu nói</button></div><div id="tout"></div><div id="tfb"></div>
+      <details><summary>📖 Bài nói mẫu tham khảo</summary><div class="zh-pass">${x.mau} ${sp(plain(x.mau), 'Nghe')}</div></details></div>`;
+    $('#tprep').onclick = (e) => { let k = 60; const b = e.target; b.disabled = true; const t = setInterval(() => { k--; b.textContent = `⏳ Còn ${k} giây`; if (k <= 0 || !document.body.contains(b)) { clearInterval(t); b.textContent = '✔ Hết giờ chuẩn bị'; } }, 1000); };
+    $('#tgo').onclick = (e) => {
+      if (talk) { talk.stop(); return; }
+      const b = e.target; b.textContent = '⏹ Dừng'; b.classList.add('rec');
+      talk = freeTalk($('#tout'), b, x.sec, (text, wc, wpm) => {
+        talk = null; b.textContent = '🎤 Nói lại'; b.classList.remove('rec'); if (!text) return;
+        setBest('noi', x.id, wc);
+        const used = (x.keys || []).filter((k) => text.toLowerCase().includes(k.toLowerCase()));
+        $('#tfb').innerHTML = `<div class="fb ${wc >= x.sec * 1.2 ? 'good' : 'warn'}">📝 <b>${wc} từ</b> · tốc độ <b>${wpm} từ/phút</b> ${wpm < 90 ? '(hơi chậm, mục tiêu 110–150)' : wpm > 170 ? '(hơi nhanh, chậm lại cho rõ)' : '(tốt)'}${x.keys ? `<br>Cụm từ hay đã dùng: ${used.length ? used.join(', ') : 'chưa có'} (${used.length}/${x.keys.length})` : ''}<br><span class="small">Sao chép phần lời nói để nhờ gia sư AI chữa lỗi: <button class="btn ghost small" id="tcp">📋 Sao chép</button></span></div>`;
+        $('#tcp').onclick = (ev) => copy(`Bạn là giám khảo nói ${x.lv}. Đây là bản ghi lời nói của tôi (máy nhận dạng, có thể sai chính tả). Hãy cho band ước lượng theo Fluency, Vocabulary, Grammar, chỉ ra lỗi và gợi ý cách nói tự nhiên hơn. Giải thích bằng tiếng Việt.\n\nĐỀ: ${plain(x.cue)}\n\nLỜI NÓI (${wc} từ, ${wpm} từ/phút):\n${text}`, ev.target);
+      });
+      if (!talk) { b.textContent = '🎤 Bắt đầu nói'; b.classList.remove('rec'); }
+    };
   }
 
   /* ---------- Điều hướng ---------- */
@@ -496,7 +711,17 @@
     stop();
     const tok = ++rt;
     if (p[0] === 'ngoai-ngu' || !COURSES[p[0]]) return hub(app);
+    if (/^c[2-5]$/.test(p[1] || '')) { if (!COURSES[p[0] + '-' + p[1]]) { C = COURSES[p[0]]; return hub(app); } p = [p[0] + '-' + p[1]].concat(p.slice(2)); }
     C = COURSES[p[0]];
+    const XF = { 'ngu-phap': ['subjects/nn/en-gram.js', () => window.PLT_EN_GRAM], 'luyen-noi': ['subjects/nn/en-noi.js', () => window.PLT_EN_NOI], 'luyen-de': ['subjects/nn/en-exam.js', () => window.PLT_EN_EXAM] };
+    if (C.id === 'en' && XF[p[1]]) {
+      app.innerHTML = '<p class="muted">Đang tải…</p>'; const ok = await need(...XF[p[1]]); if (tok !== rt) return;
+      if (!ok) { app.innerHTML = '<div class="card">Không tải được dữ liệu. Kiểm tra kết nối và tải lại trang.</div>'; return; }
+      pickVoice();
+      if (p[1] === 'ngu-phap') return grammar(app, p[2]);
+      if (p[1] === 'luyen-noi') return speakLab(app, p[2]);
+      return exams(app, p[2], p[3]);
+    }
     if (!C.data()) {
       app.innerHTML = `<p class="muted">Đang tải bài học ${C.ten.toLowerCase()}…</p>`;
       const ok = await ensure(C); if (tok !== rt) return;
@@ -513,7 +738,7 @@
     if (k === 'tien-do') return progress(app);
     return home(app);
   }
-  function stop() { if (cur) { cur.stop(); cur = null; } if (TTS) speechSynthesis.cancel(); document.body.classList.remove('in-exam'); }
-  PLT.LANG = { route, stop, say, toneSVG, SETS, sp, COURSES, LEVELS };
+  function stop() { curDay = 0; if (rec) { try { rec.abort(); } catch (e) { /* bỏ qua */ } rec = null; } if (talk) { talk.stop(); talk = null; } if (cur) { cur.stop(); cur = null; } if (TTS) speechSynthesis.cancel(); document.body.classList.remove('in-exam'); }
+  PLT.LANG = { route, stop, say, toneSVG, SETS, sp, into, plain, mic, sayRow, COURSES, LEVELS };
   PLT.ZH = PLT.LANG; // tương thích với file dữ liệu tiếng Trung
 })();
