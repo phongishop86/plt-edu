@@ -36,7 +36,7 @@
       chung: 'Kỳ thi TOPIK: TOPIK I (cấp 1–2, nghe + đọc) và TOPIK II (cấp 3–6, nghe + đọc + viết); thi nói TOPIK Speaking tổ chức riêng.',
       cap: [
         { ten: 'Cấp 1 – Nhập môn', moc: 'TOPIK I · cấp 1', tg: '30 ngày', muc: 'Đọc – viết Hangul, ~300 từ, giao tiếp sinh hoạt cơ bản.', co: 1 },
-        { ten: 'Cấp 2 – Sơ cấp', moc: 'TOPIK I · cấp 2', tg: '2–3 tháng', muc: 'Kính ngữ cơ bản, thì quá khứ – tương lai, nối câu; giao tiếp ở cửa hàng, ngân hàng, bệnh viện.' },
+        { ten: 'Cấp 2 – Sơ cấp', moc: 'TOPIK I · cấp 2', tg: '30 ngày', muc: 'Kính ngữ, bất quy tắc, tương lai, nối câu; bệnh viện, ngân hàng, thuê nhà, công sở; luyện đọc – nghe TOPIK I.', co: 1 },
         { ten: 'Cấp 3 – Trung cấp 1', moc: 'TOPIK II · cấp 3', tg: '3–4 tháng', muc: 'Diễn đạt lý do, điều kiện; đọc thông báo, tin tức đơn giản; viết đoạn văn ngắn.' },
         { ten: 'Cấp 4 – Trung cấp 2', moc: 'TOPIK II · cấp 4', tg: '6 tháng', muc: 'Làm việc trong môi trường Hàn Quốc, thuyết trình, đọc báo.' },
         { ten: 'Cấp 5 – Cao cấp', moc: 'TOPIK II · cấp 5–6', tg: '6–12 tháng', muc: 'Học thuật, biên – phiên dịch, viết luận.' }
@@ -144,6 +144,13 @@
     lead: '30 ngày với <b>văn ngôn, điển cố, văn phong học thuật</b>, kỹ thuật <b>biên – phiên dịch</b> tài chính, CNTT, pháp lý, rồi diễn văn, lễ tân, đàm phán đầu tư, thơ Đường, Khổng – Lão, ngôn ngữ mạng và ứng biến. Kết thúc bằng kế hoạch <b>tự học suốt đời</b>.',
     card: () => zhCard('千里之行，始于足下。', 'Qiān lǐ zhī xíng, shǐ yú zú xià.', 'Đi nghìn dặm bắt đầu từ một bước chân.'),
     profile: 'người Việt đã xong HSK 5–6, học 30–45 phút/ngày, mục tiêu HSK 7–9, biên – phiên dịch và giao tiếp cấp cao.'
+  });
+  const koCard = (h, p, v) => `<b>Nghe và nói thử</b><p class="zh-srt">${sp(h, h)}</p><p class="small muted">${p} – ${v}</p>${mic(h)}`;
+  COURSES['tieng-han-c2'] = lvl('tieng-han', 2, 'TOPIK I · cấp 2', LV_FILES('ko', 2), {
+    data: () => window.PLT_KO2, tools: KO_TOOLS, eyebrow: 'Cấp 2/5 · Sơ cấp · Hướng tới TOPIK I cấp 2', h1: '🇰🇷 Tiếng Hàn cấp 2: <em>kính ngữ, nối câu, đời sống ở Hàn</em>',
+    lead: '30 ngày với <b>kính ngữ, động từ bất quy tắc, tương lai, nối câu, muốn – có thể – phải – cấm</b>, rồi bệnh viện, ngân hàng, thuê nhà, công sở, lễ tết. Kết thúc bằng <b>luyện đọc – nghe dạng TOPIK I</b>.',
+    card: () => koCard('맛있게 드세요.', 'masitge deuseyo', 'Chúc ngon miệng (kính ngữ).'),
+    profile: 'người Việt đã xong tiếng Hàn cấp 1, học 30–45 phút/ngày, mục tiêu TOPIK I cấp 2 và giao tiếp công sở.'
   });
   let C = COURSES['tieng-trung'];
   const D = () => C.data() || { plan: [], days: [] };
