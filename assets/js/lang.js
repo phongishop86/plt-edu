@@ -38,7 +38,7 @@
         { ten: 'Cấp 1 – Nhập môn', moc: 'TOPIK I · cấp 1', tg: '30 ngày', muc: 'Đọc – viết Hangul, ~300 từ, giao tiếp sinh hoạt cơ bản.', co: 1 },
         { ten: 'Cấp 2 – Sơ cấp', moc: 'TOPIK I · cấp 2', tg: '30 ngày', muc: 'Kính ngữ, bất quy tắc, tương lai, nối câu; bệnh viện, ngân hàng, thuê nhà, công sở; luyện đọc – nghe TOPIK I.', co: 1 },
         { ten: 'Cấp 3 – Trung cấp 1', moc: 'TOPIK II · cấp 3', tg: '30 ngày', muc: '-는데, gián tiếp, phỏng đoán, bị động; tin tức, môi trường, văn hoá; viết câu 51–53, thuyết trình, phỏng vấn.', co: 1 },
-        { ten: 'Cấp 4 – Trung cấp 2', moc: 'TOPIK II · cấp 4', tg: '6 tháng', muc: 'Làm việc trong môi trường Hàn Quốc, thuyết trình, đọc báo.' },
+        { ten: 'Cấp 4 – Trung cấp 2', moc: 'TOPIK II · cấp 4', tg: '30 ngày', muc: 'Văn viết, Hán Hàn, quán dụng ngữ, tục ngữ; viết câu 54; kinh tế – xã hội, đàm phán, tranh luận.', co: 1 },
         { ten: 'Cấp 5 – Cao cấp', moc: 'TOPIK II · cấp 5–6', tg: '6–12 tháng', muc: 'Học thuật, biên – phiên dịch, viết luận.' }
       ]
     }
@@ -157,6 +157,12 @@
     lead: '30 ngày với <b>-는데, câu gián tiếp, phỏng đoán, bị động, -게 되다</b>, rồi tin tức, môi trường, văn hoá, giáo dục, công nghệ. Luyện <b>viết câu 51–53, đọc – nghe TOPIK II</b>, thuyết trình và phỏng vấn.',
     card: () => koCard('부탁이 있는데요.', 'butagi inneundeyo', 'Tôi có việc muốn nhờ ạ.'),
     profile: 'người Việt đã xong tiếng Hàn cấp 2 (TOPIK I), học 30–45 phút/ngày, mục tiêu TOPIK II cấp 3 và giao tiếp công sở.'
+  });
+  COURSES['tieng-han-c4'] = lvl('tieng-han', 4, 'TOPIK II · cấp 4', LV_FILES('ko', 4), {
+    data: () => window.PLT_KO4, tools: KO_TOOLS, eyebrow: 'Cấp 4/5 · Trung cấp 2 · Hướng tới TOPIK II cấp 4', h1: '🇰🇷 Tiếng Hàn cấp 4: <em>văn viết, quán dụng ngữ, tranh luận, câu 54</em>',
+    lead: '30 ngày với <b>불구하고, 바람에, 마련이다, -다 보니, danh từ hoá</b>, từ Hán Hàn, quán dụng ngữ, tục ngữ, <b>viết câu 54</b>, kinh tế – xã hội, văn hoá doanh nghiệp, đàm phán, tranh luận và phản đối khéo với cấp trên.',
+    card: () => koCard('처음에는 누구나 실수하기 마련이에요.', 'cheoeumeneun nuguna silsuhagi maryeonieyo', 'Lúc đầu ai cũng mắc lỗi thôi.'),
+    profile: 'người Việt đã xong tiếng Hàn cấp 3, học 30–45 phút/ngày, mục tiêu TOPIK II cấp 4 và làm việc trong công ty Hàn.'
   });
   let C = COURSES['tieng-trung'];
   const D = () => C.data() || { plan: [], days: [] };
