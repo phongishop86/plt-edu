@@ -17,7 +17,7 @@
       cap: [
         { ten: 'Cấp 1 – Nhập môn', moc: 'HSK 1–2', tg: '30 ngày', muc: 'Pinyin, 4 thanh, ~300 từ, giao tiếp sinh hoạt cơ bản.', co: 1 },
         { ten: 'Cấp 2 – Sơ cấp', moc: 'HSK 3', muc: 'Bổ ngữ, câu 把 – 被, so sánh, liên từ; thuê nhà, ngân hàng, du lịch, phỏng vấn, mua sắm online.', tg: '30 ngày', co: 1 },
-        { ten: 'Cấp 3 – Trung cấp', moc: 'HSK 4', tg: '3–4 tháng', muc: 'Thảo luận chủ đề quen thuộc, công việc; nghe hiểu tốc độ bình thường.' },
+        { ten: 'Cấp 3 – Trung cấp', moc: 'HSK 4', tg: '30 ngày', muc: 'Câu phức 连…都, 即使, 无论; văn viết, email; họp, đàm phán, số liệu; nghe – viết dạng HSK 4.', co: 1 },
         { ten: 'Cấp 4 – Trung cao', moc: 'HSK 5–6', tg: '6 tháng', muc: 'Đọc báo, xem phim, thuyết trình, viết email công việc.' },
         { ten: 'Cấp 5 – Cao cấp', moc: 'HSK 7–9', tg: '6–12 tháng', muc: 'Biên – phiên dịch, học thuật, đàm phán chuyên sâu.' }
       ]
@@ -126,6 +126,12 @@
     lead: '30 ngày nắm chắc <b>了/过, các loại bổ ngữ, so sánh, câu 把 và 被, liên từ</b>, rồi dùng chúng trong tình huống thật: thuê nhà, ngân hàng, du lịch, phỏng vấn, mua sắm online. Mỗi ngày có phần <b>🎤 nói theo để máy chấm</b>.',
     card: () => zhCard('我把文件发给你了。', 'Wǒ bǎ wénjiàn fā gěi nǐ le.', 'Tôi gửi tài liệu cho bạn rồi.'),
     profile: 'người Việt đã xong HSK 1–2, chữ giản thể, học 30–45 phút/ngày, mục tiêu HSK 3 và giao tiếp công việc.'
+  });
+  COURSES['tieng-trung-c3'] = lvl('tieng-trung', 3, 'HSK 4', LV_FILES('zh', 3), {
+    data: () => window.PLT_ZH3, tools: ZH_TOOLS, kinds: ZK, eyebrow: 'Cấp 3/5 · Trung cấp · Hướng tới HSK 4 (~1200 từ)', h1: '🀄 Tiếng Trung HSK 4: <em>câu phức, văn viết, tiếng Trung công sở</em>',
+    lead: '30 ngày với <b>连…都, 即使…也, 无论…都, 不是…而是, liên từ văn viết, trạng từ thái độ</b>, rồi họp, khiếu nại, email, tài chính, số liệu, đàm phán. Kết thúc bằng <b>luyện nghe – viết dạng HSK 4</b>.',
+    card: () => zhCard('即使下雨，我们也按时出发。', 'Jíshǐ xià yǔ, wǒmen yě ànshí chūfā.', 'Dù mưa, chúng ta vẫn xuất phát đúng giờ.'),
+    profile: 'người Việt đã xong HSK 3, chữ giản thể, học 30–45 phút/ngày, mục tiêu HSK 4 và tiếng Trung công sở.'
   });
   let C = COURSES['tieng-trung'];
   const D = () => C.data() || { plan: [], days: [] };
