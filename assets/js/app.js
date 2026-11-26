@@ -108,7 +108,7 @@
     { ic: '🌏', ten: 'Ngoại ngữ: Trung · Anh · Hàn', tag: 'Mới', wide: 1, mo: 'Lộ trình tự học từ cơ bản đến nâng cao, mỗi thứ tiếng 5 cấp bám theo HSK, CEFR/IELTS, TOPIK. Cấp 1 gồm 30 ngày: kiến thức mới, luyện tập, hội thoại tình huống, có giọng đọc mẫu.', meta: ['3 thứ tiếng', '5 cấp độ', '30 ngày/cấp 1', 'Mọi lứa tuổi'],
       parts: [['🀄', 'Tiếng Trung', 'Pinyin, 4 thanh, giao tiếp · hướng tới HSK', '#/tieng-trung'], ['🇬🇧', 'Tiếng Anh', 'A1 → C1 · phát âm, ngữ pháp, luyện đề TOEIC/IELTS', '#/tieng-anh'], ['🇰🇷', 'Tiếng Hàn', 'Bảng chữ Hangul, giao tiếp · hướng tới TOPIK', '#/tieng-han']],
       go: [['#/ngoai-ngu', 'Xem lộ trình 5 cấp']] },
-    { ic: '🤖', ten: 'AI Edu', tag: 'Học AI', mo: 'Học cách dùng trí tuệ nhân tạo an toàn, hiệu quả cho học tập và cuộc sống: 4 cấp Tiểu học, THCS, THPT, Người đi làm – 60 buổi, miễn phí.', meta: ['An toàn', 'Miễn phí'], go: [['ai/', 'Mở AI Edu']] }
+    { ic: '🤖', ten: 'AI Edu', tag: 'Học AI', mo: 'Học cách dùng trí tuệ nhân tạo an toàn, hiệu quả cho học tập và cuộc sống: 4 cấp Tiểu học, THCS, THPT, Người đi làm và khoá Học Claude từ cơ bản đến nâng cao – 76 buổi, miễn phí.', meta: ['An toàn', 'Miễn phí'], go: [['ai/', 'Mở AI Edu']] }
   ];
   function home() {
     const name = PLT.data.settings.name, has = hasLop(), l = curLop();

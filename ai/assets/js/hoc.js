@@ -31,7 +31,7 @@ function lesson() {
   h += '<h3>Điều cần nhớ</h3><ul class="points">' + l.pts.map(function (p) { return "<li>" + p + "</li>"; }).join("") + '</ul>';
   h += '<h3>Kiểm tra nhanh</h3><div class="quiz">';
   l.q.forEach(function (q, qi) {
-    h += '<div class="q" data-q="' + qi + '"><p>' + (qi + 1) + '. ' + q[0] + '</p><div class="opts">' + q[1].map(function (o, oi) { return '<button class="opt" type="button" data-o="' + oi + '">' + o + '</button>'; }).join("") + '</div><p class="fb" role="status"></p></div>';
+    h += '<div class="q" data-q="' + qi + '"><p>' + (qi + 1) + '. ' + q[0] + '</p><div class="opts">' + q[1].map(function (o, oi) { return [oi, o]; }).sort(function (x, y) { return ((x[0] + i + qi * 2) % q[1].length) - ((y[0] + i + qi * 2) % q[1].length); }).map(function (x) { return '<button class="opt" type="button" data-o="' + x[0] + '">' + x[1] + '</button>'; }).join("") + '</div><p class="fb" role="status"></p></div>';
   });
   var isDone = st.done.indexOf(i) > -1;
   h += '</div><div class="done-row"><button class="btn dark" type="button" id="markBtn">' + (isDone ? "Đã học xong ✓" : "Đánh dấu đã học") + '</button>';
