@@ -209,3 +209,5 @@ window.AIEDU_LEVEL.lessons.push(
  ]
 }
 );
+/* Video tóm tắt mỗi buổi (dựng bằng HTML động → MP4, không lồng tiếng): assets/video/clNN.mp4 */
+window.AIEDU_LEVEL.lessons.forEach(function (l, i) { l.vid = "cl" + String(i + 1).padStart(2, "0"); });

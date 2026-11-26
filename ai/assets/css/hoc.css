@@ -73,3 +73,5 @@ textarea{width:100%;min-height:170px;font:inherit;font-size:16px;line-height:1.5
   .toc button .t{display:none}
   .lesson .cover{aspect-ratio:16/9}
 }
+.lvid{margin:0 0 18px}.lvid b{display:block;margin-bottom:8px}
+.lvid video{width:100%;aspect-ratio:16/9;border-radius:14px;background:#1B2A4A;display:block}

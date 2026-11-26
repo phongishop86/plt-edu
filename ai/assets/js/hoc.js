@@ -27,6 +27,7 @@ function lesson() {
   var i = st.cur, l = L[i], P = D.parts[l.p], cov = l.s[0];
   var h = '<div class="cover">' + AIIMG("../", cov.img, cov.alt) + '</div><div class="in">';
   h += '<span class="tag ' + P.cls + '">' + P.name + ' · Buổi ' + (i + 1) + '</span><h2>' + l.t + '</h2><p class="goal">' + l.g + '</p>';
+  if (l.vid) h += '<div class="lvid"><b>🎬 Video tóm tắt buổi ' + (i + 1) + '</b><video controls preload="none" playsinline poster="../assets/img/' + cov.img + '.jpg" src="../assets/video/' + l.vid + '.mp4"></video></div>';
   h += '<div class="watch"><a class="btn" href="bai-giang.html?b=' + (i + 1) + '">Xem bài giảng (' + l.s.length + ' slide)</a></div>';
   h += '<h3>Điều cần nhớ</h3><ul class="points">' + l.pts.map(function (p) { return "<li>" + p + "</li>"; }).join("") + '</ul>';
   h += '<h3>Kiểm tra nhanh</h3><div class="quiz">';
