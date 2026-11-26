@@ -137,7 +137,7 @@ ${list.map((x, i) => `CÂU ${i + 1} (tối đa ${x.q.max} điểm)\nĐề: ${str
       const qel = box.querySelector('#pq'); render(q, qel, st, { onChange() { } });
       box.querySelector('#pchk').onclick = () => {
         if (!answered(q, st)) { box.querySelector('#pfb').innerHTML = '<div class="fb warn">Em hãy trả lời trước đã nhé!</div>'; return; }
-        const right = check(q, st); if (right) ok++;
+        const right = check(q, st); if (right) ok++; if (opt.onAnswer) opt.onAnswer(right, i, qs.length);
         render(q, qel, st, { review: true });
         box.querySelector('#pfb').innerHTML = `<div class="fb ${right ? 'good' : 'badf'}">${right ? '🎉 Chính xác!' : '😅 Chưa đúng rồi.'}</div>`;
         const b = box.querySelector('#pchk'); b.textContent = i === qs.length - 1 ? 'Xem kết quả' : 'Câu tiếp ▶'; b.onclick = () => { i++; step(); };
