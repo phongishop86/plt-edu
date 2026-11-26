@@ -19,7 +19,7 @@
         { ten: 'Cấp 2 – Sơ cấp', moc: 'HSK 3', muc: 'Bổ ngữ, câu 把 – 被, so sánh, liên từ; thuê nhà, ngân hàng, du lịch, phỏng vấn, mua sắm online.', tg: '30 ngày', co: 1 },
         { ten: 'Cấp 3 – Trung cấp', moc: 'HSK 4', tg: '30 ngày', muc: 'Câu phức 连…都, 即使, 无论; văn viết, email; họp, đàm phán, số liệu; nghe – viết dạng HSK 4.', co: 1 },
         { ten: 'Cấp 4 – Trung cao', moc: 'HSK 5–6', tg: '30 ngày', muc: 'Thành ngữ, văn viết, đọc báo, thuyết trình, hợp đồng, tranh luận, khủng hoảng truyền thông; viết 缩写.', co: 1 },
-        { ten: 'Cấp 5 – Cao cấp', moc: 'HSK 7–9', tg: '6–12 tháng', muc: 'Biên – phiên dịch, học thuật, đàm phán chuyên sâu.' }
+        { ten: 'Cấp 5 – Cao cấp', moc: 'HSK 7–9', tg: '30 ngày', muc: 'Văn ngôn, điển cố, học thuật; biên – phiên dịch tài chính, CNTT, pháp lý; ngoại giao, thơ Đường, tự học suốt đời.', co: 1 }
       ]
     },
     'tieng-anh': {
@@ -138,6 +138,12 @@
     lead: '30 ngày với <b>thành ngữ, hư từ văn ngôn, câu lựa chọn và điều kiện chặt</b>, đọc báo kinh tế, thuyết trình, nghị luận, hợp đồng, thông cáo, tranh luận và khủng hoảng truyền thông. Kết thúc bằng <b>luyện viết tóm tắt 缩写</b>.',
     card: () => zhCard('与其抱怨，不如行动。', 'Yǔqí bàoyuàn, bùrú xíngdòng.', 'Thay vì than phiền, chẳng bằng hành động.'),
     profile: 'người Việt đã xong HSK 4, chữ giản thể, học 30–45 phút/ngày, mục tiêu HSK 5–6 và tiếng Trung chuyên môn.'
+  });
+  COURSES['tieng-trung-c5'] = lvl('tieng-trung', 5, 'HSK 7–9', LV_FILES('zh', 5), {
+    data: () => window.PLT_ZH5, tools: ZH_TOOLS, kinds: ZK, eyebrow: 'Cấp 5/5 · Cao cấp · Hướng tới HSK 7–9, biên – phiên dịch', h1: '🀄 Tiếng Trung HSK 7–9: <em>văn ngôn, dịch thuật, học thuật, ngoại giao</em>',
+    lead: '30 ngày với <b>văn ngôn, điển cố, văn phong học thuật</b>, kỹ thuật <b>biên – phiên dịch</b> tài chính, CNTT, pháp lý, rồi diễn văn, lễ tân, đàm phán đầu tư, thơ Đường, Khổng – Lão, ngôn ngữ mạng và ứng biến. Kết thúc bằng kế hoạch <b>tự học suốt đời</b>.',
+    card: () => zhCard('千里之行，始于足下。', 'Qiān lǐ zhī xíng, shǐ yú zú xià.', 'Đi nghìn dặm bắt đầu từ một bước chân.'),
+    profile: 'người Việt đã xong HSK 5–6, học 30–45 phút/ngày, mục tiêu HSK 7–9, biên – phiên dịch và giao tiếp cấp cao.'
   });
   let C = COURSES['tieng-trung'];
   const D = () => C.data() || { plan: [], days: [] };
