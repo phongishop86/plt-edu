@@ -353,3 +353,35 @@ button.grade{font:inherit;cursor:pointer;border:0}
 @media (max-width:980px){.nav>a span,.nav .ddb span{display:none}.nav>a,.nav .ddb{font-size:1.15rem;padding:7px 10px}}
 @media (max-width:600px){.top .in .nav{order:9;flex-basis:100%;justify-content:space-between;margin-left:0}.nav>a,.nav .dd{flex:1;text-align:center;justify-content:center}.nav .ddb{width:100%;justify-content:center}
   .nav .dd{position:static}.nav .ddm{left:8px;right:8px;min-width:0}.lopbox{margin-left:auto}}
+
+/* ===== Giao diện gọn (thu nhỏ biểu tượng, tiêu đề, khoảng cách) – để mỗi trang hiển thị được nhiều nội dung trong 1 màn hình ===== */
+body{font-size:15px;line-height:1.55}
+h1{font-size:1.45rem;margin:.25em 0 .35em}h2{font-size:1.12rem;margin:1em 0 .5em}h3{font-size:1.02rem;margin:.15em 0 .55em}
+.top .in{padding:5px 16px}.logo{font-size:1.08rem}.logo img{width:36px;height:36px}.logo small{font-size:.66rem}
+.gear{width:34px;height:34px;font-size:1rem}.lopic{width:30px;height:30px;font-size:1rem}.lopsel{padding:4px 6px 4px 2px;font-size:.92rem}
+.nav a,.nav .ddb{padding:6px 10px;font-size:.92rem}
+main{padding:12px 16px 50px}
+.card{padding:14px;margin:10px 0}
+.btn{padding:8px 14px;border-radius:10px;font-size:.95rem}
+.hero2 .hw{padding:18px 16px 22px;gap:24px}
+.hero2 h1{font-size:clamp(22px,2.6vw,32px);margin:6px 0 8px}
+.hero2 .lead{font-size:clamp(14px,1.15vw,15.5px);margin:0 0 12px}
+.eyebrow{font-size:11.5px}.facts{font-size:12.5px;margin-top:10px;gap:4px 16px}
+.hcard{padding:14px;border-radius:18px;gap:8px}.hcard .hl img{width:52px;height:52px}.hcard .hl b{font-size:16px}.hcard .hl span{font-size:13px}
+.hcard .qa a{padding:8px 4px;font-size:13px}.hcard .qa a span{font-size:18px}.hcard .steps{gap:4px}
+.feats{grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px}.zh-tools{grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}
+.feat{padding:12px 14px;border-radius:14px}.feat span{font-size:1.4rem}.feat b{font-size:.98rem;margin:2px 0}.feat p{font-size:.84rem}
+.subjects{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}.subj{padding:12px 14px;border-radius:14px}.subj .si{font-size:1.6rem}.subj b{font-size:1.02rem}
+.grades{grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:8px}.grade{padding:8px 4px;border-radius:14px}
+.courses{gap:12px}.course{padding:14px;gap:8px;border-radius:14px}.course .ci{width:40px;height:40px;font-size:1.35rem;border-radius:11px}.course .ch b{font-size:1.02rem}.course p{font-size:.88rem}
+.cparts{grid-template-columns:repeat(auto-fill,minmax(135px,1fr));gap:6px}.cparts a{padding:7px 10px;border-radius:11px}.cparts span{font-size:1.1rem}.cparts b{font-size:.92rem}.cparts small{font-size:.75rem}
+.zh-levels{grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px}.zh-lv{padding:10px 12px;gap:5px}.zh-lv p{font-size:.82rem}
+.zh-gbar{padding:6px 12px;margin:8px 0;font-size:.86rem}
+.zh-node{width:52px;height:52px;font-size:1.05rem;box-shadow:0 5px 0 #c9cedb}.zh-node.big{width:60px;height:60px;font-size:1.25rem}
+.zh-stats b{font-size:1.25rem}.zh-rbig{font-size:2.4rem}.zh-badges{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}.zh-bd{padding:10px 8px}.zh-bd span{font-size:1.7rem}.zh-bd small{font-size:.72rem}
+.zh-q{padding:5px 0}.zh-q>span{font-size:1.15rem}.zh-week{height:110px}
+@media (max-width:860px){.hero2 .hw{padding:14px 16px 18px}.hero2 h1{font-size:22px}h1{font-size:1.3rem}}
+.opts{gap:8px}.opt{padding:7px 10px;min-height:0;border-radius:10px}.opt .L{width:26px;height:26px;font-size:.85rem}
+.zh-tabs{top:50px;margin:8px 0}.zh-tabs a{padding:5px 10px;border-radius:12px}.zh-tabs a b{width:24px;height:24px;font-size:.8rem}
+.backfab{width:48px;height:48px}
+@media (max-width:600px){.zh-tabs{top:92px}}
