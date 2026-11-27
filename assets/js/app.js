@@ -110,7 +110,7 @@
       go: [['#/ngoai-ngu', 'Xem lộ trình 5 cấp']] },
     { ic: '🤖', ten: 'AI Edu', tag: 'Học AI', mo: 'Học cách dùng trí tuệ nhân tạo an toàn, hiệu quả cho học tập và cuộc sống: 4 cấp Tiểu học, THCS, THPT, Người đi làm và khoá Học Claude từ cơ bản đến nâng cao – 76 buổi, miễn phí.', meta: ['An toàn', 'Miễn phí'], go: [['ai/', 'Mở AI Edu']] }
   ];
-  PLT.APP = { langLoad: () => langLoad(), modePath: (m, l) => modePath(m, l), curLop: () => curLop(), hasLop: () => hasLop(), settings: () => settings() };
+  PLT.APP = { syncLop: () => syncLop(), langLoad: () => langLoad(), modePath: (m, l) => modePath(m, l), curLop: () => curLop(), hasLop: () => hasLop(), settings: () => settings() };
   function home(full) {
     if (!full && PLT.DASH && PLT.data.plan && PLT.data.plan.items) return PLT.DASH.home($('#app'));
     const name = PLT.data.settings.name, has = hasLop(), l = curLop();

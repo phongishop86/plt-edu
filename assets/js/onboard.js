@@ -148,6 +148,7 @@
     const goal = (MINS.find((m) => m[0] === st.mins) || [0, 0, 30])[2];
     PLT.data.gam = Object.assign(PLT.data.gam || {}, { goal });
     PLT.save();
+    try { if (PLT.APP && PLT.APP.syncLop) PLT.APP.syncLop(); } catch (e) { /* bỏ qua */ }
   }
   function draw() {
     const app = $('#app'); if (!app) return;

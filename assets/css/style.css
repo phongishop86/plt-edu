@@ -385,3 +385,6 @@ main{padding:12px 16px 50px}
 .zh-tabs{top:50px;margin:8px 0}.zh-tabs a{padding:5px 10px;border-radius:12px}.zh-tabs a b{width:24px;height:24px;font-size:.8rem}
 .backfab{width:48px;height:48px}
 @media (max-width:600px){.zh-tabs{top:92px}}
+
+/* Giao diện gọn hơn nữa: cỡ chữ gốc 15px (mọi kích thước theo rem nhỏ lại ~6%) */
+html{font-size:15px}body{font-size:14.5px}
