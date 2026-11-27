@@ -55,6 +55,13 @@
   let SB = {}; try { SB = JSON.parse(localStorage.getItem('plt-sb')) || {}; } catch (e) { SB = {}; }
   const sbSave = () => { try { localStorage.setItem('plt-sb', JSON.stringify(SB)); } catch (e) { /* bỏ qua */ } };
   window.addEventListener('plt-auth', () => { if (document.getElementById('sbar')) side(); });
+  /* Chuỗi ngày + XP tháng: hiện ngay dưới nút tài khoản (góc trên bên phải) */
+  function hstat() {
+    const b = document.querySelector('header.top .acc-b'); if (!b) return setTimeout(hstat, 400);
+    let w = b.parentNode; if (!w.classList.contains('acc-w')) { const x = document.createElement('div'); x.className = 'acc-w'; w.insertBefore(x, b); x.appendChild(b); w = x; }
+    let st = w.querySelector('.hst'); if (!st) { st = document.createElement('a'); st.className = 'hst'; st.href = '#/ngoai-ngu/thanh-tich'; st.title = 'Chuỗi ngày học · XP tháng này'; w.appendChild(st); }
+    st.innerHTML = `🔥 <b>${streak()}</b> · ⚡ <b>${xpMonth()}</b> XP`;
+  }
   function side() {
     if (!window.matchMedia) return;
     let a = $('#sbar');
@@ -69,14 +76,14 @@
         const k = g.dataset.g; SB[k] = !(SB[k] != null ? SB[k] : g.parentNode.classList.contains('open')); g.parentNode.classList.toggle('open', SB[k]); g.setAttribute('aria-expanded', SB[k]); sbSave();
       });
     }
+    hstat();
     const h = (location.hash.replace(/^#\/?/, '') || '').split('/');
     const r = h[0] === 'thi' ? 'kiem-tra' : h[0] === 'ngoai-ngu' && h[1] === 'thanh-tich' ? 'thanh-tich' : h[0] || 'home';
     const l = PLT.APP.curLop(), has = PLT.APP.hasLop(), p = plan(), lopNow = h[0] === 'lop' ? +h[1] : 0;
     const it = (href, icon, bg, t, on) => `<a class="si${on ? ' on' : ''}" href="${href}" title="${t}"><i style="background:${bg}">${icon}</i><span>${t}</span></a>`;
     const sub = (href, t, on) => `<a class="sc${on ? ' on' : ''}" href="${href}">${t}</a>`;
     const grp = (k, icon, bg, t, act, body, def) => { const op = SB[k] != null ? SB[k] : act || def; return `<div class="sg${op ? ' open' : ''}${act ? ' act' : ''}"><button type="button" class="si sg-h" data-g="${k}" aria-expanded="${!!op}" title="${t}"><i style="background:${bg}">${icon}</i><span>${t}</span><b>▾</b></button><div class="sg-b">${body}</div></div>`; };
-    const u = window.PLT_ACC && PLT_ACC.user && PLT_ACC.user(), nm = PLT.data.settings.name || (u && u.displayName) || 'Khách';
-    const sb = p ? [p.role === 'hs' && p.lop ? 'Lớp ' + p.lop : ''].concat(langsOf().map((k) => L[k].lv[myLv(k) - 1])).filter(Boolean).join(' · ') : has ? 'Lớp ' + l : 'Chưa xác định trình độ';
+    /* thẻ người dùng cuối sidebar đã bỏ: tài khoản + chuỗi XP nằm ở góc trên bên phải */
     const practice = ['on-tap', 'kiem-tra', 'nang-cao', 'chuyen-cap'];
     const AI = [['tieu-hoc', 'Tiểu học'], ['thcs', 'THCS'], ['thpt', 'THPT'], ['di-lam', 'Người đi làm'], ['claude', '✨ Học Claude']];
     a.innerHTML = `<div class="sb-top"><a class="sb-logo" href="#/" title="PLT-Edu"><img src="assets/img/logo-96.png" alt=""><span>PLT-Edu<small>Học tập · Luyện thi</small></span></a><button type="button" class="sb-mb" data-mini title="Thu gọn / mở rộng menu">«</button></div>
@@ -86,8 +93,7 @@
         ${grp('nn', '🌏', '#DDE8FB', 'Ngoại ngữ', ['ngoai-ngu', 'tieng-anh', 'tieng-trung', 'tieng-han'].includes(r) && r !== 'thanh-tich', ORDER.map((k) => sub(cHref(k, p && p.lv && p.lv[k] ? p.lv[k] : 1), `${L[k].icon} ${L[k].ten}${p && p.lv && p.lv[k] ? ` <em>${L[k].lv[p.lv[k] - 1]}</em>` : ''}`, r === L[k].key)).join('') + sub('#/ngoai-ngu', '🗂️ Tất cả cấp độ', r === 'ngoai-ngu'), false)}
         ${grp('ai', '🤖', '#E7F6E9', 'AI Edu', false, AI.map(([f, t]) => sub(`ai/${f}/`, t, false)).join('') + sub('ai/', '🏠 Trang AI Edu', false), false)}
         ${grp('me', '🏆', '#FFF3C4', 'Của bạn', ['tien-do', 'thanh-tich', 'xep-hang'].includes(r), sub('#/tien-do', '📈 Tiến độ', r === 'tien-do') + sub('#/ngoai-ngu/thanh-tich', '🏆 Thành tích', r === 'thanh-tich') + sub('#/xep-hang', '🏅 Xếp hạng tháng', r === 'xep-hang'), false)}${window.PLT_ACC && PLT_ACC.isAdmin && PLT_ACC.isAdmin() ? it('#/quan-tri', '📊', '#FFE4E4', 'Quản trị', r === 'quan-tri') : ''}</nav>
-      <div class="sb-me"><div class="sb-u"><i>${u && u.photoURL ? `<img src="${esc(u.photoURL)}" alt="" referrerpolicy="no-referrer">` : esc(nm.trim().charAt(0).toUpperCase() || '?')}</i><div><b>${esc(nm)}</b><small>${esc(sb)}</small></div><button type="button" data-gear title="Cài đặt">⚙️</button></div>
-        <div class="sb-st"><span title="Số ngày học liên tiếp">🔥 <b>${streak()}</b></span><span title="XP tháng này">⚡ <b>${xpMonth()}</b> XP</span></div></div>`;
+      `;
   }
 
   /* ---------- Trang chủ dạng bảng điều khiển ---------- */
@@ -245,15 +251,11 @@
 .sc:hover{background:rgba(255,255,255,.7)}.sc.on{background:#fff;font-weight:800;color:#D9661F}.sc em{font-style:normal;font-size:.68rem;font-weight:800;background:#fff;border-radius:6px;padding:0 5px;margin-left:2px;color:#55607A}
 .sc-lop{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:2px 4px 2px 0}.sc-lop a{text-align:center;padding:3px 0;border-radius:7px;background:#fff;color:#1B2A4A;text-decoration:none;font-weight:700;font-size:.8rem;border:2px solid transparent}
 .sc-lop a:hover{border-color:#E8DCC6}.sc-lop a.my{border-color:#F4A261}.sc-lop a.on{background:#D9661F;color:#fff;border-color:#D9661F}
-.sb-me{background:#fff;border-radius:12px;padding:7px;margin-top:6px;flex:none}
-.sb-u{display:flex;align-items:center;gap:6px}.sb-u>i{width:28px;height:28px;border-radius:50%;background:#1B2A4A;color:#F4A261;display:grid;place-items:center;font-style:normal;font-weight:800;font-size:.85rem;overflow:hidden;flex:none}.sb-u>i img{width:100%;height:100%}
-.sb-u div{flex:1;min-width:0}.sb-u b{display:block;font-size:.8rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sb-u small{display:block;font-size:.68rem;color:#55607A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sb-u button{border:0;background:#F3EFE6;border-radius:7px;width:24px;height:24px;cursor:pointer;font-size:.75rem;flex:none}
-.sb-st{display:flex;gap:6px;margin-top:6px;font-size:.75rem}.sb-st span{flex:1;background:#FAF7F0;border-radius:8px;padding:3px 6px;text-align:center;white-space:nowrap}.sb-st b{color:#D9661F}
+.acc-w{display:flex;flex-direction:column;align-items:center;gap:3px}.hst{font-size:.7rem;font-weight:600;color:inherit;text-decoration:none;background:rgba(244,162,97,.18);border-radius:99px;padding:1px 8px;white-space:nowrap;line-height:1.5}.hst b{color:#D9661F}.hst:hover{background:rgba(244,162,97,.35)}
+body.has-sbar header.top .hst{color:#1B2A4A}@media (max-width:1099px){.hst{display:none}}
 body.sb-mini .sbar .sg .sg-b{display:none!important}
-body.sb-mini .sbar .sb-logo span,body.sb-mini .si span,body.sb-mini .sg-h b,body.sb-mini .sb-u div,body.sb-mini .sb-u button,body.sb-mini .sb-st{display:none}
-body.sb-mini .sb-top{flex-direction:column}body.sb-mini .sb-mb{transform:rotate(180deg)}body.sb-mini .si{justify-content:center;padding:4px 0}body.sb-mini .sb-me{padding:6px 0;background:none}body.sb-mini .sb-u{justify-content:center}
-.dsh{max-width:1320px;margin:0 auto}
+body.sb-mini .sbar .sb-logo span,body.sb-mini .si span,body.sb-mini .sg-h b{display:none}
+body.sb-mini .sb-top{flex-direction:column}body.sb-mini .sb-mb{transform:rotate(180deg)}body.sb-mini .si{justify-content:center;padding:4px 0}body.sb-mini .dsh{max-width:1320px;margin:0 auto}
 .dh{background:linear-gradient(135deg,#FFF8EE,#F6EBDD);border-radius:18px;padding:12px 16px;box-shadow:0 8px 22px rgba(27,42,74,.08);border:1px solid #EFE3CF}
 .dh h1{margin:0 0 8px;font-size:1.3rem}
 .dh-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;background:#fff;border-radius:14px;padding:6px 10px}
