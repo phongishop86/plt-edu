@@ -159,17 +159,20 @@
      members/{uid}            thành viên đã đăng nhập: {name, email, first, last, site, n} */
   var ADMIN = 'phongishop86@gmail.com', tracked = false, beatT = 0;
   function isAdmin() { return !!(user && user.emailVerified && String(user.email || '').toLowerCase() === ADMIN); }
+  /* Máy đã từng đăng nhập tài khoản quản trị: không đếm lượt truy cập / đang dùng (kể cả khi đã đăng xuất) */
+  function skip() { try { if (isAdmin()) _set.call(localStorage, 'plt-adm', '1'); return localStorage.getItem('plt-adm') === '1'; } catch (e) { return isAdmin(); } }
   function p2(n) { return (n < 10 ? '0' : '') + n; }
   function dayKey(t) { var d = t ? new Date(t) : new Date(); return d.getFullYear() + '-' + p2(d.getMonth() + 1) + '-' + p2(d.getDate()); }
   function gid() { var g = ''; try { g = localStorage.getItem('plt-gid') || ''; } catch (e) { /* bỏ qua */ } if (!/^g-[a-z0-9]{12}$/.test(g)) { g = 'g-'; for (var i = 0; i < 12; i++) g += 'abcdefghijklmnopqrstuvwxyz0123456789'.charAt(Math.floor(Math.random() * 36)); try { _set.call(localStorage, 'plt-gid', g); } catch (e) { /* bỏ qua */ } } return g; }
   function track() {
-    if (tracked || !db) return; tracked = true;
+    if (tracked || !db) return; tracked = true; if (skip()) return;
     var day = dayKey(), inc = fb.firestore.FieldValue.increment(1), o = {}, k = 'plt-v-' + cur;
     try { if (!sessionStorage.getItem(k)) { o.v = inc; o[cur] = inc; sessionStorage.setItem(k, '1'); } if (localStorage.getItem('plt-seen') !== day) { o.u = inc; _set.call(localStorage, 'plt-seen', day); } } catch (e) { /* bỏ qua */ }
     if (Object.keys(o).length) db.collection('stats').doc('d-' + day).set(o, { merge: true }).catch(function () { /* chưa có quy tắc */ });
   }
   function beat() {
     if (!db || document.visibilityState === 'hidden') return;
+    if (skip()) { clearTimeout(beatT); if (user) db.collection('presence').doc(user.uid).delete().catch(function () { /* bỏ qua */ }); return; }
     clearTimeout(beatT); beatT = setTimeout(beat, 120000);
     var nm = user ? (user.displayName || String(user.email || '').split('@')[0] || '').slice(0, 40) : '';
     var pg = (cur === 'ai' ? location.pathname.replace(/^.*?\/ai\//, 'ai/') : location.hash || '#/').slice(0, 60);
