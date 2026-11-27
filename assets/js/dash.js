@@ -228,7 +228,7 @@
   body.has-sbar header.top .lopsel,body.has-sbar .acc-b{font-size:.85rem}
   body.has-sbar main{padding-top:6px}
   body.has-sbar .dsh{margin-top:4px}
-  body.has-sbar .lopbox{margin-left:0;background:#1B2A4A;border-radius:99px}
+  body.has-sbar .lopbox{display:none}
 }
 .sb-top{display:flex;align-items:center;gap:4px;padding:0 2px 8px}
 .sb-logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:#1B2A4A;font-weight:800;font-size:1rem;flex:1;min-width:0}
