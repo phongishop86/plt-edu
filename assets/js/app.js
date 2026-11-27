@@ -96,7 +96,7 @@
   const advCount = (S, kind) => { const l = S.lop; if (kind === 'w') return l <= 2 ? 0 : 1; if (kind === 'm') return l <= 5 ? 1 : 2; return l <= 2 ? 1 : l <= 5 ? 2 : l <= 9 ? 3 : 4; };
   const stars = (p) => (p == null ? '<span class="muted">chưa làm</span>' : p >= 80 ? '⭐⭐⭐' : p >= 50 ? '⭐⭐' : '⭐');
   const progKey = (S, t) => S.id + ':' + t;
-  function saveProg(S, t, ok, n) { const k = progKey(S, t), p = Math.round((ok / n) * 100), o = PLT.data.prog[k] || { best: 0, n: 0 }; PLT.data.prog[k] = { best: Math.max(o.best, p), n: o.n + 1, last: p }; PLT.save(); }
+  function saveProg(S, t, ok, n) { const k = progKey(S, t), p = Math.round((ok / n) * 100), o = PLT.data.prog[k] || { best: 0, n: 0 }; PLT.data.prog[k] = { best: Math.max(o.best, p), n: o.n + 1, last: p }; PLT.save(); PLT.mark(/nc|nang/.test(String(t && t.id || '')) ? 'nc' : 'on'); }
   const tname = (S, t) => (t.nhan || (S.lop >= 6 ? 'Chương' : 'Chủ đề') + ' ' + t.id);
   const crumb = (S, extra) => `<div class="crumb"><a href="#/">Trang chủ</a> › <a href="#/lop/${S.lop}">Lớp ${S.lop}</a> › ${extra || S.mon + ' ' + S.lop}</div>`;
 
@@ -139,6 +139,7 @@
 
   /* ---------------- Học bài ---------------- */
   function learn(S, tid) {
+    PLT.mark('hoc');
     const sid = S.id, t = S.topics.find((x) => x.id === +tid) || S.topics[0];
     const side = [1, 2].map((hk) => `<div class="hk">Học kì ${hk}</div>` + S.topics.filter((x) => x.hk === hk).map((x) => `<a class="tlink${x.id === t.id ? ' on' : ''}" href="#/hoc/${sid}/${x.id}"><span>${x.id}</span><b>${x.ten}</b><em>${stars((PLT.data.prog[progKey(S, x.id)] || {}).best)}</em></a>`).join('')).join('');
     app.innerHTML = crumb(S) + `
@@ -377,6 +378,7 @@
       case 'chuyen-cap': await chuyenCap(p, my); break;
       case 'tien-do': await progress(); break;
       case 'lo-trinh': PLT.ONB.render(); break;
+      case 'xep-hang': await PLT.DASH.board(app); if (my !== seq) return; break;
       case 'lo-trinh-hoc': await PLT.DASH.path(app, p); if (my !== seq) return; break;
       case 'ngoai-ngu': case 'tieng-trung': case 'tieng-anh': case 'tieng-han': {
         app.innerHTML = '<p class="muted">Đang tải bài học ngoại ngữ…</p>';

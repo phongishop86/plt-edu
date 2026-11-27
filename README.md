@@ -25,6 +25,15 @@ service cloud.firestore {
     match /users/{uid} {
       allow read, write: if request.auth != null && request.auth.uid == uid;
     }
+    // Bảng xếp hạng XP tháng: ai đăng nhập cũng xem được; mỗi người chỉ ghi/xoá dòng của mình
+    match /boards/{m}/users/{uid} {
+      allow read: if request.auth != null;
+      allow create, update: if request.auth != null && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['name', 'xp', 'at'])
+        && request.resource.data.name is string && request.resource.data.name.size() <= 30
+        && request.resource.data.xp is int && request.resource.data.xp >= 0 && request.resource.data.xp <= 200000;
+      allow delete: if request.auth != null && request.auth.uid == uid;
+    }
   }
 }
 ```

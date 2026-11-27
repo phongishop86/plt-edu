@@ -13,6 +13,8 @@
   data.settings = Object.assign({ model: 'gemini-2.5-flash', apiKey: '', name: '' }, data.settings || {});
   PLT.data = data;
   PLT.save = function () { try { localStorage.setItem(KEY, JSON.stringify(data)); } catch (e) { /* bỏ qua */ } };
+  /* Ghi dấu hoạt động trong ngày (học bài, ôn tập, kiểm tra…) để trang chủ đánh dấu việc đã xong */
+  PLT.mark = function (k) { const d = new Date(), t = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); if (!data.act || data.act.d !== t) data.act = { d: t }; if (!data.act[k]) { data.act[k] = 1; PLT.save(); } };
 
   /* ---------- Đăng ký môn học ---------- */
   PLT.registerSubject = function (s) { PLT.subjects[s.id] = s; };

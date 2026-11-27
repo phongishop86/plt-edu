@@ -4,7 +4,7 @@
 var D = window.AIEDU_LEVEL, L = D.lessons;
 var st = { done: [], cur: 0 };
 try { var s = JSON.parse(localStorage.getItem(D.key) || "null"); if (s && Array.isArray(s.done)) { st.done = s.done; st.cur = s.cur || 0; } } catch (e) {}
-function save() { try { localStorage.setItem(D.key, JSON.stringify(st)); } catch (e) {} }
+function save() { var d = new Date(); st.at = d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); try { localStorage.setItem(D.key, JSON.stringify(st)); } catch (e) {} }
 function $(q) { return document.querySelector(q); }
 function each(list, fn) { Array.prototype.forEach.call(list, fn); }
 function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }

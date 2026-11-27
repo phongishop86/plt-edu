@@ -60,12 +60,12 @@
     const l = PLT.APP.curLop(), has = PLT.APP.hasLop(), p = plan();
     const it = (href, icon, bg, t, key) => `<a class="si${r === key ? ' on' : ''}" href="${href}"><i style="background:${bg}">${icon}</i><span>${t}</span></a>`;
     const u = window.PLT_ACC && PLT_ACC.user && PLT_ACC.user(), nm = PLT.data.settings.name || (u && u.displayName) || 'Khách';
-    const sub = p ? (p.role === 'hs' && p.lop ? 'Lớp ' + p.lop : '') + langsOf().map((k) => ' · ' + L[k].lv[myLv(k) - 1]).join('').replace(/^ · /, '') : has ? 'Lớp ' + l : 'Chưa xác định trình độ';
+    const sub = p ? [p.role === 'hs' && p.lop ? 'Lớp ' + p.lop : ''].concat(langsOf().map((k) => L[k].lv[myLv(k) - 1])).filter(Boolean).join(' · ') : has ? 'Lớp ' + l : 'Chưa xác định trình độ';
     a.innerHTML = `<a class="sb-logo" href="#/"><img src="assets/img/logo-96.png" alt=""><span>PLT-Edu<small>Học tập · Luyện thi</small></span></a>
       <nav class="sb-nav">${it('#/', '🏠', '#FBE3CF', 'Trang chủ', 'home')}${it(p ? '#/lo-trinh-hoc' : '#/lo-trinh', '🧭', '#D9F0EA', 'Lộ trình học tập', p ? 'lo-trinh-hoc' : 'lo-trinh')}
         <div class="sb-h">Học theo lớp${has ? ' ' + l : ''}</div>${it(has ? '#/lop/' + l : '#/hoc', '📚', '#E3ECFF', 'Học bài', 'lop')}${it(PLT.APP.modePath('on-tap', l), '🎯', '#FFE4E4', 'Ôn tập', 'on-tap')}${it(PLT.APP.modePath('kiem-tra', l), '📝', '#FFF0C9', 'Kiểm tra', 'kiem-tra')}${it(PLT.APP.modePath('nang-cao', l), '⭐', '#F3E6FF', 'Nâng cao*', 'nang-cao')}${it('#/chuyen-cap', '🎓', '#E2F4FF', 'Chuyển cấp', 'chuyen-cap')}
         <div class="sb-h">Ngoại ngữ</div>${ORDER.map((k) => it(cHref(k, p && p.lv && p.lv[k] ? p.lv[k] : 1), L[k].icon, L[k].bg, L[k].ten, L[k].key)).join('')}
-        <div class="sb-h">Khác</div>${it('ai/', '🤖', '#E7F6E9', 'AI Edu', 'ai')}${it('#/tien-do', '📈', '#FFE8D9', 'Tiến độ', 'tien-do')}${it('#/ngoai-ngu/thanh-tich', '🏆', '#FFF3C4', 'Thành tích', 'thanh-tich')}</nav>
+        <div class="sb-h">Khác</div>${it('ai/', '🤖', '#E7F6E9', 'AI Edu', 'ai')}${it('#/tien-do', '📈', '#FFE8D9', 'Tiến độ', 'tien-do')}${it('#/ngoai-ngu/thanh-tich', '🏆', '#FFF3C4', 'Thành tích', 'thanh-tich')}${it('#/xep-hang', '🏅', '#FFE0EC', 'Xếp hạng tháng', 'xep-hang')}</nav>
       <div class="sb-me"><div class="sb-u"><i>${u && u.photoURL ? `<img src="${esc(u.photoURL)}" alt="" referrerpolicy="no-referrer">` : esc(nm.trim().charAt(0).toUpperCase() || '?')}</i><div><b>${esc(nm)}</b><small>${esc(sub)}</small></div><button type="button" data-gear title="Cài đặt">⚙️</button></div>
         <div class="sb-st"><span><b>🔥 ${streak()}</b><small>ngày liền</small></span><span><b>${xpMonth()}</b><small>XP tháng</small></span></div></div>`;
   }
@@ -77,15 +77,18 @@
     let n = 0; const cells = DOW.map((t, i) => { const d = new Date(mon); d.setDate(mon.getDate() + i); const k = ymd(d), on = (g.days || {})[k] > 0; if (on) n++; return `<span class="wk${on ? ' on' : ''}${i === w ? ' now' : ''}"><small>${t}</small><i>${on ? '✓' : ''}</i></span>`; }).join('');
     return { cells, n };
   }
+  const act = (k) => { const a = PLT.data.act; return !!(a && a.d === today() && a[k]); };
+  const aiKey = (href) => { const m = /^ai\/([a-z-]+)\//.exec(href || ''); return m ? 'plt-aiedu-' + m[1] + '-v1' : ''; };
+  const aiState = (href) => { try { return JSON.parse(localStorage.getItem(aiKey(href))) || {}; } catch (e) { return {}; } };
   function tasks() {
     const p = plan(), m = p.mins || 20, T = [];
     langsOf().forEach((k) => { const n = myLv(k), pr = prog(k, n); T.push({ cat: `${L[k].ten} · ${L[k].lv[n - 1]}`, icon: L[k].icon, t: `Ngày ${pr.next}`, k, n, d: pr.next, href: `${cHref(k, n)}/ngay/${pr.next}`, done: pr.todayHit }); });
     if (p.role === 'hs' && p.lop) {
-      if ((p.goals || []).includes('lop')) { T.push({ cat: `Lớp ${p.lop}`, icon: '📚', t: 'Học 1 bài mới theo SGK', href: PLT.APP.modePath('hoc', p.lop) }); T.push({ cat: `Lớp ${p.lop}`, icon: '🎯', t: 'Ôn tập 10 câu ngẫu nhiên', href: PLT.APP.modePath('on-tap', p.lop) }); }
-      if ((p.goals || []).includes('thi')) T.push({ cat: 'Chuyển cấp', icon: '🎓', t: new Date().getDay() === 0 ? 'Làm 1 đề thi có giờ' : 'Ôn 1 dạng bài thi', href: '#/chuyen-cap' });
-      if ((p.goals || []).includes('nc')) T.push({ cat: 'Nâng cao*', icon: '⭐', t: '1 bài nâng cao', href: PLT.APP.modePath('nang-cao', p.lop) });
+      if ((p.goals || []).includes('lop')) { T.push({ cat: `Lớp ${p.lop}`, icon: '📚', t: 'Học 1 bài mới theo SGK', href: PLT.APP.modePath('hoc', p.lop), done: act('hoc') }); T.push({ cat: `Lớp ${p.lop}`, icon: '🎯', t: 'Ôn tập 10 câu ngẫu nhiên', href: PLT.APP.modePath('on-tap', p.lop), done: act('on') }); }
+      if ((p.goals || []).includes('thi')) T.push({ cat: 'Chuyển cấp', icon: '🎓', t: new Date().getDay() === 0 ? 'Làm 1 đề thi có giờ' : 'Ôn 1 dạng bài thi', href: '#/chuyen-cap', done: act('cc') });
+      if ((p.goals || []).includes('nc')) T.push({ cat: 'Nâng cao*', icon: '⭐', t: '1 bài nâng cao', href: PLT.APP.modePath('nang-cao', p.lop), done: act('nc') });
     }
-    if ((p.goals || []).includes('ai')) { const ai = (p.items || []).find((x) => /^ai\//.test(x.href)) || { href: 'ai/', t: 'AI Edu' }; T.push({ cat: 'AI Edu', icon: '🤖', t: 'Học tiếp 1 buổi · ' + ai.t, href: ai.href }); }
+    if ((p.goals || []).includes('ai')) { const ai = (p.items || []).find((x) => /^ai\//.test(x.href)) || { href: 'ai/', t: 'AI Edu' }; const as = aiState(ai.href), dn = (as.done || []).length; T.push({ cat: `AI Edu · đã xong ${dn} buổi`, icon: '🤖', t: `Buổi ${Math.min(dn + 1, 16)} · ${ai.t}`, href: ai.href, done: as.at === today() }); }
     const per = Math.max(5, Math.round(m / Math.max(1, Math.min(T.length, 3)) / 5) * 5);
     T.forEach((x) => (x.mins = per));
     return T;
@@ -163,7 +166,34 @@
       </div></div>`;
   }
 
-  PLT.DASH = { side, home, path };
+  /* ---------- Bảng xếp hạng XP tháng ---------- */
+  async function board(app) {
+    const A = window.PLT_ACC, u = A && A.user && A.user(), p = plan() || {}, child = p.role === 'hs' && p.lop && p.lop <= 7;
+    const now = new Date(), end = new Date(now.getFullYear(), now.getMonth() + 1, 1), left = Math.ceil((end - now) / 864e5);
+    const head = `<section class="dh"><div class="dc-h"><div><h1>🏅 Xếp hạng XP tháng ${now.getMonth() + 1}</h1><span class="muted">Kết thúc sau ${left} ngày · tính XP học trong tháng</span></div></div></section>`;
+    if (!u) { app.innerHTML = `<div class="dsh">${head}<section class="dcard" style="margin-top:14px"><p>Đăng nhập để xem bảng xếp hạng và thi đua cùng các bạn.</p><button type="button" class="btn" id="bLogin">👤 Đăng nhập</button></section></div>`; $('#bLogin').onclick = () => A && A.open(); return; }
+    const me = `<section class="dcard bd-me"><div><b>Hiện tên em trên bảng xếp hạng</b><small>${child ? 'Học sinh lớp 1–7 không hiện tên công khai để giữ an toàn.' : 'Chỉ hiện tên gọi và XP tháng, không hiện email, ảnh. Tắt bất cứ lúc nào.'}</small></div>
+      <button type="button" class="ob-sw${p.board && !child ? ' on' : ''}" id="bSw" ${child || !p.items ? 'disabled' : ''} aria-label="Bật tắt hiện tên"><i></i></button>${!p.items ? '<a class="small" href="#/lo-trinh">Xác định trình độ trước</a>' : ''}</section>`;
+    app.innerHTML = `<div class="dsh">${head}${me}<section class="dcard" id="bList"><p class="muted">Đang tải bảng xếp hạng…</p></section></div>`;
+    const sw = $('#bSw'); if (sw) sw.onclick = async () => { p.board = !p.board; PLT.data.plan = p; PLT.save(); sw.classList.toggle('on', !!p.board); await A.boardSync(); board(app); };
+    let db = A.db(); for (let i = 0; !db && i < 20; i++) { await new Promise((r) => setTimeout(r, 300)); db = A.db(); }
+    const box = $('#bList'); if (!db || !box) { if (box) box.innerHTML = '<p class="muted">Chưa kết nối được dịch vụ. Thử tải lại trang.</p>'; return; }
+    try {
+      await A.boardSync();
+      const q = await db.collection('boards').doc(A.month()).collection('users').orderBy('xp', 'desc').limit(50).get();
+      const R = q.docs.map((d) => Object.assign({ id: d.id }, d.data())).filter((x) => x.xp > 0);
+      if (!document.body.contains(box)) return;
+      if (!R.length) { box.innerHTML = '<p class="muted">Tháng này chưa có ai trên bảng. Bật hiện tên và học vài bài để đứng đầu nhé!</p>'; return; }
+      const ini = (n) => esc(String(n || '?').trim().charAt(0).toUpperCase());
+      const pod = [R[1], R[0], R[2]].map((x, i) => x ? `<div class="pd p${[2, 1, 3][i]}${x.id === u.uid ? ' me' : ''}"><i>${ini(x.name)}</i><b>${esc(x.name)}</b><span>${x.xp} XP</span><div class="pdb">${[2, 1, 3][i]}</div></div>` : '<div class="pd"></div>').join('');
+      box.innerHTML = `<div class="pod">${pod}</div>${R.slice(3).map((x, i) => `<div class="bd-row${x.id === u.uid ? ' me' : ''}"><em>${i + 4}</em><i>${ini(x.name)}</i><b>${esc(x.name)}</b><span>${x.xp} XP</span></div>`).join('')}
+        ${R.some((x) => x.id === u.uid) ? '' : `<p class="small muted">${p.board && !child ? 'Em chưa có XP tháng này hoặc chưa vào top 50.' : 'Em đang ẩn tên. Bật công tắc phía trên để tham gia.'}</p>`}`;
+    } catch (e) {
+      if (box) box.innerHTML = `<p class="muted">Chưa đọc được bảng xếp hạng${e && e.code === 'permission-denied' ? ': quản trị cần cập nhật quy tắc Firestore cho mục boards.' : '.'}</p>`;
+    }
+  }
+
+  PLT.DASH = { side, home, path, board };
   window.addEventListener('plt-login', () => setTimeout(side, 50));
 
   const css = document.createElement('style');
@@ -171,7 +201,7 @@
 .sbar{display:none}
 @media (min-width:1100px){
   body.has-sbar{padding-left:236px}
-  .sbar{display:flex;flex-direction:column;position:fixed;left:12px;top:12px;bottom:12px;width:212px;background:#F6EFE3;border-radius:22px;padding:14px 10px;z-index:40;box-shadow:0 10px 26px rgba(27,42,74,.12);overflow:auto}
+  .sbar{display:flex;flex-direction:column;position:fixed;left:12px;top:12px;bottom:12px;width:212px;background:#F6EFE3;border-radius:22px;padding:12px 10px;z-index:40;box-shadow:0 10px 26px rgba(27,42,74,.12);overflow:hidden}
   body.has-sbar header.top .logo,body.has-sbar header.top .nav{display:none}
   body.has-sbar header.top{background:transparent;box-shadow:none;border:0;position:static}
   body.has-sbar header.top .in{justify-content:flex-end;padding:10px 20px 0}
@@ -180,12 +210,12 @@
 }
 .sb-logo{display:flex;align-items:center;gap:10px;padding:4px 8px 12px;text-decoration:none;color:#1B2A4A;font-weight:800;font-size:1.15rem}
 .sb-logo img{width:40px;height:40px;border-radius:50%}.sb-logo small{display:block;font-size:.68rem;color:#55607A;font-weight:600}
-.sb-nav{display:flex;flex-direction:column;gap:3px;flex:1}
-.sb-h{font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#8a93a6;margin:10px 10px 2px}
-.si{display:flex;align-items:center;gap:10px;padding:6px 8px;border-radius:12px;color:#1B2A4A;text-decoration:none;font-weight:600;font-size:.93rem;border:2px solid transparent}
-.si i{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-style:normal;font-size:1rem;flex:none;box-shadow:inset 0 -2px 0 rgba(0,0,0,.06)}
+.sb-nav{display:flex;flex-direction:column;gap:1px;flex:1;min-height:0;overflow:auto;scrollbar-width:thin}
+.sb-h{font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#8a93a6;margin:8px 10px 2px}
+.si{display:flex;align-items:center;gap:10px;padding:4px 8px;border-radius:12px;color:#1B2A4A;text-decoration:none;font-weight:600;font-size:.93rem;border:2px solid transparent}
+.si i{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;font-style:normal;font-size:1rem;flex:none;box-shadow:inset 0 -2px 0 rgba(0,0,0,.06)}
 .si:hover{background:rgba(255,255,255,.7)}.si.on{background:#fff;border-color:#D9661F;font-weight:800}
-.sb-me{background:#fff;border-radius:16px;padding:10px;margin-top:10px}
+.sb-me{background:#fff;border-radius:16px;padding:10px;margin-top:8px;flex:none}
 .sb-u{display:flex;align-items:center;gap:8px}.sb-u>i{width:36px;height:36px;border-radius:50%;background:#1B2A4A;color:#F4A261;display:grid;place-items:center;font-style:normal;font-weight:800;overflow:hidden;flex:none}.sb-u>i img{width:100%;height:100%}
 .sb-u div{flex:1;min-width:0}.sb-u b{display:block;font-size:.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sb-u small{display:block;font-size:.74rem;color:#55607A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sb-u button{border:0;background:#F3EFE6;border-radius:9px;width:30px;height:30px;cursor:pointer}
@@ -239,6 +269,14 @@
 .lp-test{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid #EFE7D8;border-radius:12px;padding:8px 12px;color:#1B2A4A;font-weight:700;text-decoration:none}.lp-test em{font-style:normal;border:2px solid #1B2A4A;border-radius:99px;padding:2px 12px;font-size:.82rem}
 .lp-days{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}@media (max-width:700px){.lp-days{grid-template-columns:1fr}}
 .lp-toc{background:#F3E8D4}.lp-toc .stg{margin:6px 0}
+.bd-me{display:flex;align-items:center;gap:14px;margin-top:14px}.bd-me div{flex:1}.bd-me small{display:block;color:#55607A}
+#bList{margin-top:14px;background:#FCE7E2}
+.pod{display:grid;grid-template-columns:1fr 1.2fr 1fr;align-items:end;gap:12px;margin-bottom:12px}
+.pd{display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center}.pd i{width:64px;height:64px;border-radius:50%;background:#fff;border:3px solid #F4A261;display:grid;place-items:center;font-style:normal;font-size:1.6rem;font-weight:900}
+.pd.p1 i{width:80px;height:80px;border-color:#F2C94C}.pd span{font-weight:900;font-size:1.1rem}
+.pdb{width:100%;background:#F4A69A;border-radius:16px 16px 6px 6px;font-size:1.8rem;font-weight:900;color:#7a2d22;margin-top:6px;padding:8px 0}.pd.p1 .pdb{padding:22px 0}.pd.p3 .pdb{padding:4px 0}
+.pd.me i,.bd-row.me{box-shadow:0 0 0 3px #1B2A4A}
+.bd-row{display:flex;align-items:center;gap:12px;background:#fff;border-radius:12px;padding:8px 14px;margin:6px 0}.bd-row em{font-style:normal;font-weight:800;width:24px}.bd-row i{width:32px;height:32px;border-radius:50%;background:#FAF2E6;display:grid;place-items:center;font-style:normal;font-weight:800}.bd-row b{flex:1}.bd-row span{font-weight:800}
 .lp-skip{display:block;margin-top:12px;background:#fff;border-radius:12px;padding:8px 12px;color:#1B2A4A;font-weight:700;text-decoration:none}.lp-skip small{display:block;font-weight:500;color:#55607A}
 `;
   document.head.appendChild(css);

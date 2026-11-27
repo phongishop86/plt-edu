@@ -50,16 +50,29 @@
     var store = snap(); if (size(store) > 900000) { err = 'Dữ liệu quá lớn để đồng bộ'; paint(); return Promise.resolve(); }
     var at = Date.now(); busy = true; paint();
     return db.collection('users').doc(user.uid).set({ store: store, at: at, name: user.displayName || '', email: user.email || '', site: cur }, { merge: false })
-      .then(function () { lastAt = at; err = ''; setMeta({ uid: user.uid, at: at }); })
+      .then(function () { lastAt = at; err = ''; setMeta({ uid: user.uid, at: at }); boardSync(); })
       .catch(function (e) { err = 'Chưa đồng bộ được (' + (e.code || 'lỗi mạng') + ')'; })
       .then(function () { busy = false; paint(); });
+  }
+  /* Bảng xếp hạng XP tháng: chỉ ghi khi người học tự bật (plan.board), học sinh lớp 1–7 không hiện */
+  var lastBoard = '';
+  function monthKey() { var d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0'); }
+  function boardSync() {
+    if (!user || !db) return Promise.resolve(); var d; try { d = JSON.parse(localStorage.getItem('pltedu_v1')) || {}; } catch (e) { return Promise.resolve(); }
+    var p = d.plan || {}, g = d.gam || {}, m = monthKey(), xp = 0, days = g.days || {};
+    for (var k in days) if (k.slice(0, 7) === m) xp += Math.round(+days[k] || 0);
+    var child = p.role === 'hs' && p.lop && p.lop <= 7, on = !!p.board && !child;
+    var nm = String((d.settings && d.settings.name) || (user.displayName || '').split(' ').slice(-1)[0] || 'Bạn học').trim().slice(0, 30) || 'Bạn học';
+    var sig = on + '|' + m + '|' + xp + '|' + nm; if (sig === lastBoard) return Promise.resolve(); lastBoard = sig;
+    var ref = db.collection('boards').doc(m).collection('users').doc(user.uid);
+    return (on ? ref.set({ name: nm, xp: Math.min(200000, xp), at: Date.now() }) : ref.delete()).catch(function () { lastBoard = ''; });
   }
   function apply(store, at) {
     var keep = snap(); for (var k in keep) if (!(k in store)) localStorage.removeItem(k);
     for (var j in store) _set.call(localStorage, j, store[j]);
     setMeta({ uid: user.uid, at: at }); lastAt = at; location.reload();
   }
-  function ready2() { try { window.dispatchEvent(new CustomEvent('plt-login', { detail: { uid: user && user.uid } })); } catch (e) { /* bỏ qua */ } }
+  function ready2() { setTimeout(boardSync, 500); try { window.dispatchEvent(new CustomEvent('plt-login', { detail: { uid: user && user.uid } })); } catch (e) { /* bỏ qua */ } }
   function pull(first) {
     if (!user || !db) return; busy = true; paint();
     db.collection('users').doc(user.uid).get().then(function (doc) {
@@ -149,6 +162,6 @@
       });
     }).catch(function () { err = 'Không tải được dịch vụ đăng nhập'; paint(); });
   }
-  window.PLT_ACC = { open: open, sync: function () { return push(); }, user: function () { return user; } };
+  window.PLT_ACC = { open: open, sync: function () { return push(); }, user: function () { return user; }, db: function () { return db; }, boardSync: function () { lastBoard = ''; return boardSync(); }, month: monthKey };
   if (document.body) mount(); else document.addEventListener('DOMContentLoaded', mount);
 })();
