@@ -22,6 +22,15 @@ Web tĩnh (HTML/CSS/JS thuần, không cần build), chạy được bằng GitH
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+    // Quản trị viên: chỉ email này (đã xác minh) đọc được thống kê
+    function isAdmin() {
+      return request.auth != null && request.auth.token.email == 'phongishop86@gmail.com'
+        && request.auth.token.email_verified == true;
+    }
+    function step(k) {
+      return !(k in request.resource.data.diff(resource.data).affectedKeys())
+        || request.resource.data[k] == resource.data.get(k, 0) + 1;
+    }
     match /users/{uid} {
       allow read, write: if request.auth != null && request.auth.uid == uid;
     }
@@ -33,6 +42,32 @@ service cloud.firestore {
         && request.resource.data.name is string && request.resource.data.name.size() <= 30
         && request.resource.data.xp is int && request.resource.data.xp >= 0 && request.resource.data.xp <= 200000;
       allow delete: if request.auth != null && request.auth.uid == uid;
+    }
+    // Đếm lượt truy cập theo ngày: ai cũng được cộng, mỗi lần chỉ +1
+    match /stats/{d} {
+      allow read: if isAdmin();
+      allow create: if d.matches('d-[0-9]{4}-[0-9]{2}-[0-9]{2}')
+        && request.resource.data.keys().hasOnly(['v', 'u', 'edu', 'ai'])
+        && request.resource.data.values().hasOnly([1]);
+      allow update: if request.resource.data.keys().hasOnly(['v', 'u', 'edu', 'ai'])
+        && step('v') && step('u') && step('edu') && step('ai');
+    }
+    // Ai đang dùng (nhịp 2 phút): thành viên ghi theo uid, khách theo mã g-xxxxxxxxxxxx
+    match /presence/{id} {
+      allow read: if isAdmin();
+      allow write: if request.resource.data.keys().hasOnly(['at', 'site', 'in', 'name', 'page'])
+        && request.resource.data.at == request.time
+        && request.resource.data.site in ['edu', 'ai']
+        && request.resource.data.name is string && request.resource.data.name.size() <= 40
+        && request.resource.data.page is string && request.resource.data.page.size() <= 60
+        && ((request.auth != null && request.auth.uid == id && request.resource.data['in'] == true)
+          || (id.matches('g-[a-z0-9]{12}') && request.resource.data['in'] == false && request.resource.data.name == ''));
+    }
+    // Danh sách thành viên (nhẹ) cho trang quản trị
+    match /members/{uid} {
+      allow read: if isAdmin() || (request.auth != null && request.auth.uid == uid);
+      allow write: if request.auth != null && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['name', 'email', 'first', 'last', 'site', 'n']);
     }
   }
 }
@@ -52,7 +87,8 @@ assets/js/mathlib.js    bộ sinh câu hỏi dùng chung (tiểu học), biểu 
 assets/js/tvlib.js      bộ sinh câu hỏi Tiếng Việt / Ngữ văn (biện pháp tu từ, đọc hiểu, dấu câu)
 assets/js/kblib.js      dựng môn từ ngân hàng câu hỏi (trắc nghiệm, đúng/sai, nối, điền từ, sắp xếp, xếp nhóm, tự luận)
 assets/js/avail.js      danh sách môn dùng ngân hàng câu hỏi
-assets/js/eco.js        liên kết qua lại với AI Edu, nút đăng nhập
+assets/js/eco.js        liên kết qua lại với AI Edu, nút đăng nhập, ghi thống kê (stats/presence/members)
+assets/js/admin.js      trang quản trị #/quan-tri (lượt truy cập, đang dùng, thành viên)
 assets/js/lang.js       module Ngoại ngữ dùng chung (Trung/Anh/Hàn): lộ trình 5 cấp, giọng đọc, bộ sinh câu hỏi, buổi học A–E, hội thoại, thẻ từ, tiến độ
 subjects/tieng-trung*.js nội dung Tiếng Trung: tieng-trung.js (lộ trình, bảng Pinyin, Ngày 1–7), -2 (Ngày 8–14), -3 (15–21), -4 (22–30)
 subjects/nn/            nội dung khoá ngoại ngữ (tách riêng để không trùng tên file môn phổ thông):

@@ -54,6 +54,7 @@
   /* Nhóm menu thu gọn / bung ra: trạng thái lưu trên máy (plt-sb) */
   let SB = {}; try { SB = JSON.parse(localStorage.getItem('plt-sb')) || {}; } catch (e) { SB = {}; }
   const sbSave = () => { try { localStorage.setItem('plt-sb', JSON.stringify(SB)); } catch (e) { /* bỏ qua */ } };
+  window.addEventListener('plt-auth', () => { if (document.getElementById('sbar')) side(); });
   function side() {
     if (!window.matchMedia) return;
     let a = $('#sbar');
@@ -84,7 +85,7 @@
         ${grp('lt', '🎯', '#FFE4E4', 'Luyện tập', practice.includes(r), sub(PLT.APP.modePath('on-tap', l), '🎯 Ôn tập', r === 'on-tap') + sub(PLT.APP.modePath('kiem-tra', l), '📝 Kiểm tra', r === 'kiem-tra') + sub(PLT.APP.modePath('nang-cao', l), '⭐ Nâng cao*', r === 'nang-cao') + sub('#/chuyen-cap', '🎓 Chuyển cấp', r === 'chuyen-cap'), false)}
         ${grp('nn', '🌏', '#DDE8FB', 'Ngoại ngữ', ['ngoai-ngu', 'tieng-anh', 'tieng-trung', 'tieng-han'].includes(r) && r !== 'thanh-tich', ORDER.map((k) => sub(cHref(k, p && p.lv && p.lv[k] ? p.lv[k] : 1), `${L[k].icon} ${L[k].ten}${p && p.lv && p.lv[k] ? ` <em>${L[k].lv[p.lv[k] - 1]}</em>` : ''}`, r === L[k].key)).join('') + sub('#/ngoai-ngu', '🗂️ Tất cả cấp độ', r === 'ngoai-ngu'), false)}
         ${grp('ai', '🤖', '#E7F6E9', 'AI Edu', false, AI.map(([f, t]) => sub(`ai/${f}/`, t, false)).join('') + sub('ai/', '🏠 Trang AI Edu', false), false)}
-        ${grp('me', '🏆', '#FFF3C4', 'Của em', ['tien-do', 'thanh-tich', 'xep-hang'].includes(r), sub('#/tien-do', '📈 Tiến độ', r === 'tien-do') + sub('#/ngoai-ngu/thanh-tich', '🏆 Thành tích', r === 'thanh-tich') + sub('#/xep-hang', '🏅 Xếp hạng tháng', r === 'xep-hang'), false)}</nav>
+        ${grp('me', '🏆', '#FFF3C4', 'Của em', ['tien-do', 'thanh-tich', 'xep-hang'].includes(r), sub('#/tien-do', '📈 Tiến độ', r === 'tien-do') + sub('#/ngoai-ngu/thanh-tich', '🏆 Thành tích', r === 'thanh-tich') + sub('#/xep-hang', '🏅 Xếp hạng tháng', r === 'xep-hang'), false)}${window.PLT_ACC && PLT_ACC.isAdmin && PLT_ACC.isAdmin() ? it('#/quan-tri', '📊', '#FFE4E4', 'Quản trị', r === 'quan-tri') : ''}</nav>
       <div class="sb-me"><div class="sb-u"><i>${u && u.photoURL ? `<img src="${esc(u.photoURL)}" alt="" referrerpolicy="no-referrer">` : esc(nm.trim().charAt(0).toUpperCase() || '?')}</i><div><b>${esc(nm)}</b><small>${esc(sb)}</small></div><button type="button" data-gear title="Cài đặt">⚙️</button></div>
         <div class="sb-st"><span title="Số ngày học liên tiếp">🔥 <b>${streak()}</b></span><span title="XP tháng này">⚡ <b>${xpMonth()}</b> XP</span></div></div>`;
   }

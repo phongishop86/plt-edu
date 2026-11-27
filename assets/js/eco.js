@@ -120,7 +120,7 @@
     if (user) {
       return modal('<h3>👤 Tài khoản</h3><div class="me"><i>' + face(user) + '</i><div><b>' + esc(user.displayName || 'Học sinh PLT-Edu') + '</b><br><small>' + esc(user.email || '') + '</small></div></div>' +
         '<p id="acc-st">' + status() + '</p><p><small>Tiến độ PLT-Edu, Ngoại ngữ và AI Edu tự lưu lên tài khoản vài giây sau mỗi lần học.</small></p>' +
-        '<a class="bt g" href="' + root + '#/lo-trinh" data-k="plan" style="text-decoration:none">🧭 Lộ trình học tập của em</a><button class="bt" data-k="sync">🔄 Đồng bộ ngay</button><label class="ck"><input type="checkbox" id="acc-wipe"> Xoá tiến độ trên máy này khi đăng xuất (máy dùng chung)</label><button class="bt l" data-k="out">Đăng xuất</button>', function (b, k) {
+        (isAdmin() ? '<a class="bt o" href="' + root + '#/quan-tri" data-k="plan" style="text-decoration:none">📊 Trang quản trị</a>' : '') + '<a class="bt g" href="' + root + '#/lo-trinh" data-k="plan" style="text-decoration:none">🧭 Lộ trình học tập của em</a><button class="bt" data-k="sync">🔄 Đồng bộ ngay</button><label class="ck"><input type="checkbox" id="acc-wipe"> Xoá tiến độ trên máy này khi đăng xuất (máy dùng chung)</label><button class="bt l" data-k="out">Đăng xuất</button>', function (b, k) {
         if (k === 'plan') close();
         if (k === 'sync') { clearTimeout(timer); push(); }
         if (k === 'out') { var wipe = M.querySelector('#acc-wipe').checked; b.disabled = true; (timer ? push() : Promise.resolve()).then(function () { return auth.signOut(); }).then(function () { if (wipe) { Object.keys(snap()).forEach(function (x) { localStorage.removeItem(x); }); } localStorage.removeItem(META); close(); if (wipe) location.reload(); }); }
@@ -152,16 +152,45 @@
     }
     paint(); start();
   }
+
+  /* ---------- Thống kê cho trang quản trị ----------
+     stats/d-YYYY-MM-DD {v: lượt truy cập (mỗi phiên/trang web), u: khách trong ngày (mỗi trình duyệt 1 lần), edu, ai}
+     presence/{uid | g-xxxx}  nhịp "đang dùng" mỗi 2 phút: {at, site, in, name, page}
+     members/{uid}            thành viên đã đăng nhập: {name, email, first, last, site, n} */
+  var ADMIN = 'phongishop86@gmail.com', tracked = false, beatT = 0;
+  function isAdmin() { return !!(user && user.emailVerified && String(user.email || '').toLowerCase() === ADMIN); }
+  function p2(n) { return (n < 10 ? '0' : '') + n; }
+  function dayKey(t) { var d = t ? new Date(t) : new Date(); return d.getFullYear() + '-' + p2(d.getMonth() + 1) + '-' + p2(d.getDate()); }
+  function gid() { var g = ''; try { g = localStorage.getItem('plt-gid') || ''; } catch (e) { /* bỏ qua */ } if (!/^g-[a-z0-9]{12}$/.test(g)) { g = 'g-'; for (var i = 0; i < 12; i++) g += 'abcdefghijklmnopqrstuvwxyz0123456789'.charAt(Math.floor(Math.random() * 36)); try { _set.call(localStorage, 'plt-gid', g); } catch (e) { /* bỏ qua */ } } return g; }
+  function track() {
+    if (tracked || !db) return; tracked = true;
+    var day = dayKey(), inc = fb.firestore.FieldValue.increment(1), o = {}, k = 'plt-v-' + cur;
+    try { if (!sessionStorage.getItem(k)) { o.v = inc; o[cur] = inc; sessionStorage.setItem(k, '1'); } if (localStorage.getItem('plt-seen') !== day) { o.u = inc; _set.call(localStorage, 'plt-seen', day); } } catch (e) { /* bỏ qua */ }
+    if (Object.keys(o).length) db.collection('stats').doc('d-' + day).set(o, { merge: true }).catch(function () { /* chưa có quy tắc */ });
+  }
+  function beat() {
+    if (!db || document.visibilityState === 'hidden') return;
+    clearTimeout(beatT); beatT = setTimeout(beat, 120000);
+    var nm = user ? (user.displayName || String(user.email || '').split('@')[0] || '').slice(0, 40) : '';
+    var pg = (cur === 'ai' ? location.pathname.replace(/^.*?\/ai\//, 'ai/') : location.hash || '#/').slice(0, 60);
+    db.collection('presence').doc(user ? user.uid : gid()).set({ at: fb.firestore.FieldValue.serverTimestamp(), site: cur, in: !!user, name: nm, page: pg }).catch(function () { /* chưa có quy tắc */ });
+  }
+  document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible') beat(); });
+  function member() {
+    var u = user, ref = db.collection('members').doc(u.uid), ts = fb.firestore.FieldValue.serverTimestamp();
+    var o = { name: (u.displayName || '').slice(0, 60), email: (u.email || '').slice(0, 100), last: ts, site: cur, n: fb.firestore.FieldValue.increment(1) };
+    ref.get().then(function (d) { if (!d.exists) o.first = ts; return ref.set(o, { merge: true }); }).catch(function () { /* chưa có quy tắc */ });
+  }
   function start() {
     load(root + 'assets/js/firebase-config.js?v=' + (window.PLT_VER || '1')).catch(function () { /* chưa có cấu hình */ }).then(function () {
       var c = window.PLT_FB; ready = true;
       if (!c || !c.apiKey) return;
       return load(SDK + 'firebase-app-compat.js').then(function () { return Promise.all([load(SDK + 'firebase-auth-compat.js'), load(SDK + 'firebase-firestore-compat.js')]); }).then(function () {
         fb = window.firebase; if (!fb.apps.length) fb.initializeApp(c); auth = fb.auth(); db = fb.firestore(); auth.languageCode = 'vi';
-        auth.onAuthStateChanged(function (u) { var was = user; user = u; err = ''; paint(); if (u && (!was || was.uid !== u.uid)) pull(true); });
+        auth.onAuthStateChanged(function (u) { var was = user; user = u; err = ''; paint(); if (u && (!was || was.uid !== u.uid)) { pull(true); member(); } track(); beat(); try { window.dispatchEvent(new CustomEvent('plt-auth', { detail: { uid: u && u.uid, admin: isAdmin() } })); } catch (e) { /* bỏ qua */ } });
       });
     }).catch(function () { err = 'Không tải được dịch vụ đăng nhập'; paint(); });
   }
-  window.PLT_ACC = { open: open, sync: function () { return push(); }, user: function () { return user; }, db: function () { return db; }, boardSync: function () { lastBoard = ''; return boardSync(); }, month: monthKey };
+  window.PLT_ACC = { isAdmin: isAdmin, dayKey: dayKey, fb: function () { return fb; }, open: open, sync: function () { return push(); }, user: function () { return user; }, db: function () { return db; }, boardSync: function () { lastBoard = ''; return boardSync(); }, month: monthKey };
   if (document.body) mount(); else document.addEventListener('DOMContentLoaded', mount);
 })();

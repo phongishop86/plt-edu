@@ -379,6 +379,7 @@
       case 'tien-do': await progress(); break;
       case 'lo-trinh': PLT.ONB.render(); break;
       case 'xep-hang': await PLT.DASH.board(app); if (my !== seq) return; break;
+      case 'quan-tri': PLT.ADMIN.render(app); break;
       case 'lo-trinh-hoc': await PLT.DASH.path(app, p); if (my !== seq) return; break;
       case 'ngoai-ngu': case 'tieng-trung': case 'tieng-anh': case 'tieng-han': {
         app.innerHTML = '<p class="muted">Đang tải bài học ngoại ngữ…</p>';
