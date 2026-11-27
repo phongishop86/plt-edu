@@ -8,6 +8,8 @@
   const dt = (t) => (ms(t) ? new Date(ms(t)).toLocaleDateString('vi-VN') : '—');
   const num = (n) => (n || 0).toLocaleString('vi-VN');
   let tick = 0, mem = [];
+  const VN = { '44': 'An Giang', '43': 'Bà Rịa - Vũng Tàu', '54': 'Bắc Giang', '53': 'Bắc Kạn', '55': 'Bạc Liêu', '56': 'Bắc Ninh', '50': 'Bến Tre', '31': 'Bình Định', '57': 'Bình Dương', '58': 'Bình Phước', '40': 'Bình Thuận', '59': 'Cà Mau', 'CT': 'Cần Thơ', '04': 'Cao Bằng', 'DN': 'Đà Nẵng', '33': 'Đắk Lắk', '72': 'Đắk Nông', '71': 'Điện Biên', '39': 'Đồng Nai', '45': 'Đồng Tháp', '30': 'Gia Lai', '03': 'Hà Giang', '63': 'Hà Nam', 'HN': 'Hà Nội', '23': 'Hà Tĩnh', '61': 'Hải Dương', 'HP': 'Hải Phòng', '73': 'Hậu Giang', '14': 'Hòa Bình', 'SG': 'TP. Hồ Chí Minh', '66': 'Hưng Yên', '34': 'Khánh Hòa', '47': 'Kiên Giang', '28': 'Kon Tum', '01': 'Lai Châu', '35': 'Lâm Đồng', '09': 'Lạng Sơn', '02': 'Lào Cai', '41': 'Long An', '67': 'Nam Định', '22': 'Nghệ An', '18': 'Ninh Bình', '36': 'Ninh Thuận', '68': 'Phú Thọ', '32': 'Phú Yên', '24': 'Quảng Bình', '27': 'Quảng Nam', '29': 'Quảng Ngãi', '13': 'Quảng Ninh', '25': 'Quảng Trị', '52': 'Sóc Trăng', '05': 'Sơn La', '37': 'Tây Ninh', '20': 'Thái Bình', '69': 'Thái Nguyên', '21': 'Thanh Hóa', '26': 'Thừa Thiên Huế', '46': 'Tiền Giang', '51': 'Trà Vinh', '07': 'Tuyên Quang', '49': 'Vĩnh Long', '70': 'Vĩnh Phúc', '06': 'Yên Bái' };
+  const geoName = (c) => (c === 'XX' ? 'Không rõ' : c === 'VN' ? 'Việt Nam (không rõ tỉnh)' : c.indexOf('VN_') === 0 ? VN[c.slice(3)] || c : '🌐 Nước ngoài: ' + c);
 
   const css = `.adm{max-width:1200px;margin:0 auto}.adm h1{font-size:1.35rem;margin:0 0 2px}.adm .sub{color:#55607A;font-size:.85rem;margin:0 0 12px}
   .adm-k{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:12px}
@@ -23,7 +25,9 @@
   .adm-on small{color:#8a93a6;font-size:.7rem}.adm-tag{font-size:.65rem;font-weight:800;border-radius:6px;padding:1px 6px;background:#E3ECFF;color:#3B6FE0}.adm-tag.ai{background:#E7F6E9;color:#1f9d63}.adm-tag.g{background:#F3EFE6;color:#8a93a6}
   .adm-t{width:100%;border-collapse:collapse;font-size:.82rem}.adm-t th{text-align:left;font-size:.7rem;color:#55607A;text-transform:uppercase;padding:6px;border-bottom:2px solid #EFE7D8}.adm-t td{padding:6px;border-bottom:1px solid #F3EFE6}
   .adm-t tr:hover td{background:#FFF8EE}.adm-tw{max-height:420px;overflow:auto}.adm-s{display:flex;gap:8px;margin-bottom:8px}.adm-s input{flex:1;font:inherit;padding:6px 10px;border:2px solid #E3DED1;border-radius:10px}
-  .adm .btn.sm{padding:5px 12px;font-size:.82rem}.adm-er{background:#FFF1F1;border:1px solid #f3c6ca;color:#9b2330;border-radius:12px;padding:10px 12px;font-size:.85rem;margin-bottom:12px}`;
+  .adm .btn.sm{padding:5px 12px;font-size:.82rem}.adm-gl div{display:grid;grid-template-columns:170px 1fr 90px;gap:8px;align-items:center;font-size:.82rem;padding:3px 0}.adm-gl b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.adm-gl i{height:10px;background:#F3EFE6;border-radius:99px;overflow:hidden}.adm-gl em{display:block;height:100%;background:#D9661F;border-radius:99px}.adm-gl span{text-align:right;color:#55607A;font-size:.75rem}
+  .adm-c select{font:inherit;font-size:.78rem;border:1px solid #E3DED1;border-radius:8px;padding:2px 6px}
+  .adm-er{background:#FFF1F1;border:1px solid #f3c6ca;color:#9b2330;border-radius:12px;padding:10px 12px;font-size:.85rem;margin-bottom:12px}`;
 
   function waitUser(ms0) {
     return new Promise((ok) => {
@@ -53,16 +57,19 @@
     const box = document.getElementById('adm-b'); if (!box) return;
     const days = []; for (let i = 29; i >= 0; i--) days.push(window.PLT_ACC.dayKey(Date.now() - i * 86400000));
     const errs = [];
-    const [st, pr, mb] = await Promise.all([
+    const [st, pr, mb, gs] = await Promise.all([
       db.collection('stats').where(F.FieldPath.documentId(), '>=', 'd-' + days[0]).get().catch((e) => { errs.push('stats: ' + e.code); return null; }),
       db.collection('presence').where('at', '>', F.Timestamp.fromMillis(Date.now() - 86400000)).get().catch((e) => { errs.push('presence: ' + e.code); return null; }),
-      db.collection('members').get().catch((e) => { errs.push('members: ' + e.code); return null; })
+      db.collection('members').get().catch((e) => { errs.push('members: ' + e.code); return null; }),
+      db.collection('geo').where(F.FieldPath.documentId(), '>=', 'd-' + days[0]).get().catch((e) => { errs.push('geo: ' + e.code); return null; })
     ]);
     if (render.seq !== seq) return;
     const S = {}; if (st) st.forEach((d) => { S[d.id.slice(2)] = d.data(); });
     const P = []; if (pr) pr.forEach((d) => P.push(Object.assign({ id: d.id }, d.data())));
     mem = []; if (mb) mb.forEach((d) => mem.push(Object.assign({ id: d.id }, d.data())));
     mem.sort((a, b) => ms(b.last) - ms(a.last));
+    const G = {}; if (gs) gs.forEach((d) => { G[d.id.slice(2)] = d.data(); });
+    geoState = { G, days };
     const today = S[days[29]] || {}, sum = (k, n) => days.slice(30 - n).reduce((a, d) => a + ((S[d] || {})[k] || 0), 0);
     const now = Date.now(), on5 = P.filter((p) => now - ms(p.at) < 5 * 60000), d1 = 86400000;
     const newW = mem.filter((m) => now - ms(m.first) < 7 * d1).length, actW = mem.filter((m) => now - ms(m.last) < 7 * d1).length, actD = P.length;
@@ -82,16 +89,25 @@
           <div class="adm-lg"><span><i style="background:#F4A261"></i>Lượt truy cập</span><span><i style="background:#1B2A4A"></i>Khách (trình duyệt khác nhau)</span></div></div>
         <div class="adm-c"><h2>🟢 Đang dùng <span id="adm-oc">${on5.length} người</span></h2><div class="adm-on" id="adm-on">${onList(on5)}</div></div>
       </div>
+      <div class="adm-c" style="margin-bottom:12px"><h2>📍 Khách theo tỉnh/thành <span><select id="adm-gp"><option value="1">Hôm nay</option><option value="7" selected>7 ngày</option><option value="30">30 ngày</option></select></span></h2><div id="adm-geo"></div><p class="sub" style="margin:6px 0 0;font-size:.72rem">Đếm mỗi trình duyệt 1 lần/ngày · vị trí ước tính theo mạng (4G có thể ra tỉnh khác) · không lưu IP · tên tỉnh theo danh mục 63 tỉnh cũ</p></div>
       <div class="adm-c"><h2>👥 Thành viên đã đăng nhập <span>${num(mem.length)} tài khoản</span></h2>
         <div class="adm-s"><input id="adm-q" placeholder="Tìm theo tên hoặc email…"></div>
         <div class="adm-tw"><table class="adm-t"><thead><tr><th>#</th><th>Tên</th><th>Email</th><th>Tham gia</th><th>Lần cuối</th><th>Số phiên</th><th>Nơi dùng</th></tr></thead><tbody id="adm-tb">${rows(mem)}</tbody></table></div></div>`;
+    const gp = document.getElementById('adm-gp'); gp.onchange = () => geoDraw(+gp.value); geoDraw(7);
     const q = document.getElementById('adm-q');
     q.oninput = () => { const k = q.value.trim().toLowerCase(); document.getElementById('adm-tb').innerHTML = rows(k ? mem.filter((m) => (String(m.name) + ' ' + String(m.email)).toLowerCase().includes(k)) : mem); };
   }
 
+  let geoState = { G: {}, days: [] };
+  function geoDraw(n) {
+    const el = document.getElementById('adm-geo'); if (!el) return;
+    const T = {}; geoState.days.slice(-n).forEach((d) => { const x = geoState.G[d] || {}; Object.keys(x).forEach((k) => { T[k] = (T[k] || 0) + (x[k] || 0); }); });
+    const L = Object.keys(T).map((k) => [geoName(k), T[k]]).sort((a, b) => b[1] - a[1]), tot = L.reduce((a, x) => a + x[1], 0), mx = L.length ? L[0][1] : 1;
+    el.innerHTML = L.length ? '<div class="adm-gl">' + L.slice(0, 20).map(([t, v]) => `<div><b>${esc(t)}</b><i><em style="width:${(v / mx) * 100}%"></em></i><span>${num(v)} · ${Math.round((v / tot) * 100)}%</span></div>`).join('') + '</div>' + (L.length > 20 ? `<p class="sub" style="font-size:.75rem">… và ${L.length - 20} nơi khác</p>` : '') : '<p class="sub">Chưa có số liệu.</p>';
+  }
   function onList(list) {
     if (!list.length) return '<p class="sub">Chưa có ai đang dùng.</p>';
-    return list.sort((a, b) => ms(b.at) - ms(a.at)).map((p) => `<div><span class="adm-tag ${p.site === 'ai' ? 'ai' : ''}">${p.site === 'ai' ? 'AI Edu' : 'PLT-Edu'}</span><b>${p.in ? esc(p.name || 'Thành viên') : '<span class="adm-tag g">Khách</span>'}</b><small title="${esc(p.page)}">${esc(String(p.page || '').slice(0, 22))}</small><small>${ago(p.at)}</small></div>`).join('');
+    return list.sort((a, b) => ms(b.at) - ms(a.at)).map((p) => `<div><span class="adm-tag ${p.site === 'ai' ? 'ai' : ''}">${p.site === 'ai' ? 'AI Edu' : 'PLT-Edu'}</span><b title="${esc(p.mail || '')}">${p.in ? esc(p.name || 'Thành viên') + (p.mail ? ` <small>${esc(p.mail)}</small>` : '') : '<span class="adm-tag g">Khách</span>'}</b>${p.geo ? `<small>📍${esc(p.geo)}</small>` : ''}<small title="${esc(p.page)}">${esc(String(p.page || '').slice(0, 22))}</small><small>${ago(p.at)}</small></div>`).join('');
   }
   async function online(db, F) {
     const s = await db.collection('presence').where('at', '>', F.Timestamp.fromMillis(Date.now() - 5 * 60000)).get().catch(() => null);

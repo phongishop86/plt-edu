@@ -55,13 +55,28 @@ service cloud.firestore {
     // Ai đang dùng (nhịp 2 phút): thành viên ghi theo uid, khách theo mã g-xxxxxxxxxxxx
     match /presence/{id} {
       allow read: if isAdmin();
-      allow write: if request.resource.data.keys().hasOnly(['at', 'site', 'in', 'name', 'page'])
+      allow write: if request.resource.data.keys().hasOnly(['at', 'site', 'in', 'name', 'mail', 'geo', 'page'])
         && request.resource.data.at == request.time
         && request.resource.data.site in ['edu', 'ai']
         && request.resource.data.name is string && request.resource.data.name.size() <= 40
         && request.resource.data.page is string && request.resource.data.page.size() <= 60
+        && request.resource.data.get('mail', '') is string && request.resource.data.get('mail', '').size() <= 100
+        && request.resource.data.get('geo', '') is string && request.resource.data.get('geo', '').size() <= 40
         && ((request.auth != null && request.auth.uid == id && request.resource.data['in'] == true)
-          || (id.matches('g-[a-z0-9]{12}') && request.resource.data['in'] == false && request.resource.data.name == ''));
+          || (id.matches('g-[a-z0-9]{12}') && request.resource.data['in'] == false && request.resource.data.name == ''
+            && request.resource.data.get('mail', '') == ''));
+    }
+    // Khách theo tỉnh/thành mỗi ngày: mỗi lần chỉ +1 cho đúng 1 mã tỉnh
+    function geoStep() {
+      let ks = request.resource.data.diff(resource.data).affectedKeys().toList();
+      return ks.size() == 1 && ks[0].matches('[A-Z0-9_]{2,8}')
+        && request.resource.data[ks[0]] == resource.data.get(ks[0], 0) + 1;
+    }
+    match /geo/{d} {
+      allow read: if isAdmin();
+      allow create: if d.matches('d-[0-9]{4}-[0-9]{2}-[0-9]{2}') && request.resource.data.size() == 1
+        && request.resource.data.values().hasOnly([1]) && request.resource.data.keys()[0].matches('[A-Z0-9_]{2,8}');
+      allow update: if request.resource.data.size() <= 120 && geoStep();
     }
     // Danh sách thành viên (nhẹ) cho trang quản trị
     match /members/{uid} {
@@ -88,6 +103,7 @@ assets/js/tvlib.js      bộ sinh câu hỏi Tiếng Việt / Ngữ văn (biện
 assets/js/kblib.js      dựng môn từ ngân hàng câu hỏi (trắc nghiệm, đúng/sai, nối, điền từ, sắp xếp, xếp nhóm, tự luận)
 assets/js/avail.js      danh sách môn dùng ngân hàng câu hỏi
 assets/js/eco.js        liên kết qua lại với AI Edu, nút đăng nhập, ghi thống kê (stats/presence/members)
+api/geo.js              hàm Vercel trả về tỉnh/thành của khách (không lưu IP)
 assets/js/admin.js      trang quản trị #/quan-tri (lượt truy cập, đang dùng, thành viên)
 assets/js/lang.js       module Ngoại ngữ dùng chung (Trung/Anh/Hàn): lộ trình 5 cấp, giọng đọc, bộ sinh câu hỏi, buổi học A–E, hội thoại, thẻ từ, tiến độ
 subjects/tieng-trung*.js nội dung Tiếng Trung: tieng-trung.js (lộ trình, bảng Pinyin, Ngày 1–7), -2 (Ngày 8–14), -3 (15–21), -4 (22–30)

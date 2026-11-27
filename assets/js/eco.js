@@ -155,7 +155,8 @@
 
   /* ---------- Thống kê cho trang quản trị ----------
      stats/d-YYYY-MM-DD {v: lượt truy cập (mỗi phiên/trang web), u: khách trong ngày (mỗi trình duyệt 1 lần), edu, ai}
-     presence/{uid | g-xxxx}  nhịp "đang dùng" mỗi 2 phút: {at, site, in, name, page}
+     geo/d-YYYY-MM-DD         khách trong ngày theo tỉnh: {VN_41: n, VN_SG: n, US: n…}
+     presence/{uid | g-xxxx}  nhịp "đang dùng" mỗi 2 phút: {at, site, in, name, mail, geo, page}
      members/{uid}            thành viên đã đăng nhập: {name, email, first, last, site, n} */
   var ADMIN = 'phongishop86@gmail.com', tracked = false, beatT = 0;
   function isAdmin() { return !!(user && user.emailVerified && String(user.email || '').toLowerCase() === ADMIN); }
@@ -164,11 +165,24 @@
   function p2(n) { return (n < 10 ? '0' : '') + n; }
   function dayKey(t) { var d = t ? new Date(t) : new Date(); return d.getFullYear() + '-' + p2(d.getMonth() + 1) + '-' + p2(d.getDate()); }
   function gid() { var g = ''; try { g = localStorage.getItem('plt-gid') || ''; } catch (e) { /* bỏ qua */ } if (!/^g-[a-z0-9]{12}$/.test(g)) { g = 'g-'; for (var i = 0; i < 12; i++) g += 'abcdefghijklmnopqrstuvwxyz0123456789'.charAt(Math.floor(Math.random() * 36)); try { _set.call(localStorage, 'plt-gid', g); } catch (e) { /* bỏ qua */ } } return g; }
+  /* Tỉnh/thành của khách: hỏi /api/geo (Vercel) mỗi ngày một lần, chỉ lưu mã + tên tỉnh, không lưu IP */
+  var geoP = null;
+  function geo() {
+    if (geoP) return geoP;
+    var day = dayKey(), c = null; try { c = JSON.parse(localStorage.getItem('plt-geo')); } catch (e) { /* bỏ qua */ }
+    if (c && c.d === day && c.code) return (geoP = Promise.resolve(c));
+    return (geoP = (location.protocol.indexOf('http') === 0 ? fetch('/api/geo', { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }) : Promise.resolve(null)).then(function (g) {
+      g = g && /^[A-Z0-9_]{2,8}$/.test(g.code) ? { d: day, code: g.code, name: String(g.name || '').slice(0, 40) } : { d: day, code: 'XX', name: 'Không rõ' };
+      try { _set.call(localStorage, 'plt-geo', JSON.stringify(g)); } catch (e) { /* bỏ qua */ }
+      return g;
+    }).catch(function () { return { d: day, code: 'XX', name: 'Không rõ' }; }));
+  }
   function track() {
     if (tracked || !db) return; tracked = true; if (skip()) return;
     var day = dayKey(), inc = fb.firestore.FieldValue.increment(1), o = {}, k = 'plt-v-' + cur;
     try { if (!sessionStorage.getItem(k)) { o.v = inc; o[cur] = inc; sessionStorage.setItem(k, '1'); } if (localStorage.getItem('plt-seen') !== day) { o.u = inc; _set.call(localStorage, 'plt-seen', day); } } catch (e) { /* bỏ qua */ }
     if (Object.keys(o).length) db.collection('stats').doc('d-' + day).set(o, { merge: true }).catch(function () { /* chưa có quy tắc */ });
+    if (o.u) geo().then(function (g) { var x = {}; x[g.code] = inc; return db.collection('geo').doc('d-' + day).set(x, { merge: true }); }).catch(function () { /* chưa có quy tắc */ });
   }
   function beat() {
     if (!db || document.visibilityState === 'hidden') return;
@@ -176,7 +190,8 @@
     clearTimeout(beatT); beatT = setTimeout(beat, 120000);
     var nm = user ? (user.displayName || String(user.email || '').split('@')[0] || '').slice(0, 40) : '';
     var pg = (cur === 'ai' ? location.pathname.replace(/^.*?\/ai\//, 'ai/') : location.hash || '#/').slice(0, 60);
-    db.collection('presence').doc(user ? user.uid : gid()).set({ at: fb.firestore.FieldValue.serverTimestamp(), site: cur, in: !!user, name: nm, page: pg }).catch(function () { /* chưa có quy tắc */ });
+    var id = user ? user.uid : gid(), mail = user ? String(user.email || '').slice(0, 100) : '';
+    geo().then(function (g) { return db.collection('presence').doc(id).set({ at: fb.firestore.FieldValue.serverTimestamp(), site: cur, in: !!user, name: nm, mail: mail, geo: g.name, page: pg }); }).catch(function () { /* chưa có quy tắc */ });
   }
   document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible') beat(); });
   function member() {
