@@ -115,7 +115,7 @@
     if (!full && PLT.DASH && PLT.data.plan && PLT.data.plan.items) return PLT.DASH.home($('#app'));
     const name = PLT.data.settings.name, has = hasLop(), l = curLop();
     const LG = [['zh', 'tieng-trung', '🇨🇳 Tiếng Trung'], ['en', 'tieng-anh', '🇬🇧 Tiếng Anh A1'], ['en2', 'tieng-anh/c2', '🇬🇧 Tiếng Anh A2'], ['en3', 'tieng-anh/c3', '🇬🇧 Tiếng Anh B1'], ['en4', 'tieng-anh/c4', '🇬🇧 Tiếng Anh B2'], ['en5', 'tieng-anh/c5', '🇬🇧 Tiếng Anh C1'], ['ko', 'tieng-han', '🇰🇷 Tiếng Hàn'], ['zh2', 'tieng-trung/c2', '🇨🇳 Tiếng Trung HSK 3'], ['zh3', 'tieng-trung/c3', '🇨🇳 Tiếng Trung HSK 4'], ['zh4', 'tieng-trung/c4', '🇨🇳 Tiếng Trung HSK 5–6'], ['zh5', 'tieng-trung/c5', '🇨🇳 Tiếng Trung HSK 7–9'], ['ko2', 'tieng-han/c2', '🇰🇷 Tiếng Hàn cấp 2'], ['ko3', 'tieng-han/c3', '🇰🇷 Tiếng Hàn cấp 3'], ['ko4', 'tieng-han/c4', '🇰🇷 Tiếng Hàn cấp 4'], ['ko5', 'tieng-han/c5', '🇰🇷 Tiếng Hàn cấp 5–6']].filter(([k]) => PLT.data[k] && Object.keys(PLT.data[k].days || {}).length); const zh = LG.length > 0;
-    const cont = has || zh ? `<div class="hl"><img src="assets/img/logo-192.png" alt=""><div><b>Tiếp tục học</b><span>Chọn nhanh nơi em đang học dở</span></div></div><div class="pick pick1">${has ? `<a href="#/lop/${l}"><b>📚 Lớp ${l}</b><span>Học bài · Ôn tập · Kiểm tra</span><i>→</i></a>` : ''}${LG.map(([, r, t]) => `<a href="#/${r}"><b>${t}</b><span>Học tiếp lộ trình · 🔥 giữ chuỗi ngày</span><i>→</i></a>`).join('')}</div>`
+    const cont = has || zh ? `<div class="hl"><img src="assets/img/logo-192.png" alt=""><div><b>Tiếp tục học</b><span>Chọn nhanh nơi bạn đang học dở</span></div></div><div class="pick pick1">${has ? `<a href="#/lop/${l}"><b>📚 Lớp ${l}</b><span>Học bài · Ôn tập · Kiểm tra</span><i>→</i></a>` : ''}${LG.map(([, r, t]) => `<a href="#/${r}"><b>${t}</b><span>Học tiếp lộ trình · 🔥 giữ chuỗi ngày</span><i>→</i></a>`).join('')}</div>`
       : `<div class="hl"><img src="assets/img/logo-192.png" alt=""><div><b>Bắt đầu thế nào?</b><span>Chỉ 3 bước, không cần đăng ký</span></div></div><ol class="steps"><li><b>Chọn khoá học</b> phù hợp bên dưới.</li><li><b>Chọn lớp, môn</b> hoặc ngày học.</li><li><b>Học – ôn – kiểm tra</b>, tiến độ tự lưu trên máy.</li></ol>`;
     app.innerHTML = `<section class="hero2"><div class="hw"><div>
         <div class="eyebrow">Miễn phí · Cổng học tập & luyện thi</div>
@@ -340,7 +340,7 @@
   function pickSubject(mode) {
     if (!hasLop()) {
       const t0 = { hoc: '📚 Học bài', 'on-tap': '🎯 Ôn tập', 'kiem-tra': '📝 Kiểm tra', 'nang-cao': '⭐ Nâng cao*' }[mode];
-      app.innerHTML = `<div class="crumb"><a href="#/">Trang chủ</a> › ${t0.slice(2)}</div><h1>${t0}</h1><p class="muted">Em đang học lớp mấy?</p><div class="grades">${Array.from({ length: 12 }, (_, i) => `<button class="grade" data-l="${i + 1}"><span>Lớp</span><b>${i + 1}</b><em>${BOOKS[i + 1].length} môn</em></button>`).join('')}</div>`;
+      app.innerHTML = `<div class="crumb"><a href="#/">Trang chủ</a> › ${t0.slice(2)}</div><h1>${t0}</h1><p class="muted">Bạn đang học lớp mấy?</p><div class="grades">${Array.from({ length: 12 }, (_, i) => `<button class="grade" data-l="${i + 1}"><span>Lớp</span><b>${i + 1}</b><em>${BOOKS[i + 1].length} môn</em></button>`).join('')}</div>`;
       app.querySelectorAll('[data-l]').forEach((b) => (b.onclick = () => { setLop(b.dataset.l); syncLop(); pickSubject(mode); }));
       window.scrollTo(0, 0); return;
     }

@@ -34,11 +34,11 @@
   /* ---------- Kết quả: cấp đề xuất cho từng ngôn ngữ ---------- */
   function rec(k) {
     const s = st.self[k] || 1, q = st.quiz[k];
-    if (!q || q.ans.length < LANG[k].q.length) return { lv: s, why: 'Theo em tự đánh giá' };
+    if (!q || q.ans.length < LANG[k].q.length) return { lv: s, why: 'Theo bạn tự đánh giá' };
     let ok = 0; while (ok < q.ans.length && q.ans[ok] === LANG[k].q[ok][2]) ok++;
     const t = Math.max(1, Math.min(5, ok + 1 > 5 ? 5 : ok + 1));
     const lv = ok >= 5 ? Math.max(s, 5) : t;
-    return { lv, why: `Bài kiểm tra nhanh: đúng liên tiếp ${ok}/5 câu${lv !== s ? ` (em tự đánh giá cấp ${s})` : ''}` };
+    return { lv, why: `Bài kiểm tra nhanh: đúng liên tiếp ${ok}/5 câu${lv !== s ? ` (bạn tự đánh giá cấp ${s})` : ''}` };
   }
   const perLv = (m) => Math.round((30 * 30) / Math.max(10, m || 30));
   function est(k, m) { const n = rec(k).lv, tg = Math.max(n, st.target[k] || n), d = perLv(m || st.mins) * (tg - n + 1); return { n, tg, months: Math.max(1, Math.round(d / 30)), weeks: Math.round(d / 7) }; }
@@ -50,14 +50,14 @@
     }
     const out = [];
     if (a === 0) out.push({ icon: '🤖', t: 'AI Edu · Người đi làm', d: 'Làm quen AI cho email, Excel, báo cáo · 16 buổi', href: 'ai/di-lam/' });
-    out.push({ icon: '✨', t: 'Học Claude từ cơ bản đến nâng cao', d: a >= 9 ? 'Em đã quen tự động hoá: bắt đầu từ Buổi 9 (Skills, kết nối, Claude Code)' : a >= 5 ? 'Bắt đầu từ Buổi 5 (Artifact, tài liệu, ảnh và video bằng code)' : 'Bắt đầu từ Buổi 1, mỗi buổi 1 video ngắn + thực hành', href: 'ai/claude/' });
+    out.push({ icon: '✨', t: 'Học Claude từ cơ bản đến nâng cao', d: a >= 9 ? 'Bạn đã quen tự động hoá: bắt đầu từ Buổi 9 (Skills, kết nối, Claude Code)' : a >= 5 ? 'Bắt đầu từ Buổi 5 (Artifact, tài liệu, ảnh và video bằng code)' : 'Bắt đầu từ Buổi 1, mỗi buổi 1 video ngắn + thực hành', href: 'ai/claude/' });
     return out;
   }
   function roadmap() {
     const R = [];
     if (st.role === 'hs' && st.lop) {
       if (st.goals.includes('lop')) R.push({ icon: '📚', t: `Lớp ${st.lop}: học bài và ôn tập`, d: 'Mỗi ngày học 1 bài theo SGK, cuối tuần làm đề kiểm tra tuần', href: `#/lop/${st.lop}` });
-      if (st.goals.includes('thi')) R.push({ icon: '🎓', t: [5, 9, 12].includes(st.lop) ? `Luyện thi chuyển cấp lớp ${st.lop}` : 'Thi chuyển cấp', d: [5, 9, 12].includes(st.lop) ? 'Năm nay em thi chuyển cấp: mỗi tuần 2 đề có giờ làm bài' : 'Làm quen dạng đề từ sớm, mỗi tháng 1 đề', href: '#/chuyen-cap' });
+      if (st.goals.includes('thi')) R.push({ icon: '🎓', t: [5, 9, 12].includes(st.lop) ? `Luyện thi chuyển cấp lớp ${st.lop}` : 'Thi chuyển cấp', d: [5, 9, 12].includes(st.lop) ? 'Năm nay bạn thi chuyển cấp: mỗi tuần 2 đề có giờ làm bài' : 'Làm quen dạng đề từ sớm, mỗi tháng 1 đề', href: '#/chuyen-cap' });
       if (st.goals.includes('nc')) R.push({ icon: '⭐', t: 'Nâng cao*', d: 'Mỗi tuần 2 buổi bài nâng cao theo SGK lớp mình', href: '#/nang-cao' });
     } else if (st.goals.some((g) => ['lop', 'thi', 'nc'].includes(g))) {
       R.push({ icon: '📚', t: 'Chương trình lớp 1–12', d: 'Chọn lớp của con/học sinh ở đầu trang để xem bài học, đề kiểm tra', href: '#/hoc' });
@@ -81,46 +81,46 @@
   const radio = (on, attr, txt, tag) => `<button type="button" class="ob-rad${on ? ' on' : ''}" ${attr}><i></i><span>${txt}</span>${tag ? `<em>${tag}</em>` : ''}</button>`;
   function body() {
     const s = st.step;
-    if (s === 0) return `<h2>👋 Chào em! Em là ai?</h2>
+    if (s === 0) return `<h2>👋 Chào bạn! Bạn là ai?</h2>
       <label class="ob-lb">Tên gọi<input class="inp" id="obName" value="${esc(st.name)}" placeholder="Ví dụ: Minh Anh" maxlength="40"></label>
-      <div class="ob-lb">Em đang là</div><div class="ob-grid2">${[['hs', '🎒 Học sinh'], ['dl', '💼 Người đi làm'], ['ph', '👨‍👩‍👧 Phụ huynh / Giáo viên']].map(([k, t]) => radio(st.role === k, `data-role="${k}"`, t)).join('')}</div>
-      ${st.role === 'hs' ? `<div class="ob-lb">Em học lớp mấy?</div><div class="ob-lops">${Array.from({ length: 12 }, (_, i) => chip(st.lop === i + 1, `data-lop="${i + 1}"`, 'Lớp ' + (i + 1))).join('')}</div>` : ''}`;
-    if (s === 1) return `<h2>🎯 Em muốn học gì?</h2><p class="muted">Chọn một hoặc nhiều mục.</p>
+      <div class="ob-lb">Bạn đang là</div><div class="ob-grid2">${[['hs', '🎒 Học sinh'], ['dl', '💼 Người đi làm'], ['ph', '👨‍👩‍👧 Phụ huynh / Giáo viên']].map(([k, t]) => radio(st.role === k, `data-role="${k}"`, t)).join('')}</div>
+      ${st.role === 'hs' ? `<div class="ob-lb">Bạn học lớp mấy?</div><div class="ob-lops">${Array.from({ length: 12 }, (_, i) => chip(st.lop === i + 1, `data-lop="${i + 1}"`, 'Lớp ' + (i + 1))).join('')}</div>` : ''}`;
+    if (s === 1) return `<h2>🎯 Bạn muốn học gì?</h2><p class="muted">Chọn một hoặc nhiều mục.</p>
       <div class="ob-grid2">${GOALS.filter(([k]) => st.role === 'hs' || st.role === 'ph' || !['lop', 'thi', 'nc'].includes(k)).map(([k, i, t]) => radio(st.goals.includes(k), `data-goal="${k}"`, `${i} ${t}`)).join('')}</div>`;
     if (s === 2) {
       const L = langs(), parts = [];
       L.forEach((k) => {
         const D = LANG[k], q = st.quiz[k];
         parts.push(`<div class="ob-sec"><h3>${D.icon} ${D.ten}</h3>
-          <div class="ob-row"><span class="ob-lb">Em quan tâm chứng chỉ nào?</span>${D.cert.map((c) => chip(st.cert[k] === c, `data-cert="${k}|${esc(c)}"`, c)).join('')}</div>
-          <div class="ob-lb">Trình độ hiện tại của em?</div><div class="ob-grid2">${D.lv.map(([t, tag], i) => radio(st.self[k] === i + 1, `data-self="${k}|${i + 1}"`, t, tag)).join('')}</div>
+          <div class="ob-row"><span class="ob-lb">Bạn quan tâm chứng chỉ nào?</span>${D.cert.map((c) => chip(st.cert[k] === c, `data-cert="${k}|${esc(c)}"`, c)).join('')}</div>
+          <div class="ob-lb">Trình độ hiện tại của bạn?</div><div class="ob-grid2">${D.lv.map(([t, tag], i) => radio(st.self[k] === i + 1, `data-self="${k}|${i + 1}"`, t, tag)).join('')}</div>
           ${q && q.open ? quizHtml(k) : `<button type="button" class="btn ghost ob-qbtn" data-quiz="${k}">📝 Kiểm tra nhanh 5 câu để chắc hơn${q && q.ans.length === 5 ? ' (đã làm · làm lại)' : ''}</button>`}</div>`);
       });
       if (st.goals.includes('ai')) parts.push(`<div class="ob-sec"><h3>🤖 Kinh nghiệm dùng AI</h3><div class="ob-grid2">${AI_LV.map(([t, v]) => radio(st.ai === v, `data-ai="${v}"`, t)).join('')}</div></div>`);
-      if (!parts.length) parts.push('<p class="muted">Các mục em chọn chưa cần xác định trình độ. Bấm Tiếp tục nhé.</p>');
-      return `<h2>📊 Trình độ của em</h2>${parts.join('')}`;
+      if (!parts.length) parts.push('<p class="muted">Các mục bạn chọn chưa cần xác định trình độ. Bấm Tiếp tục nhé.</p>');
+      return `<h2>📊 Trình độ của bạn</h2>${parts.join('')}`;
     }
     if (s === 3) {
       const L = langs();
-      if (!L.length) return '<h2>🏁 Em muốn đạt tới đâu?</h2><p class="muted">Mục tiêu em chọn không chia cấp độ. Bấm Tiếp tục nhé.</p>';
-      return `<h2>🏁 Em muốn đạt tới đâu?</h2>${L.map((k) => { const D = LANG[k], n = rec(k).lv; if (!st.target[k] || st.target[k] < n) st.target[k] = Math.min(5, n + 1);
+      if (!L.length) return '<h2>🏁 Bạn muốn đạt tới đâu?</h2><p class="muted">Mục tiêu bạn chọn không chia cấp độ. Bấm Tiếp tục nhé.</p>';
+      return `<h2>🏁 Bạn muốn đạt tới đâu?</h2>${L.map((k) => { const D = LANG[k], n = rec(k).lv; if (!st.target[k] || st.target[k] < n) st.target[k] = Math.min(5, n + 1);
         return `<div class="ob-sec"><h3>${D.icon} ${D.ten}</h3><div class="ob-grid2">${D.lv.map(([t, tag], i) => i + 1 < n ? '' : radio(st.target[k] === i + 1, `data-tg="${k}|${i + 1}"`, 'Hoàn thành ' + tag, (i + 1 === n ? '<span class="ob-cur">Đang học</span> ' : '') + tag)).join('')}</div></div>`; }).join('')}
-        ${L.includes('en') ? `<div class="ob-sec"><h3>🗣️ Em muốn học giọng nào?</h3><p class="muted small">Áp dụng cho giọng đọc mẫu và phần luyện phát âm.</p>${[['GB', 'Anh-Anh', '/təˈmɑːtəʊ/', '🇬🇧'], ['US', 'Anh-Mỹ', '/təˈmeɪtoʊ/', '🇺🇸']].map(([a, t, ipa, f]) => `<div class="ob-acc${st.accent === a ? ' on' : ''}"><button type="button" class="ob-rad${st.accent === a ? ' on' : ''}" data-acc="${a}"><i></i><span><b>${t}</b><br><small>tomato ${ipa}</small></span><em>${f}</em></button><button type="button" class="ob-say" data-say="${a}" title="Nghe thử">🔊</button></div>`).join('')}</div>` : ''}`;
+        ${L.includes('en') ? `<div class="ob-sec"><h3>🗣️ Bạn muốn học giọng nào?</h3><p class="muted small">Áp dụng cho giọng đọc mẫu và phần luyện phát âm.</p>${[['GB', 'Anh-Anh', '/təˈmɑːtəʊ/', '🇬🇧'], ['US', 'Anh-Mỹ', '/təˈmeɪtoʊ/', '🇺🇸']].map(([a, t, ipa, f]) => `<div class="ob-acc${st.accent === a ? ' on' : ''}"><button type="button" class="ob-rad${st.accent === a ? ' on' : ''}" data-acc="${a}"><i></i><span><b>${t}</b><br><small>tomato ${ipa}</small></span><em>${f}</em></button><button type="button" class="ob-say" data-say="${a}" title="Nghe thử">🔊</button></div>`).join('')}</div>` : ''}`;
     }
     if (s === 4) { const k = langs()[0], e = k ? est(k) : null;
-      return `<h2>⏰ Mỗi ngày em học bao lâu?</h2><p class="muted">Học đều mỗi ngày quan trọng hơn học dồn. Có thể đổi sau.</p>
+      return `<h2>⏰ Mỗi ngày bạn học bao lâu?</h2><p class="muted">Học đều mỗi ngày quan trọng hơn học dồn. Có thể đổi sau.</p>
       <div class="ob-mins">${MINS.map(([m, t]) => `<button type="button" class="ob-min${st.mins === m ? ' on' : ''}" data-mins="${m}"><b>${m}</b><small>phút/ngày</small><span>${t}</span></button>`).join('')}</div>
       ${e ? `<div class="ob-est">🕒 Với ${st.mins} phút mỗi ngày: dự kiến khoảng <b>${e.months} tháng</b> để hoàn thành ${LANG[k].lv[e.tg - 1][1]} ${LANG[k].ten.toLowerCase()}.</div>` : ''}`; }
     if (s === 5) return `<h2>🔒 Quyền riêng tư</h2>
-      <ul class="ob-ul"><li>PLT-Edu chỉ lưu <b>tên gọi, lớp, lộ trình và tiến độ học</b> của em.</li><li>Khi đăng nhập, dữ liệu này được lưu vào tài khoản để học trên nhiều thiết bị; chưa đăng nhập thì chỉ lưu trên máy này.</li><li>Không bán, không chia sẻ dữ liệu cho bên khác. Em có thể xoá tiến độ khi đăng xuất.</li></ul>
-      <label class="ob-ck"><input type="checkbox" id="obConsent" ${st.consent ? 'checked' : ''}> Em đồng ý để PLT-Edu lưu tiến độ học như trên.</label>
-      ${child() ? `<label class="ob-ck"><input type="checkbox" id="obParent" ${st.parent ? 'checked' : ''}> Bố mẹ / người lớn đã biết và đồng ý cho em dùng tài khoản này.</label>` : ''}
+      <ul class="ob-ul"><li>PLT-Edu chỉ lưu <b>tên gọi, lớp, lộ trình và tiến độ học</b> của bạn.</li><li>Khi đăng nhập, dữ liệu này được lưu vào tài khoản để học trên nhiều thiết bị; chưa đăng nhập thì chỉ lưu trên máy này.</li><li>Không bán, không chia sẻ dữ liệu cho bên khác. Bạn có thể xoá tiến độ khi đăng xuất.</li></ul>
+      <label class="ob-ck"><input type="checkbox" id="obConsent" ${st.consent ? 'checked' : ''}> Bạn đồng ý để PLT-Edu lưu tiến độ học như trên.</label>
+      ${child() ? `<label class="ob-ck"><input type="checkbox" id="obParent" ${st.parent ? 'checked' : ''}> Bố mẹ / người lớn đã biết và đồng ý cho bạn dùng tài khoản này.</label>` : ''}
       <div class="ob-tg${child() ? ' off' : ''}"><div><b>Hiện tên trên bảng xếp hạng XP tháng</b><small>${child() ? 'Học sinh lớp 1–7 không hiện tên công khai để giữ an toàn.' : 'Chỉ hiện tên gọi và XP, không hiện email hay ảnh. Có thể tắt bất cứ lúc nào.'}</small></div><button type="button" class="ob-sw${st.board && !child() ? ' on' : ''}" data-board="1" ${child() ? 'disabled' : ''} aria-label="Bật tắt hiện tên"><i></i></button></div>`;
     const R = roadmap();
     const chips = [st.role === 'hs' ? 'Học sinh lớp ' + st.lop : st.role === 'dl' ? 'Người đi làm' : 'Phụ huynh / Giáo viên'].concat(langs().map((k) => `${LANG[k].ten}: ${LANG[k].lv[rec(k).lv - 1][1]} → ${LANG[k].lv[(st.target[k] || rec(k).lv) - 1][1]}`)).concat(langs().includes('en') ? ['Giọng: ' + (st.accent === 'GB' ? 'Anh-Anh' : 'Anh-Mỹ')] : []).concat(['Mỗi ngày: ' + st.mins + ' phút']);
-    return `<div class="ob-ready"><span class="ob-okb">✓</span><h2>Tất cả đã sẵn sàng, ${esc(st.name || 'em')}!</h2></div><div class="ob-chips">${chips.map((c) => `<span>${esc(c)}</span>`).join('')}</div><p class="muted">${weekText(R)}</p>
-      <div class="ob-plan">${R.map((r, i) => `<a class="ob-step" href="${r.href}"><span class="n">${i + 1}</span><span class="i">${r.icon}</span><span><b>${esc(r.t)}</b><small>${esc(r.d)}</small></span><em>→</em></a>`).join('') || '<p>Em chưa chọn mục tiêu nào, quay lại bước 2 nhé.</p>'}</div>
-      <p class="small muted">Lộ trình được lưu lại; em xem lại ở trang chủ hoặc làm lại bài xác định trình độ bất cứ lúc nào.</p>`;
+    return `<div class="ob-ready"><span class="ob-okb">✓</span><h2>Tất cả đã sẵn sàng, ${esc(st.name || 'bạn')}!</h2></div><div class="ob-chips">${chips.map((c) => `<span>${esc(c)}</span>`).join('')}</div><p class="muted">${weekText(R)}</p>
+      <div class="ob-plan">${R.map((r, i) => `<a class="ob-step" href="${r.href}"><span class="n">${i + 1}</span><span class="i">${r.icon}</span><span><b>${esc(r.t)}</b><small>${esc(r.d)}</small></span><em>→</em></a>`).join('') || '<p>Bạn chưa chọn mục tiêu nào, quay lại bước 2 nhé.</p>'}</div>
+      <p class="small muted">Lộ trình được lưu lại; bạn xem lại ở trang chủ hoặc làm lại bài xác định trình độ bất cứ lúc nào.</p>`;
   }
   function quizHtml(k) {
     const D = LANG[k], q = st.quiz[k], i = q.ans.length;
@@ -131,9 +131,9 @@
   }
   function canNext() {
     const s = st.step;
-    if (s === 0) return st.role && (st.role !== 'hs' || st.lop) ? '' : st.role ? 'Chọn lớp em đang học nhé.' : 'Chọn em là ai nhé.';
+    if (s === 0) return st.role && (st.role !== 'hs' || st.lop) ? '' : st.role ? 'Chọn lớp bạn đang học nhé.' : 'Chọn bạn là ai nhé.';
     if (s === 1) return st.goals.length ? '' : 'Chọn ít nhất 1 mục tiêu.';
-    if (s === 2) { const m = langs().find((k) => !st.self[k]); if (m) return `Chọn trình độ ${LANG[m].ten} của em.`; if (st.goals.includes('ai') && st.ai < 0) return 'Chọn kinh nghiệm dùng AI.'; return ''; }
+    if (s === 2) { const m = langs().find((k) => !st.self[k]); if (m) return `Chọn trình độ ${LANG[m].ten} của bạn.`; if (st.goals.includes('ai') && st.ai < 0) return 'Chọn kinh nghiệm dùng AI.'; return ''; }
     if (s === 5) return !st.consent ? 'Tích vào ô đồng ý để tiếp tục.' : child() && !st.parent ? 'Nhờ bố mẹ xác nhận ô thứ hai nhé.' : '';
     return '';
   }
@@ -153,7 +153,7 @@
   function draw() {
     const app = $('#app'); if (!app) return;
     app.innerHTML = `<div class="ob">
-      <div class="ob-top"><div class="ob-hd"><img src="assets/img/logo-96.png" alt=""><b>Chào mừng em đến với PLT-Edu</b></div>
+      <div class="ob-top"><div class="ob-hd"><img src="assets/img/logo-96.png" alt=""><b>Chào mừng bạn đến với PLT-Edu</b></div>
         <ol class="ob-steps">${STEPS.map((t, i) => `<li class="${i === st.step ? 'on' : i < st.step ? 'ok' : ''}"><b>${i < st.step ? '✓' : i + 1}</b><span>${t}</span></li>`).join('')}</ol></div>
       <div class="ob-card">${body()}</div>
       <div class="ob-foot">${st.step ? `<button type="button" class="btn ghost" id="obBack">← ${STEPS[st.step - 1]}</button>` : '<button type="button" class="btn ghost" id="obSkip">Để sau</button>'}<span class="ob-err" id="obErr"></span>
@@ -194,8 +194,8 @@
   /* Thẻ lộ trình ở trang chủ */
   function card() {
     const p = PLT.data.plan;
-    if (!p || !p.items) return `<div class="ob-mini"><b>🧭 Chưa có lộ trình riêng?</b><span>Trả lời vài câu, làm bài kiểm tra nhanh 5 câu: PLT-Edu đề xuất lộ trình hợp trình độ của em.</span><a class="btn" href="#/lo-trinh">Xác định trình độ (2 phút)</a></div>`;
-    return `<div class="ob-mini on"><b>🧭 Lộ trình của em</b><span>${p.mins} phút/ngày · cập nhật ${new Date(p.at).toLocaleDateString('vi-VN')}</span>
+    if (!p || !p.items) return `<div class="ob-mini"><b>🧭 Chưa có lộ trình riêng?</b><span>Trả lời vài câu, làm bài kiểm tra nhanh 5 câu: PLT-Edu đề xuất lộ trình hợp trình độ của bạn.</span><a class="btn" href="#/lo-trinh">Xác định trình độ (2 phút)</a></div>`;
+    return `<div class="ob-mini on"><b>🧭 Lộ trình của bạn</b><span>${p.mins} phút/ngày · cập nhật ${new Date(p.at).toLocaleDateString('vi-VN')}</span>
       <div class="ob-plan sm">${p.items.slice(0, 4).map((r) => `<a class="ob-step" href="${r.href}"><span class="i">${r.icon}</span><span><b>${esc(r.t)}</b></span><em>→</em></a>`).join('')}</div><a class="small" href="#/lo-trinh">↻ Làm lại bài xác định trình độ</a></div>`;
   }
   PLT.ONB = { render() { st = fresh(); draw(); }, card, needed: () => !PLT.data.plan };

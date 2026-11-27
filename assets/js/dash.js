@@ -85,7 +85,7 @@
         ${grp('lt', '🎯', '#FFE4E4', 'Luyện tập', practice.includes(r), sub(PLT.APP.modePath('on-tap', l), '🎯 Ôn tập', r === 'on-tap') + sub(PLT.APP.modePath('kiem-tra', l), '📝 Kiểm tra', r === 'kiem-tra') + sub(PLT.APP.modePath('nang-cao', l), '⭐ Nâng cao*', r === 'nang-cao') + sub('#/chuyen-cap', '🎓 Chuyển cấp', r === 'chuyen-cap'), false)}
         ${grp('nn', '🌏', '#DDE8FB', 'Ngoại ngữ', ['ngoai-ngu', 'tieng-anh', 'tieng-trung', 'tieng-han'].includes(r) && r !== 'thanh-tich', ORDER.map((k) => sub(cHref(k, p && p.lv && p.lv[k] ? p.lv[k] : 1), `${L[k].icon} ${L[k].ten}${p && p.lv && p.lv[k] ? ` <em>${L[k].lv[p.lv[k] - 1]}</em>` : ''}`, r === L[k].key)).join('') + sub('#/ngoai-ngu', '🗂️ Tất cả cấp độ', r === 'ngoai-ngu'), false)}
         ${grp('ai', '🤖', '#E7F6E9', 'AI Edu', false, AI.map(([f, t]) => sub(`ai/${f}/`, t, false)).join('') + sub('ai/', '🏠 Trang AI Edu', false), false)}
-        ${grp('me', '🏆', '#FFF3C4', 'Của em', ['tien-do', 'thanh-tich', 'xep-hang'].includes(r), sub('#/tien-do', '📈 Tiến độ', r === 'tien-do') + sub('#/ngoai-ngu/thanh-tich', '🏆 Thành tích', r === 'thanh-tich') + sub('#/xep-hang', '🏅 Xếp hạng tháng', r === 'xep-hang'), false)}${window.PLT_ACC && PLT_ACC.isAdmin && PLT_ACC.isAdmin() ? it('#/quan-tri', '📊', '#FFE4E4', 'Quản trị', r === 'quan-tri') : ''}</nav>
+        ${grp('me', '🏆', '#FFF3C4', 'Của bạn', ['tien-do', 'thanh-tich', 'xep-hang'].includes(r), sub('#/tien-do', '📈 Tiến độ', r === 'tien-do') + sub('#/ngoai-ngu/thanh-tich', '🏆 Thành tích', r === 'thanh-tich') + sub('#/xep-hang', '🏅 Xếp hạng tháng', r === 'xep-hang'), false)}${window.PLT_ACC && PLT_ACC.isAdmin && PLT_ACC.isAdmin() ? it('#/quan-tri', '📊', '#FFE4E4', 'Quản trị', r === 'quan-tri') : ''}</nav>
       <div class="sb-me"><div class="sb-u"><i>${u && u.photoURL ? `<img src="${esc(u.photoURL)}" alt="" referrerpolicy="no-referrer">` : esc(nm.trim().charAt(0).toUpperCase() || '?')}</i><div><b>${esc(nm)}</b><small>${esc(sb)}</small></div><button type="button" data-gear title="Cài đặt">⚙️</button></div>
         <div class="sb-st"><span title="Số ngày học liên tiếp">🔥 <b>${streak()}</b></span><span title="XP tháng này">⚡ <b>${xpMonth()}</b> XP</span></div></div>`;
   }
@@ -120,9 +120,9 @@
     const main = langsOf()[0];
     const tiles = [tile(has ? '#/lop/' + l : '#/hoc', '📚', '149 MÔN', has ? 'Lớp ' + l : 'Học theo lớp', 'Bài học SGK lớp 1–12', '#E3ECFF'), tile(PLT.APP.modePath('on-tap', l), '🎯', 'KHÔNG GIỚI HẠN', 'Ôn tập', 'Câu hỏi ngẫu nhiên', '#FFE4E4'), tile(PLT.APP.modePath('kiem-tra', l), '📝', 'ĐỀ CÓ GIỜ', 'Kiểm tra', 'Tuần, tháng, học kỳ', '#FFF0C9')]
       .concat(ORDER.map((k) => tile(cHref(k, myLv(k)), L[k].icon, `CẤP ${myLv(k)} · ${L[k].lv[myLv(k) - 1]}`, L[k].ten, '30 ngày mỗi cấp, có hội thoại', L[k].bg)))
-      .concat([tile('ai/', '🤖', '76 BUỔI', 'AI Edu', 'Dùng AI an toàn, học Claude', '#E7F6E9'), tile('#/lo-trinh-hoc', '🧭', 'THEO TRÌNH ĐỘ', 'Lộ trình', 'Kế hoạch riêng của em', '#D9F0EA')]).join('');
+      .concat([tile('ai/', '🤖', '76 BUỔI', 'AI Edu', 'Dùng AI an toàn, học Claude', '#E7F6E9'), tile('#/lo-trinh-hoc', '🧭', 'THEO TRÌNH ĐỘ', 'Lộ trình', 'Kế hoạch riêng của bạn', '#D9F0EA')]).join('');
     app.innerHTML = `<div class="dsh">
-      <section class="dh"><div class="dh-t"><h1>Chào ${esc(nm || 'em')}, học tiếp nhé.</h1>
+      <section class="dh"><div class="dh-t"><h1>Chào ${esc(nm || 'bạn')}, học tiếp nhé.</h1>
         <div class="dh-row"><span class="dh-date"><small>Tháng ${dt.getMonth() + 1}</small><b>${dt.getDate()}</b> ${['Chủ nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'][dt.getDay()]}</span>
         <span class="dh-st">🔥 <b>${streak()}</b> ngày liền</span><div class="dh-wk">${wk.cells}</div><span class="dh-n">Tuần này<b>${wk.n}/7 ngày</b></span>
         <button type="button" class="btn${ck ? ' ghost' : ''}" id="dCk" ${ck ? 'disabled' : ''}>${ck ? '✓ Đã điểm danh' : '🔥 Điểm danh +5 XP'}</button></div></div></section>
@@ -192,7 +192,7 @@
     const now = new Date(), end = new Date(now.getFullYear(), now.getMonth() + 1, 1), left = Math.ceil((end - now) / 864e5);
     const head = `<section class="dh"><div class="dc-h"><div><h1>🏅 Xếp hạng XP tháng ${now.getMonth() + 1}</h1><span class="muted">Kết thúc sau ${left} ngày · tính XP học trong tháng</span></div></div></section>`;
     if (!u) { app.innerHTML = `<div class="dsh">${head}<section class="dcard" style="margin-top:14px"><p>Đăng nhập để xem bảng xếp hạng và thi đua cùng các bạn.</p><button type="button" class="btn" id="bLogin">👤 Đăng nhập</button></section></div>`; $('#bLogin').onclick = () => A && A.open(); return; }
-    const me = `<section class="dcard bd-me"><div><b>Hiện tên em trên bảng xếp hạng</b><small>${child ? 'Học sinh lớp 1–7 không hiện tên công khai để giữ an toàn.' : 'Chỉ hiện tên gọi và XP tháng, không hiện email, ảnh. Tắt bất cứ lúc nào.'}</small></div>
+    const me = `<section class="dcard bd-me"><div><b>Hiện tên bạn trên bảng xếp hạng</b><small>${child ? 'Học sinh lớp 1–7 không hiện tên công khai để giữ an toàn.' : 'Chỉ hiện tên gọi và XP tháng, không hiện email, ảnh. Tắt bất cứ lúc nào.'}</small></div>
       <button type="button" class="ob-sw${p.board && !child ? ' on' : ''}" id="bSw" ${child || !p.items ? 'disabled' : ''} aria-label="Bật tắt hiện tên"><i></i></button>${!p.items ? '<a class="small" href="#/lo-trinh">Xác định trình độ trước</a>' : ''}</section>`;
     app.innerHTML = `<div class="dsh">${head}${me}<section class="dcard" id="bList"><p class="muted">Đang tải bảng xếp hạng…</p></section></div>`;
     const sw = $('#bSw'); if (sw) sw.onclick = async () => { p.board = !p.board; PLT.data.plan = p; PLT.save(); sw.classList.toggle('on', !!p.board); await A.boardSync(); board(app); };
@@ -207,7 +207,7 @@
       const ini = (n) => esc(String(n || '?').trim().charAt(0).toUpperCase());
       const pod = [R[1], R[0], R[2]].map((x, i) => x ? `<div class="pd p${[2, 1, 3][i]}${x.id === u.uid ? ' me' : ''}"><i>${ini(x.name)}</i><b>${esc(x.name)}</b><span>${x.xp} XP</span><div class="pdb">${[2, 1, 3][i]}</div></div>` : '<div class="pd"></div>').join('');
       box.innerHTML = `<div class="pod">${pod}</div>${R.slice(3).map((x, i) => `<div class="bd-row${x.id === u.uid ? ' me' : ''}"><em>${i + 4}</em><i>${ini(x.name)}</i><b>${esc(x.name)}</b><span>${x.xp} XP</span></div>`).join('')}
-        ${R.some((x) => x.id === u.uid) ? '' : `<p class="small muted">${p.board && !child ? 'Em chưa có XP tháng này hoặc chưa vào top 50.' : 'Em đang ẩn tên. Bật công tắc phía trên để tham gia.'}</p>`}`;
+        ${R.some((x) => x.id === u.uid) ? '' : `<p class="small muted">${p.board && !child ? 'Bạn chưa có XP tháng này hoặc chưa vào top 50.' : 'Bạn đang ẩn tên. Bật công tắc phía trên để tham gia.'}</p>`}`;
     } catch (e) {
       if (box) box.innerHTML = `<p class="muted">Chưa đọc được bảng xếp hạng${e && e.code === 'permission-denied' ? ': quản trị cần cập nhật quy tắc Firestore cho mục boards.' : '.'}</p>`;
     }

@@ -86,8 +86,8 @@
     }).catch(function (e) { busy = false; err = 'Không tải được tiến độ (' + (e.code || 'lỗi mạng') + ')'; paint(); });
   }
   function choose(d) {
-    modal('<h3>☁️ Chọn tiến độ để dùng</h3><p>Tài khoản của em đã có tiến độ (lưu lúc <b>' + when(d.at) + '</b>), và máy này cũng có tiến độ khác.</p>' +
-      '<button class="bt o" data-k="r">☁️ Dùng tiến độ trên tài khoản</button><button class="bt g" data-k="l">💻 Dùng tiến độ của máy này (ghi đè tài khoản)</button><small>Mẹo: chọn bên nào em học nhiều hơn.</small>', function (b, k) {
+    modal('<h3>☁️ Chọn tiến độ để dùng</h3><p>Tài khoản của bạn đã có tiến độ (lưu lúc <b>' + when(d.at) + '</b>), và máy này cũng có tiến độ khác.</p>' +
+      '<button class="bt o" data-k="r">☁️ Dùng tiến độ trên tài khoản</button><button class="bt g" data-k="l">💻 Dùng tiến độ của máy này (ghi đè tài khoản)</button><small>Mẹo: chọn bên nào bạn học nhiều hơn.</small>', function (b, k) {
       if (k === 'r') apply(d.store, d.at); else if (k === 'l') { close(); ready2(); push(); }
     }, true);
   }
@@ -111,7 +111,7 @@
     M.addEventListener('click', function (e) { if (!sticky && (e.target === M || e.target.classList.contains('x'))) return close(); var b = e.target.closest('[data-k]'); if (b && on) on(b, b.dataset.k); });
     document.body.appendChild(M); var f = M.querySelector('input'); if (f) f.focus();
   }
-  var ERR = { 'auth/invalid-email': 'Email không hợp lệ.', 'auth/missing-password': 'Em chưa nhập mật khẩu.', 'auth/weak-password': 'Mật khẩu cần ít nhất 6 ký tự.', 'auth/email-already-in-use': 'Email này đã có tài khoản – hãy bấm Đăng nhập.', 'auth/invalid-credential': 'Sai email hoặc mật khẩu.', 'auth/wrong-password': 'Sai mật khẩu.', 'auth/user-not-found': 'Chưa có tài khoản với email này.', 'auth/too-many-requests': 'Thử quá nhiều lần, đợi vài phút rồi thử lại.', 'auth/network-request-failed': 'Mất kết nối mạng.', 'auth/popup-closed-by-user': 'Em đã đóng cửa sổ đăng nhập.', 'auth/unauthorized-domain': 'Tên miền này chưa được cho phép trong Firebase.', 'auth/operation-not-allowed': 'Cách đăng nhập này chưa được bật trong Firebase.' };
+  var ERR = { 'auth/invalid-email': 'Email không hợp lệ.', 'auth/missing-password': 'Bạn chưa nhập mật khẩu.', 'auth/weak-password': 'Mật khẩu cần ít nhất 6 ký tự.', 'auth/email-already-in-use': 'Email này đã có tài khoản – hãy bấm Đăng nhập.', 'auth/invalid-credential': 'Sai email hoặc mật khẩu.', 'auth/wrong-password': 'Sai mật khẩu.', 'auth/user-not-found': 'Chưa có tài khoản với email này.', 'auth/too-many-requests': 'Thử quá nhiều lần, đợi vài phút rồi thử lại.', 'auth/network-request-failed': 'Mất kết nối mạng.', 'auth/popup-closed-by-user': 'Bạn đã đóng cửa sổ đăng nhập.', 'auth/unauthorized-domain': 'Tên miền này chưa được cho phép trong Firebase.', 'auth/operation-not-allowed': 'Cách đăng nhập này chưa được bật trong Firebase.' };
   function say(e) { var x = M && M.querySelector('.er'); if (x) x.textContent = ERR[e && e.code] || ('Có lỗi: ' + ((e && (e.code || e.message)) || '')); M && M.querySelectorAll('.bt').forEach(function (b) { b.disabled = false; }); }
   function open() {
     if (!fb) {
@@ -120,7 +120,7 @@
     if (user) {
       return modal('<h3>👤 Tài khoản</h3><div class="me"><i>' + face(user) + '</i><div><b>' + esc(user.displayName || 'Học sinh PLT-Edu') + '</b><br><small>' + esc(user.email || '') + '</small></div></div>' +
         '<p id="acc-st">' + status() + '</p><p><small>Tiến độ PLT-Edu, Ngoại ngữ và AI Edu tự lưu lên tài khoản vài giây sau mỗi lần học.</small></p>' +
-        (isAdmin() ? '<a class="bt o" href="' + root + '#/quan-tri" data-k="plan" style="text-decoration:none">📊 Trang quản trị</a>' : '') + '<a class="bt g" href="' + root + '#/lo-trinh" data-k="plan" style="text-decoration:none">🧭 Lộ trình học tập của em</a><button class="bt" data-k="sync">🔄 Đồng bộ ngay</button><label class="ck"><input type="checkbox" id="acc-wipe"> Xoá tiến độ trên máy này khi đăng xuất (máy dùng chung)</label><button class="bt l" data-k="out">Đăng xuất</button>', function (b, k) {
+        (isAdmin() ? '<a class="bt o" href="' + root + '#/quan-tri" data-k="plan" style="text-decoration:none">📊 Trang quản trị</a>' : '') + '<a class="bt g" href="' + root + '#/lo-trinh" data-k="plan" style="text-decoration:none">🧭 Lộ trình học tập của bạn</a><button class="bt" data-k="sync">🔄 Đồng bộ ngay</button><label class="ck"><input type="checkbox" id="acc-wipe"> Xoá tiến độ trên máy này khi đăng xuất (máy dùng chung)</label><button class="bt l" data-k="out">Đăng xuất</button>', function (b, k) {
         if (k === 'plan') close();
         if (k === 'sync') { clearTimeout(timer); push(); }
         if (k === 'out') { var wipe = M.querySelector('#acc-wipe').checked; b.disabled = true; (timer ? push() : Promise.resolve()).then(function () { return auth.signOut(); }).then(function () { if (wipe) { Object.keys(snap()).forEach(function (x) { localStorage.removeItem(x); }); } localStorage.removeItem(META); close(); if (wipe) location.reload(); }); }

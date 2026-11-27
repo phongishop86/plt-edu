@@ -91,13 +91,13 @@
       const need = q.minCau || 4; let frac = Math.min(1, cau / need) * 0.7 + (kw.length ? (hitk / kw.length) * 0.3 : 0.3);
       if (raw.trim().length < 20) frac = 0;
       const diem = Math.round(frac * q.max * 4) / 4;
-      return { diem, src: 'auto', nhan_xet: cau >= need ? 'Bài viết đủ ý cơ bản. Hãy chú ý dùng từ hay, viết hoa đầu câu và dấu câu đúng.' : `Bài viết mới có ${cau} câu, cần ít nhất ${need} câu. Em viết thêm cho đủ ý nhé.` };
+      return { diem, src: 'auto', nhan_xet: cau >= need ? 'Bài viết đủ ý cơ bản. Hãy chú ý dùng từ hay, viết hoa đầu câu và dấu câu đúng.' : `Bài viết mới có ${cau} câu, cần ít nhất ${need} câu. Bạn viết thêm cho đủ ý nhé.` };
     }
     const norm = raw.replace(/[−–]/g, '-').replace(/(\d)[\s .](?=\d{3}(\D|$))/g, '$1');
     const nums = (norm.match(/-?\d+(?:,\d+)?/g) || []).map((x) => Number(x.replace(',', '.')));
     const hit = q.keys.filter((k) => nums.some((v) => Math.abs(v - k) < 1e-6)).length;
     const diem = Math.round((hit / q.keys.length) * q.max * 4) / 4;
-    return { diem, src: 'auto', nhan_xet: hit === q.keys.length ? 'Các kết quả chính đều đúng. Nhớ ghi đủ lời giải và đáp số nhé!' : hit ? `Đúng ${hit}/${q.keys.length} kết quả chính. Kiểm tra lại phép tính còn sai.` : 'Chưa tìm thấy kết quả đúng. Em xem lời giải mẫu và làm lại nhé.' };
+    return { diem, src: 'auto', nhan_xet: hit === q.keys.length ? 'Các kết quả chính đều đúng. Nhớ ghi đủ lời giải và đáp số nhé!' : hit ? `Đúng ${hit}/${q.keys.length} kết quả chính. Kiểm tra lại phép tính còn sai.` : 'Chưa tìm thấy kết quả đúng. Bạn xem lời giải mẫu và làm lại nhé.' };
   }
   async function aiGrade(list) { // list: [{q, resp}]
     const S = PLT.data.settings; if (!S.apiKey) return list.map((x) => heuristic(x.q, x.resp));
@@ -128,7 +128,7 @@ ${list.map((x, i) => `CÂU ${i + 1} (tối đa ${x.q.max} điểm)\nĐề: ${str
     const step = () => {
       if (i >= qs.length) {
         const pct = Math.round((ok / qs.length) * 100);
-        box.innerHTML = `<div class="done"><div class="big">${pct >= 80 ? '🏆' : pct >= 50 ? '👍' : '💪'}</div><h3>Đúng ${ok}/${qs.length} câu (${pct}%)</h3><p>${pct >= 80 ? 'Xuất sắc! Em nắm bài rất chắc.' : pct >= 50 ? 'Khá lắm! Ôn lại các câu sai nhé.' : 'Cố lên! Đọc lại lý thuyết rồi làm lại nhé.'}</p><div class="row center"><button class="btn" data-a="again">Làm lượt mới</button></div></div>`;
+        box.innerHTML = `<div class="done"><div class="big">${pct >= 80 ? '🏆' : pct >= 50 ? '👍' : '💪'}</div><h3>Đúng ${ok}/${qs.length} câu (${pct}%)</h3><p>${pct >= 80 ? 'Xuất sắc! Bạn nắm bài rất chắc.' : pct >= 50 ? 'Khá lắm! Ôn lại các câu sai nhé.' : 'Cố lên! Đọc lại lý thuyết rồi làm lại nhé.'}</p><div class="row center"><button class="btn" data-a="again">Làm lượt mới</button></div></div>`;
         box.querySelector('[data-a=again]').onclick = () => opt.again && opt.again();
         opt.onDone && opt.onDone(ok, qs.length); return;
       }
@@ -136,7 +136,7 @@ ${list.map((x, i) => `CÂU ${i + 1} (tối đa ${x.q.max} điểm)\nĐề: ${str
       box.innerHTML = `<div class="pbar"><span style="width:${(i / qs.length) * 100}%"></span></div><div class="qhead"><b>Câu ${i + 1}/${qs.length}</b> · ${lbl(q)} <span class="score">✔ ${ok}</span></div><div class="qcard" id="pq"></div><div id="pfb"></div><div class="row"><button class="btn" id="pchk">Kiểm tra</button></div>`;
       const qel = box.querySelector('#pq'); render(q, qel, st, { onChange() { } });
       box.querySelector('#pchk').onclick = () => {
-        if (!answered(q, st)) { box.querySelector('#pfb').innerHTML = '<div class="fb warn">Em hãy trả lời trước đã nhé!</div>'; return; }
+        if (!answered(q, st)) { box.querySelector('#pfb').innerHTML = '<div class="fb warn">Bạn hãy trả lời trước đã nhé!</div>'; return; }
         const right = check(q, st); if (right) ok++; if (opt.onAnswer) opt.onAnswer(right, i, qs.length);
         render(q, qel, st, { review: true });
         box.querySelector('#pfb').innerHTML = `<div class="fb ${right ? 'good' : 'badf'}">${right ? '🎉 Chính xác!' : '😅 Chưa đúng rồi.'}</div>`;
