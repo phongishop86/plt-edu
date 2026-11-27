@@ -19,13 +19,14 @@
   };
   const AI_LV = [['Chưa dùng AI bao giờ', 0], ['Thỉnh thoảng hỏi đáp với chatbot', 1], ['Dùng AI hằng ngày cho học tập, công việc', 5], ['Đã tự động hoá, kết nối dịch vụ hoặc lập trình với AI', 9]];
   const GOALS = [['lop', '📚', 'Học theo chương trình lớp'], ['thi', '🎓', 'Luyện thi chuyển cấp, tốt nghiệp'], ['nc', '⭐', 'Bồi dưỡng nâng cao'], ['en', '🇬🇧', 'Tiếng Anh'], ['zh', '🇨🇳', 'Tiếng Trung'], ['ko', '🇰🇷', 'Tiếng Hàn'], ['ai', '🤖', 'Dùng AI, học Claude']];
-  const MINS = [[10, 'Nhẹ nhàng', 10], [20, 'Đều đặn', 20], [30, 'Nghiêm túc', 30], [45, 'Tăng tốc', 50]];
-  const STEPS = ['Bạn là ai', 'Mục tiêu', 'Trình độ', 'Mỗi ngày', 'Quyền riêng tư', 'Sẵn sàng'];
+  const MINS = [[15, 'Nhẹ nhàng', 15], [30, 'Đều đặn', 30], [45, 'Nghiêm túc', 45], [60, 'Tăng tốc', 60]];
+  const STEPS = ['Bạn là ai', 'Mục tiêu', 'Trình độ', 'Đích đến', 'Mỗi ngày', 'Quyền riêng tư', 'Sẵn sàng'];
+  const LAST = STEPS.length - 1;
 
   let st = null;
   const fresh = () => {
     const p = PLT.data.plan || {}, u = window.PLT_ACC && PLT_ACC.user && PLT_ACC.user();
-    return { step: 0, name: PLT.data.settings.name || (u && u.displayName) || '', role: p.role || '', lop: p.lop || +PLT.data.settings.lop || 0, goals: (p.goals || []).slice(), cert: Object.assign({}, p.cert), self: Object.assign({}, p.self), quiz: {}, ai: p.ai == null ? -1 : p.ai, mins: p.mins || 20, consent: !!p.consent, parent: !!p.parent };
+    return { step: 0, name: PLT.data.settings.name || (u && u.displayName) || '', role: p.role || '', lop: p.lop || +PLT.data.settings.lop || 0, goals: (p.goals || []).slice(), cert: Object.assign({}, p.cert), self: Object.assign({}, p.self), quiz: {}, ai: p.ai == null ? -1 : p.ai, mins: [15, 30, 45, 60].includes(p.mins) ? p.mins : 30, consent: !!p.consent, parent: !!p.parent, target: Object.assign({}, p.target), accent: PLT.data.settings.accent || p.accent || 'US', board: !!p.board };
   };
   const langs = () => st.goals.filter((g) => LANG[g]);
   const child = () => st.role === 'hs' && st.lop && st.lop <= 7;
@@ -39,6 +40,8 @@
     const lv = ok >= 5 ? Math.max(s, 5) : t;
     return { lv, why: `Bài kiểm tra nhanh: đúng liên tiếp ${ok}/5 câu${lv !== s ? ` (em tự đánh giá cấp ${s})` : ''}` };
   }
+  const perLv = (m) => Math.round((30 * 30) / Math.max(10, m || 30));
+  function est(k, m) { const n = rec(k).lv, tg = Math.max(n, st.target[k] || n), d = perLv(m || st.mins) * (tg - n + 1); return { n, tg, months: Math.max(1, Math.round(d / 30)), weeks: Math.round(d / 7) }; }
   function aiPath() {
     const a = st.ai < 0 ? 0 : st.ai;
     if (st.role === 'hs' && st.lop) {
@@ -61,7 +64,7 @@
     }
     langs().forEach((k) => {
       const L = LANG[k], r = rec(k), cert = st.cert[k];
-      R.push({ icon: L.icon, t: `${L.ten} · Cấp ${r.lv} (${L.lv[r.lv - 1][1]})`, d: `${r.why}. Lộ trình 30 ngày${cert && !/Chưa rõ/.test(cert) ? ', hướng tới ' + cert : ''}.`, href: `#/${L.route}${r.lv > 1 ? '/c' + r.lv : ''}` });
+      const e = est(k); R.push({ icon: L.icon, t: `${L.ten} · Cấp ${r.lv} (${L.lv[r.lv - 1][1]})`, d: `${r.why}. Đích ${L.lv[e.tg - 1][1]} trong khoảng ${e.months} tháng${cert && !/Chưa rõ/.test(cert) ? ', hướng tới ' + cert : ''}.`, href: `#/${L.route}${r.lv > 1 ? '/c' + r.lv : ''}` });
     });
     if (st.goals.includes('ai')) R.push(...aiPath());
     return R;
@@ -97,14 +100,25 @@
       if (!parts.length) parts.push('<p class="muted">Các mục em chọn chưa cần xác định trình độ. Bấm Tiếp tục nhé.</p>');
       return `<h2>📊 Trình độ của em</h2>${parts.join('')}`;
     }
-    if (s === 3) return `<h2>⏰ Mỗi ngày em học bao lâu?</h2><p class="muted">Học đều mỗi ngày quan trọng hơn học dồn. Có thể đổi sau.</p>
-      <div class="ob-mins">${MINS.map(([m, t]) => `<button type="button" class="ob-min${st.mins === m ? ' on' : ''}" data-mins="${m}"><b>${m}</b><small>phút/ngày</small><span>${t}</span></button>`).join('')}</div>`;
-    if (s === 4) return `<h2>🔒 Quyền riêng tư</h2>
+    if (s === 3) {
+      const L = langs();
+      if (!L.length) return '<h2>🏁 Em muốn đạt tới đâu?</h2><p class="muted">Mục tiêu em chọn không chia cấp độ. Bấm Tiếp tục nhé.</p>';
+      return `<h2>🏁 Em muốn đạt tới đâu?</h2>${L.map((k) => { const D = LANG[k], n = rec(k).lv; if (!st.target[k] || st.target[k] < n) st.target[k] = Math.min(5, n + 1);
+        return `<div class="ob-sec"><h3>${D.icon} ${D.ten}</h3><div class="ob-grid2">${D.lv.map(([t, tag], i) => i + 1 < n ? '' : radio(st.target[k] === i + 1, `data-tg="${k}|${i + 1}"`, 'Hoàn thành ' + tag, (i + 1 === n ? '<span class="ob-cur">Đang học</span> ' : '') + tag)).join('')}</div></div>`; }).join('')}
+        ${L.includes('en') ? `<div class="ob-sec"><h3>🗣️ Em muốn học giọng nào?</h3><p class="muted small">Áp dụng cho giọng đọc mẫu và phần luyện phát âm.</p>${[['GB', 'Anh-Anh', '/təˈmɑːtəʊ/', '🇬🇧'], ['US', 'Anh-Mỹ', '/təˈmeɪtoʊ/', '🇺🇸']].map(([a, t, ipa, f]) => `<div class="ob-acc${st.accent === a ? ' on' : ''}"><button type="button" class="ob-rad${st.accent === a ? ' on' : ''}" data-acc="${a}"><i></i><span><b>${t}</b><br><small>tomato ${ipa}</small></span><em>${f}</em></button><button type="button" class="ob-say" data-say="${a}" title="Nghe thử">🔊</button></div>`).join('')}</div>` : ''}`;
+    }
+    if (s === 4) { const k = langs()[0], e = k ? est(k) : null;
+      return `<h2>⏰ Mỗi ngày em học bao lâu?</h2><p class="muted">Học đều mỗi ngày quan trọng hơn học dồn. Có thể đổi sau.</p>
+      <div class="ob-mins">${MINS.map(([m, t]) => `<button type="button" class="ob-min${st.mins === m ? ' on' : ''}" data-mins="${m}"><b>${m}</b><small>phút/ngày</small><span>${t}</span></button>`).join('')}</div>
+      ${e ? `<div class="ob-est">🕒 Với ${st.mins} phút mỗi ngày: dự kiến khoảng <b>${e.months} tháng</b> để hoàn thành ${LANG[k].lv[e.tg - 1][1]} ${LANG[k].ten.toLowerCase()}.</div>` : ''}`; }
+    if (s === 5) return `<h2>🔒 Quyền riêng tư</h2>
       <ul class="ob-ul"><li>PLT-Edu chỉ lưu <b>tên gọi, lớp, lộ trình và tiến độ học</b> của em.</li><li>Khi đăng nhập, dữ liệu này được lưu vào tài khoản để học trên nhiều thiết bị; chưa đăng nhập thì chỉ lưu trên máy này.</li><li>Không bán, không chia sẻ dữ liệu cho bên khác. Em có thể xoá tiến độ khi đăng xuất.</li></ul>
       <label class="ob-ck"><input type="checkbox" id="obConsent" ${st.consent ? 'checked' : ''}> Em đồng ý để PLT-Edu lưu tiến độ học như trên.</label>
-      ${child() ? `<label class="ob-ck"><input type="checkbox" id="obParent" ${st.parent ? 'checked' : ''}> Bố mẹ / người lớn đã biết và đồng ý cho em dùng tài khoản này.</label>` : ''}`;
+      ${child() ? `<label class="ob-ck"><input type="checkbox" id="obParent" ${st.parent ? 'checked' : ''}> Bố mẹ / người lớn đã biết và đồng ý cho em dùng tài khoản này.</label>` : ''}
+      <div class="ob-tg${child() ? ' off' : ''}"><div><b>Hiện tên trên bảng xếp hạng XP tháng</b><small>${child() ? 'Học sinh lớp 1–7 không hiện tên công khai để giữ an toàn.' : 'Chỉ hiện tên gọi và XP, không hiện email hay ảnh. Có thể tắt bất cứ lúc nào.'}</small></div><button type="button" class="ob-sw${st.board && !child() ? ' on' : ''}" data-board="1" ${child() ? 'disabled' : ''} aria-label="Bật tắt hiện tên"><i></i></button></div>`;
     const R = roadmap();
-    return `<h2>🚀 Lộ trình của ${esc(st.name || 'em')} đã sẵn sàng!</h2><p class="muted">${weekText(R)}</p>
+    const chips = [st.role === 'hs' ? 'Học sinh lớp ' + st.lop : st.role === 'dl' ? 'Người đi làm' : 'Phụ huynh / Giáo viên'].concat(langs().map((k) => `${LANG[k].ten}: ${LANG[k].lv[rec(k).lv - 1][1]} → ${LANG[k].lv[(st.target[k] || rec(k).lv) - 1][1]}`)).concat(langs().includes('en') ? ['Giọng: ' + (st.accent === 'GB' ? 'Anh-Anh' : 'Anh-Mỹ')] : []).concat(['Mỗi ngày: ' + st.mins + ' phút']);
+    return `<div class="ob-ready"><span class="ob-okb">✓</span><h2>Tất cả đã sẵn sàng, ${esc(st.name || 'em')}!</h2></div><div class="ob-chips">${chips.map((c) => `<span>${esc(c)}</span>`).join('')}</div><p class="muted">${weekText(R)}</p>
       <div class="ob-plan">${R.map((r, i) => `<a class="ob-step" href="${r.href}"><span class="n">${i + 1}</span><span class="i">${r.icon}</span><span><b>${esc(r.t)}</b><small>${esc(r.d)}</small></span><em>→</em></a>`).join('') || '<p>Em chưa chọn mục tiêu nào, quay lại bước 2 nhé.</p>'}</div>
       <p class="small muted">Lộ trình được lưu lại; em xem lại ở trang chủ hoặc làm lại bài xác định trình độ bất cứ lúc nào.</p>`;
   }
@@ -120,16 +134,18 @@
     if (s === 0) return st.role && (st.role !== 'hs' || st.lop) ? '' : st.role ? 'Chọn lớp em đang học nhé.' : 'Chọn em là ai nhé.';
     if (s === 1) return st.goals.length ? '' : 'Chọn ít nhất 1 mục tiêu.';
     if (s === 2) { const m = langs().find((k) => !st.self[k]); if (m) return `Chọn trình độ ${LANG[m].ten} của em.`; if (st.goals.includes('ai') && st.ai < 0) return 'Chọn kinh nghiệm dùng AI.'; return ''; }
-    if (s === 4) return !st.consent ? 'Tích vào ô đồng ý để tiếp tục.' : child() && !st.parent ? 'Nhờ bố mẹ xác nhận ô thứ hai nhé.' : '';
+    if (s === 5) return !st.consent ? 'Tích vào ô đồng ý để tiếp tục.' : child() && !st.parent ? 'Nhờ bố mẹ xác nhận ô thứ hai nhé.' : '';
     return '';
   }
   function save() {
     const R = roadmap(), lv = {};
     langs().forEach((k) => (lv[k] = rec(k).lv));
-    PLT.data.plan = { role: st.role, lop: st.lop || 0, goals: st.goals, cert: st.cert, self: st.self, lv, ai: st.ai, mins: st.mins, consent: st.consent, parent: st.parent, items: R, at: new Date().toISOString() };
+    const target = {}; langs().forEach((k) => (target[k] = Math.max(lv[k], st.target[k] || lv[k])));
+    PLT.data.plan = { role: st.role, lop: st.lop || 0, goals: st.goals, cert: st.cert, self: st.self, lv, target, accent: st.accent, board: st.board && !child(), ai: st.ai, mins: st.mins, consent: st.consent, parent: st.parent, items: R, at: new Date().toISOString() };
+    if (langs().includes('en')) PLT.data.settings.accent = st.accent;
     if (st.name) PLT.data.settings.name = st.name.slice(0, 40);
     if (st.role === 'hs' && st.lop) PLT.data.settings.lop = st.lop;
-    const goal = (MINS.find((m) => m[0] === st.mins) || [0, 0, 20])[2];
+    const goal = (MINS.find((m) => m[0] === st.mins) || [0, 0, 30])[2];
     PLT.data.gam = Object.assign(PLT.data.gam || {}, { goal });
     PLT.save();
   }
@@ -139,8 +155,8 @@
       <div class="ob-top"><div class="ob-hd"><img src="assets/img/logo-96.png" alt=""><b>Chào mừng em đến với PLT-Edu</b></div>
         <ol class="ob-steps">${STEPS.map((t, i) => `<li class="${i === st.step ? 'on' : i < st.step ? 'ok' : ''}"><b>${i < st.step ? '✓' : i + 1}</b><span>${t}</span></li>`).join('')}</ol></div>
       <div class="ob-card">${body()}</div>
-      <div class="ob-foot">${st.step ? '<button type="button" class="btn ghost" id="obBack">← Quay lại</button>' : '<button type="button" class="btn ghost" id="obSkip">Để sau</button>'}<span class="ob-err" id="obErr"></span>
-        ${st.step < 5 ? '<button type="button" class="btn" id="obNext">Tiếp tục →</button>' : '<a class="btn" id="obGo" href="#/">🏠 Về trang chủ</a>'}</div></div>`;
+      <div class="ob-foot">${st.step ? `<button type="button" class="btn ghost" id="obBack">← ${STEPS[st.step - 1]}</button>` : '<button type="button" class="btn ghost" id="obSkip">Để sau</button>'}<span class="ob-err" id="obErr"></span>
+        ${st.step < LAST ? `<button type="button" class="btn" id="obNext">${st.step === 5 ? 'Đồng ý và tiếp tục' : 'Tiếp tục'} →</button>` : '<a class="btn" id="obGo" href="#/">Bắt đầu học →</a>'}</div></div>`;
     window.scrollTo(0, 0);
   }
   function onClick(e) {
@@ -156,12 +172,20 @@
     else if (d.quiz) st.quiz[d.quiz] = { open: true, ans: [] };
     else if (d.qa) { const [k, v] = d.qa.split('|'); st.quiz[k].ans.push(+v); }
     else if (d.ai) st.ai = +d.ai;
+    else if (d.tg) { const [k, v] = d.tg.split('|'); st.target[k] = +v; }
+    else if (d.acc) st.accent = d.acc;
+    else if (d.say) { sayTomato(d.say); return; }
+    else if (d.board) st.board = !st.board;
     else if (d.mins) st.mins = +d.mins;
     else if (b.id === 'obBack') st.step--;
     else if (b.id === 'obSkip') { try { sessionStorage.setItem('plt-onb-skip', '1'); } catch (x) { /* bỏ qua */ } location.hash = '#/'; return; }
-    else if (b.id === 'obNext') { const m = canNext(); if (m) { $('#obErr').textContent = m; return; } st.step++; if (st.step === 5) save(); }
+    else if (b.id === 'obNext') { const m = canNext(); if (m) { $('#obErr').textContent = m; return; } st.step++; if (st.step === LAST) save(); }
     else return;
     draw();
+  }
+  function sayTomato(a) {
+    if (!('speechSynthesis' in window)) return; const u = new SpeechSynthesisUtterance('tomato'); u.lang = a === 'GB' ? 'en-GB' : 'en-US'; u.rate = 0.9;
+    const v = speechSynthesis.getVoices().find((x) => new RegExp('^en[-_]' + a, 'i').test(x.lang)); if (v) u.voice = v; speechSynthesis.cancel(); speechSynthesis.speak(u);
   }
   document.addEventListener('click', onClick);
   document.addEventListener('change', (e) => { if (e.target.id === 'obConsent') st.consent = e.target.checked; if (e.target.id === 'obParent') st.parent = e.target.checked; });
@@ -216,6 +240,13 @@
 .ob-step{display:flex;align-items:center;gap:12px;background:#fff;border:2px solid #E3DED1;border-radius:14px;padding:10px 14px;color:#1B2A4A;text-decoration:none}
 .ob-step:hover{border-color:#D9661F}.ob-step .n{width:28px;height:28px;border-radius:50%;background:#1B2A4A;color:#fff;display:grid;place-items:center;font-weight:800;flex:none}
 .ob-step .i{font-size:1.5rem}.ob-step b{display:block}.ob-step small{color:#55607A}.ob-step em{margin-left:auto;font-style:normal;font-weight:800;color:#D9661F}
+.ob-cur{background:#EEF1F6;color:#55607A;border-radius:6px;padding:1px 6px;font-size:.72rem;margin-right:4px}.ob-rad.on .ob-cur{background:rgba(255,255,255,.25);color:#fff}
+.ob-acc{display:flex;gap:8px;margin:8px 0}.ob-acc .ob-rad{flex:1}.ob-acc em{font-size:1.6rem;border:0!important}.ob-say{border:2px solid #E3DED1;background:#fff;border-radius:12px;width:56px;font-size:1.3rem;cursor:pointer}
+.ob-est{margin-top:12px;background:#F3EFE6;border-radius:12px;padding:10px 14px;font-weight:600}
+.ob-tg{display:flex;align-items:center;gap:14px;background:#F3EFE6;border-radius:14px;padding:10px 14px;margin-top:12px}.ob-tg div{flex:1}.ob-tg small{display:block;color:#55607A}.ob-tg.off{opacity:.6}
+.ob-sw{width:52px;height:30px;border-radius:99px;border:0;background:#C9CEDB;position:relative;cursor:pointer;flex:none}.ob-sw i{position:absolute;left:4px;top:4px;width:22px;height:22px;border-radius:50%;background:#fff;transition:left .2s}.ob-sw.on{background:#8a6a2c}.ob-sw.on i{left:26px}
+.ob-ready{display:flex;align-items:center;gap:12px}.ob-ready h2{margin:0}.ob-okb{width:44px;height:44px;border-radius:12px;background:#D7F0E3;color:#1f9d63;display:grid;place-items:center;font-weight:900;font-size:1.3rem}
+.ob-chips{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}.ob-chips span{background:#F3EFE6;border-radius:8px;padding:4px 10px;font-weight:700;font-size:.85rem}
 .ob-mini{display:flex;flex-direction:column;gap:6px;background:#FFF4E6;border-radius:16px;padding:12px 14px;margin-top:10px;color:#1B2A4A}
 .ob-mini>span{font-size:.88rem;color:#55607A}.ob-mini .btn{align-self:flex-start}
 .ob-plan.sm{margin:4px 0}.ob-plan.sm .ob-step{padding:7px 10px}.ob-plan.sm b{font-size:.9rem}

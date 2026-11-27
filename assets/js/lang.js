@@ -64,7 +64,7 @@
       files: ['subjects/nn/en-a1.js', 'subjects/nn/en-a1-2.js'],
       pLbl: 'phiên âm', rep: 'ENGLISH LEARNING REPORT', sample: 'Hello! Nice to meet you.',
       voiceHelp: 'dùng <b>Microsoft Edge</b> (giọng Aria, Jenny rất tự nhiên) hoặc <b>Chrome</b>; trên Windows vào <i>Cài đặt → Thời gian và ngôn ngữ → Giọng nói</i> và thêm giọng "English (United States)".',
-      pick: (vs) => { const en = vs.filter((v) => /^en[-_](US|GB)/i.test(v.lang)); return en.find((v) => /Aria|Jenny|Guy|Ava|Andrew/i.test(v.name)) || en.find((v) => /natural|online/i.test(v.name)) || en.find((v) => /Google US/i.test(v.name)) || en.find((v) => /^en[-_]US/i.test(v.lang)) || en[0] || vs.find((v) => /^en/i.test(v.lang)); },
+      pick: (vs) => { const ac = (PLT.data.settings && PLT.data.settings.accent) === 'GB' ? 'GB' : 'US'; const en0 = vs.filter((v) => /^en[-_](US|GB)/i.test(v.lang)); const enA = en0.filter((v) => new RegExp('^en[-_]' + ac, 'i').test(v.lang)); const en = enA.length ? enA.concat(en0.filter((v) => enA.indexOf(v) < 0)) : en0; return (ac === 'GB' && (en.find((v) => /Sonia|Ryan|Libby|Google UK/i.test(v.name)))) || en.find((v) => /Aria|Jenny|Guy|Ava|Andrew/i.test(v.name)) || en.find((v) => /natural|online/i.test(v.name)) || en.find((v) => /Google US/i.test(v.name)) || en.find((v) => /^en[-_]US/i.test(v.lang)) || en[0] || vs.find((v) => /^en/i.test(v.lang)); },
       eyebrow: 'Miễn phí · Cho người Việt · Giọng Mỹ · Khung CEFR', h1: '🇬🇧 Tiếng Anh giao tiếp <em>trong 30 ngày</em>',
       lead: 'Mỗi ngày 30–45 phút: luyện <b>phát âm chuẩn theo phiên âm IPA</b>, học từ theo câu, luyện tập, <b>hội thoại tình huống</b> và kiểm tra ngắn. Kết thúc cấp 1 em đạt trình độ <b>A1</b>, tự tin giao tiếp đời sống cơ bản.',
       card: () => `<b>Nghe thử</b><div class="row center">${sp('Hello!', 'Hello')} ${sp('Nice to meet you.', 'Nice to meet you')} ${sp('Thank you very much.', 'Thank you')}</div><p class="small muted">Bấm loa để nghe giọng đọc mẫu, rồi đọc to theo.</p>`,
@@ -313,12 +313,12 @@
     for (let i = 0; i < 70; i++) { const s = document.createElement('i'); s.style.left = Math.random() * 100 + '%'; s.style.background = cols[i % cols.length]; s.style.animationDelay = Math.random() * 0.6 + 's'; s.style.animationDuration = 1.6 + Math.random() * 1.4 + 's'; c.appendChild(s); }
     document.body.appendChild(c); setTimeout(() => c.remove(), 3800);
   }
-  function addXP(n, why) {
+  function addXP(n, why, noLang) {
     if (!n) return; const g = gam(), t = today(), before = g.days[t] || 0;
     if (g.last !== t) { const dd = g.last ? dayDiff(g.last, t) : 99; g.streak = dd === 1 ? g.streak + 1 : 1; g.last = t; g.best = Math.max(g.best, g.streak); if (g.streak > 1) setTimeout(() => toast(`🔥 Chuỗi <b>${g.streak}</b> ngày học liên tiếp!`, 'fire'), 500); }
     if (!before) g.c.nd++;
     g.xp += n; g.days[t] = before + n;
-    const lk = C && (C.parent || C.key); if (lk) g.by[lk] = (g.by[lk] || 0) + n;
+    const lk = !noLang && C && (C.parent || C.key); if (lk) g.by[lk] = (g.by[lk] || 0) + n;
     if (before < g.goal && g.days[t] >= g.goal) g.c.goalHit++;
     Object.keys(g.days).forEach((k) => { if (dayDiff(k, t) > 60) delete g.days[k]; });
     PLT.save(); toast(`+${n} XP${why ? ' · ' + why : ''}`, 'xp');
@@ -958,6 +958,6 @@
     return home(app);
   }
   function stop() { curDay = 0; if (rec) { try { rec.abort(); } catch (e) { /* bỏ qua */ } rec = null; } if (talk) { talk.stop(); talk = null; } if (cur) { cur.stop(); cur = null; } if (TTS) speechSynthesis.cancel(); document.body.classList.remove('in-exam'); }
-  PLT.LANG = { route, stop, say, toneSVG, SETS, sp, into, plain, mic, sayRow, COURSES, LEVELS, addXP, bump };
+  PLT.LANG = { route, stop, say, toneSVG, SETS, sp, into, plain, mic, sayRow, COURSES, LEVELS, addXP, bump, ensure, streakNow, rank };
   PLT.ZH = PLT.LANG; // tương thích với file dữ liệu tiếng Trung
 })();

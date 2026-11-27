@@ -110,7 +110,9 @@
       go: [['#/ngoai-ngu', 'Xem lộ trình 5 cấp']] },
     { ic: '🤖', ten: 'AI Edu', tag: 'Học AI', mo: 'Học cách dùng trí tuệ nhân tạo an toàn, hiệu quả cho học tập và cuộc sống: 4 cấp Tiểu học, THCS, THPT, Người đi làm và khoá Học Claude từ cơ bản đến nâng cao – 76 buổi, miễn phí.', meta: ['An toàn', 'Miễn phí'], go: [['ai/', 'Mở AI Edu']] }
   ];
-  function home() {
+  PLT.APP = { langLoad: () => langLoad(), modePath: (m, l) => modePath(m, l), curLop: () => curLop(), hasLop: () => hasLop(), settings: () => settings() };
+  function home(full) {
+    if (!full && PLT.DASH && PLT.data.plan && PLT.data.plan.items) return PLT.DASH.home($('#app'));
     const name = PLT.data.settings.name, has = hasLop(), l = curLop();
     const LG = [['zh', 'tieng-trung', '🀄 Tiếng Trung'], ['en', 'tieng-anh', '🇬🇧 Tiếng Anh A1'], ['en2', 'tieng-anh/c2', '🇬🇧 Tiếng Anh A2'], ['en3', 'tieng-anh/c3', '🇬🇧 Tiếng Anh B1'], ['en4', 'tieng-anh/c4', '🇬🇧 Tiếng Anh B2'], ['en5', 'tieng-anh/c5', '🇬🇧 Tiếng Anh C1'], ['ko', 'tieng-han', '🇰🇷 Tiếng Hàn'], ['zh2', 'tieng-trung/c2', '🀄 Tiếng Trung HSK 3'], ['zh3', 'tieng-trung/c3', '🀄 Tiếng Trung HSK 4'], ['zh4', 'tieng-trung/c4', '🀄 Tiếng Trung HSK 5–6'], ['zh5', 'tieng-trung/c5', '🀄 Tiếng Trung HSK 7–9'], ['ko2', 'tieng-han/c2', '🇰🇷 Tiếng Hàn cấp 2'], ['ko3', 'tieng-han/c3', '🇰🇷 Tiếng Hàn cấp 3'], ['ko4', 'tieng-han/c4', '🇰🇷 Tiếng Hàn cấp 4'], ['ko5', 'tieng-han/c5', '🇰🇷 Tiếng Hàn cấp 5–6']].filter(([k]) => PLT.data[k] && Object.keys(PLT.data[k].days || {}).length); const zh = LG.length > 0;
     const cont = has || zh ? `<div class="hl"><img src="assets/img/logo-192.png" alt=""><div><b>Tiếp tục học</b><span>Chọn nhanh nơi em đang học dở</span></div></div><div class="pick pick1">${has ? `<a href="#/lop/${l}"><b>📚 Lớp ${l}</b><span>Học bài · Ôn tập · Kiểm tra</span><i>→</i></a>` : ''}${LG.map(([, r, t]) => `<a href="#/${r}"><b>${t}</b><span>Học tiếp lộ trình · 🔥 giữ chuỗi ngày</span><i>→</i></a>`).join('')}</div>`
@@ -375,13 +377,14 @@
       case 'chuyen-cap': await chuyenCap(p, my); break;
       case 'tien-do': await progress(); break;
       case 'lo-trinh': PLT.ONB.render(); break;
+      case 'lo-trinh-hoc': await PLT.DASH.path(app, p); if (my !== seq) return; break;
       case 'ngoai-ngu': case 'tieng-trung': case 'tieng-anh': case 'tieng-han': {
         app.innerHTML = '<p class="muted">Đang tải bài học ngoại ngữ…</p>';
         const ok = await langLoad(); if (my !== seq) return;
         if (!ok) { app.innerHTML = '<div class="card">Không tải được module Ngoại ngữ. Kiểm tra kết nối và tải lại trang.</div>'; break; }
         await PLT.LANG.route(app, p); if (my !== seq) return; break;
       }
-      case 'khoa-hoc': home(); { const k = $('#khoa-hoc'); if (k) setTimeout(() => k.scrollIntoView({ behavior: 'smooth' }), 50); } return;
+      case 'khoa-hoc': home(true); { const k = $('#khoa-hoc'); if (k) setTimeout(() => k.scrollIntoView({ behavior: 'smooth' }), 50); } return;
       default: home();
     }
     window.scrollTo(0, 0);
@@ -391,6 +394,7 @@
     const r = p[0] === 'thi' ? (/^nc/.test(p[2] || '') ? 'nang-cao' : 'kiem-tra') : /^tieng-(trung|anh|han)$/.test(p[0]) ? 'ngoai-ngu' : p[0] || '';
     document.querySelectorAll('.nav a').forEach((a) => a.classList.toggle('on', (a.dataset.r || '') === r));
     const dd = $('#ddHoc'); if (dd) dd.classList.toggle('on', ['hoc', 'on-tap', 'kiem-tra', 'nang-cao', 'chuyen-cap'].includes(r));
+    if (PLT.DASH) PLT.DASH.side();
   }
   function syncLop() {
     const l = curLop(), s = sidOf(l);
