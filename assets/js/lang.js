@@ -47,12 +47,12 @@
   /* ---------- Cấu hình từng khoá ---------- */
   const COURSES = {
     'tieng-trung': {
-      key: 'tieng-trung', id: 'zh', ten: 'Tiếng Trung', icon: '🀄', lang: 'zh-CN', data: () => window.PLT_ZH,
+      key: 'tieng-trung', id: 'zh', ten: 'Tiếng Trung', icon: '🇨🇳', lang: 'zh-CN', data: () => window.PLT_ZH,
       files: ['subjects/tieng-trung.js', 'subjects/tieng-trung-2.js', 'subjects/tieng-trung-3.js', 'subjects/tieng-trung-4.js'],
       pLbl: 'Pinyin', rep: 'CHINESE LEARNING REPORT', sample: '你好！谢谢！',
       voiceHelp: 'dùng trình duyệt <b>Microsoft Edge</b> (có sẵn giọng Xiaoxiao rất chuẩn) hoặc <b>Chrome</b>; trên Windows vào <i>Cài đặt → Thời gian và ngôn ngữ → Giọng nói</i> và thêm giọng "Chinese (Simplified, China)".',
       pick: (vs) => { const cn = vs.filter((v) => /^(zh[-_]CN|zh[-_]Hans|cmn)/i.test(v.lang)); return cn.find((v) => /Xiaoxiao|Xiaoyi|Yunxi/i.test(v.name)) || cn.find((v) => /natural|online/i.test(v.name)) || cn.find((v) => /Google/i.test(v.name)) || cn[0] || vs.find((v) => /^zh[-_]TW/i.test(v.lang)); },
-      eyebrow: 'Miễn phí · Cho người Việt mới bắt đầu · Chữ giản thể · Giọng phổ thông', h1: '🀄 Tiếng Trung giao tiếp <em>trong 30 ngày</em>',
+      eyebrow: 'Miễn phí · Cho người Việt mới bắt đầu · Chữ giản thể · Giọng phổ thông', h1: '🇨🇳 Tiếng Trung giao tiếp <em>trong 30 ngày</em>',
       lead: 'Mỗi ngày 30–45 phút: ôn bài cũ, học Pinyin và từ mới, luyện tập, <b>hội thoại với người bản xứ</b> và làm bài kiểm tra ngắn. Mục tiêu là <b>nghe hiểu, phát âm đúng, phản xạ và tự tin giao tiếp</b>.',
       card: () => `<b>Nghe thử 4 thanh: mā · má · mǎ · mà</b>${toneSVG()}<div class="row center">${SETS[0].c.map((c, i) => sp(c, SETS[0].p[i])).join('')}</div>`,
       tools: [['thanh-dieu', '🎵', 'Luyện 4 thanh', 'Nghe mẫu từng thanh, chơi trò nghe – chọn thanh.'], ['pinyin', '🔤', 'Bảng Pinyin', 'Thanh mẫu, vận mẫu, cách đặt lưỡi, bấm để nghe.']],
@@ -122,25 +122,25 @@
   const ZK = ['meaning', 'listen', 'pinyin', 'hanzi', 'listenPy', 'match'];
   const zhCard = (h, p, v) => `<b>Nghe và nói thử</b><p class="zh-srt">${sp(h, h)}</p><p class="small muted">${p} – ${v}</p>${mic(h)}`;
   COURSES['tieng-trung-c2'] = lvl('tieng-trung', 2, 'HSK 3', LV_FILES('zh', 2), {
-    data: () => window.PLT_ZH2, tools: ZH_TOOLS, kinds: ZK, eyebrow: 'Cấp 2/5 · Sơ cấp · Hướng tới HSK 3 (~600 từ)', h1: '🀄 Tiếng Trung HSK 3: <em>bổ ngữ, câu 把 – 被, đời sống và công việc</em>',
+    data: () => window.PLT_ZH2, tools: ZH_TOOLS, kinds: ZK, eyebrow: 'Cấp 2/5 · Sơ cấp · Hướng tới HSK 3 (~600 từ)', h1: '🇨🇳 Tiếng Trung HSK 3: <em>bổ ngữ, câu 把 – 被, đời sống và công việc</em>',
     lead: '30 ngày nắm chắc <b>了/过, các loại bổ ngữ, so sánh, câu 把 và 被, liên từ</b>, rồi dùng chúng trong tình huống thật: thuê nhà, ngân hàng, du lịch, phỏng vấn, mua sắm online. Mỗi ngày có phần <b>🎤 nói theo để máy chấm</b>.',
     card: () => zhCard('我把文件发给你了。', 'Wǒ bǎ wénjiàn fā gěi nǐ le.', 'Tôi gửi tài liệu cho bạn rồi.'),
     profile: 'người Việt đã xong HSK 1–2, chữ giản thể, học 30–45 phút/ngày, mục tiêu HSK 3 và giao tiếp công việc.'
   });
   COURSES['tieng-trung-c3'] = lvl('tieng-trung', 3, 'HSK 4', LV_FILES('zh', 3), {
-    data: () => window.PLT_ZH3, tools: ZH_TOOLS, kinds: ZK, eyebrow: 'Cấp 3/5 · Trung cấp · Hướng tới HSK 4 (~1200 từ)', h1: '🀄 Tiếng Trung HSK 4: <em>câu phức, văn viết, tiếng Trung công sở</em>',
+    data: () => window.PLT_ZH3, tools: ZH_TOOLS, kinds: ZK, eyebrow: 'Cấp 3/5 · Trung cấp · Hướng tới HSK 4 (~1200 từ)', h1: '🇨🇳 Tiếng Trung HSK 4: <em>câu phức, văn viết, tiếng Trung công sở</em>',
     lead: '30 ngày với <b>连…都, 即使…也, 无论…都, 不是…而是, liên từ văn viết, trạng từ thái độ</b>, rồi họp, khiếu nại, email, tài chính, số liệu, đàm phán. Kết thúc bằng <b>luyện nghe – viết dạng HSK 4</b>.',
     card: () => zhCard('即使下雨，我们也按时出发。', 'Jíshǐ xià yǔ, wǒmen yě ànshí chūfā.', 'Dù mưa, chúng ta vẫn xuất phát đúng giờ.'),
     profile: 'người Việt đã xong HSK 3, chữ giản thể, học 30–45 phút/ngày, mục tiêu HSK 4 và tiếng Trung công sở.'
   });
   COURSES['tieng-trung-c4'] = lvl('tieng-trung', 4, 'HSK 5–6', LV_FILES('zh', 4), {
-    data: () => window.PLT_ZH4, tools: ZH_TOOLS, kinds: ZK, eyebrow: 'Cấp 4/5 · Trung cao · Hướng tới HSK 5–6 (~2500–5000 từ)', h1: '🀄 Tiếng Trung HSK 5–6: <em>thành ngữ, văn viết, thuyết trình, đàm phán</em>',
+    data: () => window.PLT_ZH4, tools: ZH_TOOLS, kinds: ZK, eyebrow: 'Cấp 4/5 · Trung cao · Hướng tới HSK 5–6 (~2500–5000 từ)', h1: '🇨🇳 Tiếng Trung HSK 5–6: <em>thành ngữ, văn viết, thuyết trình, đàm phán</em>',
     lead: '30 ngày với <b>thành ngữ, hư từ văn ngôn, câu lựa chọn và điều kiện chặt</b>, đọc báo kinh tế, thuyết trình, nghị luận, hợp đồng, thông cáo, tranh luận và khủng hoảng truyền thông. Kết thúc bằng <b>luyện viết tóm tắt 缩写</b>.',
     card: () => zhCard('与其抱怨，不如行动。', 'Yǔqí bàoyuàn, bùrú xíngdòng.', 'Thay vì than phiền, chẳng bằng hành động.'),
     profile: 'người Việt đã xong HSK 4, chữ giản thể, học 30–45 phút/ngày, mục tiêu HSK 5–6 và tiếng Trung chuyên môn.'
   });
   COURSES['tieng-trung-c5'] = lvl('tieng-trung', 5, 'HSK 7–9', LV_FILES('zh', 5), {
-    data: () => window.PLT_ZH5, tools: ZH_TOOLS, kinds: ZK, eyebrow: 'Cấp 5/5 · Cao cấp · Hướng tới HSK 7–9, biên – phiên dịch', h1: '🀄 Tiếng Trung HSK 7–9: <em>văn ngôn, dịch thuật, học thuật, ngoại giao</em>',
+    data: () => window.PLT_ZH5, tools: ZH_TOOLS, kinds: ZK, eyebrow: 'Cấp 5/5 · Cao cấp · Hướng tới HSK 7–9, biên – phiên dịch', h1: '🇨🇳 Tiếng Trung HSK 7–9: <em>văn ngôn, dịch thuật, học thuật, ngoại giao</em>',
     lead: '30 ngày với <b>văn ngôn, điển cố, văn phong học thuật</b>, kỹ thuật <b>biên – phiên dịch</b> tài chính, CNTT, pháp lý, rồi diễn văn, lễ tân, đàm phán đầu tư, thơ Đường, Khổng – Lão, ngôn ngữ mạng và ứng biến. Kết thúc bằng kế hoạch <b>tự học suốt đời</b>.',
     card: () => zhCard('千里之行，始于足下。', 'Qiān lǐ zhī xíng, shǐ yú zú xià.', 'Đi nghìn dặm bắt đầu từ một bước chân.'),
     profile: 'người Việt đã xong HSK 5–6, học 30–45 phút/ngày, mục tiêu HSK 7–9, biên – phiên dịch và giao tiếp cấp cao.'

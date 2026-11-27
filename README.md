@@ -77,3 +77,6 @@ tools/bump-version.sh   đổi ?v= để trình duyệt tải bản mới (chạ
 ## Lưu ý
 - Khóa Gemini nhập trên trình duyệt chỉ phù hợp dùng cá nhân/thử nghiệm. Khi mở cho nhiều học sinh, nên chuyển sang gọi qua một máy chủ trung gian (Vercel/Cloudflare Worker) để giấu khóa.
 - Không đưa file PDF SGK lên repo (bản quyền NXB Giáo dục Việt Nam); nội dung lý thuyết được tóm tắt lại bằng lời mới.
+
+## Quốc kỳ trên Windows
+Windows không vẽ được emoji cờ (hiện chữ GB/CN/KR). Web tự nạp font `assets/fonts/TwemojiCountryFlags.woff2` (gói country-flag-emoji-polyfill, MIT; hình cờ Twemoji CC-BY 4.0 © Twitter) chỉ cho các ký tự cờ.
