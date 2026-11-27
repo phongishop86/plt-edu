@@ -122,7 +122,7 @@
         <div class="row"><a class="btn" href="#/khoa-hoc">🗂️ Xem các khoá học</a></div>
         <div class="facts"><span><b>${COURSES.length}</b> khoá học</span><span><b>149</b> môn phổ thông</span><span>Thi chuyển cấp · Nâng cao*</span><span><b>3 900+</b> bài học</span><span><b>AI</b> chấm tự luận</span><span>Tiến độ lưu ngay trên máy</span></div>
       </div>
-      <div class="hcard">${cont}</div>
+      <div class="hcard">${cont}${PLT.ONB ? PLT.ONB.card() : ''}</div>
     </div></section>
       <h2 id="khoa-hoc">🗂️ Các khoá học</h2><div class="courses">${COURSES.map((c) => `<div class="course${c.wide ? ' wide' : ''}"><div class="ch"><span class="ci">${c.ic}</span><div><b>${c.ten}</b><em class="ctag${c.tag === 'Mới' ? ' new' : ''}">${c.tag}</em></div></div><p>${c.mo}</p><div class="cm">${c.meta.map((m) => `<span>${m}</span>`).join('')}</div>${c.parts ? `<div class="cparts">${c.parts.map(([i, t, d, h]) => `<a href="${h}"><span>${i}</span><b>${t}</b><small>${d}</small></a>`).join('')}</div>` : ''}<div class="cgo">${c.go.map(([h, t], i) => `<a class="btn${i ? ' ghost' : ''} small" href="${h}">${t}</a>`).join('')}</div></div>`).join('')}</div>`;
   }
@@ -374,6 +374,7 @@
       case 'nang-cao': advanced(S); break;
       case 'chuyen-cap': await chuyenCap(p, my); break;
       case 'tien-do': await progress(); break;
+      case 'lo-trinh': PLT.ONB.render(); break;
       case 'ngoai-ngu': case 'tieng-trung': case 'tieng-anh': case 'tieng-han': {
         app.innerHTML = '<p class="muted">Đang tải bài học ngoại ngữ…</p>';
         const ok = await langLoad(); if (my !== seq) return;

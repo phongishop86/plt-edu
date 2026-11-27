@@ -59,22 +59,23 @@
     for (var j in store) _set.call(localStorage, j, store[j]);
     setMeta({ uid: user.uid, at: at }); lastAt = at; location.reload();
   }
+  function ready2() { try { window.dispatchEvent(new CustomEvent('plt-login', { detail: { uid: user && user.uid } })); } catch (e) { /* bỏ qua */ } }
   function pull(first) {
     if (!user || !db) return; busy = true; paint();
     db.collection('users').doc(user.uid).get().then(function (doc) {
       busy = false; var d = doc.exists ? doc.data() : null, m = meta(), local = snap();
       var hasLocal = size(local) > 40, hasRemote = d && d.store && size(d.store) > 40;
-      if (!hasRemote) return push();
+      if (!hasRemote) { ready2(); return push(); }
       if (!hasLocal) return apply(d.store, d.at);
-      if (m.uid === user.uid) { if ((d.at || 0) > (m.at || 0)) return apply(d.store, d.at); lastAt = m.at; if (JSON.stringify(d.store) !== JSON.stringify(local)) return push(); paint(); return; }
-      if (JSON.stringify(d.store) === JSON.stringify(local)) { setMeta({ uid: user.uid, at: d.at }); lastAt = d.at; paint(); return; }
+      if (m.uid === user.uid) { if ((d.at || 0) > (m.at || 0)) return apply(d.store, d.at); lastAt = m.at; ready2(); if (JSON.stringify(d.store) !== JSON.stringify(local)) return push(); paint(); return; }
+      if (JSON.stringify(d.store) === JSON.stringify(local)) { setMeta({ uid: user.uid, at: d.at }); lastAt = d.at; ready2(); paint(); return; }
       if (first) choose(d);
     }).catch(function (e) { busy = false; err = 'Không tải được tiến độ (' + (e.code || 'lỗi mạng') + ')'; paint(); });
   }
   function choose(d) {
     modal('<h3>☁️ Chọn tiến độ để dùng</h3><p>Tài khoản của em đã có tiến độ (lưu lúc <b>' + when(d.at) + '</b>), và máy này cũng có tiến độ khác.</p>' +
       '<button class="bt o" data-k="r">☁️ Dùng tiến độ trên tài khoản</button><button class="bt g" data-k="l">💻 Dùng tiến độ của máy này (ghi đè tài khoản)</button><small>Mẹo: chọn bên nào em học nhiều hơn.</small>', function (b, k) {
-      if (k === 'r') apply(d.store, d.at); else if (k === 'l') { close(); push(); }
+      if (k === 'r') apply(d.store, d.at); else if (k === 'l') { close(); ready2(); push(); }
     }, true);
   }
 
@@ -106,7 +107,8 @@
     if (user) {
       return modal('<h3>👤 Tài khoản</h3><div class="me"><i>' + face(user) + '</i><div><b>' + esc(user.displayName || 'Học sinh PLT-Edu') + '</b><br><small>' + esc(user.email || '') + '</small></div></div>' +
         '<p id="acc-st">' + status() + '</p><p><small>Tiến độ PLT-Edu, Ngoại ngữ và AI Edu tự lưu lên tài khoản vài giây sau mỗi lần học.</small></p>' +
-        '<button class="bt" data-k="sync">🔄 Đồng bộ ngay</button><label class="ck"><input type="checkbox" id="acc-wipe"> Xoá tiến độ trên máy này khi đăng xuất (máy dùng chung)</label><button class="bt l" data-k="out">Đăng xuất</button>', function (b, k) {
+        '<a class="bt g" href="' + root + '#/lo-trinh" data-k="plan" style="text-decoration:none">🧭 Lộ trình học tập của em</a><button class="bt" data-k="sync">🔄 Đồng bộ ngay</button><label class="ck"><input type="checkbox" id="acc-wipe"> Xoá tiến độ trên máy này khi đăng xuất (máy dùng chung)</label><button class="bt l" data-k="out">Đăng xuất</button>', function (b, k) {
+        if (k === 'plan') close();
         if (k === 'sync') { clearTimeout(timer); push(); }
         if (k === 'out') { var wipe = M.querySelector('#acc-wipe').checked; b.disabled = true; (timer ? push() : Promise.resolve()).then(function () { return auth.signOut(); }).then(function () { if (wipe) { Object.keys(snap()).forEach(function (x) { localStorage.removeItem(x); }); } localStorage.removeItem(META); close(); if (wipe) location.reload(); }); }
       });
